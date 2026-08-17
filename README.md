@@ -163,9 +163,27 @@ npm run cf:dev
 - 工具页目前是 Coming Soon，后续可在不改路由的前提下接入真实逻辑
 - 不要在第一阶段加入用户系统、支付、实时行情或真实交易接口
 
+## 收盘日报
+
+投研 Agent 仓库里每个工作日生成的 Markdown 日报，可以通过 GitHub API 在本站 `/reports` 展示，无需把文件复制进这个仓库。
+
+在 `.env` 中填写：
+
+```bash
+NUXT_GITHUB_REPORTS_OWNER=your-github-user
+NUXT_GITHUB_REPORTS_REPO=your-agent-repo
+NUXT_GITHUB_REPORTS_PATH=output/daily
+NUXT_GITHUB_REPORTS_REF=main
+NUXT_GITHUB_TOKEN=github_pat_xxx
+```
+
+`NUXT_GITHUB_REPORTS_PATH` 是日报 md 所在目录。文件名建议包含日期，例如 `2026-08-17.md`。私有仓库必须提供 Token；公开仓库也建议配置，以避免 GitHub API 限额。生产环境请用 Wrangler secret 注入 `NUXT_GITHUB_TOKEN`，不要提交到 Git。
+
 ## 主要路由
 
 - `/`
+- `/reports`
+- `/reports/:date`
 - `/tutorials`
 - `/tutorials/articles`
 - `/tutorials/videos`

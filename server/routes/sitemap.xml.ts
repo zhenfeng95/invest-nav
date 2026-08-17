@@ -21,6 +21,7 @@ const routes = [
   '/nav/us-brokers',
   '/nav/fund-transfer',
   '/nav/deposit-withdraw',
+  '/reports',
   '/about',
   '/disclaimer',
   '/privacy',

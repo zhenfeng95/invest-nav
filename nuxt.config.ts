@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  // Vite 冷启动会在 Nitro 写出 manifest 之前扫描 #app-manifest，导致 pre-transform 报错。
+  // 本站未使用 routeRules / 客户端 payload，关闭即可。
+  experimental: {
+    appManifest: false,
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -11,13 +17,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   colorMode: {
-    preference: 'dark',
-    fallback: 'dark',
+    preference: 'light',
+    fallback: 'light',
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
     classPrefix: '',
     classSuffix: '',
-    storageKey: 'invest-nav-color-mode',
+    storageKey: 'invest-nav-color-mode-v2',
   },
 
   tailwindcss: {
@@ -49,12 +55,17 @@ export default defineNuxtConfig({
         },
       ],
       meta: [
-        { name: 'theme-color', content: '#0B0D10' },
+        { name: 'theme-color', content: '#F7F7F5' },
       ],
     },
   },
 
   runtimeConfig: {
+    githubToken: '',
+    githubReportsOwner: '',
+    githubReportsRepo: '',
+    githubReportsPath: '',
+    githubReportsRef: 'main',
     public: {
       siteUrl: 'http://localhost:3000',
       siteName: '投资导航',
@@ -68,6 +79,13 @@ export default defineNuxtConfig({
       nodeCompat: true,
       wrangler: {
         name: 'invest-nav',
+        vars: {
+          NUXT_PUBLIC_SITE_URL: 'https://zeninvest.de5.net',
+          NUXT_GITHUB_REPORTS_OWNER: 'zhenfeng95',
+          NUXT_GITHUB_REPORTS_REPO: 'invest-agent',
+          NUXT_GITHUB_REPORTS_PATH: 'output/daily',
+          NUXT_GITHUB_REPORTS_REF: 'main',
+        },
       },
     },
   },

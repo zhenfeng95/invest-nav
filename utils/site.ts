@@ -11,6 +11,7 @@ export interface NavLink {
 
 export const mainNav: NavLink[] = [
   { label: '首页', to: '/' },
+  { label: '日报', to: '/reports' },
   { label: '教程', to: '/tutorials' },
   { label: '工具', to: '/tools' },
   { label: '导航', to: '/nav' },
