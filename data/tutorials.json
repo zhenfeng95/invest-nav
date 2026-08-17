@@ -1,0 +1,202 @@
+{
+  "items": [
+    {
+      "id": "choose-us-broker",
+      "slug": "how-to-choose-us-broker",
+      "title": "如何选择美股券商？",
+      "description": "介绍美国主流券商的特点、开户要求、入金方式和费用。",
+      "type": "article",
+      "category": "美股",
+      "tags": ["美股", "券商"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-07-18",
+      "publishedAt": "2026-06-02",
+      "popular": true,
+      "content": [
+        "选择美股券商时，优先比较监管牌照、账户类型、入金路径、佣金结构和中文支持，而不是只看广告宣传。",
+        "综合型券商通常适合长期持有股票和 ETF；互联网券商则更强调开户体验与移动端交易。",
+        "开户前确认你所在地区是否被支持，以及后续从港卡或内地相关路径出入金是否可执行。",
+        "本页仅作信息整理，不构成开户或投资建议。"
+      ]
+    },
+    {
+      "id": "hk-bank-account",
+      "slug": "hong-kong-bank-account-guide",
+      "title": "港卡开户入门指南",
+      "description": "梳理香港银行开户常见路径、材料准备和后续资金流转注意点。",
+      "type": "article",
+      "category": "香港银行",
+      "tags": ["港卡", "银行"],
+      "readingMinutes": 10,
+      "updatedAt": "2026-07-12",
+      "publishedAt": "2026-05-20",
+      "popular": true,
+      "content": [
+        "港卡常被用于跨境资金安排、美股入金和部分加密货币相关流转，但每家银行的开户政策并不相同。",
+        "开户前先确认身份证明、地址证明、赴港安排以及银行是否接受你的居住地申请。",
+        "开户成功后，建议先搞清楚转账限额、电汇费用和与券商绑定的流程，再进行大额资金操作。",
+        "本页仅作信息整理，不构成开户建议。"
+      ]
+    },
+    {
+      "id": "us-stock-deposit",
+      "slug": "us-stock-deposit-and-transfer",
+      "title": "美股入金与资金流转",
+      "description": "从港卡、电汇到券商账户，理解美股出入金的常见链路。",
+      "type": "article",
+      "category": "出入金",
+      "tags": ["出入金", "资金流转"],
+      "readingMinutes": 9,
+      "updatedAt": "2026-07-08",
+      "publishedAt": "2026-05-11",
+      "popular": true,
+      "content": [
+        "美股入金通常涉及银行账户、汇款路径、中间行费用和券商到账时间。",
+        "不同券商支持的入金方式不同，电汇、FPS、第三方支付并不可以互相替代。",
+        "操作前核对收款人名称、ABA/Swift 信息，并保留回单，方便对账和排查延迟。",
+        "本页仅作信息整理，不构成资金安排建议。"
+      ]
+    },
+    {
+      "id": "choose-crypto-exchange",
+      "slug": "how-to-choose-crypto-exchange",
+      "title": "加密货币交易所怎么选",
+      "description": "从合规、安全、流动性和提现路径比较常见交易平台。",
+      "type": "article",
+      "category": "加密货币",
+      "tags": ["加密货币", "交易所"],
+      "readingMinutes": 7,
+      "updatedAt": "2026-06-30",
+      "publishedAt": "2026-05-03",
+      "popular": true,
+      "content": [
+        "选择交易所时，重点看牌照与服务地区、资产隔离、提现效率和安全记录，而不是短期活动奖励。",
+        "大额资金不建议长期留在交易平台。了解如何提现到自托管钱包，是基础安全步骤。",
+        "同时确认法币出入金是否与你的银行、港卡或现有资金路径匹配。",
+        "本页仅作信息整理，不构成交易建议。"
+      ]
+    },
+    {
+      "id": "etf-vs-fund",
+      "slug": "etf-vs-fund",
+      "title": "ETF 与基金有什么区别",
+      "description": "用更清楚的结构理解 ETF、共同基金和指数投资的差异。",
+      "type": "article",
+      "category": "ETF",
+      "tags": ["ETF", "基金"],
+      "readingMinutes": 6,
+      "updatedAt": "2026-06-22",
+      "publishedAt": "2026-04-18",
+      "popular": true,
+      "content": [
+        "ETF 通常在交易所盘中交易，共同基金则多按当日净值申赎。",
+        "费率、跟踪误差、溢价折价和分红处理，是比较产品时更关键的维度。",
+        "QDII 基金与直接购买美股 ETF 的账户路径、额度与成本结构也不相同。",
+        "本页仅作信息整理，不构成产品推荐。"
+      ]
+    },
+    {
+      "id": "options-basics",
+      "slug": "options-basics",
+      "title": "期权入门：权利金、行权与风险",
+      "description": "用尽量少的术语，解释期权合约的基本结构和主要风险。",
+      "type": "article",
+      "category": "期权",
+      "tags": ["期权", "美股"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-06-14",
+      "publishedAt": "2026-04-09",
+      "popular": false,
+      "content": [
+        "期权是合约，不是股票本身。买方支付权利金，卖方承担对应义务。",
+        "到期、行权价、隐含波动率和时间价值，都会显著影响合约价格。",
+        "期权适合先理解风险，再考虑是否使用；卖出期权的风险结构尤其需要单独学习。",
+        "本页仅作信息整理，不构成交易建议。"
+      ]
+    },
+    {
+      "id": "video-us-account",
+      "slug": "us-broker-account-in-5-min",
+      "title": "5 分钟看懂美股开户流程",
+      "description": "用短视频梳理开户材料、W-8BEN 和账户审核的常见步骤。",
+      "type": "video",
+      "category": "美股",
+      "tags": ["美股", "开户"],
+      "duration": "05:20",
+      "updatedAt": "2026-07-04",
+      "publishedAt": "2026-06-16",
+      "popular": true,
+      "thumbnail": "/images/videos/us-account.svg",
+      "videoUrl": ""
+    },
+    {
+      "id": "video-hk-transfer",
+      "slug": "hk-bank-fund-flow-demo",
+      "title": "港卡资金流转演示",
+      "description": "演示从港卡到券商账户的常见转账核对项。",
+      "type": "video",
+      "category": "资金流转",
+      "tags": ["港卡", "资金流转"],
+      "duration": "07:12",
+      "updatedAt": "2026-06-28",
+      "publishedAt": "2026-06-01",
+      "popular": false,
+      "thumbnail": "/images/videos/hk-transfer.svg",
+      "videoUrl": ""
+    },
+    {
+      "id": "video-wallet-safety",
+      "slug": "wallet-and-exchange-safety",
+      "title": "钱包与交易所：入金安全要点",
+      "description": "讲解链上地址核对、测试转账和提现白名单。",
+      "type": "video",
+      "category": "加密货币",
+      "tags": ["钱包", "安全"],
+      "duration": "06:40",
+      "updatedAt": "2026-06-10",
+      "publishedAt": "2026-05-22",
+      "popular": false,
+      "thumbnail": "/images/videos/wallet-safety.svg",
+      "videoUrl": ""
+    },
+    {
+      "id": "info-us-account-system",
+      "slug": "us-account-system-infographic",
+      "title": "一图看懂美股账户体系",
+      "description": "用一张图说明券商账户、托管和常见资产类型。",
+      "type": "infographic",
+      "category": "美股",
+      "tags": ["美股", "账户"],
+      "updatedAt": "2026-07-01",
+      "publishedAt": "2026-06-08",
+      "popular": true,
+      "image": "/images/infographics/us-account-system.svg"
+    },
+    {
+      "id": "info-hk-fund-path",
+      "slug": "hk-fund-path-infographic",
+      "title": "一图看懂港卡资金路径",
+      "description": "把银行、券商和汇款链路压缩成一张结构图。",
+      "type": "infographic",
+      "category": "资金流转",
+      "tags": ["港卡", "出入金"],
+      "updatedAt": "2026-06-19",
+      "publishedAt": "2026-05-28",
+      "popular": false,
+      "image": "/images/infographics/hk-fund-path.svg"
+    },
+    {
+      "id": "info-etf-types",
+      "slug": "etf-types-infographic",
+      "title": "一图看懂 ETF 分类",
+      "description": "宽基、行业、债券和主题 ETF 的基本分类方式。",
+      "type": "infographic",
+      "category": "ETF",
+      "tags": ["ETF", "分类"],
+      "updatedAt": "2026-06-05",
+      "publishedAt": "2026-05-14",
+      "popular": false,
+      "image": "/images/infographics/etf-types.svg"
+    }
+  ]
+}

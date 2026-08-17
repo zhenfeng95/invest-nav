@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" rx="24" fill="#14171C"/>
+  <rect x="48" y="48" width="864" height="444" rx="18" stroke="#2A3038"/>
+  <circle cx="480" cy="250" r="42" fill="#1D242C" stroke="#8FADA0"/>
+  <path d="M470 250L492 262V238L470 250Z" fill="#8FADA0"/>
+  <text x="480" y="340" text-anchor="middle" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="28" font-weight="600">US Broker Account</text>
+  <text x="480" y="378" text-anchor="middle" fill="#8B949E" font-family="Inter, sans-serif" font-size="16">Video placeholder</text>
+</svg>

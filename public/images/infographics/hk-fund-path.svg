@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" rx="24" fill="#14171C"/>
+  <text x="64" y="84" fill="#8FADA0" font-family="Inter, sans-serif" font-size="14" letter-spacing="2">INFOGRAPHIC</text>
+  <text x="64" y="128" fill="#F4F1EA" font-family="Inter, sans-serif" font-size="32" font-weight="600">HK Fund Path</text>
+  <rect x="64" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="84" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Source</text>
+  <rect x="312" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="332" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">HK Bank</text>
+  <rect x="560" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="580" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Transfer</text>
+  <rect x="748" y="352" width="148" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="768" y="418" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Broker</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
+  <rect width="960" height="640" rx="24" fill="#14171C"/>
+  <text x="64" y="84" fill="#8FADA0" font-family="Inter, sans-serif" font-size="14" letter-spacing="2">INFOGRAPHIC</text>
+  <text x="64" y="128" fill="#F4F1EA" font-family="Inter, sans-serif" font-size="32" font-weight="600">US Account System</text>
+  <rect x="64" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="88" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Bank</text>
+  <rect x="355" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="379" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Broker</text>
+  <rect x="646" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="670" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Assets</text>
+</svg>

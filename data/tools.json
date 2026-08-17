@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": "portfolio",
+      "name": "投资组合追踪",
+      "description": "追踪你的投资组合表现。",
+      "icon": "chart",
+      "status": "coming-soon",
+      "route": "/tools/portfolio",
+      "apiRequired": true,
+      "apiPath": "/api/portfolio"
+    },
+    {
+      "id": "qdii",
+      "name": "QDII额度宝",
+      "description": "查看 QDII 额度与相关基金信息。",
+      "icon": "wallet",
+      "status": "coming-soon",
+      "route": "/tools/qdii",
+      "apiRequired": true,
+      "apiPath": "/api/qdii"
+    },
+    {
+      "id": "calendar",
+      "name": "财经日历",
+      "description": "关注重要经济数据与市场事件。",
+      "icon": "calendar",
+      "status": "coming-soon",
+      "route": "/tools/calendar",
+      "apiRequired": true,
+      "apiPath": "/api/calendar"
+    },
+    {
+      "id": "signal",
+      "name": "抄底信号",
+      "description": "用结构化指标观察市场回撤与情绪。",
+      "icon": "signal",
+      "status": "coming-soon",
+      "route": "/tools/signal",
+      "apiRequired": true,
+      "apiPath": "/api/market"
+    },
+    {
+      "id": "airdrop",
+      "name": "空投计算器",
+      "description": "估算空投份额与潜在价值。",
+      "icon": "calculator",
+      "status": "coming-soon",
+      "route": "/tools/airdrop",
+      "apiRequired": true,
+      "apiPath": "/api/crypto"
+    }
+  ]
+}

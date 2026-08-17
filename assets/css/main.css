@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-zinc-900 dark:bg-canvas-dark dark:text-zinc-100;
+  }
+
+  ::selection {
+    background: rgb(111 143 130 / 0.28);
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-zinc-200/80 bg-white shadow-card transition duration-200 dark:border-white/[0.08] dark:bg-white/[0.03] dark:shadow-none;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md dark:hover:border-white/20 dark:hover:bg-white/[0.05];
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas dark:focus-visible:ring-offset-canvas-dark;
+  }
+}
