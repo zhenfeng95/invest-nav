@@ -41,7 +41,13 @@ function quoteCaption(book: MarketBook) {
   if (!withQuote?.quote) {
     return '现价暂未取到，表格只展示成本。'
   }
-  const source = withQuote.quote.source === 'eastmoney' ? '东财' : withQuote.quote.source === 'tencent' ? '腾讯行情' : withQuote.quote.source
+  const source = withQuote.quote.source === 'eastmoney'
+    ? '东财'
+    : withQuote.quote.source === 'tencent'
+      ? '腾讯行情'
+      : withQuote.quote.source === '10jqka'
+        ? '同花顺'
+        : withQuote.quote.source
   return withQuote.quote.asOf
     ? `${source} · ${withQuote.quote.asOf}`
     : `${source} · 最近一次拉取`

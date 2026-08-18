@@ -89,15 +89,27 @@ async function fetchAShareQuote(ticker: string): Promise<LiveQuote | null> {
     return cached
   }
 
+  const tencentPromise = fetchAShareQuoteTencent(ticker)
+  const jqkaPromise = fetch10jqkaQuote(to10jqkaAShareSymbol(ticker), 'v2')
+  const eastmoney = await fetchAShareQuoteEastmoney(ticker)
+  const quote = eastmoney || await tencentPromise || await jqkaPromise
+  if (quote && quote.ma5 == null) {
+    quote.ma5 = ma5FromCloses(await fetchTencentAShareKlines(ticker), quote.last)
+  }
+
+  setCached(`A:${ticker}`, quote)
+  return quote
+}
+
+async function fetchAShareQuoteEastmoney(ticker: string): Promise<LiveQuote | null> {
   const secid = toEastmoneySecid(ticker)
   const [spot, kline] = await Promise.all([
-    fetchJson(`https://push2.eastmoney.com/api/qt/stock/get?secid=${secid}&fields=f43,f44,f45,f46,f57,f58,f60,f152,f169,f170`, 'https://quote.eastmoney.com/'),
-    fetchJson(`https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=${secid}&klt=101&fqt=1&lmt=10&end=20500101&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58`, 'https://quote.eastmoney.com/'),
+    fetchJson(`https://push2.eastmoney.com/api/qt/stock/get?secid=${secid}&fields=f43,f44,f45,f46,f57,f58,f60,f152,f169,f170`, 'https://quote.eastmoney.com/', 3500),
+    fetchJson(`https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=${secid}&klt=101&fqt=1&lmt=10&end=20500101&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58`, 'https://quote.eastmoney.com/', 3500),
   ])
 
   const data = spot && typeof spot === 'object' ? (spot as { data?: Record<string, number | string> }).data : null
   if (!data || data.f43 == null) {
-    setCached(`A:${ticker}`, null)
     return null
   }
 
@@ -106,20 +118,51 @@ async function fetchAShareQuote(ticker: string): Promise<LiveQuote | null> {
   const last = Number(data.f43) / scale
   const prevClose = data.f60 != null ? Number(data.f60) / scale : undefined
   const changePct = data.f170 != null ? Number(data.f170) / 100 : (prevClose ? (last / prevClose - 1) * 100 : undefined)
-  const ma5 = parseMa5((kline as { data?: { klines?: string[] } } | null)?.data?.klines, last)
 
-  const quote: LiveQuote = {
+  return {
     last,
     prevClose,
     changePct,
     high: data.f44 != null ? Number(data.f44) / scale : undefined,
     low: data.f45 != null ? Number(data.f45) / scale : undefined,
     open: data.f46 != null ? Number(data.f46) / scale : undefined,
-    ma5,
+    ma5: parseMa5((kline as { data?: { klines?: string[] } } | null)?.data?.klines, last),
     source: 'eastmoney',
   }
-  setCached(`A:${ticker}`, quote)
-  return quote
+}
+
+async function fetchAShareQuoteTencent(ticker: string): Promise<LiveQuote | null> {
+  const symbol = toTencentAShareSymbol(ticker)
+  const fields = parseTencentQuoteFields(
+    await fetchText(`https://qt.gtimg.cn/q=${encodeURIComponent(symbol)}`, 'https://finance.qq.com/'),
+  )
+  if (!fields) {
+    return null
+  }
+
+  const last = Number(fields[3])
+  const prevClose = Number(fields[4])
+  if (!Number.isFinite(last) || last <= 0) {
+    return null
+  }
+
+  const open = Number(fields[5])
+  const high = Number(fields[33])
+  const low = Number(fields[34])
+  const changePct = Number(fields[32])
+
+  return {
+    last,
+    prevClose: Number.isFinite(prevClose) ? prevClose : undefined,
+    changePct: Number.isFinite(changePct)
+      ? changePct
+      : (prevClose ? (last / prevClose - 1) * 100 : undefined),
+    high: Number.isFinite(high) ? high : undefined,
+    low: Number.isFinite(low) ? low : undefined,
+    open: Number.isFinite(open) ? open : undefined,
+    asOf: parseTencentAsOf(fields),
+    source: 'tencent',
+  }
 }
 
 async function fetchUsQuote(ticker: string): Promise<LiveQuote | null> {
@@ -128,15 +171,22 @@ async function fetchUsQuote(ticker: string): Promise<LiveQuote | null> {
     return cached
   }
 
-  const eastmoney = await fetchUsQuoteEastmoney(ticker)
-  if (eastmoney) {
-    setCached(`US:${ticker}`, eastmoney)
-    return eastmoney
+  const jqkaPromise = fetch10jqkaQuote(to10jqkaUsSymbol(ticker), 'v6')
+  const tencent = await fetchUsQuoteTencent(ticker)
+  if (tencent) {
+    setCached(`US:${ticker}`, tencent)
+    return tencent
   }
 
-  const tencent = await fetchUsQuoteTencent(ticker)
-  setCached(`US:${ticker}`, tencent)
-  return tencent
+  const jqka = await jqkaPromise
+  if (jqka) {
+    setCached(`US:${ticker}`, jqka)
+    return jqka
+  }
+
+  const eastmoney = await fetchUsQuoteEastmoney(ticker)
+  setCached(`US:${ticker}`, eastmoney)
+  return eastmoney
 }
 
 async function fetchUsQuoteEastmoney(ticker: string): Promise<LiveQuote | null> {
@@ -149,8 +199,8 @@ async function fetchUsQuoteEastmoney(ticker: string): Promise<LiveQuote | null> 
     return null
   }
 
-  const decimals = Number(data.f152 ?? 3)
-  const scale = 10 ** (Number.isFinite(decimals) ? decimals : 3)
+  // US push2 prices are thousandths; f152 is display decimals, not the scale.
+  const scale = 1000
   const last = Number(data.f43) / scale
   const prevClose = data.f60 != null ? Number(data.f60) / scale : undefined
   const normalizedLast = normalizeUsLast(ticker, last)
@@ -167,30 +217,122 @@ async function fetchUsQuoteEastmoney(ticker: string): Promise<LiveQuote | null> 
 }
 
 async function fetchUsQuoteTencent(ticker: string): Promise<LiveQuote | null> {
-  const text = await fetchText(`https://qt.gtimg.cn/q=us${encodeURIComponent(ticker)}`, 'https://finance.qq.com/')
-  if (!text || !text.includes('~')) {
+  const fields = parseTencentQuoteFields(
+    await fetchText(`https://qt.gtimg.cn/q=us${encodeURIComponent(ticker)}`, 'https://finance.qq.com/'),
+  )
+  if (!fields) {
     return null
   }
 
-  const quoted = text.split('"')[1]
-  if (!quoted) {
-    return null
-  }
-  const fields = quoted.split('~')
   const last = Number(fields[3])
   const prevClose = Number(fields[4])
   if (!Number.isFinite(last) || last <= 0) {
     return null
   }
 
-  const datetime = fields.find(field => /^\d{4}-\d{2}-\d{2}/.test(field))
   return {
     last,
     prevClose: Number.isFinite(prevClose) ? prevClose : undefined,
     changePct: Number.isFinite(prevClose) && prevClose ? (last / prevClose - 1) * 100 : undefined,
-    asOf: datetime,
+    asOf: parseTencentAsOf(fields),
     source: 'tencent',
   }
+}
+
+async function fetch10jqkaQuote(symbol: string, version: 'v2' | 'v6'): Promise<LiveQuote | null> {
+  const payload = await fetchQuoteBridge(
+    `https://d.10jqka.com.cn/${version}/realhead/${encodeURIComponent(symbol)}/last.js`,
+    3500,
+  )
+  const items = payload && typeof payload === 'object'
+    ? (payload as { items?: Record<string, string | number> }).items
+    : null
+  if (!items) {
+    return null
+  }
+
+  const last = Number(items['10'])
+  if (!Number.isFinite(last) || last <= 0) {
+    return null
+  }
+
+  const prevClose = Number(items['6'])
+  const open = Number(items['7'])
+  const high = Number(items['8'])
+  const low = Number(items['9'])
+  const changePct = Number(items['199112'])
+  const ma5 = Number(items['1378761'])
+  const asOf = String(items.time || items.updateTime || '')
+    .replace(/\s*(北京时间|美东时间)$/u, '')
+    .trim() || undefined
+
+  return {
+    last,
+    prevClose: Number.isFinite(prevClose) && prevClose > 0 ? prevClose : undefined,
+    changePct: Number.isFinite(changePct)
+      ? changePct
+      : (prevClose ? (last / prevClose - 1) * 100 : undefined),
+    high: Number.isFinite(high) ? high : undefined,
+    low: Number.isFinite(low) ? low : undefined,
+    open: Number.isFinite(open) ? open : undefined,
+    ma5: Number.isFinite(ma5) && ma5 > 0 ? ma5 : undefined,
+    asOf,
+    source: '10jqka',
+  }
+}
+
+async function fetch10jqkaKlines(symbol: string): Promise<DailyClose[]> {
+  const payload = await fetchQuoteBridge(
+    `https://d.10jqka.com.cn/v6/line/${encodeURIComponent(symbol)}/01/last.js`,
+    8000,
+  )
+  const data = payload && typeof payload === 'object'
+    ? (payload as { data?: string }).data
+    : null
+  if (!data) {
+    return []
+  }
+
+  const rows: DailyClose[] = []
+  for (const line of data.split(';')) {
+    if (!line.trim()) {
+      continue
+    }
+    const [dateRaw, , , , closeText] = line.split(',')
+    const close = Number(closeText)
+    const date = formatCompactDate(dateRaw)
+    if (!date || !Number.isFinite(close) || close <= 0) {
+      continue
+    }
+    rows.push({ date, close })
+  }
+  return rows
+}
+
+async function fetchQuoteBridge(url: string, timeoutMs = 8000): Promise<unknown | null> {
+  const text = await fetchText(url, 'https://stockpage.10jqka.com.cn/', timeoutMs)
+  if (!text) {
+    return null
+  }
+  const start = text.indexOf('({')
+  const end = text.lastIndexOf('})')
+  if (start < 0 || end <= start) {
+    return null
+  }
+  try {
+    return JSON.parse(text.slice(start + 1, end + 1))
+  }
+  catch {
+    return null
+  }
+}
+
+function formatCompactDate(value: string | undefined): string | null {
+  const digits = String(value || '').replace(/\D/g, '')
+  if (digits.length < 8) {
+    return null
+  }
+  return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`
 }
 
 function parseMa5(klines: string[] | undefined, fallbackLast: number): number | undefined {
@@ -202,11 +344,23 @@ function parseMa5(klines: string[] | undefined, fallbackLast: number): number | 
     .map(line => Number(line.split(',')[2]))
     .filter(value => Number.isFinite(value) && value > 0)
 
-  if (!closes.length) {
+  return ma5FromValues(closes, fallbackLast)
+}
+
+function ma5FromCloses(rows: DailyClose[], fallbackLast: number): number | undefined {
+  return ma5FromValues(
+    rows.map(row => row.close).filter(value => Number.isFinite(value) && value > 0),
+    fallbackLast,
+  )
+}
+
+function ma5FromValues(closes: number[], fallbackLast: number): number | undefined {
+  const lastClose = closes[closes.length - 1]
+  if (lastClose == null) {
     return undefined
   }
 
-  if (Math.abs(closes[closes.length - 1] - fallbackLast) > 0.0001) {
+  if (Math.abs(lastClose - fallbackLast) > 0.0001) {
     closes[closes.length - 1] = fallbackLast
   }
 
@@ -215,6 +369,31 @@ function parseMa5(klines: string[] | undefined, fallbackLast: number): number | 
     return undefined
   }
   return window.reduce((sum, value) => sum + value, 0) / window.length
+}
+
+function parseTencentQuoteFields(text: string | null): string[] | null {
+  if (!text || !text.includes('~')) {
+    return null
+  }
+  const quoted = text.split('"')[1]
+  if (!quoted) {
+    return null
+  }
+  return quoted.split('~')
+}
+
+function parseTencentAsOf(fields: string[]): string | undefined {
+  const dashed = fields.find(field => /^\d{4}-\d{2}-\d{2}/.test(field))
+  if (dashed) {
+    return dashed
+  }
+
+  const compact = fields.find(field => /^\d{14}$/.test(field))
+  if (!compact) {
+    return undefined
+  }
+
+  return `${compact.slice(0, 4)}-${compact.slice(4, 6)}-${compact.slice(6, 8)} ${compact.slice(8, 10)}:${compact.slice(10, 12)}:${compact.slice(12, 14)}`
 }
 
 function toEastmoneySecid(ticker: string): string {
@@ -263,6 +442,12 @@ async function fetchAShareDailyCloses(ticker: string): Promise<DailyClose[]> {
     return tencent
   }
 
+  const jqka = await fetch10jqkaKlines(to10jqkaAShareSymbol(ticker))
+  if (jqka.length) {
+    setKlineCached(`A:${ticker}`, jqka)
+    return jqka
+  }
+
   const eastmoney = await fetchEastmoneyKlines(toEastmoneySecid(ticker))
   setKlineCached(`A:${ticker}`, eastmoney)
   return eastmoney
@@ -278,6 +463,12 @@ async function fetchUsDailyCloses(ticker: string): Promise<DailyClose[]> {
   if (sina.length) {
     setKlineCached(`US:${ticker}`, sina)
     return sina
+  }
+
+  const jqka = await fetch10jqkaKlines(to10jqkaUsSymbol(ticker))
+  if (jqka.length) {
+    setKlineCached(`US:${ticker}`, jqka)
+    return jqka
   }
 
   const hinted = US_SECID_HINT[ticker]
@@ -398,6 +589,14 @@ function toTencentAShareSymbol(ticker: string): string {
     return `bj${code}`
   }
   return `sz${code}`
+}
+
+function to10jqkaAShareSymbol(ticker: string): string {
+  return `hs_${ticker.replace(/\.(SH|SZ|BJ)$/i, '')}`
+}
+
+function to10jqkaUsSymbol(ticker: string): string {
+  return `usa_${ticker.toUpperCase()}`
 }
 
 async function mapPool<T, R>(items: T[], limit: number, mapper: (item: T) => Promise<R>): Promise<R[]> {
