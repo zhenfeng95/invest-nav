@@ -3,10 +3,17 @@ import type { MarketBook, PortfolioAnalysis } from '~/types/portfolio'
 import { formatDate, formatMoney, formatQty, formatSignedMoney, formatSignedPct, pnlTextClass } from '~/utils/format'
 import { SITE_DISCLAIMER } from '~/utils/site'
 
-const { data, error } = await useAsyncData(
+const nuxtApp = useNuxtApp()
+const { data, error, pending, status } = await useAsyncData(
   'portfolio-analysis',
   () => $fetch<PortfolioAnalysis>('/api/portfolio'),
+  {
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
 )
+
+const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 usePageSeo({
   title: '持仓分账',
@@ -73,8 +80,10 @@ function compositionCaption(book: MarketBook) {
       description="读取投研 Agent 仓库里的成交 CSV 与持仓快照，A 股、美股分成两本账。已实现按 FIFO，现持成本以快照为准；人民币与美元不合并。"
     />
 
+    <PageLoading v-if="isLoading" :rows="4" />
+
     <EmptyState
-      v-if="error"
+      v-else-if="error"
       eyebrow="Unavailable"
       title="持仓分账暂时无法加载"
       description="交易记录读取失败。请稍后重试，或检查投研 Agent 仓库地址、trades 目录和访问权限。"

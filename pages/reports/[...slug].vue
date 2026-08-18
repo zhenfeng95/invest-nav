@@ -9,11 +9,19 @@ const slug = computed(() => {
   return Array.isArray(value) ? value.join('/') : String(value || '')
 })
 
-const { data, error } = await useAsyncData(
+const nuxtApp = useNuxtApp()
+const { data, error, pending, status } = await useAsyncData(
   () => `report-${slug.value}`,
   () => $fetch<ReportDetail>(`/api/reports/${slug.value}`),
-  { watch: [slug] },
+  {
+    watch: [slug],
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
 )
+
+const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
+const report = computed(() => data.value)
 
 if (error.value) {
   throw createError({
@@ -22,7 +30,15 @@ if (error.value) {
   })
 }
 
-const report = computed(() => data.value)
+watch(error, (value) => {
+  if (!value) {
+    return
+  }
+  showError({
+    statusCode: value.statusCode || 502,
+    statusMessage: value.statusMessage || '日报不存在',
+  })
+})
 
 usePageSeo({
   title: report.value?.title || '收盘日报',
@@ -34,7 +50,7 @@ usePageSeo({
 </script>
 
 <template>
-  <AppContainer v-if="report" class="py-12 sm:py-16">
+  <AppContainer class="py-12 sm:py-16">
     <NuxtLink
       to="/reports"
       class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
@@ -42,7 +58,9 @@ usePageSeo({
       返回日报列表
     </NuxtLink>
 
-    <article class="mt-8 max-w-3xl">
+    <PageLoading v-if="isLoading" class="mt-8" :rows="4" />
+
+    <article v-else-if="report" class="mt-8 max-w-3xl">
       <p class="text-xs text-zinc-400">
         收盘日报
         <template v-if="report.date">

@@ -2,13 +2,14 @@
 import type { ReportListResponse } from '~/types/report'
 import { formatDate } from '~/utils/format'
 
+const nuxtApp = useNuxtApp()
 const { data } = await useAsyncData(
-  'home-reports',
-  () => $fetch<ReportListResponse>('/api/reports').catch(() => ({
-    configured: false,
-    source: null,
-    items: [],
-  })),
+  'reports',
+  () => $fetch<ReportListResponse>('/api/reports'),
+  {
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
 )
 
 const latest = computed(() => data.value?.items.slice(0, 3) ?? [])

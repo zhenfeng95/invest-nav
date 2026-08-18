@@ -2,9 +2,14 @@
 import type { EquityPoint, PortfolioAnalysis } from '~/types/portfolio'
 import { formatSignedMoney, pnlTextClass } from '~/utils/format'
 
+const nuxtApp = useNuxtApp()
 const { data } = await useAsyncData(
-  'home-portfolio',
-  () => $fetch<PortfolioAnalysis>('/api/portfolio').catch(() => null),
+  'portfolio-analysis',
+  () => $fetch<PortfolioAnalysis>('/api/portfolio'),
+  {
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
 )
 
 const ready = computed(() => Boolean(data.value?.configured && (data.value.a || data.value.us)))

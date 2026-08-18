@@ -2,7 +2,17 @@
 import type { ReportListResponse } from '~/types/report'
 import { formatYearMonth } from '~/utils/format'
 
-const { data, error } = await useAsyncData('reports', () => $fetch<ReportListResponse>('/api/reports'))
+const nuxtApp = useNuxtApp()
+const { data, error, pending, status } = await useAsyncData(
+  'reports',
+  () => $fetch<ReportListResponse>('/api/reports'),
+  {
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
+)
+
+const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 usePageSeo({
   title: '收盘日报',
@@ -37,8 +47,10 @@ const groups = computed(() => {
       description="读取投研 Agent 仓库中的 Markdown 日报，按工作日归档展示。内容仅供学习整理，不构成投资建议。"
     />
 
+    <PageLoading v-if="isLoading" />
+
     <EmptyState
-      v-if="error"
+      v-else-if="error"
       eyebrow="Unavailable"
       title="日报暂时无法加载"
       description="GitHub 仓库读取失败。请稍后重试，或检查仓库地址、目录和访问权限。"
