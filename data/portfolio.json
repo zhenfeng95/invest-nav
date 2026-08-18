@@ -1,0 +1,23 @@
+{
+  "disclaimer": "本页为个人实盘交易复盘，所有数字来自已完成成交与公开行情，不构成投资建议，不预测未来走势。盈亏未计佣金与印花税。A 股与美股分账，不合并市值。",
+  "aShare": {
+    "label": "A股",
+    "strategy": "趋势短线，围绕 5 日均线与趋势线",
+    "stopRule": "有效跌破 MA5 或趋势线即离场",
+    "maxPositions": 3,
+    "maExtensionCapPct": 3
+  },
+  "us": {
+    "label": "美股",
+    "strategy": "DCA + 碎股网格，长期持有指数",
+    "stopRule": "暂无固定止损",
+    "gridStepUsd": 5,
+    "targets": [
+      { "ticker": "VOO", "weight": 0.4, "role": "大盘核心" },
+      { "ticker": "QQQ", "weight": 0.2, "role": "科技成长" },
+      { "ticker": "IBIT", "weight": 0.1, "role": "BTC / Alpha" },
+      { "ticker": "SGOV", "weight": 0.1, "role": "现金管理" },
+      { "ticker": "FLEX", "weight": 0.2, "role": "机动 / 个股卫星" }
+    ]
+  }
+}

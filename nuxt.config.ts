@@ -66,6 +66,7 @@ export default defineNuxtConfig({
     githubReportsRepo: '',
     githubReportsPath: '',
     githubReportsRef: 'main',
+    githubTradesPath: 'data/raw/trades',
     public: {
       siteUrl: 'http://localhost:3000',
       siteName: '投资导航',
@@ -85,6 +86,7 @@ export default defineNuxtConfig({
           NUXT_GITHUB_REPORTS_REPO: 'invest-agent',
           NUXT_GITHUB_REPORTS_PATH: 'output/daily',
           NUXT_GITHUB_REPORTS_REF: 'main',
+          NUXT_GITHUB_TRADES_PATH: 'data/raw/trades',
         },
       },
     },

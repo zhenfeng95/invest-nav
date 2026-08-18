@@ -2,11 +2,11 @@
   "items": [
     {
       "id": "portfolio",
-      "name": "投资组合追踪",
-      "description": "追踪你的投资组合表现。",
+      "name": "持仓分账",
+      "description": "按 A 股与美股分账，复盘持仓、已实现盈亏与纪律。",
       "icon": "chart",
-      "status": "coming-soon",
-      "route": "/tools/portfolio",
+      "status": "available",
+      "route": "/portfolio",
       "apiRequired": true,
       "apiPath": "/api/portfolio"
     },

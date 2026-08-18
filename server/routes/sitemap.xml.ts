@@ -22,6 +22,7 @@ const routes = [
   '/nav/fund-transfer',
   '/nav/deposit-withdraw',
   '/reports',
+  '/portfolio',
   '/about',
   '/disclaimer',
   '/privacy',
@@ -30,7 +31,7 @@ const routes = [
 
 export default defineEventHandler((event) => {
   const siteUrl = String(useRuntimeConfig(event).public.siteUrl).replace(/\/$/, '')
-  const lastmod = '2026-08-17'
+  const lastmod = '2026-08-18'
 
   const urls = routes
     .map((path) => {

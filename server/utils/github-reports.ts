@@ -18,6 +18,7 @@ export interface GitHubReportsConfig {
   owner: string
   repo: string
   path: string
+  tradesPath: string
   ref: string
   token: string
 }
@@ -77,6 +78,7 @@ export function getGitHubReportsConfig(event: H3Event): GitHubReportsConfig | nu
     owner,
     repo,
     path: readEnv(runtime.githubReportsPath, env.NUXT_GITHUB_REPORTS_PATH).replace(/^\/+|\/+$/g, ''),
+    tradesPath: readEnv(runtime.githubTradesPath, env.NUXT_GITHUB_TRADES_PATH).replace(/^\/+|\/+$/g, '') || 'data/raw/trades',
     ref: readEnv(runtime.githubReportsRef, env.NUXT_GITHUB_REPORTS_REF) || 'main',
     token: readEnv(runtime.githubToken, env.NUXT_GITHUB_TOKEN),
   }
@@ -153,6 +155,56 @@ export async function listReports(config: GitHubReportsConfig): Promise<ReportLi
 
   setCached(cacheKey, items, LIST_TTL_MS)
   return items
+}
+
+export async function listRepoBlobs(config: GitHubReportsConfig, prefix: string): Promise<string[]> {
+  const normalized = prefix.replace(/^\/+|\/+$/g, '')
+  const cacheKey = `blobs:${config.owner}/${config.repo}/${config.ref}/${normalized}`
+  const cached = getCached<string[]>(cacheKey)
+  if (cached) {
+    return cached
+  }
+
+  const treeUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/git/trees/${encodeURIComponent(config.ref)}?recursive=1`
+  const tree = await githubJson<GitHubTreeResponse>(treeUrl, config.token)
+  const start = normalized ? `${normalized}/` : ''
+  const paths = tree.truncated || !tree.tree?.length
+    ? await collectDirFiles(config, normalized)
+    : tree.tree
+      .filter(entry => entry.type === 'blob')
+      .map(entry => entry.path)
+      .filter(path => !normalized || path === normalized || path.startsWith(start))
+
+  setCached(cacheKey, paths, LIST_TTL_MS)
+  return paths
+}
+
+export async function getRepoFileText(config: GitHubReportsConfig, repoPath: string, ttlMs = FILE_TTL_MS): Promise<string | null> {
+  const cacheKey = `text:${config.owner}/${config.repo}/${config.ref}/${repoPath}`
+  const cached = getCached<string>(cacheKey)
+  if (cached) {
+    return cached
+  }
+
+  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${encodeRepoPath(repoPath)}?ref=${encodeURIComponent(config.ref)}`
+  const response = await githubFetch(url, config.token, 'application/vnd.github+json')
+  if (response.status === 404) {
+    return null
+  }
+  if (!response.ok) {
+    throw await githubError(response)
+  }
+
+  const data = await response.json() as GitHubContentFile
+  if (data.type !== 'file') {
+    return null
+  }
+
+  const text = await readFileContent(data, config.token)
+  if (text !== null) {
+    setCached(cacheKey, text, ttlMs)
+  }
+  return text
 }
 
 export async function getReport(config: GitHubReportsConfig, slug: string): Promise<ReportDetail | null> {
@@ -285,6 +337,10 @@ async function listMarkdownPathsViaContents(config: GitHubReportsConfig): Promis
 }
 
 async function collectMarkdownPaths(config: GitHubReportsConfig, dirPath: string, depth = 0): Promise<string[]> {
+  return (await collectDirFiles(config, dirPath, depth)).filter(path => /\.md$/i.test(path))
+}
+
+async function collectDirFiles(config: GitHubReportsConfig, dirPath: string, depth = 0): Promise<string[]> {
   if (depth > 4) {
     return []
   }
@@ -298,11 +354,11 @@ async function collectMarkdownPaths(config: GitHubReportsConfig, dirPath: string
 
   const paths: string[] = []
   for (const entry of data) {
-    if (entry.type === 'file' && /\.md$/i.test(entry.name)) {
+    if (entry.type === 'file') {
       paths.push(entry.path)
     }
     else if (entry.type === 'dir') {
-      paths.push(...await collectMarkdownPaths(config, entry.path, depth + 1))
+      paths.push(...await collectDirFiles(config, entry.path, depth + 1))
     }
   }
   return paths

@@ -12,6 +12,10 @@ if (!tool) {
   })
 }
 
+if (tool.route !== `/tools/${slug}`) {
+  await navigateTo(tool.route, { redirectCode: 301 })
+}
+
 usePageSeo({
   title: tool.name,
   description: tool.description,

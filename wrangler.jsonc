@@ -13,7 +13,8 @@
     "NUXT_GITHUB_REPORTS_OWNER": "zhenfeng95",
     "NUXT_GITHUB_REPORTS_REPO": "invest-agent",
     "NUXT_GITHUB_REPORTS_PATH": "output/daily",
-    "NUXT_GITHUB_REPORTS_REF": "main"
+    "NUXT_GITHUB_REPORTS_REF": "main",
+    "NUXT_GITHUB_TRADES_PATH": "data/raw/trades"
   },
   "routes": [
     {
