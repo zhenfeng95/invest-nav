@@ -1,11 +1,38 @@
 {
-  "disclaimer": "本页为个人实盘交易复盘，所有数字来自已完成成交与公开行情，不构成投资建议，不预测未来走势。盈亏未计佣金与印花税。A 股与美股分账，不合并市值。",
+  "disclaimer": "本页为个人实盘交易复盘，所有数字来自已完成成交与公开行情，不构成投资建议，不预测未来走势。盈亏未计佣金与印花税。A 股按券商账户分账（国元 GY / 银河 YH / 华泰 HT），美股单独一本；人民币与美元不合并市值。",
   "aShare": {
     "label": "A股",
-    "strategy": "趋势短线，围绕 5 日均线与趋势线",
-    "stopRule": "有效跌破 MA5 或趋势线即离场",
-    "maxPositions": 3,
-    "maExtensionCapPct": 3
+    "strategy": "多账户分账：国元趋势短线，银河尾盘超短，华泰指数配置",
+    "stopRule": "按账户各自纪律，不串用",
+    "accounts": {
+      "GY": {
+        "label": "国元",
+        "broker": "国元证券",
+        "style": "trend-swing",
+        "strategy": "趋势短线，围绕 5 日均线与趋势线",
+        "stopRule": "有效跌破 MA5 或趋势线即离场",
+        "maxPositions": 3,
+        "maExtensionCapPct": 3
+      },
+      "YH": {
+        "label": "银河",
+        "broker": "银河证券",
+        "style": "tail-scalp",
+        "strategy": "尾盘超短：尾盘买入，次日早盘卖出",
+        "stopRule": "早盘按计划兑现；不做盘中拖延与多日持有",
+        "maxPositions": 2,
+        "maExtensionCapPct": null
+      },
+      "HT": {
+        "label": "华泰",
+        "broker": "华泰证券",
+        "style": "index-hold",
+        "strategy": "指数 / 配置仓，中长线持有",
+        "stopRule": "暂无短线止损",
+        "maxPositions": null,
+        "maExtensionCapPct": null
+      }
+    }
   },
   "us": {
     "label": "美股",

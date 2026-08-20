@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
         notes: null,
         disclaimer: '本页为个人实盘交易复盘，不构成投资建议。',
         a: null,
+        aAccounts: [],
         us: null,
         usAllocation: [],
         comparison: [],

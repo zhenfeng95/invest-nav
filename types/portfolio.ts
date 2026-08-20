@@ -1,6 +1,9 @@
 export type MarketCode = 'A' | 'US'
 export type CurrencyCode = 'CNY' | 'USD'
 export type InsightTone = 'info' | 'success' | 'warning' | 'danger' | 'neutral'
+export type AShareAccount = 'GY' | 'YH' | 'HT'
+export type BrokerAccount = AShareAccount | 'US'
+export type AShareStyle = 'trend-swing' | 'index-hold' | 'tail-scalp'
 
 export interface Quote {
   last: number
@@ -16,6 +19,7 @@ export interface Quote {
 
 export interface OpenPosition {
   market: MarketCode
+  account: BrokerAccount
   ticker: string
   name: string
   qty: number
@@ -36,6 +40,7 @@ export interface OpenPosition {
 
 export interface ClosedTrade {
   market: MarketCode
+  account: BrokerAccount
   ticker: string
   name: string
   qty: number
@@ -67,7 +72,10 @@ export interface EquityPoint {
 
 export interface MarketBook {
   market: MarketCode
+  account: BrokerAccount | null
   label: string
+  broker?: string
+  style?: AShareStyle
   strategy: string
   stopRule: string
   currency: CurrencyCode
@@ -108,6 +116,7 @@ export interface PortfolioAnalysis {
   notes: string | null
   disclaimer: string
   a: MarketBook | null
+  aAccounts: MarketBook[]
   us: MarketBook | null
   usAllocation: AllocationRow[]
   comparison: ComparisonRow[]

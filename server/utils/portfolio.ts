@@ -1,6 +1,9 @@
 import portfolioConfig from '../../data/portfolio.json'
 import type {
   AllocationRow,
+  AShareAccount,
+  AShareStyle,
+  BrokerAccount,
   ClosedTrade,
   ComparisonRow,
   CurrencyCode,
@@ -11,6 +14,8 @@ import type {
   OpenPosition,
   PortfolioAnalysis,
 } from '~/types/portfolio'
+
+const A_SHARE_ACCOUNTS: AShareAccount[] = ['GY', 'YH', 'HT']
 import type { GitHubReportsConfig } from './github-reports'
 import { getRepoFileText, GitHubReportsError, listRepoBlobs } from './github-reports'
 import type { DailyClose, LiveQuote } from './quotes'
@@ -21,6 +26,7 @@ const TRADES_TTL_MS = 5 * 60 * 1000
 interface RawTrade {
   date: string
   market: MarketCode
+  account: BrokerAccount
   ticker: string
   name: string
   side: 'buy' | 'sell'
@@ -40,12 +46,23 @@ interface Lot {
 
 interface SnapshotPosition {
   market: MarketCode
+  account: BrokerAccount
   ticker: string
   name: string
   qty: number
   avg_cost: number
   currency: CurrencyCode
   note?: string
+}
+
+interface AShareAccountConfig {
+  label: string
+  broker: string
+  style: AShareStyle
+  strategy: string
+  stopRule: string
+  maxPositions: number | null
+  maExtensionCapPct: number | null
 }
 
 interface SnapshotFile {
@@ -81,20 +98,24 @@ export async function buildPortfolioAnalysis(config: GitHubReportsConfig | null)
     fetchDailyCloses(instruments, startDate || '1970-01-01'),
   ])
 
-  const a = buildBook('A', 'CNY', reconstructed, bundle.snapshot, quotes, bundle.trades, closes)
-  const us = buildBook('US', 'USD', reconstructed, bundle.snapshot, quotes, bundle.trades, closes)
+  const aAccounts = A_SHARE_ACCOUNTS.map(account =>
+    buildBook('A', 'CNY', reconstructed, bundle.snapshot, quotes, bundle.trades, closes, account),
+  )
+  const a = buildAggregateABook(aAccounts)
+  const us = buildBook('US', 'USD', reconstructed, bundle.snapshot, quotes, bundle.trades, closes, 'US')
   const usAllocation = buildUsAllocation(us)
-  const comparison = buildComparison(a, us)
+  const comparison = buildComparison(aAccounts.find(book => book.account === 'GY') || a, us)
 
   return {
     configured: true,
     source: bundle.source,
     tradesPath: bundle.tradesPath,
     snapshotAsOf: bundle.snapshot?.as_of || latestDate(bundle.trades),
-    quotesAsOf: collectQuoteAsOf(a, us),
+    quotesAsOf: collectQuoteAsOf(aAccounts, us),
     notes: bundle.snapshot?.notes || null,
     disclaimer: portfolioConfig.disclaimer,
     a,
+    aAccounts,
     us,
     usAllocation,
     comparison,
@@ -209,6 +230,7 @@ function parseTradesCsv(text: string, path: string): RawTrade[] {
     rows.push({
       date: record.date,
       market,
+      account: normalizeAccount(record.account, market),
       ticker: record.ticker.toUpperCase(),
       name: record.name || record.ticker,
       side,
@@ -220,6 +242,21 @@ function parseTradesCsv(text: string, path: string): RawTrade[] {
   }
 
   return rows
+}
+
+function normalizeAccount(raw: string | undefined, market: MarketCode): BrokerAccount {
+  const value = (raw || '').trim().toUpperCase()
+  if (market === 'US') {
+    return 'US'
+  }
+  if (value === 'GY' || value === 'YH' || value === 'HT') {
+    return value
+  }
+  return 'GY'
+}
+
+function positionKey(market: MarketCode, account: BrokerAccount, ticker: string): string {
+  return `${market}:${account}:${ticker}`
 }
 
 function splitCsvLine(line: string): string[] {
@@ -249,7 +286,17 @@ function parseSnapshot(text: string | null): SnapshotFile | null {
     return null
   }
   try {
-    return JSON.parse(text) as SnapshotFile
+    const parsed = JSON.parse(text) as SnapshotFile
+    parsed.positions = (parsed.positions || []).map((position) => {
+      const market = position.market === 'US' ? 'US' : 'A'
+      return {
+        ...position,
+        market,
+        account: normalizeAccount(position.account, market),
+        ticker: String(position.ticker || '').toUpperCase(),
+      }
+    })
+    return parsed
   }
   catch {
     return null
@@ -258,12 +305,17 @@ function parseSnapshot(text: string | null): SnapshotFile | null {
 
 function reconstruct(trades: RawTrade[]) {
   const lots = new Map<string, Lot[]>()
-  const openNames = new Map<string, { name: string, currency: CurrencyCode, market: MarketCode }>()
+  const openNames = new Map<string, { name: string, currency: CurrencyCode, market: MarketCode, account: BrokerAccount }>()
   const closed: ClosedTrade[] = []
 
   for (const trade of [...trades].sort((a, b) => a.date.localeCompare(b.date))) {
-    const key = `${trade.market}:${trade.ticker}`
-    openNames.set(key, { name: trade.name, currency: trade.currency, market: trade.market })
+    const key = positionKey(trade.market, trade.account, trade.ticker)
+    openNames.set(key, {
+      name: trade.name,
+      currency: trade.currency,
+      market: trade.market,
+      account: trade.account,
+    })
     const queue = lots.get(key) ?? []
 
     if (trade.side === 'buy') {
@@ -298,6 +350,7 @@ function reconstruct(trades: RawTrade[]) {
     if (matchedQty > 0) {
       closed.push({
         market: trade.market,
+        account: trade.account,
         ticker: trade.ticker,
         name: trade.name,
         qty: roundQty(matchedQty),
@@ -324,7 +377,8 @@ function reconstruct(trades: RawTrade[]) {
     const meta = openNames.get(key)!
     open.push(baseOpenPosition({
       market: meta.market,
-      ticker: key.split(':')[1],
+      account: meta.account,
+      ticker: key.split(':')[2],
       name: queue[0]?.name || meta.name,
       qty,
       avgCost: cost / qty,
@@ -344,11 +398,13 @@ function buildBook(
   quotes: Map<string, LiveQuote>,
   trades: RawTrade[],
   closes: Map<string, DailyClose[]>,
+  account: BrokerAccount,
 ): MarketBook {
-  const closed = reconstructed.closed.filter(item => item.market === market)
-  const fifoOpen = reconstructed.open.filter(item => item.market === market)
-  const snapshotPositions = (snapshot?.positions || []).filter(item => item.market === market)
-  const merged = mergeOpenPositions(fifoOpen, snapshotPositions, market, currency)
+  const closed = reconstructed.closed.filter(item => item.market === market && item.account === account)
+  const fifoOpen = reconstructed.open.filter(item => item.market === market && item.account === account)
+  const snapshotPositions = (snapshot?.positions || []).filter(item => item.market === market && item.account === account)
+  const accountTrades = trades.filter(item => item.market === market && item.account === account)
+  const merged = mergeOpenPositions(fifoOpen, snapshotPositions, market, currency, account)
 
   const valued = merged
     .map((position) => {
@@ -384,11 +440,21 @@ function buildBook(
   const grossProfit = wins.reduce((sum, item) => sum + item.pnl, 0)
   const grossLoss = Math.abs(losses.reduce((sum, item) => sum + item.pnl, 0))
   const unrealized = sumNullable(open.map(item => item.unrealized))
-  const config = market === 'A' ? portfolioConfig.aShare : portfolioConfig.us
+  const accountConfig = market === 'A' ? aShareAccountConfig(account as AShareAccount) : null
+  const config = market === 'A'
+    ? {
+        label: accountConfig ? `${portfolioConfig.aShare.label} · ${accountConfig.label}` : portfolioConfig.aShare.label,
+        strategy: accountConfig?.strategy || portfolioConfig.aShare.strategy,
+        stopRule: accountConfig?.stopRule || portfolioConfig.aShare.stopRule,
+      }
+    : portfolioConfig.us
 
   const book: MarketBook = {
     market,
+    account,
     label: config.label,
+    broker: accountConfig?.broker,
+    style: accountConfig?.style,
     strategy: config.strategy,
     stopRule: config.stopRule,
     currency,
@@ -403,7 +469,7 @@ function buildBook(
     winRate: closed.length ? wins.length / closed.length : null,
     profitFactor: grossLoss > 0 ? Math.round((grossProfit / grossLoss) * 100) / 100 : null,
     equityCurve: alignCurveTail(
-      buildEquityCurve(market, currency, trades, snapshotPositions, closes, quotes),
+      buildEquityCurve(market, currency, accountTrades, snapshotPositions, closes, quotes),
       {
         realized,
         unrealized,
@@ -414,8 +480,56 @@ function buildBook(
     ),
     insights: [],
   }
-  book.insights = market === 'A' ? aInsights(book) : usInsights(book)
+  book.insights = market === 'A' ? aInsights(book, accountConfig) : usInsights(book)
   return book
+}
+
+function buildAggregateABook(accounts: MarketBook[]): MarketBook {
+  const open = accounts.flatMap(book => book.open)
+  const closed = accounts.flatMap(book => book.closed)
+  const currency: CurrencyCode = 'CNY'
+  const realized = roundMoney(accounts.reduce((sum, book) => sum + book.realized, 0), currency)
+  const wins = closed.filter(item => item.pnl > 0)
+  const losses = closed.filter(item => item.pnl < 0)
+  const grossProfit = wins.reduce((sum, item) => sum + item.pnl, 0)
+  const grossLoss = Math.abs(losses.reduce((sum, item) => sum + item.pnl, 0))
+  const unrealized = sumNullable(accounts.map(book => book.unrealized))
+  const marketValue = sumNullable(accounts.map(book => book.marketValue))
+  const costBasis = roundMoney(accounts.reduce((sum, book) => sum + book.costBasis, 0), currency)
+  const holdingBits = accounts
+    .filter(book => book.open.length)
+    .map(book => `${book.broker || book.label} ${book.open.map(item => item.name).join('、')}`)
+
+  return {
+    market: 'A',
+    account: null,
+    label: portfolioConfig.aShare.label,
+    strategy: portfolioConfig.aShare.strategy,
+    stopRule: portfolioConfig.aShare.stopRule,
+    currency,
+    open,
+    closed,
+    realized,
+    unrealized,
+    marketValue,
+    costBasis,
+    winCount: wins.length,
+    lossCount: losses.length,
+    winRate: closed.length ? wins.length / closed.length : null,
+    profitFactor: grossLoss > 0 ? Math.round((grossProfit / grossLoss) * 100) / 100 : null,
+    equityCurve: [],
+    insights: [{
+      tone: 'info',
+      title: 'A 股已按券商分账',
+      body: holdingBits.length
+        ? `合计现持：${holdingBits.join('；')}。下方按国元 / 银河 / 华泰分开看纪律与曲线。`
+        : '当前三个 A 股账户均无持仓。',
+    }],
+  }
+}
+
+function aShareAccountConfig(account: AShareAccount): AShareAccountConfig {
+  return (portfolioConfig.aShare.accounts as Record<AShareAccount, AShareAccountConfig>)[account]
 }
 
 function mergeOpenPositions(
@@ -423,6 +537,7 @@ function mergeOpenPositions(
   snapshotPositions: SnapshotPosition[],
   market: MarketCode,
   currency: CurrencyCode,
+  account: BrokerAccount,
 ): OpenPosition[] {
   const map = new Map<string, OpenPosition>()
   for (const position of fifoOpen) {
@@ -433,6 +548,7 @@ function mergeOpenPositions(
     const current = map.get(snapshot.ticker)
     map.set(snapshot.ticker, baseOpenPosition({
       market,
+      account,
       ticker: snapshot.ticker,
       name: snapshot.name || current?.name || snapshot.ticker,
       qty: snapshot.qty,
@@ -448,6 +564,7 @@ function mergeOpenPositions(
 
 function baseOpenPosition(input: {
   market: MarketCode
+  account: BrokerAccount
   ticker: string
   name: string
   qty: number
@@ -458,6 +575,7 @@ function baseOpenPosition(input: {
 }): OpenPosition {
   return {
     market: input.market,
+    account: input.account,
     ticker: input.ticker,
     name: input.name,
     qty: roundQty(input.qty),
@@ -698,10 +816,98 @@ function buildEquityCurve(
   return points
 }
 
-function aInsights(book: MarketBook): Insight[] {
+function aInsights(book: MarketBook, config: AShareAccountConfig | null): Insight[] {
   const insights: Insight[] = []
-  const cap = portfolioConfig.aShare.maExtensionCapPct
+  const style = config?.style || 'trend-swing'
   const openCount = book.open.length
+
+  if (style === 'index-hold') {
+    if (openCount) {
+      const names = book.open.map(item => item.name).join('、')
+      insights.push({
+        tone: 'info',
+        title: '指数配置仓，不套用短线止损',
+        body: `现持 ${names}。按中长线持有复盘，不与国元趋势短线纪律混算。`,
+      })
+    }
+    else {
+      insights.push({
+        tone: 'info',
+        title: '华泰账户暂无持仓',
+        body: '指数仓补录后会出现在这里。',
+      })
+    }
+    if (book.closed.length) {
+      insights.push({
+        tone: 'neutral',
+        title: `已平 ${book.closed.length} 笔`,
+        body: `已实现 ${formatBookMoney(book.realized, book.currency)}。`,
+      })
+    }
+    return insights
+  }
+
+  if (style === 'tail-scalp') {
+    if (!openCount && !book.closed.length) {
+      insights.push({
+        tone: 'info',
+        title: '银河尾盘超短尚未入账',
+        body: '尾盘买、早盘卖的成交请在 CSV 的 account 列写 YH。',
+      })
+      return insights
+    }
+
+    insights.push({
+      tone: 'info',
+      title: '尾盘超短：隔夜一夜即可',
+      body: '纪律是尾盘建仓、次日早盘兑现，不与国元 MA5 趋势短线混算。',
+    })
+
+    if (openCount) {
+      const names = book.open.map(item => item.name).join('、')
+      insights.push({
+        tone: 'warning',
+        title: '仍有隔夜仓未兑现',
+        body: `现持 ${names}。按尾盘策略，早盘应优先卖出，避免拖成盘中或多日持有。`,
+      })
+    }
+
+    const maxPositions = config?.maxPositions
+    if (maxPositions != null && openCount > maxPositions) {
+      insights.push({
+        tone: 'danger',
+        title: `超短仓位超过 ${maxPositions} 只`,
+        body: `当前银河持仓 ${openCount} 只，尾盘超短不宜铺太开。`,
+      })
+    }
+
+    const longHolds = book.closed.filter(item => item.holdDays > 1)
+    if (longHolds.length) {
+      const sample = longHolds
+        .slice(0, 3)
+        .map(item => `${item.name} ${item.holdDays} 日`)
+        .join('、')
+      insights.push({
+        tone: 'warning',
+        title: '有持仓超过一夜',
+        body: `${longHolds.length} 笔持仓超过 1 个交易日（如 ${sample}）。尾盘策略应以隔夜为主，复盘是否拖延卖出。`,
+      })
+    }
+
+    if (book.closed.length) {
+      const profitFactorLabel = book.profitFactor == null ? '—' : book.profitFactor.toFixed(2)
+      insights.push({
+        tone: book.realized >= 0 ? 'success' : 'neutral',
+        title: `超短已平 ${book.closed.length} 笔`,
+        body: `胜率 ${pctLabel(book.winRate)}，盈亏比 ${profitFactorLabel}，已实现 ${formatBookMoney(book.realized, book.currency)}。`,
+      })
+    }
+
+    return insights
+  }
+
+  const cap = config?.maExtensionCapPct ?? 3
+  const maxPositions = config?.maxPositions ?? 3
   const unevenLots = describeUnevenShareLots(book)
 
   if (book.closed.length) {
@@ -731,11 +937,11 @@ function aInsights(book: MarketBook): Insight[] {
     })
   }
 
-  if (openCount > portfolioConfig.aShare.maxPositions) {
+  if (openCount > maxPositions) {
     insights.push({
       tone: 'danger',
-      title: `持仓超过 ${portfolioConfig.aShare.maxPositions} 只上限`,
-      body: `当前 A 股持仓 ${openCount} 只。`,
+      title: `持仓超过 ${maxPositions} 只上限`,
+      body: `当前国元持仓 ${openCount} 只。`,
     })
   }
 
@@ -769,7 +975,7 @@ function aInsights(book: MarketBook): Insight[] {
   if (!book.open.length) {
     insights.push({
       tone: 'info',
-      title: '当前无 A 股持仓',
+      title: '当前无国元持仓',
       body: '账本只保留已平仓复盘。',
     })
   }
@@ -882,8 +1088,8 @@ function buildSummaryInsights(): Insight[] {
   return [
     {
       tone: 'neutral',
-      title: '两市规则不要串用',
-      body: 'A 股破 MA5 离场是纪律；美股指数浮亏几个点仍可能只是网格下一档。人民币与美元两本账分开看，不合并市值。',
+      title: '规则不要串用',
+      body: '国元破 MA5 离场是趋势短线纪律；银河尾盘买、早盘卖是超短纪律；华泰指数仓与美股网格不要套同一套止损。A 股三户与美元账分开看，不合并市值。',
     },
   ]
 }
@@ -1079,8 +1285,8 @@ function latestDate(trades: RawTrade[]): string | null {
   }, null)
 }
 
-function collectQuoteAsOf(a: MarketBook, us: MarketBook): string | null {
-  const stamps = [...a.open, ...us.open]
+function collectQuoteAsOf(aAccounts: MarketBook[], us: MarketBook): string | null {
+  const stamps = [...aAccounts.flatMap(book => book.open), ...us.open]
     .map(item => item.quote?.asOf)
     .filter((value): value is string => Boolean(value))
   return stamps[0] || null

@@ -24,7 +24,7 @@ function lastTotal(points: EquityPoint[] | undefined, fallback: number) {
     <div class="flex items-end justify-between gap-4">
       <SectionTitle
         title="持仓分账"
-        description="A 股与美股两本账，读取投研 Agent 成交记录。"
+        description="A 股三户与美股分账，读取投研 Agent 成交记录。"
       />
       <NuxtLink
         to="/portfolio"
