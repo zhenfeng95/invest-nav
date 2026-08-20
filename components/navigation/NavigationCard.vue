@@ -31,21 +31,31 @@ defineProps<{
         {{ tag }}
       </span>
     </div>
-    <a
-      v-if="item.url"
-      :href="item.url"
-      target="_blank"
-      rel="noreferrer noopener"
-      class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 transition hover:gap-2 dark:text-zinc-100"
-    >
-      访问官网
-      <AppIcon name="external" class="h-4 w-4" />
-    </a>
-    <p
-      v-else
-      class="mt-5 text-sm text-zinc-400"
-    >
-      官网待确认
-    </p>
+    <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <NuxtLink
+        v-if="item.guideUrl"
+        :to="item.guideUrl"
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 transition hover:gap-2 dark:text-zinc-100"
+      >
+        {{ item.guideLabel || '开户教程' }}
+        <AppIcon name="arrow-right" class="h-4 w-4" />
+      </NuxtLink>
+      <a
+        v-if="item.url"
+        :href="item.url"
+        target="_blank"
+        rel="noreferrer noopener"
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 transition hover:gap-2 dark:text-zinc-100"
+      >
+        访问官网
+        <AppIcon name="external" class="h-4 w-4" />
+      </a>
+      <p
+        v-else-if="!item.guideUrl"
+        class="text-sm text-zinc-400"
+      >
+        官网待确认
+      </p>
+    </div>
   </article>
 </template>

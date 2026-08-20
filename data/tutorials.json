@@ -1,6 +1,34 @@
 {
   "items": [
     {
+      "id": "firstrade-china-account",
+      "slug": "firstrade-china-account-guide",
+      "title": "中国内地用户第一证券（Firstrade）开户教程",
+      "description": "整理 Firstrade 开户材料、线上申请步骤、汇款补贴与审核注意点，供中国内地用户对照官方页面。",
+      "type": "article",
+      "category": "美股券商",
+      "tags": ["美股", "券商", "开户", "Firstrade"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-08-20",
+      "publishedAt": "2026-08-20",
+      "popular": true,
+      "markdownFile": "firstrade-china-account-guide"
+    },
+    {
+      "id": "schwab-china-account",
+      "slug": "schwab-china-account-guide",
+      "title": "中国内地用户嘉信证券（Schwab）开户教程",
+      "description": "整理嘉信国际开户材料、线上申请步骤、W-8BEN 与审核邮件节点，供中国内地用户对照官方页面。",
+      "type": "article",
+      "category": "美股券商",
+      "tags": ["美股", "券商", "开户", "嘉信"],
+      "readingMinutes": 15,
+      "updatedAt": "2026-08-20",
+      "publishedAt": "2026-08-20",
+      "popular": true,
+      "markdownFile": "schwab-china-account-guide"
+    },
+    {
       "id": "choose-us-broker",
       "slug": "how-to-choose-us-broker",
       "title": "如何选择美股券商？",

@@ -18,4 +18,6 @@ export interface Tutorial {
   videoUrl?: string
   image?: string
   content?: string[]
+  markdownFile?: string
+  markdown?: string
 }

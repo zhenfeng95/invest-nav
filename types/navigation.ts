@@ -19,6 +19,8 @@ export interface NavigationItem {
   officialUrlConfirmed: boolean
   featured?: boolean
   updatedAt?: string
+  guideUrl?: string
+  guideLabel?: string
 }
 
 export interface NavigationCategory {

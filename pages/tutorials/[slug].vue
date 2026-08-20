@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { formatDate, formatReadingTime } from '~/utils/format'
+import { renderMarkdown } from '~/utils/markdown'
 import { getTutorialBySlug, getTutorialTypeLabel } from '~/utils/tutorials'
 
 const route = useRoute()
@@ -13,6 +14,12 @@ if (!tutorial) {
   })
 }
 
+const markdownHtml = tutorial.markdown
+  ? renderMarkdown(tutorial.markdown)
+  : tutorial.content?.length
+    ? renderMarkdown(tutorial.content.join('\n\n'))
+    : ''
+
 usePageSeo({
   title: tutorial.title,
   description: tutorial.description,
@@ -22,12 +29,21 @@ usePageSeo({
 
 <template>
   <AppContainer v-if="tutorial" class="py-12 sm:py-16">
-    <NuxtLink
-      to="/tutorials"
-      class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-    >
-      返回教程
-    </NuxtLink>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <NuxtLink
+        to="/tutorials"
+        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+      >
+        返回教程
+      </NuxtLink>
+      <NuxtLink
+        v-if="tutorial.category === '美股券商'"
+        to="/nav/us-brokers"
+        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+      >
+        返回美股券商
+      </NuxtLink>
+    </div>
     <article class="mt-8 max-w-3xl">
       <p class="text-xs text-zinc-400">
         {{ getTutorialTypeLabel(tutorial.type) }} · {{ tutorial.category }}
@@ -70,13 +86,10 @@ usePageSeo({
       </div>
 
       <div
-        v-if="tutorial.content?.length"
-        class="mt-10 space-y-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base"
-      >
-        <p v-for="(paragraph, index) in tutorial.content" :key="index">
-          {{ paragraph }}
-        </p>
-      </div>
+        v-if="markdownHtml"
+        class="markdown-body mt-10"
+        v-html="markdownHtml"
+      />
     </article>
   </AppContainer>
 </template>

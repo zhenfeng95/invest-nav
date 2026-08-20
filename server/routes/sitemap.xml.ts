@@ -1,9 +1,12 @@
+import { getTutorials } from '~/utils/tutorials'
+
 const routes = [
   '/',
   '/tutorials',
   '/tutorials/articles',
   '/tutorials/videos',
   '/tutorials/infographics',
+  ...getTutorials().map(item => `/tutorials/${item.slug}`),
   '/tools',
   '/tools/portfolio',
   '/tools/qdii',

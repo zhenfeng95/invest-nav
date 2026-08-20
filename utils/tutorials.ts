@@ -1,7 +1,23 @@
 import tutorialsData from '~/data/tutorials.json'
+import { firstradeChinaAccountGuide } from '~/data/tutorials/firstrade-china-account-guide'
+import { schwabChinaAccountGuide } from '~/data/tutorials/schwab-china-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
-const tutorials = tutorialsData.items as Tutorial[]
+const markdownFiles: Record<string, string> = {
+  'firstrade-china-account-guide': firstradeChinaAccountGuide,
+  'schwab-china-account-guide': schwabChinaAccountGuide,
+}
+
+const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {
+  if (!item.markdownFile) {
+    return item
+  }
+
+  return {
+    ...item,
+    markdown: markdownFiles[item.markdownFile] ?? item.markdown,
+  }
+})
 
 export function getTutorials(): Tutorial[] {
   return [...tutorials]
