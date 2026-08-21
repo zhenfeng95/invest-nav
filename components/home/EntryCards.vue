@@ -8,8 +8,8 @@ const entries = [
   },
   {
     index: '02',
-    title: '我要炒美股',
-    description: '美股券商、投资工具、出入金',
+    title: '港美股投资',
+    description: '港美股券商、投资工具、出入金',
     to: '/nav/us-brokers',
   },
   {

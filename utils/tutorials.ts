@@ -1,11 +1,17 @@
 import tutorialsData from '~/data/tutorials.json'
 import { firstradeChinaAccountGuide } from '~/data/tutorials/firstrade-china-account-guide'
 import { schwabChinaAccountGuide } from '~/data/tutorials/schwab-china-account-guide'
+import { usmartSgAccountGuide } from '~/data/tutorials/usmart-sg-account-guide'
+import { ccbAsiaAccountGuide } from '~/data/tutorials/ccb-asia-account-guide'
+import { zaBankAccountGuide } from '~/data/tutorials/za-bank-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
 const markdownFiles: Record<string, string> = {
   'firstrade-china-account-guide': firstradeChinaAccountGuide,
   'schwab-china-account-guide': schwabChinaAccountGuide,
+  'usmart-sg-account-guide': usmartSgAccountGuide,
+  'ccb-asia-account-guide': ccbAsiaAccountGuide,
+  'za-bank-account-guide': zaBankAccountGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

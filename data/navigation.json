@@ -256,68 +256,65 @@
                     "updatedAt": "2026-07-14"
                 },
                 {
-                    "id": "hang-seng",
-                    "name": "Hang Seng Bank",
-                    "description": "恒生银行官方网站。",
-                    "url": "https://www.hangseng.com",
+                    "id": "ccb-asia",
+                    "name": "建银（亚洲）",
+                    "description": "中国建设银行（亚洲）。中国内地用户可查看建银亚洲开户教程。",
+                    "url": "https://www.asia.ccb.com/hongkong_sc/personal/index.html",
                     "tags": ["港卡", "银行"],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-14"
-                },
-                {
-                    "id": "bochk",
-                    "name": "Bank of China (Hong Kong)",
-                    "description": "中国银行（香港）官方网站。",
-                    "url": "https://www.bochk.com",
-                    "tags": ["港卡", "银行"],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-09"
-                },
-                {
-                    "id": "sc-hk",
-                    "name": "Standard Chartered Hong Kong",
-                    "description": "渣打银行香港官方网站。",
-                    "url": "https://www.sc.com/hk",
-                    "tags": ["港卡", "银行"],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-09"
+                    "guideUrl": "/tutorials/ccb-asia-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-08-21"
                 },
                 {
                     "id": "za-bank",
                     "name": "ZA Bank",
-                    "description": "众安银行官方网站。",
+                    "description": "香港持牌虚拟银行。中国内地用户可查看众安开户教程。",
                     "url": "https://bank.za.group",
                     "tags": ["港卡", "虚拟银行"],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-26"
+                    "guideUrl": "/tutorials/za-bank-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-08-21"
                 },
                 {
-                    "id": "mox",
-                    "name": "Mox Bank",
-                    "description": "Mox 虚拟银行官方网站。",
-                    "url": "https://mox.com",
+                    "id": "elebank",
+                    "name": "大象银行",
+                    "description": "香港持牌数字银行 EleBank 官方网站。",
+                    "url": "https://www.elebank.com",
                     "tags": ["港卡", "虚拟银行"],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-26"
+                    "updatedAt": "2026-08-21"
                 }
             ]
         },
         {
             "id": "us-brokers",
             "slug": "us-brokers",
-            "name": "美股券商",
-            "description": "美股券商、开户入口与账户服务。",
+            "name": "港美股券商",
+            "description": "港美股券商、开户入口与账户服务。",
             "icon": "broker",
             "items": [
                 {
-                    "id": "ibkr",
-                    "name": "Interactive Brokers",
-                    "description": "全球综合型券商，产品覆盖股票、ETF 与期权。",
-                    "url": "https://www.interactivebrokers.com",
+                    "id": "usmart-sg",
+                    "name": "盈立证券（新加坡）",
+                    "description": "新加坡金管局监管券商。中国内地用户可查看盈立新加坡开户教程。",
+                    "url": "https://www.usmart.sg/cn",
+                    "tags": ["美股", "券商"],
+                    "officialUrlConfirmed": true,
+                    "guideUrl": "/tutorials/usmart-sg-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-08-21"
+                },
+                {
+                    "id": "chief",
+                    "name": "致富证券",
+                    "description": "香港证监会持牌券商，覆盖港股、美股、期货与期权等。",
+                    "url": "https://www.chiefgroup.com.hk/cn",
                     "tags": ["美股", "券商"],
                     "officialUrlConfirmed": true,
                     "featured": true,
-                    "updatedAt": "2026-07-17"
+                    "updatedAt": "2026-08-21"
                 },
                 {
                     "id": "schwab",

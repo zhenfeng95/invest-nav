@@ -43,6 +43,13 @@ usePageSeo({
       >
         返回美股券商
       </NuxtLink>
+      <NuxtLink
+        v-if="tutorial.category === '香港银行'"
+        to="/nav/hk-banks"
+        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+      >
+        返回香港银行
+      </NuxtLink>
     </div>
     <article class="mt-8 max-w-3xl">
       <p class="text-xs text-zinc-400">

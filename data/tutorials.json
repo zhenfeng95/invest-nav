@@ -1,6 +1,48 @@
 {
   "items": [
     {
+      "id": "ccb-asia-account",
+      "slug": "ccb-asia-account-guide",
+      "title": "中国内地用户建银亚洲开户教程",
+      "description": "整理赴港后通过建银亚洲 App 线上开户的条件、NFC 识证、出入境记录与审核注意点，供对照官方页面。",
+      "type": "article",
+      "category": "香港银行",
+      "tags": ["港卡", "银行", "开户", "建银亚洲"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-08-21",
+      "publishedAt": "2026-08-21",
+      "popular": true,
+      "markdownFile": "ccb-asia-account-guide"
+    },
+    {
+      "id": "za-bank-account",
+      "slug": "za-bank-account-guide",
+      "title": "中国内地用户众安银行（ZA Bank）开户教程",
+      "description": "整理赴港后申请 ZA Bank 的准备工作、App 开户步骤与审核等待说明，供对照官方页面。",
+      "type": "article",
+      "category": "香港银行",
+      "tags": ["港卡", "银行", "开户", "众安"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-08-21",
+      "publishedAt": "2026-08-21",
+      "popular": true,
+      "markdownFile": "za-bank-account-guide"
+    },
+    {
+      "id": "usmart-sg-account",
+      "slug": "usmart-sg-account-guide",
+      "title": "中国内地用户盈立证券（新加坡）开户教程",
+      "description": "整理盈立新加坡开户步骤、账户类型、出入金路径与资产托管说明，供对照官方页面。",
+      "type": "article",
+      "category": "美股券商",
+      "tags": ["美股", "券商", "开户", "盈立"],
+      "readingMinutes": 14,
+      "updatedAt": "2026-08-21",
+      "publishedAt": "2026-08-21",
+      "popular": true,
+      "markdownFile": "usmart-sg-account-guide"
+    },
+    {
       "id": "firstrade-china-account",
       "slug": "firstrade-china-account-guide",
       "title": "中国内地用户第一证券（Firstrade）开户教程",
