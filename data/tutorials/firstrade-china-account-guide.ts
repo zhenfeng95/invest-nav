@@ -106,5 +106,5 @@ Firstrade 的开户流程也比较简单：在网站上提交申请后，有时�
 
 ---
 
-相关入口：[Firstrade 中文官网](https://www.firstrade.com/zh-CN) · [汇款费用补贴](https://www.firstrade.com/zh-CN/accounts/wire-fee-rebate) · [美股券商导航](/nav/us-brokers)
+相关入口：[Firstrade 中文官网](https://www.firstrade.com/zh-CN) · [汇款费用补贴](https://www.firstrade.com/zh-CN/accounts/wire-fee-rebate) · [美股券商导航](/nav/overseas-brokers)
 `;

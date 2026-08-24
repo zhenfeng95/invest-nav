@@ -1,6 +1,34 @@
 {
   "items": [
     {
+      "id": "xesim-esim-adapter",
+      "slug": "xesim-esim-adapter-guide",
+      "title": "大陆手机用 Xesim 安装 eSIM 适配器教程",
+      "description": "整理不支持原生 eSIM 的大陆机型通过 Xesim 选购、绑定、写入并启用境外 eSIM 的步骤，含苹果与安卓差异说明。",
+      "type": "article",
+      "category": "境外手机卡",
+      "tags": ["eSIM", "境外手机卡", "Xesim", "适配器"],
+      "readingMinutes": 12,
+      "updatedAt": "2026-08-24",
+      "publishedAt": "2026-08-24",
+      "popular": true,
+      "markdownFile": "xesim-esim-adapter-guide"
+    },
+    {
+      "id": "esim-gg-account",
+      "slug": "esim-gg-account-guide",
+      "title": "eSIM.GG 爱沙尼亚预付费 eSIM 购买与安装教程",
+      "description": "整理通过 eSIM.GG 购买国外号码、写入手机并长期保号的步骤，以及大陆机型用适配卡的注意点。",
+      "type": "article",
+      "category": "境外手机卡",
+      "tags": ["eSIM", "境外手机卡", "爱沙尼亚", "eSIM.GG"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-08-24",
+      "publishedAt": "2026-08-24",
+      "popular": true,
+      "markdownFile": "esim-gg-account-guide"
+    },
+    {
       "id": "ccb-asia-account",
       "slug": "ccb-asia-account-guide",
       "title": "中国内地用户建银亚洲开户教程",

@@ -122,5 +122,5 @@ export const zaBankAccountGuide = `本页整理中国内地用户通过 **ZA Ban
 
 ---
 
-相关入口：[众安银行官网](https://bank.za.group) · [香港银行导航](/nav/hk-banks)
+相关入口：[众安银行官网](https://bank.za.group) · [境外银行卡导航](/nav/overseas-banks)
 `;

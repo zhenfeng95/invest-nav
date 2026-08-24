@@ -26,8 +26,9 @@ type IconName =
   | 'bank'
   | 'broker'
   | 'transfer'
-    | 'deposit'
-    | 'report'
+  | 'deposit'
+  | 'sim'
+  | 'report'
 
 defineProps<{
   name: IconName
@@ -145,6 +146,11 @@ defineProps<{
     </g>
     <g v-else-if="name === 'deposit'">
       <path d="M12 4v10M8.5 10.5 12 14l3.5-3.5M5 18h14" />
+    </g>
+    <g v-else-if="name === 'sim'">
+      <path d="M7 5.5h7.5L18 9v9.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1Z" />
+      <path d="M9.5 13.5h5M9.5 16h3.5" />
+      <rect x="9.5" y="8" width="5" height="3.5" rx="0.6" />
     </g>
     <g v-else-if="name === 'report'">
       <path d="M7 4.5h7.5L19 9v10.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" />

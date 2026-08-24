@@ -9,6 +9,7 @@ export type NavigationIcon =
   | 'broker'
   | 'transfer'
   | 'deposit'
+  | 'sim'
 
 export interface NavigationItem {
   id: string

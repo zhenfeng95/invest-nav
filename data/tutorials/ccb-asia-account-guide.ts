@@ -140,5 +140,5 @@ export const ccbAsiaAccountGuide = `本页整理中国内地用户通过 **建�
 
 ---
 
-相关入口：[建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) · [香港银行导航](/nav/hk-banks)
+相关入口：[建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) · [境外银行卡导航](/nav/overseas-banks)
 `

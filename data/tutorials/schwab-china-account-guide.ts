@@ -200,5 +200,5 @@ export const schwabChinaAccountGuide = `本页整理中国内地用户通过 **C
 
 ---
 
-相关入口：[嘉信国际开户页](https://international.schwab.com/) · [Charles Schwab 官网](https://www.schwab.com) · [美股券商导航](/nav/us-brokers)
+相关入口：[嘉信国际开户页](https://international.schwab.com/) · [Charles Schwab 官网](https://www.schwab.com) · [美股券商导航](/nav/overseas-brokers)
 `

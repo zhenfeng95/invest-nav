@@ -200,8 +200,8 @@ NUXT_GITHUB_TOKEN=github_pat_xxx
 - `/nav/etf`
 - `/nav/stocks-cn`
 - `/nav/options`
-- `/nav/hk-banks`
-- `/nav/us-brokers`
+- `/nav/overseas-banks`
+- `/nav/overseas-brokers`
 - `/nav/fund-transfer`
 - `/nav/deposit-withdraw`
 - `/about`

@@ -239,10 +239,10 @@
             ]
         },
         {
-            "id": "hk-banks",
-            "slug": "hk-banks",
-            "name": "香港银行",
-            "description": "香港银行、港卡开户与账户服务入口。",
+            "id": "overseas-banks",
+            "slug": "overseas-banks",
+            "name": "境外银行卡",
+            "description": "境外银行、开户入口与账户服务。",
             "icon": "bank",
             "items": [
                 {
@@ -289,8 +289,41 @@
             ]
         },
         {
-            "id": "us-brokers",
-            "slug": "us-brokers",
+            "id": "overseas-sim",
+            "slug": "overseas-sim",
+            "name": "境外手机卡",
+            "description": "境外 SIM / eSIM 与接码开户常用入口。",
+            "icon": "sim",
+            "items": [
+                {
+                    "id": "xesim",
+                    "name": "Xesim",
+                    "description": "eSIM 适配卡，让不支持原生 eSIM 的大陆机型也能写入并管理境外 eSIM。",
+                    "url": "https://xesim.cc/",
+                    "tags": ["适配器", "eSIM"],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/xesim-esim-adapter-guide",
+                    "guideLabel": "适配器教程",
+                    "updatedAt": "2026-08-24"
+                },
+                {
+                    "id": "esim-gg",
+                    "name": "eSIM.GG",
+                    "description": "爱沙尼亚预付费 eSIM，提供 +372 号码，覆盖 150+ 国家，支持短信与通话。",
+                    "url": "https://esim.gg/",
+                    "tags": ["爱沙尼亚", "eSIM"],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/esim-gg-account-guide",
+                    "guideLabel": "购买安装教程",
+                    "updatedAt": "2026-08-24"
+                }
+            ]
+        },
+        {
+            "id": "overseas-brokers",
+            "slug": "overseas-brokers",
             "name": "港美股券商",
             "description": "港美股券商、开户入口与账户服务。",
             "icon": "broker",

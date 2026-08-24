@@ -38,17 +38,24 @@ usePageSeo({
       </NuxtLink>
       <NuxtLink
         v-if="tutorial.category === '美股券商'"
-        to="/nav/us-brokers"
+        to="/nav/overseas-brokers"
         class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
       >
         返回美股券商
       </NuxtLink>
       <NuxtLink
         v-if="tutorial.category === '香港银行'"
-        to="/nav/hk-banks"
+        to="/nav/overseas-banks"
         class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
       >
-        返回香港银行
+        返回境外银行卡
+      </NuxtLink>
+      <NuxtLink
+        v-if="tutorial.category === '境外手机卡'"
+        to="/nav/overseas-sim"
+        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+      >
+        返回境外手机卡
       </NuxtLink>
     </div>
     <article class="mt-8 max-w-3xl">

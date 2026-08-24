@@ -30,8 +30,8 @@ export const footerCategoryLinks: NavLink[] = [
   { label: '加密货币', to: '/nav/crypto' },
   { label: '基金', to: '/nav/funds' },
   { label: 'ETF', to: '/nav/etf' },
-  { label: '香港银行', to: '/nav/hk-banks' },
-  { label: '美股券商', to: '/nav/us-brokers' },
+  { label: '境外银行卡', to: '/nav/overseas-banks' },
+  { label: '美股券商', to: '/nav/overseas-brokers' },
 ]
 
 export const homeSeo = {

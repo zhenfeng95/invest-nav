@@ -4,6 +4,8 @@ import { schwabChinaAccountGuide } from '~/data/tutorials/schwab-china-account-g
 import { usmartSgAccountGuide } from '~/data/tutorials/usmart-sg-account-guide'
 import { ccbAsiaAccountGuide } from '~/data/tutorials/ccb-asia-account-guide'
 import { zaBankAccountGuide } from '~/data/tutorials/za-bank-account-guide'
+import { esimGgAccountGuide } from '~/data/tutorials/esim-gg-account-guide'
+import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
 const markdownFiles: Record<string, string> = {
@@ -12,6 +14,8 @@ const markdownFiles: Record<string, string> = {
   'usmart-sg-account-guide': usmartSgAccountGuide,
   'ccb-asia-account-guide': ccbAsiaAccountGuide,
   'za-bank-account-guide': zaBankAccountGuide,
+  'esim-gg-account-guide': esimGgAccountGuide,
+  'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

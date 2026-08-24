@@ -182,5 +182,5 @@ uSMART 新加坡于 2021 年 12 月从新加坡金融管理局（MAS）获得资
 
 ---
 
-相关入口：[盈立新加坡官网](https://www.usmart.sg/cn) · [优惠活动](https://www.usmart.sg/cn/promotions) · [帮助中心](https://www.usmart.sg/cn/help-center) · [美股券商导航](/nav/us-brokers)
+相关入口：[盈立新加坡官网](https://www.usmart.sg/cn) · [优惠活动](https://www.usmart.sg/cn/promotions) · [帮助中心](https://www.usmart.sg/cn/help-center) · [美股券商导航](/nav/overseas-brokers)
 `;
