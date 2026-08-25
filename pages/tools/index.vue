@@ -5,7 +5,7 @@ const tools = getTools()
 
 usePageSeo({
   title: '投资工具',
-  description: '投资组合追踪、QDII额度宝、财经日历、抄底信号和空投计算器。',
+  description: '投资组合追踪、QDII额度宝、财经日历、抄底信号和空间计算器。',
   path: '/tools',
 })
 </script>

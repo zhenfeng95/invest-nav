@@ -15,4 +15,5 @@ export interface Tool {
   route: string
   apiRequired: boolean
   apiPath?: string
+  iframeSrc?: string
 }

@@ -1,54 +1,54 @@
 {
-  "items": [
-    {
-      "id": "portfolio",
-      "name": "持仓分账",
-      "description": "按 A 股与美股分账，复盘持仓、已实现盈亏与纪律。",
-      "icon": "chart",
-      "status": "available",
-      "route": "/portfolio",
-      "apiRequired": true,
-      "apiPath": "/api/portfolio"
-    },
-    {
-      "id": "qdii",
-      "name": "QDII额度宝",
-      "description": "查看 QDII 额度与相关基金信息。",
-      "icon": "wallet",
-      "status": "coming-soon",
-      "route": "/tools/qdii",
-      "apiRequired": true,
-      "apiPath": "/api/qdii"
-    },
-    {
-      "id": "calendar",
-      "name": "财经日历",
-      "description": "关注重要经济数据与市场事件。",
-      "icon": "calendar",
-      "status": "coming-soon",
-      "route": "/tools/calendar",
-      "apiRequired": true,
-      "apiPath": "/api/calendar"
-    },
-    {
-      "id": "signal",
-      "name": "抄底信号",
-      "description": "用结构化指标观察市场回撤与情绪。",
-      "icon": "signal",
-      "status": "coming-soon",
-      "route": "/tools/signal",
-      "apiRequired": true,
-      "apiPath": "/api/market"
-    },
-    {
-      "id": "airdrop",
-      "name": "空投计算器",
-      "description": "估算空投份额与潜在价值。",
-      "icon": "calculator",
-      "status": "coming-soon",
-      "route": "/tools/airdrop",
-      "apiRequired": true,
-      "apiPath": "/api/crypto"
-    }
-  ]
+    "items": [
+        {
+            "id": "portfolio",
+            "name": "持仓分账",
+            "description": "按 A 股与美股分账，复盘持仓、已实现盈亏与纪律。",
+            "icon": "chart",
+            "status": "available",
+            "route": "/portfolio",
+            "apiRequired": true,
+            "apiPath": "/api/portfolio"
+        },
+        {
+            "id": "qdii",
+            "name": "QDII额度宝",
+            "description": "查看 QDII 额度与相关基金信息。",
+            "icon": "wallet",
+            "status": "coming-soon",
+            "route": "/tools/qdii",
+            "apiRequired": true,
+            "apiPath": "/api/qdii"
+        },
+        {
+            "id": "calendar",
+            "name": "财经日历",
+            "description": "关注重要经济数据与市场事件。",
+            "icon": "calendar",
+            "status": "coming-soon",
+            "route": "/tools/calendar",
+            "apiRequired": true,
+            "apiPath": "/api/calendar"
+        },
+        {
+            "id": "signal",
+            "name": "抄底信号",
+            "description": "用结构化指标观察市场回撤与情绪。",
+            "icon": "signal",
+            "status": "coming-soon",
+            "route": "/tools/signal",
+            "apiRequired": true,
+            "apiPath": "/api/market"
+        },
+        {
+            "id": "spatial",
+            "name": "空间计算器",
+            "description": "基于价格的运行规律，推演标准走势下关键价格位可能抵达的空间。",
+            "icon": "calculator",
+            "status": "available",
+            "route": "/tools/spatial",
+            "apiRequired": false,
+            "iframeSrc": "/spatial/index.html"
+        }
+    ]
 }

@@ -12,7 +12,7 @@ const routes = [
   '/tools/qdii',
   '/tools/calendar',
   '/tools/signal',
-  '/tools/airdrop',
+  '/tools/spatial',
   '/nav',
   '/nav/stocks',
   '/nav/crypto',
