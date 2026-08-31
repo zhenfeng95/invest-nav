@@ -1,25 +1,23 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "invest-nav",
-  "compatibility_date": "2025-07-15",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "observability": {
-    "enabled": true
-  },
-  "vars": {
-    "NUXT_PUBLIC_SITE_URL": "https://zeninvest.de5.net",
-    "NUXT_GITHUB_REPORTS_OWNER": "zhenfeng95",
-    "NUXT_GITHUB_REPORTS_REPO": "invest-agent",
-    "NUXT_GITHUB_REPORTS_PATH": "output/daily",
-    "NUXT_GITHUB_REPORTS_REF": "main",
-    "NUXT_GITHUB_TRADES_PATH": "data/raw/trades"
-  },
-  "routes": [
-    {
-      "pattern": "zeninvest.de5.net",
-      "custom_domain": true
-    }
-  ]
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "invest-nav",
+    "compatibility_date": "2025-07-15",
+    "compatibility_flags": ["nodejs_compat"],
+    "observability": {
+        "enabled": true,
+    },
+    "vars": {
+        "NUXT_PUBLIC_SITE_URL": "https://zheninvest.com",
+        "NUXT_GITHUB_REPORTS_OWNER": "zhenfeng95",
+        "NUXT_GITHUB_REPORTS_REPO": "invest-agent",
+        "NUXT_GITHUB_REPORTS_PATH": "output/daily",
+        "NUXT_GITHUB_REPORTS_REF": "main",
+        "NUXT_GITHUB_TRADES_PATH": "data/raw/trades",
+    },
+    "routes": [
+        {
+            "pattern": "zheninvest.com",
+            "custom_domain": true,
+        },
+    ],
 }

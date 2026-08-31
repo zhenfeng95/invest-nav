@@ -6,7 +6,7 @@
 
 ## 在线体验
 
-- 体验链接：https://zeninvest.de5.net
+- 体验链接：https://zheninvest.com
 
 ## 技术栈
 
