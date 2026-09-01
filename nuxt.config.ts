@@ -60,6 +60,7 @@ export default defineNuxtConfig({
         githubReportsOwner: '',
         githubReportsRepo: '',
         githubReportsPath: '',
+        githubReviewsPath: 'output/reviews',
         githubReportsRef: 'main',
         githubTradesPath: 'data/raw/trades',
         public: {
@@ -80,6 +81,7 @@ export default defineNuxtConfig({
                     NUXT_GITHUB_REPORTS_OWNER: 'zhenfeng95',
                     NUXT_GITHUB_REPORTS_REPO: 'invest-agent',
                     NUXT_GITHUB_REPORTS_PATH: 'output/daily',
+                    NUXT_GITHUB_REVIEWS_PATH: 'output/reviews',
                     NUXT_GITHUB_REPORTS_REF: 'main',
                     NUXT_GITHUB_TRADES_PATH: 'data/raw/trades',
                 },

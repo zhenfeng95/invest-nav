@@ -33,6 +33,17 @@ export function formatYearMonth(value: string): string {
   return `${match[1]}年${Number(match[2])}月`
 }
 
+export function currentYearMonth(now = new Date()): string {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+  }).formatToParts(now)
+  const year = parts.find(part => part.type === 'year')?.value
+  const month = parts.find(part => part.type === 'month')?.value
+  return year && month ? `${year}-${month}` : ''
+}
+
 export function formatMoney(value: number, currency: 'CNY' | 'USD', digits?: number): string {
   const symbol = currency === 'CNY' ? '¥' : '$'
   const places = digits ?? (currency === 'CNY' ? 2 : 2)

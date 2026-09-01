@@ -70,6 +70,16 @@ export interface EquityPoint {
   costBasis: number
 }
 
+export interface MonthlyPnl {
+  month: string
+  tradeCount: number
+  winCount: number
+  lossCount: number
+  winRate: number | null
+  realized: number
+  profitFactor: number | null
+}
+
 export interface MarketBook {
   market: MarketCode
   account: BrokerAccount | null
@@ -81,6 +91,7 @@ export interface MarketBook {
   currency: CurrencyCode
   open: OpenPosition[]
   closed: ClosedTrade[]
+  monthly: MonthlyPnl[]
   realized: number
   unrealized: number | null
   marketValue: number | null

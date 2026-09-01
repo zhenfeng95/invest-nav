@@ -11,6 +11,7 @@ import type {
   Insight,
   MarketBook,
   MarketCode,
+  MonthlyPnl,
   OpenPosition,
   PortfolioAnalysis,
 } from '~/types/portfolio'
@@ -19,7 +20,7 @@ const A_SHARE_ACCOUNTS: AShareAccount[] = ['GY', 'YH', 'HT']
 import type { GitHubReportsConfig } from './github-reports'
 import { getRepoFileText, GitHubReportsError, listRepoBlobs } from './github-reports'
 import type { DailyClose, LiveQuote } from './quotes'
-import { fetchDailyCloses, fetchQuotes } from './quotes'
+import { applyMa5FromCloses, fetchDailyCloses, fetchQuotes } from './quotes'
 
 const TRADES_TTL_MS = 5 * 60 * 1000
 
@@ -97,6 +98,7 @@ export async function buildPortfolioAnalysis(config: GitHubReportsConfig | null)
     fetchQuotes(instruments),
     fetchDailyCloses(instruments, startDate || '1970-01-01'),
   ])
+  applyMa5FromCloses(quotes, closes)
 
   const aAccounts = A_SHARE_ACCOUNTS.map(account =>
     buildBook('A', 'CNY', reconstructed, bundle.snapshot, quotes, bundle.trades, closes, account),
@@ -460,6 +462,7 @@ function buildBook(
     currency,
     open,
     closed,
+    monthly: buildMonthly(closed, currency),
     realized,
     unrealized,
     marketValue: totalValue,
@@ -509,6 +512,7 @@ function buildAggregateABook(accounts: MarketBook[]): MarketBook {
     currency,
     open,
     closed,
+    monthly: buildMonthly(closed, currency),
     realized,
     unrealized,
     marketValue,
@@ -530,6 +534,39 @@ function buildAggregateABook(accounts: MarketBook[]): MarketBook {
 
 function aShareAccountConfig(account: AShareAccount): AShareAccountConfig {
   return (portfolioConfig.aShare.accounts as Record<AShareAccount, AShareAccountConfig>)[account]
+}
+
+function buildMonthly(closed: ClosedTrade[], currency: CurrencyCode): MonthlyPnl[] {
+  const groups = new Map<string, ClosedTrade[]>()
+  for (const trade of closed) {
+    const month = trade.sellDate.slice(0, 7)
+    const list = groups.get(month)
+    if (list) {
+      list.push(trade)
+    }
+    else {
+      groups.set(month, [trade])
+    }
+  }
+
+  return [...groups.entries()]
+    .sort((left, right) => right[0].localeCompare(left[0]))
+    .map(([month, trades]) => {
+      const wins = trades.filter(item => item.pnl > 0)
+      const losses = trades.filter(item => item.pnl < 0)
+      const realized = roundMoney(trades.reduce((sum, item) => sum + item.pnl, 0), currency)
+      const grossProfit = wins.reduce((sum, item) => sum + item.pnl, 0)
+      const grossLoss = Math.abs(losses.reduce((sum, item) => sum + item.pnl, 0))
+      return {
+        month,
+        tradeCount: trades.length,
+        winCount: wins.length,
+        lossCount: losses.length,
+        winRate: trades.length ? wins.length / trades.length : null,
+        realized,
+        profitFactor: grossLoss > 0 ? Math.round((grossProfit / grossLoss) * 100) / 100 : null,
+      }
+    })
 }
 
 function mergeOpenPositions(

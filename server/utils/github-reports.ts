@@ -18,6 +18,7 @@ export interface GitHubReportsConfig {
   owner: string
   repo: string
   path: string
+  reviewsPath: string
   tradesPath: string
   ref: string
   token: string
@@ -78,6 +79,7 @@ export function getGitHubReportsConfig(event: H3Event): GitHubReportsConfig | nu
     owner,
     repo,
     path: readEnv(runtime.githubReportsPath, env.NUXT_GITHUB_REPORTS_PATH).replace(/^\/+|\/+$/g, ''),
+    reviewsPath: readEnv(runtime.githubReviewsPath, env.NUXT_GITHUB_REVIEWS_PATH).replace(/^\/+|\/+$/g, '') || 'output/reviews',
     tradesPath: readEnv(runtime.githubTradesPath, env.NUXT_GITHUB_TRADES_PATH).replace(/^\/+|\/+$/g, '') || 'data/raw/trades',
     ref: readEnv(runtime.githubReportsRef, env.NUXT_GITHUB_REPORTS_REF) || 'main',
     token: readEnv(runtime.githubToken, env.NUXT_GITHUB_TOKEN),
@@ -103,7 +105,19 @@ function readEnv(...values: unknown[]): string {
 }
 
 export async function listReports(config: GitHubReportsConfig): Promise<ReportListItem[]> {
-  const cacheKey = `list:${config.owner}/${config.repo}/${config.ref}/${config.path}`
+  return listMarkdownDocs(config, config.path, 'daily')
+}
+
+export async function listReviews(config: GitHubReportsConfig): Promise<ReportListItem[]> {
+  return listMarkdownDocs(config, config.reviewsPath, 'monthly')
+}
+
+async function listMarkdownDocs(
+  config: GitHubReportsConfig,
+  basePath: string,
+  kind: 'daily' | 'monthly',
+): Promise<ReportListItem[]> {
+  const cacheKey = `list:${kind}:${config.owner}/${config.repo}/${config.ref}/${basePath}`
   const cached = getCached<ReportListItem[]>(cacheKey)
   if (cached) {
     return cached
@@ -112,29 +126,29 @@ export async function listReports(config: GitHubReportsConfig): Promise<ReportLi
   const treeUrl = `https://api.github.com/repos/${config.owner}/${config.repo}/git/trees/${encodeURIComponent(config.ref)}?recursive=1`
   const tree = await githubJson<GitHubTreeResponse>(treeUrl, config.token)
   const paths = tree.truncated || !tree.tree?.length
-    ? await listMarkdownPathsViaContents(config)
+    ? await collectMarkdownPaths(config, basePath)
     : tree.tree
       .filter(entry => entry.type === 'blob')
       .map(entry => entry.path)
 
-  const prefix = config.path ? `${config.path}/` : ''
+  const prefix = basePath ? `${basePath}/` : ''
   const items: ReportListItem[] = []
 
   for (const repoPath of paths) {
-    if (!isReportPath(repoPath, prefix, config.path)) {
+    if (!isReportPath(repoPath, prefix, basePath)) {
       continue
     }
 
     const name = repoPath.split('/').pop() || ''
     const relative = prefix
-      ? (repoPath === config.path ? name : repoPath.slice(prefix.length))
+      ? (repoPath === basePath ? name : repoPath.slice(prefix.length))
       : repoPath
     const slug = relative.replace(/\.md$/i, '')
     const date = extractDate(name) ?? extractDate(relative)
 
     items.push({
       slug,
-      title: titleFromName(name, date),
+      title: titleFromName(name, date, kind),
       date,
       path: repoPath,
     })
@@ -208,13 +222,26 @@ export async function getRepoFileText(config: GitHubReportsConfig, repoPath: str
 }
 
 export async function getReport(config: GitHubReportsConfig, slug: string): Promise<ReportDetail | null> {
+  return getMarkdownDoc(config, config.path, slug, 'daily')
+}
+
+export async function getReview(config: GitHubReportsConfig, slug: string): Promise<ReportDetail | null> {
+  return getMarkdownDoc(config, config.reviewsPath, slug, 'monthly')
+}
+
+async function getMarkdownDoc(
+  config: GitHubReportsConfig,
+  basePath: string,
+  slug: string,
+  kind: 'daily' | 'monthly',
+): Promise<ReportDetail | null> {
   const relativePath = resolveSlugPath(slug)
   if (!relativePath) {
     return null
   }
 
-  const repoPath = config.path ? `${config.path}/${relativePath}` : relativePath
-  const cacheKey = `file:${config.owner}/${config.repo}/${config.ref}/${repoPath}`
+  const repoPath = basePath ? `${basePath}/${relativePath}` : relativePath
+  const cacheKey = `file:${kind}:${config.owner}/${config.repo}/${config.ref}/${repoPath}`
   const cached = getCached<ReportDetail>(cacheKey)
   if (cached) {
     return cached
@@ -244,7 +271,7 @@ export async function getReport(config: GitHubReportsConfig, slug: string): Prom
   const name = repoPath.split('/').pop() || ''
   const date = normalizeDate(frontmatter.date) ?? extractDate(name)
   const heading = extractHeading(content)
-  const title = frontmatter.title || heading || titleFromName(name, date)
+  const title = frontmatter.title || heading || titleFromName(name, date, kind)
   const body = heading ? content.replace(/^#\s+.+\r?\n+/, '') : content
 
   const detail: ReportDetail = {
@@ -294,8 +321,21 @@ function resolveSlugPath(slug: string): string | null {
   return `${parts.join('/')}.md`
 }
 
-function titleFromName(name: string, date: string | null): string {
+function titleFromName(name: string, date: string | null, kind: 'daily' | 'monthly' = 'daily'): string {
   const base = name.replace(/\.md$/i, '')
+  const monthly = base.match(/^(?:monthly[-_])?(\d{4})-(\d{2})$/i)
+  if (kind === 'monthly' || monthly) {
+    if (monthly) {
+      return `${monthly[1]}年${Number(monthly[2])}月交易复盘`
+    }
+    if (date) {
+      const parts = date.match(/^(\d{4})-(\d{2})/)
+      if (parts) {
+        return `${parts[1]}年${Number(parts[2])}月交易复盘`
+      }
+    }
+  }
+
   const match = base.match(/^(\d{4}-\d{2}-\d{2})(?:[-_.\s]+(.+))?$/)
   if (match) {
     const dateLabel = chineseDate(match[1])
@@ -320,20 +360,30 @@ function chineseDate(value: string): string {
 }
 
 function extractDate(value: string): string | null {
-  const match = value.match(/(\d{4}-\d{2}-\d{2})/)
-  return match ? normalizeDate(match[1]) : null
+  const day = value.match(/(\d{4}-\d{2}-\d{2})/)
+  if (day) {
+    return normalizeDate(day[1])
+  }
+  const month = value.match(/(?:monthly[-_])?(\d{4})-(\d{2})(?!\d)/i)
+  if (month) {
+    return `${month[1]}-${month[2]}-01`
+  }
+  return null
 }
 
 function normalizeDate(value?: string): string | null {
   if (!value) {
     return null
   }
-  const match = value.trim().match(/^(\d{4}-\d{2}-\d{2})/)
-  return match?.[1] ?? null
-}
-
-async function listMarkdownPathsViaContents(config: GitHubReportsConfig): Promise<string[]> {
-  return collectMarkdownPaths(config, config.path)
+  const day = value.trim().match(/^(\d{4}-\d{2}-\d{2})/)
+  if (day) {
+    return day[1]
+  }
+  const month = value.trim().match(/^(\d{4})-(\d{2})$/)
+  if (month) {
+    return `${month[1]}-${month[2]}-01`
+  }
+  return null
 }
 
 async function collectMarkdownPaths(config: GitHubReportsConfig, dirPath: string, depth = 0): Promise<string[]> {

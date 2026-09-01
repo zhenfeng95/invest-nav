@@ -26,6 +26,7 @@ const routes = [
   '/nav/fund-transfer',
   '/nav/deposit-withdraw',
   '/reports',
+  '/reviews',
   '/portfolio',
   '/about',
   '/disclaimer',

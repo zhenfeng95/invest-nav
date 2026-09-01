@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MarketBook, PortfolioAnalysis } from '~/types/portfolio'
-import { formatDate, formatMoney, formatQty, formatSignedMoney, formatSignedPct, pnlTextClass } from '~/utils/format'
+import type { ReportListResponse } from '~/types/report'
+import { formatDate, formatMoney, formatQty, formatSignedMoney, formatSignedPct, formatYearMonth, pnlTextClass } from '~/utils/format'
 import { SITE_DISCLAIMER } from '~/utils/site'
 
 const nuxtApp = useNuxtApp()
@@ -13,12 +14,42 @@ const { data, error, pending, status } = await useAsyncData(
   },
 )
 
+const { data: reviewsData } = await useAsyncData(
+  'reviews',
+  () => $fetch<ReportListResponse>('/api/reviews'),
+  {
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
+)
+
+const reviewSlugs = computed(() => {
+  const map: Record<string, string> = {}
+  for (const item of reviewsData.value?.items ?? []) {
+    const match = item.slug.match(/(\d{4}-\d{2})/)
+    if (match) {
+      map[match[1]] = item.slug
+    }
+  }
+  return map
+})
+
 const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 const selectedAAccount = ref('GY')
 
 const activeABook = computed(() =>
   data.value?.aAccounts.find(book => book.account === selectedAAccount.value) || data.value?.aAccounts[0] || null,
+)
+
+const {
+  selectedMonth: usSelectedMonth,
+  monthTrades: usMonthTrades,
+  monthSummary: usMonthSummary,
+  selectMonth: selectUsMonth,
+} = useClosedMonth(
+  () => data.value?.us?.closed || [],
+  () => data.value?.us?.monthly || [],
 )
 
 usePageSeo({
@@ -139,6 +170,23 @@ function accountTabLabel(book: MarketBook) {
           :title="insight.title"
           :body="insight.body"
         />
+        <div v-if="data.a.monthly?.length" class="space-y-3">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">A股按月已实现</h3>
+            <NuxtLink
+              v-if="Object.keys(reviewSlugs).length"
+              to="/reviews"
+              class="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+            >
+              月度复盘
+            </NuxtLink>
+          </div>
+          <PortfolioMonthlyPnl
+            :months="data.a.monthly"
+            :currency="data.a.currency"
+            :review-slugs="reviewSlugs"
+          />
+        </div>
       </section>
 
       <section v-if="data.aAccounts.length" class="space-y-8">
@@ -157,7 +205,7 @@ function accountTabLabel(book: MarketBook) {
           </button>
         </div>
 
-        <PortfolioABook v-if="activeABook" :book="activeABook" />
+        <PortfolioABook v-if="activeABook" :book="activeABook" :review-slugs="reviewSlugs" />
       </section>
 
       <hr class="border-zinc-200/80 dark:border-white/[0.06]">
@@ -273,7 +321,32 @@ function accountTabLabel(book: MarketBook) {
         </div>
 
         <div v-if="data.us.closed.length" class="space-y-3">
-          <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">网格已平仓</h3>
+          <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">网格按月盈亏</h3>
+          <PortfolioMonthlyPnl
+            :months="data.us.monthly"
+            :currency="data.us.currency"
+            :selected="usSelectedMonth"
+            :review-slugs="reviewSlugs"
+            selectable
+            @select="selectUsMonth"
+          />
+        </div>
+
+        <div v-if="data.us.closed.length" class="space-y-3">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              网格已平仓
+              <span class="text-sm font-normal text-zinc-400">{{ formatYearMonth(usSelectedMonth) }}</span>
+            </h3>
+            <p
+              v-if="usMonthSummary"
+              class="text-sm tabular-nums"
+              :class="pnlTextClass(usMonthSummary.realized)"
+            >
+              {{ formatSignedMoney(usMonthSummary.realized, data.us.currency) }}
+              · {{ usMonthSummary.winCount }} / {{ usMonthSummary.tradeCount }}
+            </p>
+          </div>
           <div class="overflow-x-auto rounded-2xl border border-zinc-200/80 dark:border-white/10">
             <table class="min-w-full text-left text-sm">
               <thead class="border-b border-zinc-200 text-xs text-zinc-400 dark:border-white/10">
@@ -286,8 +359,8 @@ function accountTabLabel(book: MarketBook) {
               </thead>
               <tbody>
                 <tr
-                  v-for="trade in data.us.closed"
-                  :key="`${trade.ticker}-${trade.sellDate}-${trade.buyPrice}`"
+                  v-for="trade in usMonthTrades"
+                  :key="`${trade.ticker}-${trade.sellDate}-${trade.buyPrice}-${trade.qty}`"
                   class="border-b border-zinc-100 last:border-0 dark:border-white/[0.04]"
                 >
                   <td class="px-4 py-3 font-medium text-zinc-900 dark:text-zinc-50">{{ trade.ticker }}</td>
@@ -298,6 +371,11 @@ function accountTabLabel(book: MarketBook) {
                   <td class="px-4 py-3 text-right tabular-nums" :class="pnlTextClass(trade.pnl)">
                     {{ formatSignedMoney(trade.pnl, trade.currency) }}
                     <span class="text-xs">（{{ formatSignedPct(trade.pnlPct) }}）</span>
+                  </td>
+                </tr>
+                <tr v-if="!usMonthTrades.length">
+                  <td colspan="4" class="px-4 py-6 text-center text-zinc-400">
+                    {{ formatYearMonth(usSelectedMonth) }}暂无已平仓，可点上方月份查看历史
                   </td>
                 </tr>
               </tbody>

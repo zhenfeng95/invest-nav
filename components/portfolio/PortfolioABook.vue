@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import type { MarketBook } from '~/types/portfolio'
-import { formatDate, formatMoney, formatQty, formatSignedMoney, formatSignedPct, pnlTextClass } from '~/utils/format'
+import { formatDate, formatMoney, formatQty, formatSignedMoney, formatSignedPct, formatYearMonth, pnlTextClass } from '~/utils/format'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   book: MarketBook
-}>()
+  reviewSlugs?: Record<string, string>
+}>(), {
+  reviewSlugs: () => ({}),
+})
+
+const { selectedMonth, monthTrades, monthSummary, selectMonth } = useClosedMonth(
+  () => props.book.closed,
+  () => props.book.monthly || [],
+  () => props.book.account,
+)
 
 function winRateLabel(book: MarketBook) {
   const total = book.winCount + book.lossCount
@@ -167,9 +176,34 @@ const showMa5 = computed(() => props.book.style === 'trend-swing')
       <p class="text-xs text-zinc-400">{{ quoteCaption(book) }}</p>
     </div>
 
+    <div v-if="book.monthly?.length" class="space-y-3">
+      <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">按月盈亏</h3>
+      <PortfolioMonthlyPnl
+        :months="book.monthly"
+        :currency="book.currency"
+        :selected="selectedMonth"
+        :review-slugs="reviewSlugs"
+        selectable
+        @select="selectMonth"
+      />
+    </div>
+
     <div v-if="book.closed.length" class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div class="space-y-3">
-        <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">已平仓</h3>
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+            已平仓
+            <span class="text-sm font-normal text-zinc-400">{{ formatYearMonth(selectedMonth) }}</span>
+          </h3>
+          <p
+            v-if="monthSummary"
+            class="text-sm tabular-nums"
+            :class="pnlTextClass(monthSummary.realized)"
+          >
+            {{ formatSignedMoney(monthSummary.realized, book.currency) }}
+            · {{ monthSummary.winCount }} / {{ monthSummary.tradeCount }}
+          </p>
+        </div>
         <div class="overflow-x-auto rounded-2xl border border-zinc-200/80 dark:border-white/10">
           <table class="min-w-full text-left text-sm">
             <thead class="border-b border-zinc-200 text-xs text-zinc-400 dark:border-white/10">
@@ -184,8 +218,8 @@ const showMa5 = computed(() => props.book.style === 'trend-swing')
             </thead>
             <tbody>
               <tr
-                v-for="trade in book.closed"
-                :key="`${trade.account}-${trade.ticker}-${trade.sellDate}`"
+                v-for="trade in monthTrades"
+                :key="`${trade.account}-${trade.ticker}-${trade.sellDate}-${trade.buyPrice}-${trade.qty}`"
                 class="border-b border-zinc-100 last:border-0 dark:border-white/[0.04]"
               >
                 <td class="px-4 py-3 font-medium text-zinc-900 dark:text-zinc-50">{{ trade.ticker }}</td>
@@ -201,14 +235,19 @@ const showMa5 = computed(() => props.book.style === 'trend-swing')
                   {{ formatSignedPct(trade.pnlPct) }}
                 </td>
               </tr>
+              <tr v-if="!monthTrades.length">
+                <td colspan="6" class="px-4 py-6 text-center text-zinc-400">
+                  {{ formatYearMonth(selectedMonth) }}暂无已平仓，可点上方月份查看历史
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <div class="space-y-3">
+      <div v-if="monthTrades.length" class="space-y-3">
         <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">已实现分布</h3>
         <div class="card p-5">
-          <PortfolioPnlBars :trades="book.closed" />
+          <PortfolioPnlBars :trades="monthTrades" />
         </div>
       </div>
     </div>

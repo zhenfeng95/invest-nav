@@ -85,16 +85,36 @@ function rewriteHref(href: string, ctx: MarkdownContext): string {
   }
 
   if (/\.md$/i.test(withoutQuery)) {
-    const prefix = ctx.config.path
-    let slug = resolved.replace(/\.md$/i, '')
-    if (prefix && (slug === prefix || slug.startsWith(`${prefix}/`))) {
-      slug = slug === prefix ? '' : slug.slice(prefix.length + 1)
+    const sitePath = sitePathForMarkdown(resolved, ctx.config)
+    if (sitePath) {
+      return `${sitePath}${hashSuffix}`
     }
-    return slug ? `/reports/${slug}${hashSuffix}` : `/reports${hashSuffix}`
   }
 
   const { owner, repo, ref } = ctx.config
   return `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${resolved}${hashSuffix}`
+}
+
+function sitePathForMarkdown(resolved: string, config: GitHubReportsConfig): string | null {
+  const mappings: Array<{ base: string, route: string }> = [
+    { base: config.path, route: '/reports' },
+    { base: config.reviewsPath, route: '/reviews' },
+  ]
+
+  for (const { base, route } of mappings) {
+    if (!base) {
+      continue
+    }
+    if (resolved === base) {
+      return route
+    }
+    if (resolved.startsWith(`${base}/`)) {
+      const slug = resolved.slice(base.length + 1).replace(/\.md$/i, '')
+      return slug ? `${route}/${slug}` : route
+    }
+  }
+
+  return null
 }
 
 function resolveRelativePath(fileDir: string, href: string): string | null {

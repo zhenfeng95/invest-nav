@@ -18,8 +18,10 @@ export interface DailyClose {
 const QUOTE_TTL_MS = 60 * 1000
 const KLINE_TTL_MS = 30 * 60 * 1000
 const EMPTY_KLINE_TTL_MS = 2 * 60 * 1000
-const quoteCache = new Map<string, { expiresAt: number, value: LiveQuote | null }>()
+const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+const quoteCache = new Map<string, { expiresAt: number, value: LiveQuote }>()
 const klineCache = new Map<string, { expiresAt: number, value: DailyClose[] }>()
+const klineInflight = new Map<string, Promise<DailyClose[]>>()
 
 const US_SECID_HINT: Record<string, string> = {
   AAPL: '105.AAPL',
@@ -29,30 +31,58 @@ const US_SECID_HINT: Record<string, string> = {
   TSLA: '105.TSLA',
   SGOV: '106.SGOV',
   VOO: '107.VOO',
+  GOOGL: '105.GOOGL',
+  PDD: '105.PDD',
 }
 
 export async function fetchQuotes(tickers: Array<{ market: 'A' | 'US', ticker: string }>): Promise<Map<string, LiveQuote>> {
   const unique = [...new Map(tickers.map(item => [`${item.market}:${item.ticker}`, item])).values()]
-  const results = await Promise.all(unique.map(async (item) => {
-    const key = `${item.market}:${item.ticker}`
-    try {
-      const quote = item.market === 'A'
-        ? await fetchAShareQuote(item.ticker)
-        : await fetchUsQuote(item.ticker)
-      return [key, quote] as const
-    }
-    catch {
-      return [key, null] as const
-    }
-  }))
-
   const map = new Map<string, LiveQuote>()
-  for (const [key, quote] of results) {
-    if (quote) {
-      map.set(key, quote)
+
+  for (const item of unique) {
+    const cached = getCached(`${item.market}:${item.ticker}`)
+    if (cached) {
+      map.set(`${item.market}:${item.ticker}`, cached)
     }
   }
+
+  const pending = unique.filter(item => !map.has(`${item.market}:${item.ticker}`))
+  const batched = await fetchTencentQuotesBatch(pending)
+  for (const [key, quote] of batched) {
+    map.set(key, quote)
+    setCached(key, quote)
+  }
+
+  const missing = pending.filter(item => !map.has(`${item.market}:${item.ticker}`))
+  if (missing.length) {
+    const extras = await mapPool(missing, 3, async (item) => {
+      const key = `${item.market}:${item.ticker}`
+      try {
+        const quote = item.market === 'A'
+          ? await fetchAShareQuote(item.ticker)
+          : await fetchUsQuote(item.ticker)
+        return [key, quote] as const
+      }
+      catch {
+        return [key, null] as const
+      }
+    })
+    for (const [key, quote] of extras) {
+      if (quote) {
+        map.set(key, quote)
+      }
+    }
+  }
+
   return map
+}
+
+export function applyMa5FromCloses(quotes: Map<string, LiveQuote>, closes: Map<string, DailyClose[]>) {
+  for (const [key, quote] of quotes) {
+    if (quote.ma5 == null) {
+      quote.ma5 = ma5FromCloses(closes.get(key) || [], quote.last)
+    }
+  }
 }
 
 export async function fetchDailyCloses(
@@ -85,20 +115,43 @@ export async function fetchDailyCloses(
 
 async function fetchAShareQuote(ticker: string): Promise<LiveQuote | null> {
   const cached = getCached(`A:${ticker}`)
-  if (cached !== undefined) {
+  if (cached) {
     return cached
   }
 
-  const tencentPromise = fetchAShareQuoteTencent(ticker)
-  const jqkaPromise = fetch10jqkaQuote(to10jqkaAShareSymbol(ticker), 'v2')
-  const eastmoney = await fetchAShareQuoteEastmoney(ticker)
-  const quote = eastmoney || await tencentPromise || await jqkaPromise
-  if (quote && quote.ma5 == null) {
-    quote.ma5 = ma5FromCloses(await fetchTencentAShareKlines(ticker), quote.last)
+  const quote = await fetchAShareQuoteTencent(ticker)
+    || await fetch10jqkaQuote(to10jqkaAShareSymbol(ticker), 'v2')
+    || await fetchAShareQuoteEastmoney(ticker)
+
+  if (quote) {
+    setCached(`A:${ticker}`, quote)
+  }
+  return quote
+}
+
+async function fetchTencentQuotesBatch(
+  items: Array<{ market: 'A' | 'US', ticker: string }>,
+): Promise<Map<string, LiveQuote>> {
+  const map = new Map<string, LiveQuote>()
+  if (!items.length) {
+    return map
   }
 
-  setCached(`A:${ticker}`, quote)
-  return quote
+  const symbols = items.map(item =>
+    item.market === 'A' ? toTencentAShareSymbol(item.ticker) : `us${item.ticker.toUpperCase()}`,
+  )
+  const blocks = parseTencentQuoteBlocks(
+    await fetchText(`https://qt.gtimg.cn/q=${symbols.join(',')}`, 'https://finance.qq.com/', 8000),
+  )
+
+  for (const item of items) {
+    const symbol = item.market === 'A' ? toTencentAShareSymbol(item.ticker) : `us${item.ticker.toUpperCase()}`
+    const quote = quoteFromTencentFields(blocks.get(symbol.toLowerCase()), item.market)
+    if (quote) {
+      map.set(`${item.market}:${item.ticker}`, quote)
+    }
+  }
+  return map
 }
 
 async function fetchAShareQuoteEastmoney(ticker: string): Promise<LiveQuote | null> {
@@ -133,65 +186,32 @@ async function fetchAShareQuoteEastmoney(ticker: string): Promise<LiveQuote | nu
 
 async function fetchAShareQuoteTencent(ticker: string): Promise<LiveQuote | null> {
   const symbol = toTencentAShareSymbol(ticker)
-  const fields = parseTencentQuoteFields(
+  const fields = parseTencentQuoteBlocks(
     await fetchText(`https://qt.gtimg.cn/q=${encodeURIComponent(symbol)}`, 'https://finance.qq.com/'),
-  )
-  if (!fields) {
-    return null
-  }
-
-  const last = Number(fields[3])
-  const prevClose = Number(fields[4])
-  if (!Number.isFinite(last) || last <= 0) {
-    return null
-  }
-
-  const open = Number(fields[5])
-  const high = Number(fields[33])
-  const low = Number(fields[34])
-  const changePct = Number(fields[32])
-
-  return {
-    last,
-    prevClose: Number.isFinite(prevClose) ? prevClose : undefined,
-    changePct: Number.isFinite(changePct)
-      ? changePct
-      : (prevClose ? (last / prevClose - 1) * 100 : undefined),
-    high: Number.isFinite(high) ? high : undefined,
-    low: Number.isFinite(low) ? low : undefined,
-    open: Number.isFinite(open) ? open : undefined,
-    asOf: parseTencentAsOf(fields),
-    source: 'tencent',
-  }
+  ).get(symbol.toLowerCase())
+  return quoteFromTencentFields(fields, 'A')
 }
 
 async function fetchUsQuote(ticker: string): Promise<LiveQuote | null> {
   const cached = getCached(`US:${ticker}`)
-  if (cached !== undefined) {
+  if (cached) {
     return cached
   }
 
-  const jqkaPromise = fetch10jqkaQuote(to10jqkaUsSymbol(ticker), 'v6')
-  const tencent = await fetchUsQuoteTencent(ticker)
-  if (tencent) {
-    setCached(`US:${ticker}`, tencent)
-    return tencent
-  }
+  const quote = await fetchUsQuoteTencent(ticker)
+    || await fetch10jqkaQuote(to10jqkaUsSymbol(ticker), 'v6')
+    || await fetchUsQuoteEastmoney(ticker)
 
-  const jqka = await jqkaPromise
-  if (jqka) {
-    setCached(`US:${ticker}`, jqka)
-    return jqka
+  if (quote) {
+    setCached(`US:${ticker}`, quote)
   }
-
-  const eastmoney = await fetchUsQuoteEastmoney(ticker)
-  setCached(`US:${ticker}`, eastmoney)
-  return eastmoney
+  return quote
 }
 
 async function fetchUsQuoteEastmoney(ticker: string): Promise<LiveQuote | null> {
+  const secid = US_SECID_HINT[ticker] || `105.${ticker}`
   const payload = await fetchJson(
-    `https://push2.eastmoney.com/api/qt/stock/get?secid=105.${encodeURIComponent(ticker)}&fields=f43,f44,f45,f46,f57,f58,f60,f152,f169,f170`,
+    `https://push2.eastmoney.com/api/qt/stock/get?secid=${encodeURIComponent(secid)}&fields=f43,f44,f45,f46,f57,f58,f60,f152,f169,f170`,
     'https://quote.eastmoney.com/',
   )
   const data = payload && typeof payload === 'object' ? (payload as { data?: Record<string, number | string> }).data : null
@@ -217,26 +237,11 @@ async function fetchUsQuoteEastmoney(ticker: string): Promise<LiveQuote | null> 
 }
 
 async function fetchUsQuoteTencent(ticker: string): Promise<LiveQuote | null> {
-  const fields = parseTencentQuoteFields(
-    await fetchText(`https://qt.gtimg.cn/q=us${encodeURIComponent(ticker)}`, 'https://finance.qq.com/'),
-  )
-  if (!fields) {
-    return null
-  }
-
-  const last = Number(fields[3])
-  const prevClose = Number(fields[4])
-  if (!Number.isFinite(last) || last <= 0) {
-    return null
-  }
-
-  return {
-    last,
-    prevClose: Number.isFinite(prevClose) ? prevClose : undefined,
-    changePct: Number.isFinite(prevClose) && prevClose ? (last / prevClose - 1) * 100 : undefined,
-    asOf: parseTencentAsOf(fields),
-    source: 'tencent',
-  }
+  const symbol = `us${ticker.toUpperCase()}`
+  const fields = parseTencentQuoteBlocks(
+    await fetchText(`https://qt.gtimg.cn/q=${encodeURIComponent(symbol)}`, 'https://finance.qq.com/'),
+  ).get(symbol.toLowerCase())
+  return quoteFromTencentFields(fields, 'US')
 }
 
 async function fetch10jqkaQuote(symbol: string, version: 'v2' | 'v6'): Promise<LiveQuote | null> {
@@ -371,15 +376,51 @@ function ma5FromValues(closes: number[], fallbackLast: number): number | undefin
   return window.reduce((sum, value) => sum + value, 0) / window.length
 }
 
-function parseTencentQuoteFields(text: string | null): string[] | null {
+function parseTencentQuoteBlocks(text: string | null): Map<string, string[]> {
+  const map = new Map<string, string[]>()
   if (!text || !text.includes('~')) {
+    return map
+  }
+
+  const pattern = /v_([A-Za-z0-9.]+)="([^"]*)"/g
+  for (const match of text.matchAll(pattern)) {
+    const symbol = match[1]
+    const payload = match[2]
+    if (symbol && payload?.includes('~')) {
+      map.set(symbol.toLowerCase(), payload.split('~'))
+    }
+  }
+  return map
+}
+
+function quoteFromTencentFields(fields: string[] | undefined, market: 'A' | 'US'): LiveQuote | null {
+  if (!fields?.length) {
     return null
   }
-  const quoted = text.split('"')[1]
-  if (!quoted) {
+
+  const last = Number(fields[3])
+  const prevClose = Number(fields[4])
+  if (!Number.isFinite(last) || last <= 0) {
     return null
   }
-  return quoted.split('~')
+
+  const open = Number(fields[5])
+  const high = Number(fields[33])
+  const low = Number(fields[34])
+  const changePct = Number(fields[32])
+
+  return {
+    last,
+    prevClose: Number.isFinite(prevClose) ? prevClose : undefined,
+    changePct: market === 'A' && Number.isFinite(changePct)
+      ? changePct
+      : (prevClose ? (last / prevClose - 1) * 100 : undefined),
+    high: market === 'A' && Number.isFinite(high) ? high : undefined,
+    low: market === 'A' && Number.isFinite(low) ? low : undefined,
+    open: market === 'A' && Number.isFinite(open) ? open : undefined,
+    asOf: parseTencentAsOf(fields),
+    source: 'tencent',
+  }
 }
 
 function parseTencentAsOf(fields: string[]): string | undefined {
@@ -414,7 +455,7 @@ function normalizeUsLast(ticker: string, last: number): number {
   return last
 }
 
-function getCached(key: string): LiveQuote | null | undefined {
+function getCached(key: string): LiveQuote | undefined {
   const entry = quoteCache.get(key)
   if (!entry) {
     return undefined
@@ -426,59 +467,68 @@ function getCached(key: string): LiveQuote | null | undefined {
   return entry.value
 }
 
-function setCached(key: string, value: LiveQuote | null) {
+function setCached(key: string, value: LiveQuote) {
   quoteCache.set(key, { value, expiresAt: Date.now() + QUOTE_TTL_MS })
 }
 
 async function fetchAShareDailyCloses(ticker: string): Promise<DailyClose[]> {
-  const cached = getKlineCached(`A:${ticker}`)
+  return fetchKlinesCoalesced(`A:${ticker}`, async () => {
+    const tencent = await fetchTencentAShareKlines(ticker)
+    if (tencent.length) {
+      return tencent
+    }
+
+    const jqka = await fetch10jqkaKlines(to10jqkaAShareSymbol(ticker))
+    if (jqka.length) {
+      return jqka
+    }
+
+    return await fetchEastmoneyKlines(toEastmoneySecid(ticker))
+  })
+}
+
+async function fetchKlinesCoalesced(key: string, loader: () => Promise<DailyClose[]>): Promise<DailyClose[]> {
+  const cached = getKlineCached(key)
   if (cached) {
     return cached
   }
 
-  const tencent = await fetchTencentAShareKlines(ticker)
-  if (tencent.length) {
-    setKlineCached(`A:${ticker}`, tencent)
-    return tencent
+  const inflight = klineInflight.get(key)
+  if (inflight) {
+    return inflight
   }
 
-  const jqka = await fetch10jqkaKlines(to10jqkaAShareSymbol(ticker))
-  if (jqka.length) {
-    setKlineCached(`A:${ticker}`, jqka)
-    return jqka
-  }
-
-  const eastmoney = await fetchEastmoneyKlines(toEastmoneySecid(ticker))
-  setKlineCached(`A:${ticker}`, eastmoney)
-  return eastmoney
+  const promise = loader()
+    .then((series) => {
+      setKlineCached(key, series)
+      return series
+    })
+    .finally(() => {
+      klineInflight.delete(key)
+    })
+  klineInflight.set(key, promise)
+  return promise
 }
 
 async function fetchUsDailyCloses(ticker: string): Promise<DailyClose[]> {
-  const cached = getKlineCached(`US:${ticker}`)
-  if (cached) {
-    return cached
-  }
+  return fetchKlinesCoalesced(`US:${ticker}`, async () => {
+    const sina = await fetchSinaUsKlines(ticker)
+    if (sina.length) {
+      return sina
+    }
 
-  const sina = await fetchSinaUsKlines(ticker)
-  if (sina.length) {
-    setKlineCached(`US:${ticker}`, sina)
-    return sina
-  }
+    const jqka = await fetch10jqkaKlines(to10jqkaUsSymbol(ticker))
+    if (jqka.length) {
+      return jqka
+    }
 
-  const jqka = await fetch10jqkaKlines(to10jqkaUsSymbol(ticker))
-  if (jqka.length) {
-    setKlineCached(`US:${ticker}`, jqka)
-    return jqka
-  }
-
-  const hinted = US_SECID_HINT[ticker]
-  const eastmoney = hinted ? await fetchEastmoneyKlines(hinted) : []
-  const normalized = eastmoney.map(bar => ({
-    date: bar.date,
-    close: normalizeUsLast(ticker, bar.close),
-  }))
-  setKlineCached(`US:${ticker}`, normalized)
-  return normalized
+    const hinted = US_SECID_HINT[ticker]
+    const eastmoney = hinted ? await fetchEastmoneyKlines(hinted) : []
+    return eastmoney.map(bar => ({
+      date: bar.date,
+      close: normalizeUsLast(ticker, bar.close),
+    }))
+  })
 }
 
 async function fetchEastmoneyKlines(secid: string): Promise<DailyClose[]> {
@@ -661,14 +711,16 @@ async function fetchJson(url: string, referer: string, timeoutMs = 8000): Promis
 }
 
 async function fetchText(url: string, referer: string, timeoutMs = 8000): Promise<string | null> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
   try {
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 invest-nav',
+        'User-Agent': BROWSER_UA,
         Referer: referer,
         Accept: '*/*',
       },
-      signal: AbortSignal.timeout(timeoutMs),
+      signal: controller.signal,
     })
     if (!response.ok) {
       return null
@@ -677,5 +729,8 @@ async function fetchText(url: string, referer: string, timeoutMs = 8000): Promis
   }
   catch {
     return null
+  }
+  finally {
+    clearTimeout(timer)
   }
 }
