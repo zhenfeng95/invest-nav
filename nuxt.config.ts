@@ -48,7 +48,7 @@ export default defineNuxtConfig({
                 { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
                 {
                     rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+                    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap',
                 },
             ],
             meta: [{ name: 'theme-color', content: '#F7F7F5' }],
@@ -64,7 +64,7 @@ export default defineNuxtConfig({
         githubTradesPath: 'data/raw/trades',
         public: {
             siteUrl: 'http://localhost:3000',
-            siteName: '投资导航',
+            siteName: 'Zhen Invest',
         },
     },
 

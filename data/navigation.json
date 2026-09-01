@@ -318,6 +318,18 @@
                     "guideUrl": "/tutorials/esim-gg-account-guide",
                     "guideLabel": "购买安装教程",
                     "updatedAt": "2026-08-24"
+                },
+                {
+                    "id": "lebara",
+                    "name": "Lebara",
+                    "description": "英国预付费运营商，支持实体 SIM 与 eSIM，适合获取 +44 号码用于海外服务注册与通讯。",
+                    "url": "https://www.lebara.co.uk",
+                    "tags": ["英国", "eSIM"],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/lebara-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-01"
                 }
             ]
         },

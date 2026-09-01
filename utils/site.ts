@@ -1,7 +1,7 @@
-export const SITE_NAME = '投资导航'
-export const SITE_NAME_EN = 'Investment Navigation'
-export const SITE_TAGLINE = '美股、加密货币、跨境出海一站式投资导航'
-export const SITE_DESCRIPTION = '提供美股、加密货币、基金、ETF、香港银行、美股券商、投资工具和投资教程的一站式导航。'
+export const SITE_NAME = 'Zhen Invest'
+export const SITE_NAME_EN = 'Zhen Invest'
+export const SITE_TAGLINE = '跨境投资入口 · 港美股 / 加密 / 开户教程'
+export const SITE_DESCRIPTION = '内地用户的港美股与跨境投资入口，涵盖开户教程、加密货币与跨境资源整理，让跨境投资更简单。'
 export const SITE_DISCLAIMER = '本站内容仅用于信息整理与学习交流，不构成投资建议。'
 
 export interface NavLink {
@@ -35,6 +35,6 @@ export const footerCategoryLinks: NavLink[] = [
 ]
 
 export const homeSeo = {
-  title: '投资导航｜美股、加密货币、跨境出海一站式导航',
+  title: 'Zhen Invest｜内地用户的港美股与跨境投资入口，让跨境投资更简单',
   description: SITE_DESCRIPTION,
 }

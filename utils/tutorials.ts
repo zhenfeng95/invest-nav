@@ -5,6 +5,7 @@ import { usmartSgAccountGuide } from '~/data/tutorials/usmart-sg-account-guide'
 import { ccbAsiaAccountGuide } from '~/data/tutorials/ccb-asia-account-guide'
 import { zaBankAccountGuide } from '~/data/tutorials/za-bank-account-guide'
 import { esimGgAccountGuide } from '~/data/tutorials/esim-gg-account-guide'
+import { lebaraAccountGuide } from '~/data/tutorials/lebara-account-guide'
 import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
@@ -15,6 +16,7 @@ const markdownFiles: Record<string, string> = {
   'ccb-asia-account-guide': ccbAsiaAccountGuide,
   'za-bank-account-guide': zaBankAccountGuide,
   'esim-gg-account-guide': esimGgAccountGuide,
+  'lebara-account-guide': lebaraAccountGuide,
   'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
 }
 

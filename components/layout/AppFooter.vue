@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { footerAboutLinks, footerCategoryLinks, SITE_DISCLAIMER, SITE_NAME, SITE_NAME_EN } from '~/utils/site'
+import { footerAboutLinks, footerCategoryLinks, SITE_DISCLAIMER, SITE_NAME, SITE_NAME_EN, SITE_TAGLINE } from '~/utils/site'
 </script>
 
 <template>
@@ -14,7 +14,7 @@ import { footerAboutLinks, footerCategoryLinks, SITE_DISCLAIMER, SITE_NAME, SITE
             <span class="text-sm font-semibold tracking-tight">{{ SITE_NAME }}</span>
           </NuxtLink>
           <p class="mt-4 max-w-sm text-sm leading-6 text-zinc-500 dark:text-zinc-400">
-            美股、加密货币、跨境出海一站式投资导航。帮助你更快找到教程、工具、券商、银行与资金流转资源。
+            {{ SITE_TAGLINE }}。帮助你更快找到教程、工具、券商、银行与资金流转资源。
           </p>
         </div>
 

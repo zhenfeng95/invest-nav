@@ -29,6 +29,20 @@
       "markdownFile": "esim-gg-account-guide"
     },
     {
+      "id": "lebara-account",
+      "slug": "lebara-account-guide",
+      "title": "Lebara 英国预付费 eSIM 购买与安装教程",
+      "description": "整理通过 Lebara UK 选购套餐、选择 eSIM、扫码写入手机并激活 +44 号码的常见步骤，供对照官方页面。",
+      "type": "article",
+      "category": "境外手机卡",
+      "tags": ["eSIM", "境外手机卡", "英国", "Lebara"],
+      "readingMinutes": 10,
+      "updatedAt": "2026-09-01",
+      "publishedAt": "2026-09-01",
+      "popular": true,
+      "markdownFile": "lebara-account-guide"
+    },
+    {
       "id": "ccb-asia-account",
       "slug": "ccb-asia-account-guide",
       "title": "中国内地用户建银亚洲开户教程",
