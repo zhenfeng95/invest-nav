@@ -1,21 +1,34 @@
 <script setup lang="ts">
 import type { ReportListItem } from '~/types/report'
-import { formatYearMonth } from '~/utils/format'
+import { formatWeekOfMonth, formatYearMonth } from '~/utils/format'
 
-defineProps<{
+const props = withDefaults(defineProps<{
   review: ReportListItem
-}>()
+  basePath?: string
+  kind?: 'monthly' | 'weekly'
+}>(), {
+  basePath: '/reviews/monthly',
+  kind: 'monthly',
+})
+
+const periodLabel = computed(() => {
+  if (!props.review.date) {
+    return props.kind === 'weekly' ? '每周复盘' : '每月复盘'
+  }
+  return props.kind === 'weekly'
+    ? formatWeekOfMonth(props.review.date)
+    : formatYearMonth(props.review.date)
+})
 </script>
 
 <template>
   <NuxtLink
-    :to="`/reviews/${review.slug}`"
+    :to="`${basePath}/${review.slug}`"
     class="card card-hover flex items-start justify-between gap-4 p-5"
   >
     <div class="min-w-0">
       <div class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
-        <span v-if="review.date">{{ formatYearMonth(review.date) }}</span>
-        <span v-else>月度复盘</span>
+        <span>{{ periodLabel }}</span>
       </div>
       <h3 class="mt-2 text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
         {{ review.title }}

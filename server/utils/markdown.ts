@@ -98,7 +98,8 @@ function rewriteHref(href: string, ctx: MarkdownContext): string {
 function sitePathForMarkdown(resolved: string, config: GitHubReportsConfig): string | null {
   const mappings: Array<{ base: string, route: string }> = [
     { base: config.path, route: '/reports' },
-    { base: config.reviewsPath, route: '/reviews' },
+    { base: config.reviewsPath, route: '/reviews/monthly' },
+    { base: config.weeklyReviewsPath, route: '/reviews/weekly' },
   ]
 
   for (const { base, route } of mappings) {

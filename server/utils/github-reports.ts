@@ -14,11 +14,15 @@ const SKIP_NAMES = new Set([
   'code_of_conduct.md',
 ])
 
+export type ReviewKind = 'monthly' | 'weekly'
+export type DocKind = 'daily' | ReviewKind
+
 export interface GitHubReportsConfig {
   owner: string
   repo: string
   path: string
   reviewsPath: string
+  weeklyReviewsPath: string
   tradesPath: string
   ref: string
   token: string
@@ -79,7 +83,13 @@ export function getGitHubReportsConfig(event: H3Event): GitHubReportsConfig | nu
     owner,
     repo,
     path: readEnv(runtime.githubReportsPath, env.NUXT_GITHUB_REPORTS_PATH).replace(/^\/+|\/+$/g, ''),
-    reviewsPath: readEnv(runtime.githubReviewsPath, env.NUXT_GITHUB_REVIEWS_PATH).replace(/^\/+|\/+$/g, '') || 'output/reviews',
+    reviewsPath: readEnv(
+      runtime.githubMonthlyReviewsPath,
+      env.NUXT_GITHUB_MONTHLY_REVIEWS_PATH,
+      runtime.githubReviewsPath,
+      env.NUXT_GITHUB_REVIEWS_PATH,
+    ).replace(/^\/+|\/+$/g, '') || 'output/reviews/monthly',
+    weeklyReviewsPath: readEnv(runtime.githubWeeklyReviewsPath, env.NUXT_GITHUB_WEEKLY_REVIEWS_PATH).replace(/^\/+|\/+$/g, '') || 'output/reviews/weekly',
     tradesPath: readEnv(runtime.githubTradesPath, env.NUXT_GITHUB_TRADES_PATH).replace(/^\/+|\/+$/g, '') || 'data/raw/trades',
     ref: readEnv(runtime.githubReportsRef, env.NUXT_GITHUB_REPORTS_REF) || 'main',
     token: readEnv(runtime.githubToken, env.NUXT_GITHUB_TOKEN),
@@ -112,10 +122,14 @@ export async function listReviews(config: GitHubReportsConfig): Promise<ReportLi
   return listMarkdownDocs(config, config.reviewsPath, 'monthly')
 }
 
+export async function listWeeklyReviews(config: GitHubReportsConfig): Promise<ReportListItem[]> {
+  return listMarkdownDocs(config, config.weeklyReviewsPath, 'weekly')
+}
+
 async function listMarkdownDocs(
   config: GitHubReportsConfig,
   basePath: string,
-  kind: 'daily' | 'monthly',
+  kind: DocKind,
 ): Promise<ReportListItem[]> {
   const cacheKey = `list:${kind}:${config.owner}/${config.repo}/${config.ref}/${basePath}`
   const cached = getCached<ReportListItem[]>(cacheKey)
@@ -229,11 +243,15 @@ export async function getReview(config: GitHubReportsConfig, slug: string): Prom
   return getMarkdownDoc(config, config.reviewsPath, slug, 'monthly')
 }
 
+export async function getWeeklyReview(config: GitHubReportsConfig, slug: string): Promise<ReportDetail | null> {
+  return getMarkdownDoc(config, config.weeklyReviewsPath, slug, 'weekly')
+}
+
 async function getMarkdownDoc(
   config: GitHubReportsConfig,
   basePath: string,
   slug: string,
-  kind: 'daily' | 'monthly',
+  kind: DocKind,
 ): Promise<ReportDetail | null> {
   const relativePath = resolveSlugPath(slug)
   if (!relativePath) {
@@ -321,8 +339,22 @@ function resolveSlugPath(slug: string): string | null {
   return `${parts.join('/')}.md`
 }
 
-function titleFromName(name: string, date: string | null, kind: 'daily' | 'monthly' = 'daily'): string {
+function titleFromName(name: string, date: string | null, kind: DocKind = 'daily'): string {
   const base = name.replace(/\.md$/i, '')
+  const weekly = base.match(/^(?:weekly[-_])?(\d{4})-(\d{2})-(\d)W$/i)
+  if (kind === 'weekly' || weekly) {
+    if (weekly) {
+      return `${weekly[1]}年${Number(weekly[2])}月第${weekly[3]}周复盘`
+    }
+    if (date) {
+      const parts = date.match(/^(\d{4})-(\d{2})-(\d{2})/)
+      if (parts) {
+        const week = Math.min(5, Math.ceil(Number(parts[3]) / 7))
+        return `${parts[1]}年${Number(parts[2])}月第${week}周复盘`
+      }
+    }
+  }
+
   const monthly = base.match(/^(?:monthly[-_])?(\d{4})-(\d{2})$/i)
   if (kind === 'monthly' || monthly) {
     if (monthly) {
@@ -360,6 +392,11 @@ function chineseDate(value: string): string {
 }
 
 function extractDate(value: string): string | null {
+  const weekly = value.match(/(?:weekly[-_])?(\d{4})-(\d{2})-(\d)W/i)
+  if (weekly) {
+    const day = Math.min(28, (Number(weekly[3]) - 1) * 7 + 1)
+    return `${weekly[1]}-${weekly[2]}-${String(day).padStart(2, '0')}`
+  }
   const day = value.match(/(\d{4}-\d{2}-\d{2})/)
   if (day) {
     return normalizeDate(day[1])

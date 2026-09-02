@@ -29,6 +29,7 @@ type IconName =
   | 'deposit'
   | 'sim'
   | 'report'
+  | 'chevron-down'
 
 defineProps<{
   name: IconName
@@ -156,6 +157,9 @@ defineProps<{
       <path d="M7 4.5h7.5L19 9v10.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" />
       <path d="M14.5 4.5V9H19" />
       <path d="M9 13h6M9 16.5h4" />
+    </g>
+    <g v-else-if="name === 'chevron-down'">
+      <path d="m6 9 6 6 6-6" />
     </g>
   </svg>
 </template>

@@ -33,6 +33,15 @@ export function formatYearMonth(value: string): string {
   return `${match[1]}年${Number(match[2])}月`
 }
 
+export function formatWeekOfMonth(value: string): string {
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})/)
+  if (!match) {
+    return formatYearMonth(value)
+  }
+  const week = Math.min(5, Math.max(1, Math.ceil(Number(match[3]) / 7)))
+  return `${match[1]}年${Number(match[2])}月第${week}周`
+}
+
 export function currentYearMonth(now = new Date()): string {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai',

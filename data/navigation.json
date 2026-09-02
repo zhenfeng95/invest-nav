@@ -362,6 +362,18 @@
                     "updatedAt": "2026-08-21"
                 },
                 {
+                    "id": "bosco",
+                    "name": "宝时证券",
+                    "description": "香港证监会持牌券商（原凯敏证券），覆盖港股、美股、ETF 与港股打新等。中国内地用户可查看开户教程。",
+                    "url": "https://www.bsl.hk",
+                    "tags": ["美股", "券商", "港股"],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/bosco-china-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-02"
+                },
+                {
                     "id": "schwab",
                     "name": "Charles Schwab",
                     "description": "美国综合型券商。中国内地用户可查看嘉信国际开户教程。",

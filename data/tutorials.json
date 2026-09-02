@@ -85,6 +85,20 @@
       "markdownFile": "usmart-sg-account-guide"
     },
     {
+      "id": "bosco-china-account",
+      "slug": "bosco-china-account-guide",
+      "title": "中国内地用户宝时证券开户教程",
+      "description": "整理宝时证券（Bosco）线上开户材料、见证流程、App 下载与入金注意点，供中国内地用户对照官方页面。",
+      "type": "article",
+      "category": "美股券商",
+      "tags": ["美股", "券商", "开户", "港股", "宝时"],
+      "readingMinutes": 12,
+      "updatedAt": "2026-09-02",
+      "publishedAt": "2026-09-02",
+      "popular": true,
+      "markdownFile": "bosco-china-account-guide"
+    },
+    {
       "id": "firstrade-china-account",
       "slug": "firstrade-china-account-guide",
       "title": "中国内地用户第一证券（Firstrade）开户教程",

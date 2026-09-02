@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import type { NavItem } from '~/utils/site'
 import { mainNav, SITE_NAME } from '~/utils/site'
 
 const route = useRoute()
 const mobileOpen = ref(false)
+const mobileExpanded = ref<string | null>(null)
 
 function closeMobile() {
   mobileOpen.value = false
+  mobileExpanded.value = null
 }
 
 function isActive(path: string) {
@@ -13,6 +16,17 @@ function isActive(path: string) {
     return route.path === '/'
   }
   return route.path === path || route.path.startsWith(`${path}/`)
+}
+
+function isNavItemActive(item: NavItem) {
+  if (item.to) {
+    return isActive(item.to)
+  }
+  return item.children?.some(child => isActive(child.to)) ?? false
+}
+
+function toggleMobileSection(label: string) {
+  mobileExpanded.value = mobileExpanded.value === label ? null : label
 }
 
 watch(mobileOpen, (value) => {
@@ -43,17 +57,51 @@ onBeforeUnmount(() => {
         </NuxtLink>
 
         <nav class="hidden items-center gap-1 md:flex" aria-label="主导航">
-          <NuxtLink
-            v-for="item in mainNav"
-            :key="item.to"
-            :to="item.to"
-            class="rounded-full px-3 py-1.5 text-sm transition"
-            :class="isActive(item.to)
-              ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
-              : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'"
-          >
-            {{ item.label }}
-          </NuxtLink>
+          <template v-for="item in mainNav" :key="item.label">
+            <div
+              v-if="item.children"
+              class="group relative"
+            >
+              <button
+                type="button"
+                class="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm transition"
+                :class="isNavItemActive(item)
+                  ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                  : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'"
+                :aria-expanded="isNavItemActive(item)"
+              >
+                {{ item.label }}
+                <AppIcon name="chevron-down" class="h-3.5 w-3.5 opacity-60 transition group-hover:rotate-180" />
+              </button>
+              <div
+                class="pointer-events-none invisible absolute left-0 top-full z-50 pt-1 opacity-0 transition group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100"
+              >
+                <div class="min-w-[8.5rem] rounded-xl border border-zinc-200 bg-white p-1 shadow-lg dark:border-white/10 dark:bg-[#111318]">
+                  <NuxtLink
+                    v-for="child in item.children"
+                    :key="child.to"
+                    :to="child.to"
+                    class="block rounded-lg px-3 py-2 text-sm transition"
+                    :class="isActive(child.to)
+                      ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                      : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-white/5 dark:hover:text-white'"
+                  >
+                    {{ child.label }}
+                  </NuxtLink>
+                </div>
+              </div>
+            </div>
+            <NuxtLink
+              v-else
+              :to="item.to!"
+              class="rounded-full px-3 py-1.5 text-sm transition"
+              :class="isActive(item.to!)
+                ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'"
+            >
+              {{ item.label }}
+            </NuxtLink>
+          </template>
         </nav>
 
         <div class="flex items-center gap-2">
@@ -101,17 +149,52 @@ onBeforeUnmount(() => {
             </button>
           </div>
           <nav class="mt-6 flex flex-col gap-1" aria-label="移动端导航">
-            <NuxtLink
-              v-for="item in mainNav"
-              :key="item.to"
-              :to="item.to"
-              class="rounded-xl px-3 py-3 text-base transition"
-              :class="isActive(item.to)
-                ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
-                : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/5'"
-            >
-              {{ item.label }}
-            </NuxtLink>
+            <template v-for="item in mainNav" :key="item.label">
+              <div v-if="item.children">
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between rounded-xl px-3 py-3 text-base transition"
+                  :class="isNavItemActive(item)
+                    ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                    : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/5'"
+                  :aria-expanded="mobileExpanded === item.label"
+                  @click="toggleMobileSection(item.label)"
+                >
+                  {{ item.label }}
+                  <AppIcon
+                    name="chevron-down"
+                    class="h-4 w-4 opacity-60 transition"
+                    :class="mobileExpanded === item.label ? 'rotate-180' : ''"
+                  />
+                </button>
+                <div
+                  v-show="mobileExpanded === item.label"
+                  class="mt-1 flex flex-col gap-1 pl-3"
+                >
+                  <NuxtLink
+                    v-for="child in item.children"
+                    :key="child.to"
+                    :to="child.to"
+                    class="rounded-xl px-3 py-2.5 text-sm transition"
+                    :class="isActive(child.to)
+                      ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                      : 'text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-white/5'"
+                  >
+                    {{ child.label }}
+                  </NuxtLink>
+                </div>
+              </div>
+              <NuxtLink
+                v-else
+                :to="item.to!"
+                class="rounded-xl px-3 py-3 text-base transition"
+                :class="isActive(item.to!)
+                  ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                  : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-white/5'"
+              >
+                {{ item.label }}
+              </NuxtLink>
+            </template>
           </nav>
         </div>
       </div>

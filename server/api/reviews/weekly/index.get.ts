@@ -1,9 +1,9 @@
-import { getGitHubReportsConfig, GitHubReportsError, listReviews } from '../../utils/github-reports'
+import { getGitHubReportsConfig, GitHubReportsError, listWeeklyReviews } from '../../../utils/github-reports'
 
 export default defineEventHandler(async (event) => {
   const config = getGitHubReportsConfig(event)
   if (!config) {
-    console.warn('[reviews] GitHub reports are not configured. Set NUXT_GITHUB_REPORTS_OWNER and NUXT_GITHUB_REPORTS_REPO.')
+    console.warn('[reviews/weekly] GitHub reports are not configured. Set NUXT_GITHUB_REPORTS_OWNER and NUXT_GITHUB_REPORTS_REPO.')
     return {
       configured: false,
       source: null,
@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const items = await listReviews(config)
+    const items = await listWeeklyReviews(config)
     setHeader(
       event,
       'Cache-Control',
@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
     }
     throw createError({
       statusCode: 502,
-      statusMessage: '读取月度复盘失败。',
+      statusMessage: '读取每周复盘失败。',
     })
   }
 })

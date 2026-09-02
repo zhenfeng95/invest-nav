@@ -23,7 +23,7 @@ const thisMonth = currentYearMonth()
 
 function reviewTo(month: string): string | null {
   const slug = props.reviewSlugs[month]
-  return slug ? `/reviews/${slug}` : null
+  return slug ? `/reviews/monthly/${slug}` : null
 }
 
 const rows = computed(() => {

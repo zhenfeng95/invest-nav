@@ -183,11 +183,26 @@ NUXT_GITHUB_TOKEN=github_pat_xxx
 
 `NUXT_GITHUB_REPORTS_PATH` 是日报 md 所在目录。文件名建议包含日期，例如 `2026-08-17.md`。私有仓库必须提供 Token；公开仓库也建议配置，以避免 GitHub API 限额。生产环境请用 Wrangler secret 注入 `NUXT_GITHUB_TOKEN`，不要提交到 Git。
 
+## 月度 / 每周复盘
+
+复盘同样从 Agent 仓库读取，路径分开配置：
+
+```bash
+NUXT_GITHUB_MONTHLY_REVIEWS_PATH=output/reviews/monthly
+NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
+```
+
+- 每月复盘：`/reviews/monthly`，文件示例 `monthly-2026-08.md`
+- 每周复盘：`/reviews/weekly`，文件示例 `weekly-2026-09-1W.md`
+
 ## 主要路由
 
 - `/`
 - `/reports`
 - `/reports/:date`
+- `/reviews/monthly`
+- `/reviews/weekly`
+- `/portfolio`
 - `/tutorials`
 - `/tutorials/articles`
 - `/tutorials/videos`

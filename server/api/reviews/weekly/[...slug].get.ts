@@ -1,13 +1,13 @@
 import type { H3Event } from 'h3'
 import { isError } from 'h3'
-import { getGitHubReportsConfig, getReview, GitHubReportsError } from '../../utils/github-reports'
+import { getGitHubReportsConfig, getWeeklyReview, GitHubReportsError } from '../../../utils/github-reports'
 
 export default defineEventHandler(async (event) => {
   const config = getGitHubReportsConfig(event)
   if (!config) {
     throw createError({
       statusCode: 503,
-      statusMessage: '月度复盘尚未配置。',
+      statusMessage: '每周复盘尚未配置。',
     })
   }
 
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const review = await getReview(config, slug)
+    const review = await getWeeklyReview(config, slug)
     if (!review) {
       throw createError({
         statusCode: 404,
@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
     }
     throw createError({
       statusCode: 502,
-      statusMessage: '读取月度复盘失败。',
+      statusMessage: '读取每周复盘失败。',
     })
   }
 })

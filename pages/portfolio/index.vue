@@ -15,8 +15,8 @@ const { data, error, pending, status } = await useAsyncData(
 )
 
 const { data: reviewsData } = await useAsyncData(
-  'reviews',
-  () => $fetch<ReportListResponse>('/api/reviews'),
+  'reviews-monthly',
+  () => $fetch<ReportListResponse>('/api/reviews/monthly'),
   {
     lazy: import.meta.client,
     getCachedData: key => nuxtApp.payload.data[key],
@@ -175,10 +175,10 @@ function accountTabLabel(book: MarketBook) {
             <h3 class="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">A股按月已实现</h3>
             <NuxtLink
               v-if="Object.keys(reviewSlugs).length"
-              to="/reviews"
+              to="/reviews/monthly"
               class="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
             >
-              月度复盘
+              每月复盘
             </NuxtLink>
           </div>
           <PortfolioMonthlyPnl
