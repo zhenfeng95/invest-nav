@@ -45,7 +45,7 @@
     {
       "id": "ccb-asia-account",
       "slug": "ccb-asia-account-guide",
-      "title": "中国内地用户建银亚洲开户教程",
+      "title": "建银亚洲开户教程",
       "description": "整理赴港后通过建银亚洲 App 线上开户的条件、NFC 识证、出入境记录与审核注意点，供对照官方页面。",
       "type": "article",
       "category": "香港银行",
@@ -59,7 +59,7 @@
     {
       "id": "za-bank-account",
       "slug": "za-bank-account-guide",
-      "title": "中国内地用户众安银行（ZA Bank）开户教程",
+      "title": "众安银行（ZA Bank）开户教程",
       "description": "整理赴港后申请 ZA Bank 的准备工作、App 开户步骤与审核等待说明，供对照官方页面。",
       "type": "article",
       "category": "香港银行",
@@ -73,7 +73,7 @@
     {
       "id": "usmart-sg-account",
       "slug": "usmart-sg-account-guide",
-      "title": "中国内地用户盈立证券（新加坡）开户教程",
+      "title": "盈立证券（新加坡）开户教程",
       "description": "整理盈立新加坡开户步骤、账户类型、出入金路径与资产托管说明，供对照官方页面。",
       "type": "article",
       "category": "美股券商",
@@ -85,10 +85,10 @@
       "markdownFile": "usmart-sg-account-guide"
     },
     {
-      "id": "bosco-china-account",
-      "slug": "bosco-china-account-guide",
-      "title": "中国内地用户宝时证券开户教程",
-      "description": "整理宝时证券（Bosco）线上开户材料、见证流程、App 下载与入金注意点，供中国内地用户对照官方页面。",
+      "id": "bosco-account",
+      "slug": "bosco-account-guide",
+      "title": "宝时证券开户教程",
+      "description": "整理宝时证券（Bosco）线上开户材料、见证流程、App 下载与入金注意点，供对照官方页面。",
       "type": "article",
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "港股", "宝时"],
@@ -96,13 +96,13 @@
       "updatedAt": "2026-09-02",
       "publishedAt": "2026-09-02",
       "popular": true,
-      "markdownFile": "bosco-china-account-guide"
+      "markdownFile": "bosco-account-guide"
     },
     {
-      "id": "firstrade-china-account",
-      "slug": "firstrade-china-account-guide",
-      "title": "中国内地用户第一证券（Firstrade）开户教程",
-      "description": "整理 Firstrade 开户材料、线上申请步骤、汇款补贴与审核注意点，供中国内地用户对照官方页面。",
+      "id": "firstrade-account",
+      "slug": "firstrade-account-guide",
+      "title": "第一证券（Firstrade）开户教程",
+      "description": "整理 Firstrade 开户材料、线上申请步骤、汇款补贴与审核注意点，供对照官方页面。",
       "type": "article",
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "Firstrade"],
@@ -110,13 +110,13 @@
       "updatedAt": "2026-08-20",
       "publishedAt": "2026-08-20",
       "popular": true,
-      "markdownFile": "firstrade-china-account-guide"
+      "markdownFile": "firstrade-account-guide"
     },
     {
-      "id": "schwab-china-account",
-      "slug": "schwab-china-account-guide",
-      "title": "中国内地用户嘉信证券（Schwab）开户教程",
-      "description": "整理嘉信国际开户材料、线上申请步骤、W-8BEN 与审核邮件节点，供中国内地用户对照官方页面。",
+      "id": "schwab-account",
+      "slug": "schwab-account-guide",
+      "title": "嘉信证券（Schwab）开户教程",
+      "description": "整理嘉信国际开户材料、线上申请步骤、W-8BEN 与审核邮件节点，供对照官方页面。",
       "type": "article",
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "嘉信"],
@@ -124,7 +124,7 @@
       "updatedAt": "2026-08-20",
       "publishedAt": "2026-08-20",
       "popular": true,
-      "markdownFile": "schwab-china-account-guide"
+      "markdownFile": "schwab-account-guide"
     },
     {
       "id": "choose-us-broker",

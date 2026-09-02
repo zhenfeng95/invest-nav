@@ -258,7 +258,7 @@
                 {
                     "id": "ccb-asia",
                     "name": "建银（亚洲）",
-                    "description": "中国建设银行（亚洲）。中国内地用户可查看建银亚洲开户教程。",
+                    "description": "中国建设银行（亚洲）。可查看建银亚洲开户教程。",
                     "url": "https://www.asia.ccb.com/hongkong_sc/personal/index.html",
                     "tags": ["港卡", "银行"],
                     "officialUrlConfirmed": true,
@@ -269,7 +269,7 @@
                 {
                     "id": "za-bank",
                     "name": "ZA Bank",
-                    "description": "香港持牌虚拟银行。中国内地用户可查看众安开户教程。",
+                    "description": "香港持牌虚拟银行。可查看众安开户教程。",
                     "url": "https://bank.za.group",
                     "tags": ["港卡", "虚拟银行"],
                     "officialUrlConfirmed": true,
@@ -343,7 +343,7 @@
                 {
                     "id": "usmart-sg",
                     "name": "盈立证券（新加坡）",
-                    "description": "新加坡金管局监管券商。中国内地用户可查看盈立新加坡开户教程。",
+                    "description": "新加坡金管局监管券商。可查看盈立新加坡开户教程。",
                     "url": "https://www.usmart.sg/cn",
                     "tags": ["美股", "券商"],
                     "officialUrlConfirmed": true,
@@ -364,34 +364,34 @@
                 {
                     "id": "bosco",
                     "name": "宝时证券",
-                    "description": "香港证监会持牌券商（原凯敏证券），覆盖港股、美股、ETF 与港股打新等。中国内地用户可查看开户教程。",
+                    "description": "香港证监会持牌券商（原凯敏证券），覆盖港股、美股、ETF 与港股打新等。可查看开户教程。",
                     "url": "https://www.bsl.hk",
                     "tags": ["美股", "券商", "港股"],
                     "officialUrlConfirmed": true,
                     "featured": true,
-                    "guideUrl": "/tutorials/bosco-china-account-guide",
+                    "guideUrl": "/tutorials/bosco-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-09-02"
                 },
                 {
                     "id": "schwab",
                     "name": "Charles Schwab",
-                    "description": "美国综合型券商。中国内地用户可查看嘉信国际开户教程。",
+                    "description": "美国综合型券商。可查看嘉信国际开户教程。",
                     "url": "https://international.schwab.com",
                     "tags": ["美股", "券商"],
                     "officialUrlConfirmed": true,
-                    "guideUrl": "/tutorials/schwab-china-account-guide",
+                    "guideUrl": "/tutorials/schwab-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-08-20"
                 },
                 {
                     "id": "firstrade",
                     "name": "Firstrade",
-                    "description": "面向个人投资者的美国互联网券商。中国内地用户可查看第一证券开户教程。",
+                    "description": "面向个人投资者的美国互联网券商。可查看第一证券开户教程。",
                     "url": "https://www.firstrade.com/zh-CN",
                     "tags": ["美股", "券商"],
                     "officialUrlConfirmed": true,
-                    "guideUrl": "/tutorials/firstrade-china-account-guide",
+                    "guideUrl": "/tutorials/firstrade-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-08-20"
                 }

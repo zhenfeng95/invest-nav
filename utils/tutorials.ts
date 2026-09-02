@@ -1,8 +1,8 @@
 import tutorialsData from '~/data/tutorials.json'
-import { firstradeChinaAccountGuide } from '~/data/tutorials/firstrade-china-account-guide'
-import { schwabChinaAccountGuide } from '~/data/tutorials/schwab-china-account-guide'
+import { firstradeAccountGuide } from '~/data/tutorials/firstrade-account-guide'
+import { schwabAccountGuide } from '~/data/tutorials/schwab-account-guide'
 import { usmartSgAccountGuide } from '~/data/tutorials/usmart-sg-account-guide'
-import { boscoChinaAccountGuide } from '~/data/tutorials/bosco-china-account-guide'
+import { boscoAccountGuide } from '~/data/tutorials/bosco-account-guide'
 import { ccbAsiaAccountGuide } from '~/data/tutorials/ccb-asia-account-guide'
 import { zaBankAccountGuide } from '~/data/tutorials/za-bank-account-guide'
 import { esimGgAccountGuide } from '~/data/tutorials/esim-gg-account-guide'
@@ -11,10 +11,10 @@ import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
 const markdownFiles: Record<string, string> = {
-  'firstrade-china-account-guide': firstradeChinaAccountGuide,
-  'schwab-china-account-guide': schwabChinaAccountGuide,
+  'firstrade-account-guide': firstradeAccountGuide,
+  'schwab-account-guide': schwabAccountGuide,
   'usmart-sg-account-guide': usmartSgAccountGuide,
-  'bosco-china-account-guide': boscoChinaAccountGuide,
+  'bosco-account-guide': boscoAccountGuide,
   'ccb-asia-account-guide': ccbAsiaAccountGuide,
   'za-bank-account-guide': zaBankAccountGuide,
   'esim-gg-account-guide': esimGgAccountGuide,

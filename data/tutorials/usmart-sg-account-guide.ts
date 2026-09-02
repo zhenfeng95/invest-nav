@@ -1,4 +1,4 @@
-export const usmartSgAccountGuide = `本页整理中国内地用户通过 **uSMART 盈立证券（新加坡）** 线上开户的常见流程、入金出金路径和产品范围，仅供信息对照。开户政策、费率、奖励和页面文案会变化，请以 [盈立新加坡官网](https://www.usmart.sg/cn) 与 App 当时显示为准。本页不构成开户、税务或投资建议。
+export const usmartSgAccountGuide = `本页整理通过 **uSMART 盈立证券（新加坡）** 线上开户的常见流程、入金出金路径和产品范围，仅供信息对照。开户政策、费率、奖励和页面文案会变化，请以 [盈立新加坡官网](https://www.usmart.sg/cn) 与 App 当时显示为准。本页不构成开户、税务或投资建议。
 
 uSMART 集团是一家金融服务和科技公司，旗下有两家证券公司：uSMART 香港（盈立香港）和 uSMART 新加坡（盈立新加坡）。
 

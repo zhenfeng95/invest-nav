@@ -1,4 +1,4 @@
-export const schwabChinaAccountGuide = `本页整理中国内地用户通过 **Charles Schwab International（嘉信国际）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [嘉信国际开户页](https://international.schwab.com/) 当时显示为准。本页不构成开户、税务或投资建议。
+export const schwabAccountGuide = `本页整理通过 **Charles Schwab International（嘉信国际）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [嘉信国际开户页](https://international.schwab.com/) 当时显示为准。本页不构成开户、税务或投资建议。
 
 ## 一、准备材料
 

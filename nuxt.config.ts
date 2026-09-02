@@ -4,9 +4,21 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
 
     // Vite 冷启动会在 Nitro 写出 manifest 之前扫描 #app-manifest，导致 pre-transform 报错。
-    // 本站未使用 routeRules / 客户端 payload，关闭即可。
+    // 本站未使用客户端 payload，关闭即可。
     experimental: {
         appManifest: false,
+    },
+
+    routeRules: {
+        '/tutorials/bosco-china-account-guide': {
+            redirect: { to: '/tutorials/bosco-account-guide', statusCode: 301 },
+        },
+        '/tutorials/firstrade-china-account-guide': {
+            redirect: { to: '/tutorials/firstrade-account-guide', statusCode: 301 },
+        },
+        '/tutorials/schwab-china-account-guide': {
+            redirect: { to: '/tutorials/schwab-account-guide', statusCode: 301 },
+        },
     },
 
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],

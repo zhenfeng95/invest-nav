@@ -1,6 +1,6 @@
-export const firstradeChinaAccountGuide = `本页整理中国内地用户通过 **Firstrade（第一证券）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [Firstrade 中文开户页](https://www.firstrade.com/zh-CN) 当时显示为准。本页不构成开户、税务或投资建议。
+export const firstradeAccountGuide = `本页整理通过 **Firstrade（第一证券）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [Firstrade 中文开户页](https://www.firstrade.com/zh-CN) 当时显示为准。本页不构成开户、税务或投资建议。
 
-中国内地用户只要持有护照，就可以申请 Firstrade 账户，通常无需存量证明及海外工作、生活证明。
+只要持有护照，就可以申请 Firstrade 账户，通常无需存量证明及海外工作、生活证明。
 
 ## 一、优缺点
 

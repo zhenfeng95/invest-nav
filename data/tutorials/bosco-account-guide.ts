@@ -1,4 +1,4 @@
-export const boscoChinaAccountGuide = `本页整理中国内地用户通过 **宝时证券（Bosco Securities Limited）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求、费率、活动和页面文案会变化，请以 [宝时证券官网](https://www.bsl.hk) 与 App 当时显示为准。本页不构成开户、税务或投资建议。
+export const boscoAccountGuide = `本页整理通过 **宝时证券（Bosco Securities Limited）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求、费率、活动和页面文案会变化，请以 [宝时证券官网](https://www.bsl.hk) 与 App 当时显示为准。本页不构成开户、税务或投资建议。
 
 宝时证券有限公司（BOSCO SECURITIES LIMITED）为香港证监会持牌机构（中央编号：AEU219），持有第 1 类（证券交易）、第 4 类（证券咨询）及第 9 类（资产管理）牌照。公司曾用名凯敏证券（Hermes Securities），官网现为 [www.bsl.hk](https://www.bsl.hk)。
 
@@ -41,7 +41,7 @@ export const boscoChinaAccountGuide = `本页整理中国内地用户通过 **�
 
 ### 3. 选择身份类别
 
-中国内地用户选择 **我是中国内地居民**，再点击下一步。能否最终开户，以审核结果为准。
+选择 **我是中国内地居民**，再点击下一步。能否最终开户，以审核结果为准。
 
 ![宝时证券：选择身份类别，勾选「我是中国内地居民」后点击下一步](/images/tutorials/bosco-select-identity.png "300")
 

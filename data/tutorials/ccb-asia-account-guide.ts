@@ -1,4 +1,4 @@
-export const ccbAsiaAccountGuide = `本页整理中国内地用户通过 **建银亚洲（中国建设银行（亚洲））** App 线上开户的常见流程，仅供信息对照。开户政策、材料要求、费率和页面文案会变化，请以 [建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) 与 App 当时显示为准。本页不构成开户、税务或资金安排建议。
+export const ccbAsiaAccountGuide = `本页整理通过 **建银亚洲（中国建设银行（亚洲））** App 线上开户的常见流程，仅供信息对照。开户政策、材料要求、费率和页面文案会变化，请以 [建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) 与 App 当时显示为准。本页不构成开户、税务或资金安排建议。
 
 建银亚洲是香港持牌银行。内地用户常见做法是赴港后、在香港提交线上申请。有申请者反馈流程相对直接；审核快慢因人而异，不能当作一定「秒过」。
 

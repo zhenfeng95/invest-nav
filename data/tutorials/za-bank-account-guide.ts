@@ -1,4 +1,4 @@
-export const zaBankAccountGuide = `本页整理中国内地用户通过 **ZA Bank（众安银行）** App 开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [众安银行官网](https://bank.za.group) 与 App 当时显示为准。本页不构成开户、税务或资金安排建议。
+export const zaBankAccountGuide = `本页整理通过 **ZA Bank（众安银行）** App 开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [众安银行官网](https://bank.za.group) 与 App 当时显示为准。本页不构成开户、税务或资金安排建议。
 
 众安银行是香港持牌虚拟银行。内地用户常见做法是赴港后、在香港网络环境下提交申请。
 
