@@ -1,16 +1,6 @@
 {
     "items": [
         {
-            "id": "portfolio",
-            "name": "持仓分账",
-            "description": "按 A 股与美股分账，复盘持仓、已实现盈亏与纪律。",
-            "icon": "chart",
-            "status": "available",
-            "route": "/portfolio",
-            "apiRequired": true,
-            "apiPath": "/api/portfolio"
-        },
-        {
             "id": "qdii",
             "name": "QDII额度宝",
             "description": "查看 QDII 额度与相关基金信息。",
@@ -23,9 +13,9 @@
         {
             "id": "calendar",
             "name": "财经日历",
-            "description": "关注重要经济数据与市场事件。",
+            "description": "关注本周重要经济数据发布日程。",
             "icon": "calendar",
-            "status": "coming-soon",
+            "status": "available",
             "route": "/tools/calendar",
             "apiRequired": true,
             "apiPath": "/api/calendar"

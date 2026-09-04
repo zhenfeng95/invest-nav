@@ -5,10 +5,38 @@ import { mainNav, SITE_NAME } from '~/utils/site'
 const route = useRoute()
 const mobileOpen = ref(false)
 const mobileExpanded = ref<string | null>(null)
+/** 桌面端当前展开的二级菜单；null 表示全部收起 */
+const desktopOpenLabel = ref<string | null>(null)
+/** 点击子项后强制收起，直到鼠标离开该菜单组，避免 hover 立刻又打开 */
+const desktopHoverLocked = ref(false)
 
 function closeMobile() {
   mobileOpen.value = false
   mobileExpanded.value = null
+}
+
+function closeDesktop() {
+  desktopOpenLabel.value = null
+}
+
+function openDesktop(label: string) {
+  if (desktopHoverLocked.value) {
+    return
+  }
+  desktopOpenLabel.value = label
+}
+
+function onDesktopLeave() {
+  closeDesktop()
+  desktopHoverLocked.value = false
+}
+
+function onDesktopChildNavigate() {
+  closeDesktop()
+  desktopHoverLocked.value = true
+  if (import.meta.client) {
+    ;(document.activeElement as HTMLElement | null)?.blur()
+  }
 }
 
 function isActive(path: string) {
@@ -36,7 +64,10 @@ watch(mobileOpen, (value) => {
   document.body.style.overflow = value ? 'hidden' : ''
 })
 
-watch(() => route.path, closeMobile)
+watch(() => route.path, () => {
+  closeMobile()
+  closeDesktop()
+})
 
 onBeforeUnmount(() => {
   if (import.meta.client) {
@@ -60,21 +91,31 @@ onBeforeUnmount(() => {
           <template v-for="item in mainNav" :key="item.label">
             <div
               v-if="item.children"
-              class="group relative"
+              class="relative"
+              @mouseenter="openDesktop(item.label)"
+              @mouseleave="onDesktopLeave"
+              @focusin="openDesktop(item.label)"
             >
               <button
                 type="button"
-                class="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm transition"
+                class="inline-flex items-center gap-1 rounded-[6px] px-3 py-1.5 text-sm transition"
                 :class="isNavItemActive(item)
                   ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
                   : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'"
-                :aria-expanded="isNavItemActive(item)"
+                :aria-expanded="desktopOpenLabel === item.label"
               >
                 {{ item.label }}
-                <AppIcon name="chevron-down" class="h-3.5 w-3.5 opacity-60 transition group-hover:rotate-180" />
+                <AppIcon
+                  name="chevron-down"
+                  class="h-3.5 w-3.5 opacity-60 transition"
+                  :class="desktopOpenLabel === item.label ? 'rotate-180' : ''"
+                />
               </button>
               <div
-                class="pointer-events-none invisible absolute left-0 top-full z-50 pt-1 opacity-0 transition group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100"
+                class="absolute left-0 top-full z-50 pt-1 transition"
+                :class="desktopOpenLabel === item.label
+                  ? 'pointer-events-auto visible opacity-100'
+                  : 'pointer-events-none invisible opacity-0'"
               >
                 <div class="min-w-[8.5rem] rounded-xl border border-zinc-200 bg-white p-1 shadow-lg dark:border-white/10 dark:bg-[#111318]">
                   <NuxtLink
@@ -85,6 +126,7 @@ onBeforeUnmount(() => {
                     :class="isActive(child.to)
                       ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
                       : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-white/5 dark:hover:text-white'"
+                    @click="onDesktopChildNavigate"
                   >
                     {{ child.label }}
                   </NuxtLink>
@@ -94,7 +136,7 @@ onBeforeUnmount(() => {
             <NuxtLink
               v-else
               :to="item.to!"
-              class="rounded-full px-3 py-1.5 text-sm transition"
+              class="rounded-[6px] px-3 py-1.5 text-sm transition"
               :class="isActive(item.to!)
                 ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
                 : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'"

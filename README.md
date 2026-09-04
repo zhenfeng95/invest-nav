@@ -195,6 +195,10 @@ NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
 - 每月复盘：`/reviews/monthly`，文件示例 `monthly-2026-08.md`
 - 每周复盘：`/reviews/weekly`，文件示例 `weekly-2026-09-1W.md`
 
+## 财经日历
+
+`/tools/calendar` 读取投研 Agent 仓库中的 `data/public/economic-calendar.json`，使用与日报相同的 GitHub 配置，不再依赖第三方日历 API Key。本地开发时也会尝试读取同级目录 `../invest-agent/data/public/economic-calendar.json`。
+
 ## 主要路由
 
 - `/`
