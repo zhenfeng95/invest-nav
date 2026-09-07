@@ -10,6 +10,7 @@ import { esimGgAccountGuide } from '~/data/tutorials/esim-gg-account-guide'
 import { lebaraAccountGuide } from '~/data/tutorials/lebara-account-guide'
 import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
 import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
+import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
 const markdownFiles: Record<string, string> = {
@@ -24,6 +25,7 @@ const markdownFiles: Record<string, string> = {
   'lebara-account-guide': lebaraAccountGuide,
   'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
   'wise-account-guide': wiseAccountGuide,
+  'starryblu-account-guide': starrybluAccountGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

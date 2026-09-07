@@ -43,8 +43,8 @@ watch(error, value => {
 usePageSeo({
   title: review.value?.title || '每周复盘',
   description: review.value
-    ? `${review.value.title}。投研 Agent 周度交易复盘，仅供学习整理，不构成投资建议。`
-    : '投研 Agent 周度交易复盘。',
+    ? `${review.value.title}。投研 Agent 周度交易复盘，整理盈亏、纪律与改进要点，仅供学习交流，不构成投资建议。`
+    : '投研 Agent 周度交易复盘，整理盈亏、纪律与改进要点，仅供学习交流，不构成投资建议。',
   path: `/reviews/weekly/${slug.value}`,
 })
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 usePageSeo({
   title: '隐私政策',
-  description: '投资导航第一阶段不收集用户账户信息，也没有登录和会员系统。',
+  description: 'Zhen Invest 隐私政策说明：第一阶段以公开信息整理为主，不收集用户账户信息，也不提供注册、登录或会员系统；请了解我们如何处理公开浏览与站点相关事项。',
   path: '/privacy',
 })
 </script>

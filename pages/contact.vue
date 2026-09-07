@@ -1,7 +1,7 @@
 <script setup lang="ts">
 usePageSeo({
   title: '联系我们',
-  description: '关于投资导航网站的合作与内容勘误，可通过后续公开渠道联系。',
+  description: '如需就 Zhen Invest（投资导航）进行内容合作、链接勘误、资源补充或信息反馈，可通过后续公开渠道联系我们；我们会持续完善港美股与跨境投资相关整理。',
   path: '/contact',
 })
 </script>

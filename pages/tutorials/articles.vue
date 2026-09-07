@@ -5,7 +5,7 @@ const items = getTutorialsByType('article')
 
 usePageSeo({
   title: '文字教程',
-  description: '美股券商、港卡开户、出入金和投资基础相关的文字教程。',
+  description: '阅读 Zhen Invest 文字教程，系统了解美股券商开户、港卡申请、出入金路径与投资基础概念，适合希望按步骤对照官方说明、逐步建立操作框架的内地用户。',
   path: '/tutorials/articles',
 })
 </script>

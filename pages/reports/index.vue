@@ -16,7 +16,7 @@ const isLoading = computed(() => !data.value && !error.value && (pending.value |
 
 usePageSeo({
   title: '收盘日报',
-  description: '投研 Agent 每个工作日生成的收盘日报，按日期阅读市场复盘与要点。',
+  description: '阅读投研 Agent 每个工作日生成的收盘日报：按日期归档市场复盘、要点与观察清单，帮助回顾当日行情脉络；内容仅供学习整理，不构成投资建议。',
   path: '/reports',
 })
 

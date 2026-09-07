@@ -20,9 +20,9 @@ const entries = [
   },
   {
     index: '04',
-    title: '我要买币',
-    description: '交易平台、钱包、加密货币、资金流转',
-    to: '/nav/crypto',
+    title: '资金流转',
+    description: '跨境汇款、多币种账户、资金路径',
+    to: '/nav/fund-transfer',
   },
 ]
 </script>

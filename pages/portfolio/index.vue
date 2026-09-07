@@ -54,7 +54,7 @@ const {
 
 usePageSeo({
   title: '持仓分账',
-  description: '读取投研 Agent 交易记录，按 A 股三户（国元/银河/华泰）与美股分账复盘持仓、按日盯市收益曲线与纪律。',
+  description: '复盘投研 Agent 交易记录：按 A 股三户（国元/银河/华泰）与美股分账查看持仓、按日盯市收益曲线与交易纪律；人民币与美元不合并，内容仅供学习整理。',
   path: '/portfolio',
 })
 

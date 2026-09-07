@@ -1,7 +1,7 @@
 <script setup lang="ts">
 usePageSeo({
   title: '关于我们',
-  description: '投资导航是一个面向美股、加密货币和跨境出海的信息整理网站。',
+  description: 'Zhen Invest（投资导航）面向内地用户整理美股、港卡、加密货币与跨境出海相关资源，提供教程、工具与分类导航，帮助你更系统地了解开户、出入金与跨境投资路径。',
   path: '/about',
 })
 </script>

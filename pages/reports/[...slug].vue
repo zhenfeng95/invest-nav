@@ -42,7 +42,7 @@ watch(error, value => {
 
 usePageSeo({
     title: report.value?.title || '收盘日报',
-    description: report.value ? `${report.value.title}。投研 Agent 收盘日报，仅供学习整理，不构成投资建议。` : '投研 Agent 收盘日报。',
+    description: report.value ? `${report.value.title}。投研 Agent 收盘日报，整理当日市场复盘与要点，仅供学习交流，不构成投资建议。` : '投研 Agent 收盘日报，整理市场复盘与要点，仅供学习交流，不构成投资建议。',
     path: `/reports/${slug.value}`,
 });
 </script>

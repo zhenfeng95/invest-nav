@@ -1,7 +1,7 @@
 <script setup lang="ts">
 usePageSeo({
   title: '页面不存在',
-  description: '你访问的页面不存在。',
+  description: '你访问的页面不存在或链接已失效。可返回 Zhen Invest 首页，继续浏览港美股开户教程、投资工具与跨境资源导航内容。',
 })
 </script>
 

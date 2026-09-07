@@ -4,7 +4,7 @@
             "id": "stocks",
             "slug": "stocks",
             "name": "美股",
-            "description": "美股市场入口、行情网站与上市公司信息披露。",
+            "description": "美股市场入口、行情网站与上市公司信息披露，方便快速找到交易所、监管披露与常用研究站点。",
             "icon": "stocks",
             "items": [
                 {
@@ -12,7 +12,10 @@
                     "name": "Nasdaq",
                     "description": "纳斯达克交易所官方网站，可查阅上市公司与市场信息。",
                     "url": "https://www.nasdaq.com",
-                    "tags": ["美股", "交易所"],
+                    "tags": [
+                        "美股",
+                        "交易所"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "updatedAt": "2026-07-10"
@@ -22,7 +25,10 @@
                     "name": "NYSE",
                     "description": "纽约证券交易所官方网站。",
                     "url": "https://www.nyse.com",
-                    "tags": ["美股", "交易所"],
+                    "tags": [
+                        "美股",
+                        "交易所"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-10"
                 },
@@ -31,7 +37,10 @@
                     "name": "SEC EDGAR",
                     "description": "美国证监会公司文件检索系统，适合查阅 10-K、10-Q 等披露。",
                     "url": "https://www.sec.gov/edgar",
-                    "tags": ["美股", "披露"],
+                    "tags": [
+                        "美股",
+                        "披露"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "updatedAt": "2026-07-16"
@@ -41,7 +50,10 @@
                     "name": "Yahoo Finance",
                     "description": "常用的行情、财报和新闻聚合入口。",
                     "url": "https://finance.yahoo.com",
-                    "tags": ["美股", "行情"],
+                    "tags": [
+                        "美股",
+                        "行情"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-20"
                 }
@@ -51,7 +63,7 @@
             "id": "crypto",
             "slug": "crypto",
             "name": "加密货币",
-            "description": "交易平台、钱包与加密货币学习资源。",
+            "description": "加密货币交易平台、钱包与学习资源入口，覆盖常见交易所与自托管工具，便于对照官方信息。",
             "icon": "crypto",
             "items": [
                 {
@@ -59,7 +71,10 @@
                     "name": "Coinbase",
                     "description": "面向主流市场的加密资产交易平台。",
                     "url": "https://www.coinbase.com",
-                    "tags": ["加密货币", "交易所"],
+                    "tags": [
+                        "加密货币",
+                        "交易所"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "updatedAt": "2026-07-11"
@@ -69,7 +84,10 @@
                     "name": "Kraken",
                     "description": "老牌加密货币交易平台。",
                     "url": "https://www.kraken.com",
-                    "tags": ["加密货币", "交易所"],
+                    "tags": [
+                        "加密货币",
+                        "交易所"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-02"
                 },
@@ -78,7 +96,10 @@
                     "name": "MetaMask",
                     "description": "常用的自托管钱包与浏览器扩展。",
                     "url": "https://metamask.io",
-                    "tags": ["钱包", "以太坊"],
+                    "tags": [
+                        "钱包",
+                        "以太坊"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-25"
                 },
@@ -87,7 +108,10 @@
                     "name": "Ledger",
                     "description": "硬件钱包厂商，用于离线存储私钥。",
                     "url": "https://www.ledger.com",
-                    "tags": ["钱包", "安全"],
+                    "tags": [
+                        "钱包",
+                        "安全"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-18"
                 }
@@ -97,7 +121,7 @@
             "id": "funds",
             "slug": "funds",
             "name": "基金",
-            "description": "基金研究入口与 QDII 相关信息来源。",
+            "description": "基金研究入口与 QDII 相关信息来源，帮助梳理跨境基金与权威数据站点，后续持续补充。",
             "icon": "funds",
             "items": [
                 {
@@ -105,7 +129,10 @@
                     "name": "Morningstar",
                     "description": "基金与 ETF 研究平台。",
                     "url": "https://www.morningstar.com",
-                    "tags": ["基金", "研究"],
+                    "tags": [
+                        "基金",
+                        "研究"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-01"
                 },
@@ -114,7 +141,10 @@
                     "name": "justETF",
                     "description": "欧洲市场常用的 ETF / 基金筛选工具。",
                     "url": "https://www.justetf.com",
-                    "tags": ["基金", "ETF"],
+                    "tags": [
+                        "基金",
+                        "ETF"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-12"
                 },
@@ -123,7 +153,10 @@
                     "name": "QDII 信息入口",
                     "description": "后续将补充官方或权威数据源。当前仅作分类占位。",
                     "url": "",
-                    "tags": ["基金", "QDII"],
+                    "tags": [
+                        "基金",
+                        "QDII"
+                    ],
                     "officialUrlConfirmed": false,
                     "updatedAt": "2026-05-30"
                 }
@@ -133,7 +166,7 @@
             "id": "etf",
             "slug": "etf",
             "name": "ETF",
-            "description": "ETF 发行商与产品研究入口。",
+            "description": "ETF 发行商与产品研究入口，汇总先锋、贝莱德、SPDR 等常见官方站点，便于对照产品说明。",
             "icon": "etf",
             "items": [
                 {
@@ -141,7 +174,10 @@
                     "name": "Vanguard",
                     "description": "先锋集团官方投资者网站。",
                     "url": "https://investor.vanguard.com",
-                    "tags": ["ETF", "发行商"],
+                    "tags": [
+                        "ETF",
+                        "发行商"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "updatedAt": "2026-07-06"
@@ -151,7 +187,10 @@
                     "name": "iShares",
                     "description": "贝莱德 iShares ETF 产品站点。",
                     "url": "https://www.ishares.com",
-                    "tags": ["ETF", "发行商"],
+                    "tags": [
+                        "ETF",
+                        "发行商"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-06"
                 },
@@ -160,7 +199,10 @@
                     "name": "State Street SPDR",
                     "description": "SPDR ETF 相关产品与研究入口。",
                     "url": "https://www.ssga.com",
-                    "tags": ["ETF", "发行商"],
+                    "tags": [
+                        "ETF",
+                        "发行商"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-21"
                 }
@@ -170,7 +212,7 @@
             "id": "stocks-cn",
             "slug": "stocks-cn",
             "name": "个股",
-            "description": "个股研究、公司披露与标的信息入口。",
+            "description": "个股研究、公司披露与标的信息入口，整理常用研究平台与监管文件检索路径，便于深入阅读。",
             "icon": "company",
             "items": [
                 {
@@ -178,7 +220,10 @@
                     "name": "Seeking Alpha",
                     "description": "公司研究与财报讨论平台。",
                     "url": "https://seekingalpha.com",
-                    "tags": ["个股", "研究"],
+                    "tags": [
+                        "个股",
+                        "研究"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-29"
                 },
@@ -187,7 +232,10 @@
                     "name": "公司文件检索",
                     "description": "通过监管披露阅读年报、季报和重大事项。",
                     "url": "https://www.sec.gov/edgar",
-                    "tags": ["个股", "披露"],
+                    "tags": [
+                        "个股",
+                        "披露"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-29"
                 },
@@ -196,7 +244,10 @@
                     "name": "中概股研究入口",
                     "description": "TODO: 确认权威官方或研究入口后再补充链接。",
                     "url": "",
-                    "tags": ["个股", "中概股"],
+                    "tags": [
+                        "个股",
+                        "中概股"
+                    ],
                     "officialUrlConfirmed": false,
                     "updatedAt": "2026-05-18"
                 }
@@ -206,7 +257,7 @@
             "id": "options",
             "slug": "options",
             "name": "期权",
-            "description": "期权学习、合约说明与交易所教育资源。",
+            "description": "期权学习、合约说明与交易所教育资源，汇总 CBOE、投资者教育与清算机构等官方入口。",
             "icon": "options",
             "items": [
                 {
@@ -214,7 +265,10 @@
                     "name": "Cboe",
                     "description": "芝加哥期权交易所官方网站。",
                     "url": "https://www.cboe.com",
-                    "tags": ["期权", "交易所"],
+                    "tags": [
+                        "期权",
+                        "交易所"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-03"
                 },
@@ -223,7 +277,10 @@
                     "name": "Options Industry Council",
                     "description": "期权投资者教育网站。",
                     "url": "https://www.optionseducation.org",
-                    "tags": ["期权", "教程"],
+                    "tags": [
+                        "期权",
+                        "教程"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-15"
                 },
@@ -232,7 +289,10 @@
                     "name": "OCC",
                     "description": "Options Clearing Corporation 官方网站。",
                     "url": "https://www.theocc.com",
-                    "tags": ["期权", "清算"],
+                    "tags": [
+                        "期权",
+                        "清算"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-06-15"
                 }
@@ -242,7 +302,7 @@
             "id": "overseas-banks",
             "slug": "overseas-banks",
             "name": "境外银行卡",
-            "description": "境外银行、开户入口与账户服务。",
+            "description": "境外银行、开户入口与账户服务导航，覆盖香港银行等常见路径，并链向站内开户教程。",
             "icon": "bank",
             "items": [
                 {
@@ -250,7 +310,10 @@
                     "name": "HSBC Hong Kong",
                     "description": "汇丰银行香港官方网站。可查看汇丰开户教程。",
                     "url": "https://www.hsbc.com.hk",
-                    "tags": ["港卡", "银行"],
+                    "tags": [
+                        "港卡",
+                        "银行"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/hsbc-hk-account-guide",
@@ -262,7 +325,10 @@
                     "name": "建银（亚洲）",
                     "description": "中国建设银行（亚洲）。可查看建银亚洲开户教程。",
                     "url": "https://www.asia.ccb.com/hongkong_sc/personal/index.html",
-                    "tags": ["港卡", "银行"],
+                    "tags": [
+                        "港卡",
+                        "银行"
+                    ],
                     "officialUrlConfirmed": true,
                     "guideUrl": "/tutorials/ccb-asia-account-guide",
                     "guideLabel": "开户教程",
@@ -273,7 +339,10 @@
                     "name": "ZA Bank",
                     "description": "香港持牌虚拟银行。可查看众安开户教程。",
                     "url": "https://bank.za.group",
-                    "tags": ["港卡", "虚拟银行"],
+                    "tags": [
+                        "港卡",
+                        "虚拟银行"
+                    ],
                     "officialUrlConfirmed": true,
                     "guideUrl": "/tutorials/za-bank-account-guide",
                     "guideLabel": "开户教程",
@@ -284,7 +353,10 @@
                     "name": "大象银行",
                     "description": "香港持牌数字银行 EleBank 官方网站。",
                     "url": "https://www.elebank.com",
-                    "tags": ["港卡", "虚拟银行"],
+                    "tags": [
+                        "港卡",
+                        "虚拟银行"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-08-21"
                 }
@@ -294,7 +366,7 @@
             "id": "overseas-sim",
             "slug": "overseas-sim",
             "name": "境外手机卡",
-            "description": "境外 SIM / eSIM 与接码开户常用入口。",
+            "description": "境外 SIM / eSIM 与接码开户常用入口，整理适配卡与预付费号码服务，便于海外注册与通讯。",
             "icon": "sim",
             "items": [
                 {
@@ -302,7 +374,10 @@
                     "name": "Xesim",
                     "description": "eSIM 适配卡，让不支持原生 eSIM 的大陆机型也能写入并管理境外 eSIM。",
                     "url": "https://xesim.cc/",
-                    "tags": ["适配器", "eSIM"],
+                    "tags": [
+                        "适配器",
+                        "eSIM"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/xesim-esim-adapter-guide",
@@ -314,7 +389,10 @@
                     "name": "eSIM.GG",
                     "description": "爱沙尼亚预付费 eSIM，提供 +372 号码，覆盖 150+ 国家，支持短信与通话。",
                     "url": "https://esim.gg/",
-                    "tags": ["爱沙尼亚", "eSIM"],
+                    "tags": [
+                        "爱沙尼亚",
+                        "eSIM"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/esim-gg-account-guide",
@@ -326,7 +404,10 @@
                     "name": "Lebara",
                     "description": "英国预付费运营商，支持实体 SIM 与 eSIM，适合获取 +44 号码用于海外服务注册与通讯。",
                     "url": "https://www.lebara.co.uk",
-                    "tags": ["英国", "eSIM"],
+                    "tags": [
+                        "英国",
+                        "eSIM"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/lebara-account-guide",
@@ -339,7 +420,7 @@
             "id": "overseas-brokers",
             "slug": "overseas-brokers",
             "name": "港美股券商",
-            "description": "港美股券商、开户入口与账户服务。",
+            "description": "港美股券商、开户入口与账户服务导航，覆盖新加坡与美国等常见券商，并链向站内开户教程。",
             "icon": "broker",
             "items": [
                 {
@@ -347,7 +428,10 @@
                     "name": "盈立证券（新加坡）",
                     "description": "新加坡金管局监管券商。可查看盈立新加坡开户教程。",
                     "url": "https://www.usmart.sg/cn",
-                    "tags": ["美股", "券商"],
+                    "tags": [
+                        "美股",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": true,
                     "guideUrl": "/tutorials/usmart-sg-account-guide",
                     "guideLabel": "开户教程",
@@ -358,7 +442,10 @@
                     "name": "致富证券",
                     "description": "香港证监会持牌券商，覆盖港股、美股、期货与期权等。",
                     "url": "https://www.chiefgroup.com.hk/cn",
-                    "tags": ["美股", "券商"],
+                    "tags": [
+                        "美股",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "updatedAt": "2026-08-21"
@@ -368,7 +455,11 @@
                     "name": "宝时证券",
                     "description": "香港证监会持牌券商（原凯敏证券），覆盖港股、美股、ETF 与港股打新等。可查看开户教程。",
                     "url": "https://www.bsl.hk",
-                    "tags": ["美股", "券商", "港股"],
+                    "tags": [
+                        "美股",
+                        "券商",
+                        "港股"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/bosco-account-guide",
@@ -380,7 +471,10 @@
                     "name": "Charles Schwab",
                     "description": "美国综合型券商。可查看嘉信国际开户教程。",
                     "url": "https://international.schwab.com",
-                    "tags": ["美股", "券商"],
+                    "tags": [
+                        "美股",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": true,
                     "guideUrl": "/tutorials/schwab-account-guide",
                     "guideLabel": "开户教程",
@@ -391,7 +485,10 @@
                     "name": "Firstrade",
                     "description": "面向个人投资者的美国互联网券商。可查看第一证券开户教程。",
                     "url": "https://www.firstrade.com/zh-CN",
-                    "tags": ["美股", "券商"],
+                    "tags": [
+                        "美股",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": true,
                     "guideUrl": "/tutorials/firstrade-account-guide",
                     "guideLabel": "开户教程",
@@ -403,7 +500,7 @@
             "id": "fund-transfer",
             "slug": "fund-transfer",
             "name": "资金流转",
-            "description": "跨境汇款、多币种账户与资金路径相关资源。",
+            "description": "跨境汇款、多币种账户与资金路径相关资源，整理 Wise、Starryblu 等常见服务入口，并链向站内教程。",
             "icon": "transfer",
             "items": [
                 {
@@ -411,7 +508,10 @@
                     "name": "Wise",
                     "description": "多币种账户与国际转账服务。可查看 Wise 开户教程。",
                     "url": "https://wise.com",
-                    "tags": ["资金流转", "汇款"],
+                    "tags": [
+                        "资金流转",
+                        "汇款"
+                    ],
                     "officialUrlConfirmed": true,
                     "featured": true,
                     "guideUrl": "/tutorials/wise-account-guide",
@@ -419,22 +519,19 @@
                     "updatedAt": "2026-09-07"
                 },
                 {
-                    "id": "airwallex",
-                    "name": "Airwallex",
-                    "description": "面向企业与跨境收款的金融平台。",
-                    "url": "https://www.airwallex.com",
-                    "tags": ["资金流转", "跨境"],
+                    "id": "starryblu",
+                    "name": "Starryblu",
+                    "description": "新加坡持牌多币种账户与跨境汇款服务，支持国际转账与消费卡。可查看 Starryblu 开户教程。",
+                    "url": "https://www.starryblu.com",
+                    "tags": [
+                        "资金流转",
+                        "汇款"
+                    ],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-05"
-                },
-                {
-                    "id": "payoneer",
-                    "name": "Payoneer",
-                    "description": "跨境收款与多币种账户服务。",
-                    "url": "https://www.payoneer.com",
-                    "tags": ["资金流转", "收款"],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-17"
+                    "featured": true,
+                    "guideUrl": "/tutorials/starryblu-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-07"
                 }
             ]
         },
@@ -442,7 +539,7 @@
             "id": "deposit-withdraw",
             "slug": "deposit-withdraw",
             "name": "出入金",
-            "description": "券商入金、出金与到账核对相关资源。",
+            "description": "券商入金、出金与到账核对相关资源，汇总官方资金说明入口，帮助理解跨境出入金常见步骤。",
             "icon": "deposit",
             "items": [
                 {
@@ -450,7 +547,10 @@
                     "name": "Interactive Brokers Funding",
                     "description": "盈透证券官方资金入金说明。",
                     "url": "https://www.interactivebrokers.com/en/trading/funding.php",
-                    "tags": ["出入金", "券商"],
+                    "tags": [
+                        "出入金",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-07-07"
                 },
@@ -459,7 +559,10 @@
                     "name": "Schwab Transfers",
                     "description": "Charles Schwab 官方转账与资金说明入口。",
                     "url": "https://international.schwab.com",
-                    "tags": ["出入金", "券商"],
+                    "tags": [
+                        "出入金",
+                        "券商"
+                    ],
                     "officialUrlConfirmed": false,
                     "updatedAt": "2026-07-07"
                 },
@@ -468,7 +571,10 @@
                     "name": "出入金核对清单",
                     "description": "TODO: 后续补充独立说明页。当前先作为分类占位。",
                     "url": "",
-                    "tags": ["出入金", "清单"],
+                    "tags": [
+                        "出入金",
+                        "清单"
+                    ],
                     "officialUrlConfirmed": false,
                     "updatedAt": "2026-05-21"
                 }

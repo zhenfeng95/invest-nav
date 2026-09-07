@@ -5,7 +5,7 @@ const categories = getNavigationCategories()
 
 usePageSeo({
   title: '全部导航',
-  description: '美股、加密货币、基金、ETF、个股、期权、香港银行、美股券商、资金流转与出入金导航。',
+  description: '按分类浏览 Zhen Invest 投资导航：美股、加密货币、基金、ETF、个股、期权、香港银行、美股券商、资金流转与出入金资源，不确定的官方链接会明确标注，避免误导。',
   path: '/nav',
 })
 </script>

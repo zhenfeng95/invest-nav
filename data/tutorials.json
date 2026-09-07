@@ -57,6 +57,20 @@
       "markdownFile": "wise-account-guide"
     },
     {
+      "id": "starryblu-account",
+      "slug": "starryblu-account-guide",
+      "title": "Starryblu 开户教程（中国护照）",
+      "description": "整理 Starryblu 对中国大陆用户的开户步骤、护照要求、多币种账户与全球支付卡档位，并说明其与传统 OCBC 个人银行账户的区别，供对照官方页面。",
+      "type": "article",
+      "category": "资金流转",
+      "tags": ["Starryblu", "资金流转", "多币种", "开户", "新加坡"],
+      "readingMinutes": 12,
+      "updatedAt": "2026-09-07",
+      "publishedAt": "2026-09-07",
+      "popular": true,
+      "markdownFile": "starryblu-account-guide"
+    },
+    {
       "id": "hsbc-hk-account",
       "slug": "hsbc-hk-account-guide",
       "title": "汇丰银行香港开户教程",

@@ -5,7 +5,7 @@ const tools = getTools()
 
 usePageSeo({
   title: '投资工具',
-  description: '财经日历和空间计算器。',
+  description: 'Zhen Invest 投资工具入口，提供财经日历与空间计算器等实用功能，帮助跟踪经济数据发布、利率就业等节点，并推演价格空间，后续将持续接入更多分析工具。',
   path: '/tools',
 })
 </script>

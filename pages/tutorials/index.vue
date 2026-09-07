@@ -7,7 +7,7 @@ const total = getTutorials().length
 
 usePageSeo({
   title: '投资教程',
-  description: '美股、港卡、加密货币与投资工具相关教程，包含文字、视频和一图看懂。',
+  description: 'Zhen Invest 教程中心：覆盖美股券商开户、港卡申请、出入金、加密货币与投资工具，提供文字、视频与一图看懂等多种形式，帮助内地用户建立跨境投资基础框架。',
   path: '/tutorials',
 })
 </script>
