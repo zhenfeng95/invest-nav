@@ -1,16 +1,6 @@
 {
     "items": [
         {
-            "id": "qdii",
-            "name": "QDII额度宝",
-            "description": "查看 QDII 额度与相关基金信息。",
-            "icon": "wallet",
-            "status": "coming-soon",
-            "route": "/tools/qdii",
-            "apiRequired": true,
-            "apiPath": "/api/qdii"
-        },
-        {
             "id": "calendar",
             "name": "财经日历",
             "description": "关注本周重要经济数据发布日程。",
@@ -19,16 +9,6 @@
             "route": "/tools/calendar",
             "apiRequired": true,
             "apiPath": "/api/calendar"
-        },
-        {
-            "id": "signal",
-            "name": "抄底信号",
-            "description": "用结构化指标观察市场回撤与情绪。",
-            "icon": "signal",
-            "status": "coming-soon",
-            "route": "/tools/signal",
-            "apiRequired": true,
-            "apiPath": "/api/market"
         },
         {
             "id": "spatial",

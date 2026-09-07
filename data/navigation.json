@@ -248,12 +248,14 @@
                 {
                     "id": "hsbc-hk",
                     "name": "HSBC Hong Kong",
-                    "description": "汇丰银行香港官方网站。",
+                    "description": "汇丰银行香港官方网站。可查看汇丰开户教程。",
                     "url": "https://www.hsbc.com.hk",
                     "tags": ["港卡", "银行"],
                     "officialUrlConfirmed": true,
                     "featured": true,
-                    "updatedAt": "2026-07-14"
+                    "guideUrl": "/tutorials/hsbc-hk-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-07"
                 },
                 {
                     "id": "ccb-asia",
@@ -407,12 +409,14 @@
                 {
                     "id": "wise",
                     "name": "Wise",
-                    "description": "多币种账户与国际转账服务。",
+                    "description": "多币种账户与国际转账服务。可查看 Wise 开户教程。",
                     "url": "https://wise.com",
                     "tags": ["资金流转", "汇款"],
                     "officialUrlConfirmed": true,
                     "featured": true,
-                    "updatedAt": "2026-07-13"
+                    "guideUrl": "/tutorials/wise-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-07"
                 },
                 {
                     "id": "airwallex",

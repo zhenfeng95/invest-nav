@@ -1,9 +1,7 @@
 export type ToolStatus = 'available' | 'coming-soon' | 'external'
 export type ToolIcon =
   | 'chart'
-  | 'wallet'
   | 'calendar'
-  | 'signal'
   | 'calculator'
 
 export interface Tool {

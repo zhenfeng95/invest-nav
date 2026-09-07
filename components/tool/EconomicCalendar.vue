@@ -45,7 +45,7 @@ const groupedEvents = computed(() => {
     groups.set(item.date, list)
   }
   return [...groups.entries()]
-    .sort((a, b) => b[0].localeCompare(a[0]))
+    .sort((a, b) => a[0].localeCompare(b[0]))
     .map(([date, events]) => ({ date, events }))
 })
 
@@ -170,11 +170,9 @@ const filterButtonClass = (active: boolean) =>
       </div>
     </div>
 
-    <EmptyState
+    <PageLoading
       v-if="isLoading"
-      eyebrow="Loading"
-      title="正在加载财经日历"
-      description="正在读取投研 Agent 生成的宏观发布日程。"
+      :rows="4"
     />
 
     <EmptyState

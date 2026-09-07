@@ -43,6 +43,34 @@
       "markdownFile": "lebara-account-guide"
     },
     {
+      "id": "wise-account",
+      "slug": "wise-account-guide",
+      "title": "Wise 开户教程（中国大陆身份证）",
+      "description": "整理中国大陆居民用身份证开通 Wise 多币种账户、美元/港币充值路径与常见用途，供对照官方页面。",
+      "type": "article",
+      "category": "资金流转",
+      "tags": ["Wise", "资金流转", "多币种", "开户"],
+      "readingMinutes": 10,
+      "updatedAt": "2026-09-07",
+      "publishedAt": "2026-09-07",
+      "popular": true,
+      "markdownFile": "wise-account-guide"
+    },
+    {
+      "id": "hsbc-hk-account",
+      "slug": "hsbc-hk-account-guide",
+      "title": "汇丰银行香港开户教程",
+      "description": "整理赴港后通过 HSBC HK App 开立汇丰 One 的材料要求、出入境记录、开户步骤与可用余额注意点，供对照官方页面。",
+      "type": "article",
+      "category": "香港银行",
+      "tags": ["港卡", "银行", "开户", "汇丰"],
+      "readingMinutes": 15,
+      "updatedAt": "2026-09-07",
+      "publishedAt": "2026-09-07",
+      "popular": true,
+      "markdownFile": "hsbc-hk-account-guide"
+    },
+    {
       "id": "ccb-asia-account",
       "slug": "ccb-asia-account-guide",
       "title": "建银亚洲开户教程",

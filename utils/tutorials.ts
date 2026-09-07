@@ -4,10 +4,12 @@ import { schwabAccountGuide } from '~/data/tutorials/schwab-account-guide'
 import { usmartSgAccountGuide } from '~/data/tutorials/usmart-sg-account-guide'
 import { boscoAccountGuide } from '~/data/tutorials/bosco-account-guide'
 import { ccbAsiaAccountGuide } from '~/data/tutorials/ccb-asia-account-guide'
+import { hsbcHkAccountGuide } from '~/data/tutorials/hsbc-hk-account-guide'
 import { zaBankAccountGuide } from '~/data/tutorials/za-bank-account-guide'
 import { esimGgAccountGuide } from '~/data/tutorials/esim-gg-account-guide'
 import { lebaraAccountGuide } from '~/data/tutorials/lebara-account-guide'
 import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
+import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 
 const markdownFiles: Record<string, string> = {
@@ -16,10 +18,12 @@ const markdownFiles: Record<string, string> = {
   'usmart-sg-account-guide': usmartSgAccountGuide,
   'bosco-account-guide': boscoAccountGuide,
   'ccb-asia-account-guide': ccbAsiaAccountGuide,
+  'hsbc-hk-account-guide': hsbcHkAccountGuide,
   'za-bank-account-guide': zaBankAccountGuide,
   'esim-gg-account-guide': esimGgAccountGuide,
   'lebara-account-guide': lebaraAccountGuide,
   'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
+  'wise-account-guide': wiseAccountGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

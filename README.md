@@ -163,7 +163,7 @@ npm run cf:dev
 ## 未来如何扩展
 
 - 把 JSON 换成 Markdown / CMS / Cloudflare D1 / MySQL / API 时，只改 `utils/` 数据层
-- `server/api/` 已预留 `market`、`portfolio`、`calendar`、`qdii`、`crypto`
+- `server/api/` 已预留 `portfolio`、`calendar`、`crypto`
 - 工具页目前是 Coming Soon，后续可在不改路由的前提下接入真实逻辑
 - 不要在第一阶段加入用户系统、支付、实时行情或真实交易接口
 

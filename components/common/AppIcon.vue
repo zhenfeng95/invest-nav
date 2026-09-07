@@ -13,9 +13,7 @@ type IconName =
   | 'play'
   | 'image'
   | 'chart'
-  | 'wallet'
   | 'calendar'
-  | 'signal'
   | 'calculator'
   | 'stocks'
   | 'crypto'
@@ -94,17 +92,9 @@ defineProps<{
     <g v-else-if="name === 'chart'">
       <path d="M4 19h16M7 16V9M12 16V6M17 16v-4" />
     </g>
-    <g v-else-if="name === 'wallet'">
-      <rect x="3.5" y="7" width="17" height="11.5" rx="2" />
-      <path d="M16 12.8h2.8" />
-    </g>
     <g v-else-if="name === 'calendar'">
       <rect x="4" y="5.5" width="16" height="14" rx="2" />
       <path d="M8 3.8v3.2M16 3.8v3.2M4 10h16" />
-    </g>
-    <g v-else-if="name === 'signal'">
-      <path d="m5 16 4.2-4.2 3.1 3.1L19 8.2" />
-      <path d="M15 8.2h4v4" />
     </g>
     <g v-else-if="name === 'calculator'">
       <rect x="5" y="3.5" width="14" height="17" rx="2" />
