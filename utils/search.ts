@@ -1,5 +1,5 @@
-import { getNavigationCategories } from '~/utils/navigation'
-import { getTutorials, getTutorialTypeLabel } from '~/utils/tutorials'
+import { getNavigationCategories, getNavigationPath } from '~/utils/navigation'
+import { getTutorials, getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
 import { getTools, getToolStatusLabel } from '~/utils/tools'
 import { researchNavLinks } from '~/utils/site'
 
@@ -103,8 +103,15 @@ function buildIndex(): IndexedItem[] {
     title: item.title,
     description: item.description,
     to: `/tutorials/${item.slug}`,
-    meta: `${item.category} · ${getTutorialTypeLabel(item.type)}`,
-    haystack: buildHaystack(item.title, item.description, item.category, item.tags, item.slug),
+    meta: `${getTutorialCategoryLabel(item.category)} · ${getTutorialTypeLabel(item.type)}`,
+    haystack: buildHaystack(
+      item.title,
+      item.description,
+      item.category,
+      getTutorialCategoryLabel(item.category, 'full'),
+      item.tags,
+      item.slug,
+    ),
   }))
 
   const tools: IndexedItem[] = getTools().map(item => ({
@@ -125,9 +132,16 @@ function buildIndex(): IndexedItem[] {
       groupLabel: GROUP_LABEL.nav,
       title: item.name,
       description: item.description,
-      to: item.guideUrl || `/nav/${category.slug}`,
+      to: item.guideUrl || getNavigationPath(category.slug),
       meta: category.name,
-      haystack: buildHaystack(item.name, item.description, item.tags, category.name, category.slug),
+      haystack: buildHaystack(
+        item.name,
+        item.description,
+        item.tags,
+        category.name,
+        category.fullName,
+        category.slug,
+      ),
     })),
   )
 

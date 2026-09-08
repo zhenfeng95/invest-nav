@@ -17,6 +17,38 @@ export function formatReadingTime(minutes?: number): string {
   return `${minutes} 分钟阅读`
 }
 
+/** 中文语境下的字数（按去掉 Markdown 后的字符数估算） */
+export function countPlainTextChars(markdown: string): number {
+  const plain = markdown
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]*`/g, ' ')
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[#>*_~|+\-]+/g, ' ')
+    .replace(/\s+/g, '')
+
+  return plain.length
+}
+
+export function formatWordCount(chars: number): string {
+  if (chars <= 0) {
+    return '约 0 字'
+  }
+  if (chars < 1000) {
+    return `约 ${chars} 字`
+  }
+  const rounded = Math.round(chars / 100) * 100
+  return `约 ${rounded} 字`
+}
+
+export function estimateReadingMinutes(chars: number, fallback?: number): number {
+  if (fallback && fallback > 0) {
+    return fallback
+  }
+  return Math.max(1, Math.ceil(chars / 400))
+}
+
 export function formatWeekday(value: string): string {
   const date = new Date(`${value}T00:00:00Z`)
   if (Number.isNaN(date.getTime())) {
@@ -51,6 +83,15 @@ export function currentYearMonth(now = new Date()): string {
   const year = parts.find(part => part.type === 'year')?.value
   const month = parts.find(part => part.type === 'month')?.value
   return year && month ? `${year}-${month}` : ''
+}
+
+/** 是否属于上海时区下的当前自然月（YYYY-MM-DD） */
+export function isCurrentYearMonth(date: string | null | undefined, now = new Date()): boolean {
+  if (!date) {
+    return false
+  }
+  const ym = currentYearMonth(now)
+  return Boolean(ym) && date.slice(0, 7) === ym
 }
 
 export function formatMoney(value: number, currency: 'CNY' | 'USD', digits?: number): string {

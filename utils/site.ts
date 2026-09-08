@@ -26,8 +26,8 @@ export const researchNavLinks: NavLink[] = [
 export const mainNav: NavItem[] = [
     { label: '首页', to: '/' },
     { label: '教程', to: '/tutorials' },
-    { label: '工具', to: '/tools' },
     { label: '导航', to: '/nav' },
+    { label: '工具', to: '/tools' },
     {
         label: '投研',
         children: researchNavLinks,
@@ -48,6 +48,7 @@ export const footerCategoryLinks: NavLink[] = [
     { label: 'ETF', to: '/nav/etf' },
     { label: '境外银行卡', to: '/nav/overseas-banks' },
     { label: '美股券商', to: '/nav/overseas-brokers' },
+    { label: '数字基建', to: '/nav/digital-infra' },
 ];
 
 export const homeSeo = {

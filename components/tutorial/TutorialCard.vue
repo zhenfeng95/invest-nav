@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Tutorial } from '~/types/tutorial'
 import { formatDate, formatReadingTime } from '~/utils/format'
-import { getTutorialTypeLabel } from '~/utils/tutorials'
+import { getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
 
 defineProps<{
   tutorial: Tutorial
@@ -27,7 +27,7 @@ defineProps<{
       <div class="flex items-center gap-2 text-xs text-zinc-400">
         <span>{{ getTutorialTypeLabel(tutorial.type) }}</span>
         <span>·</span>
-        <span>{{ tutorial.category }}</span>
+        <span>{{ getTutorialCategoryLabel(tutorial.category) }}</span>
       </div>
       <h3 class="mt-3 text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
         {{ tutorial.title }}

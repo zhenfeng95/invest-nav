@@ -20,7 +20,7 @@ defineProps<{
       {{ description }}
     </p>
     <span class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 transition group-hover:gap-2.5 dark:text-zinc-100">
-      查看资源
+      查看内容
       <AppIcon name="arrow-right" class="h-4 w-4" />
     </span>
   </NuxtLink>

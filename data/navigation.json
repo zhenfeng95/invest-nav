@@ -536,6 +536,58 @@
             ]
         },
         {
+            "id": "digital-infra",
+            "slug": "digital-infra",
+            "name": "数字基建",
+            "fullName": "跨境数字基建",
+            "description": "域名、Google Workspace、Cloudflare、海外邮箱等跨境数字基础设施入口，后续会持续补充站内教程。",
+            "icon": "infra",
+            "items": [
+                {
+                    "id": "google-workspace",
+                    "name": "Google Workspace",
+                    "description": "企业邮箱与域名管理相关服务入口；可通过土耳其区定价路径以较低年费注册部分顶级域名。",
+                    "url": "https://workspace.google.com",
+                    "tags": [
+                        "Workspace",
+                        "邮箱",
+                        "域名"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/google-workspace-domain-guide",
+                    "guideLabel": "低价域名教程",
+                    "updatedAt": "2026-09-08"
+                },
+                {
+                    "id": "cloudflare",
+                    "name": "Cloudflare",
+                    "description": "CDN、DNS、安全与站点加速相关服务入口。",
+                    "url": "https://www.cloudflare.com",
+                    "tags": [
+                        "Cloudflare",
+                        "DNS",
+                        "CDN"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "updatedAt": "2026-09-08"
+                },
+                {
+                    "id": "cloudflare-registrar",
+                    "name": "Cloudflare Registrar",
+                    "description": "Cloudflare 域名注册服务，按成本价续费，适合长期持有域名。",
+                    "url": "https://www.cloudflare.com/products/registrar/",
+                    "tags": [
+                        "域名",
+                        "Cloudflare"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "updatedAt": "2026-09-08"
+                }
+            ]
+        },
+        {
             "id": "deposit-withdraw",
             "slug": "deposit-withdraw",
             "name": "出入金",

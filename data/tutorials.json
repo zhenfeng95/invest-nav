@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "id": "google-workspace-domain",
+      "slug": "google-workspace-domain-guide",
+      "title": "Google Workspace 土耳其区超低价 .com 域名教程",
+      "description": "整理通过 Google Workspace 区域定价以约 ₺75/年（约 11 元人民币）注册并长期持有 .com 等顶级域名的流程、取消订阅注意点与 Cloudflare 托管建议。",
+      "type": "article",
+      "category": "数字基建",
+      "tags": ["数字基建", "域名", "Google Workspace", "Cloudflare", ".com"],
+      "readingMinutes": 11,
+      "updatedAt": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "popular": true,
+      "markdownFile": "google-workspace-domain-guide"
+    },
+    {
       "id": "xesim-esim-adapter",
       "slug": "xesim-esim-adapter-guide",
       "title": "大陆手机用 Xesim 安装 eSIM 适配器教程",

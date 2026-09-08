@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationCategory } from '~/types/navigation'
+import { getNavigationPath } from '~/utils/navigation'
 
 defineProps<{
   category: NavigationCategory
@@ -8,7 +9,7 @@ defineProps<{
 
 <template>
   <NuxtLink
-    :to="`/nav/${category.slug}`"
+    :to="getNavigationPath(category.slug)"
     class="card card-hover flex h-full flex-col p-5"
   >
     <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-accent dark:border-white/10">

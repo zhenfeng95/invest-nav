@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ReportListItem } from '~/types/report'
+import { reportMarketLabel } from '~/types/report'
 import { formatDate, formatWeekday } from '~/utils/format'
 
 defineProps<{
@@ -14,6 +15,12 @@ defineProps<{
   >
     <div class="min-w-0">
       <div class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <span
+          v-if="report.market"
+          class="rounded-md border border-zinc-200 px-1.5 py-0.5 font-medium text-zinc-600 dark:border-white/10 dark:text-zinc-300"
+        >
+          {{ reportMarketLabel(report.market) }}
+        </span>
         <span v-if="report.date">{{ formatDate(report.date) }}</span>
         <span v-if="report.date && formatWeekday(report.date)">·</span>
         <span v-if="report.date">{{ formatWeekday(report.date) }}</span>

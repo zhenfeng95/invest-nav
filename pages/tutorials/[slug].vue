@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { formatDate, formatReadingTime } from '~/utils/format'
 import { renderMarkdown } from '~/utils/markdown'
-import { getTutorialBySlug, getTutorialTypeLabel } from '~/utils/tutorials'
+import {
+  getTutorialBySlug,
+  getTutorialCategoryLabel,
+  getTutorialCategoryNavPath,
+  getTutorialTypeLabel,
+} from '~/utils/tutorials'
 
 const route = useRoute()
 const slug = String(route.params.slug)
@@ -20,6 +25,10 @@ const markdownHtml = tutorial.markdown
     ? renderMarkdown(tutorial.content.join('\n\n'))
     : ''
 
+const categoryNavPath = getTutorialCategoryNavPath(tutorial.category)
+const categoryFullLabel = getTutorialCategoryLabel(tutorial.category, 'full')
+const categoryShortLabel = getTutorialCategoryLabel(tutorial.category)
+
 usePageSeo({
   title: tutorial.title,
   description: tutorial.description,
@@ -37,37 +46,16 @@ usePageSeo({
         返回教程
       </NuxtLink>
       <NuxtLink
-        v-if="tutorial.category === '美股券商'"
-        to="/nav/overseas-brokers"
+        v-if="categoryNavPath"
+        :to="categoryNavPath"
         class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
       >
-        返回美股券商
-      </NuxtLink>
-      <NuxtLink
-        v-if="tutorial.category === '香港银行'"
-        to="/nav/overseas-banks"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回境外银行卡
-      </NuxtLink>
-      <NuxtLink
-        v-if="tutorial.category === '境外手机卡'"
-        to="/nav/overseas-sim"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回境外手机卡
-      </NuxtLink>
-      <NuxtLink
-        v-if="tutorial.category === '资金流转'"
-        to="/nav/fund-transfer"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回资金流转
+        返回{{ categoryShortLabel }}
       </NuxtLink>
     </div>
     <article class="mt-8 max-w-3xl">
       <p class="text-xs text-zinc-400">
-        {{ getTutorialTypeLabel(tutorial.type) }} · {{ tutorial.category }}
+        {{ getTutorialTypeLabel(tutorial.type) }} · {{ categoryFullLabel }}
       </p>
       <h1 class="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
         {{ tutorial.title }}

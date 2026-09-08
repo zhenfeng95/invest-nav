@@ -11,7 +11,9 @@ import { lebaraAccountGuide } from '~/data/tutorials/lebara-account-guide'
 import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
 import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
 import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
+import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
+import { getNavigationPath } from '~/utils/navigation'
 
 const markdownFiles: Record<string, string> = {
   'firstrade-account-guide': firstradeAccountGuide,
@@ -26,6 +28,7 @@ const markdownFiles: Record<string, string> = {
   'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
   'wise-account-guide': wiseAccountGuide,
   'starryblu-account-guide': starrybluAccountGuide,
+  'google-workspace-domain-guide': googleWorkspaceDomainGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {
@@ -49,6 +52,27 @@ export function getTutorialBySlug(slug: string): Tutorial | undefined {
 
 export function getTutorialsByType(type: TutorialType): Tutorial[] {
   return tutorials.filter(item => item.type === type)
+}
+
+export function getTutorialsByCategories(categories: string[]): Tutorial[] {
+  if (categories.length === 0) {
+    return []
+  }
+
+  const set = new Set(categories)
+  return tutorials
+    .filter(item => set.has(item.category))
+    .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+}
+
+export function getTutorialPlainText(tutorial: Tutorial): string {
+  if (tutorial.markdown) {
+    return tutorial.markdown
+  }
+  if (tutorial.content?.length) {
+    return tutorial.content.join('\n\n')
+  }
+  return tutorial.description || ''
 }
 
 export function getPopularTutorials(limit = 6): Tutorial[] {
@@ -75,4 +99,41 @@ export function getTutorialTypeLabel(type: TutorialType): string {
     default:
       return '教程'
   }
+}
+
+/** 卡片 / 导航用短名；详情页可用全称 */
+const tutorialCategoryFullNames: Record<string, string> = {
+  数字基建: '跨境数字基建',
+}
+
+export function getTutorialCategoryLabel(
+  category: string,
+  variant: 'short' | 'full' = 'short',
+): string {
+  if (variant === 'full') {
+    return tutorialCategoryFullNames[category] ?? category
+  }
+  return category
+}
+
+export function getTutorialCategoryNavSlug(category: string): string | undefined {
+  switch (category) {
+    case '美股券商':
+      return 'overseas-brokers'
+    case '香港银行':
+      return 'overseas-banks'
+    case '境外手机卡':
+      return 'overseas-sim'
+    case '资金流转':
+      return 'fund-transfer'
+    case '数字基建':
+      return 'digital-infra'
+    default:
+      return undefined
+  }
+}
+
+export function getTutorialCategoryNavPath(category: string): string | undefined {
+  const slug = getTutorialCategoryNavSlug(category)
+  return slug ? getNavigationPath(slug) : undefined
 }

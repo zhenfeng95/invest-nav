@@ -41,10 +41,7 @@ function scrollToContent() {
             </h1>
 
             <p class="mt-8 max-w-md text-base leading-8 text-zinc-200 sm:mt-10 sm:text-lg sm:leading-9">
-                跨境投资入口 · 港美股 / 加密 / 开户教程
-            </p>
-            <p class="mt-4 max-w-md text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
-                内地用户的港美股与跨境投资入口，让跨境投资更简单。
+                内地用户的港美股与跨境投资入口，涵盖开户教程、资金路径与资源导航。
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-3 sm:mt-12 sm:gap-4">

@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import type { ReportDetail, ReportListItem } from '~/types/report'
+import type { ReportDetail, ReportListItem, ReportMarket } from '~/types/report'
 import { extractHeading, renderMarkdown, splitFrontmatter } from './markdown'
 
 const LIST_TTL_MS = 10 * 60 * 1000
@@ -159,12 +159,14 @@ async function listMarkdownDocs(
       : repoPath
     const slug = relative.replace(/\.md$/i, '')
     const date = extractDate(name) ?? extractDate(relative)
+    const market = kind === 'daily' ? parseReportMarket(name) : null
 
     items.push({
       slug,
-      title: titleFromName(name, date, kind),
+      title: titleFromName(name, date, kind, market),
       date,
       path: repoPath,
+      market,
     })
   }
 
@@ -177,6 +179,11 @@ async function listMarkdownDocs(
     }
     if (!a.date && b.date) {
       return 1
+    }
+    const marketRank = (market?: ReportMarket | null) => (market === 'A' ? 0 : market === 'US' ? 1 : 2)
+    const byMarket = marketRank(a.market) - marketRank(b.market)
+    if (byMarket !== 0) {
+      return byMarket
     }
     return a.slug < b.slug ? 1 : a.slug > b.slug ? -1 : 0
   })
@@ -288,8 +295,9 @@ async function getMarkdownDoc(
   const fileDir = repoPath.split('/').slice(0, -1).join('/')
   const name = repoPath.split('/').pop() || ''
   const date = normalizeDate(frontmatter.date) ?? extractDate(name)
+  const market = kind === 'daily' ? parseReportMarket(name) : null
   const heading = extractHeading(content)
-  const title = frontmatter.title || heading || titleFromName(name, date, kind)
+  const title = frontmatter.title || heading || titleFromName(name, date, kind, market)
   const body = heading ? content.replace(/^#\s+.+\r?\n+/, '') : content
 
   const detail: ReportDetail = {
@@ -297,6 +305,7 @@ async function getMarkdownDoc(
     title,
     date,
     path: repoPath,
+    market,
     htmlUrl: data.html_url || `https://github.com/${config.owner}/${config.repo}/blob/${config.ref}/${repoPath}`,
     html: renderMarkdown(body, { config, fileDir }),
   }
@@ -339,7 +348,32 @@ function resolveSlugPath(slug: string): string | null {
   return `${parts.join('/')}.md`
 }
 
-function titleFromName(name: string, date: string | null, kind: DocKind = 'daily'): string {
+/** 从 ashare-close-YYYY-MM-DD / us-close-YYYY-MM-DD 等文件名解析市场 */
+function parseReportMarket(name: string): ReportMarket | null {
+  const base = name.replace(/\.md$/i, '').toLowerCase()
+  if (/^ashare(?:-(?:close|premarket))?-\d{4}-\d{2}-\d{2}$/.test(base)) {
+    return 'A'
+  }
+  if (/^us(?:-(?:close|premarket))?-\d{4}-\d{2}-\d{2}$/.test(base)) {
+    return 'US'
+  }
+  return null
+}
+
+function dailySessionLabel(name: string): string {
+  const base = name.replace(/\.md$/i, '').toLowerCase()
+  if (base.includes('premarket')) {
+    return '盘前日报'
+  }
+  return '收盘日报'
+}
+
+function titleFromName(
+  name: string,
+  date: string | null,
+  kind: DocKind = 'daily',
+  market: ReportMarket | null = null,
+): string {
   const base = name.replace(/\.md$/i, '')
   const weekly = base.match(/^(?:weekly[-_])?(\d{4})-(\d{2})-(\d)W$/i)
   if (kind === 'weekly' || weekly) {
@@ -366,6 +400,11 @@ function titleFromName(name: string, date: string | null, kind: DocKind = 'daily
         return `${parts[1]}年${Number(parts[2])}月交易复盘`
       }
     }
+  }
+
+  if (kind === 'daily' && date && market) {
+    const marketLabel = market === 'A' ? 'A股' : '美股'
+    return `${chineseDate(date)} ${marketLabel}${dailySessionLabel(name)}`
   }
 
   const match = base.match(/^(\d{4}-\d{2}-\d{2})(?:[-_.\s]+(.+))?$/)

@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import type { NavigationItem } from '~/types/navigation'
+import { sortNavigationItems } from '~/utils/navigation'
 
-defineProps<{
+const props = defineProps<{
   items: NavigationItem[]
 }>()
+
+const sortedItems = computed(() => sortNavigationItems(props.items))
 </script>
 
 <template>
-  <div v-if="items.length" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div v-if="sortedItems.length" class="grid gap-0 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <NavigationCard
-      v-for="item in items"
+      v-for="item in sortedItems"
       :key="item.id"
       :item="item"
     />

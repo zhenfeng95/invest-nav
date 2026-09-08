@@ -26,6 +26,7 @@ type IconName =
   | 'transfer'
   | 'deposit'
   | 'sim'
+  | 'infra'
   | 'report'
   | 'chevron-down'
 
@@ -142,6 +143,13 @@ defineProps<{
       <path d="M7 5.5h7.5L18 9v9.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1Z" />
       <path d="M9.5 13.5h5M9.5 16h3.5" />
       <rect x="9.5" y="8" width="5" height="3.5" rx="0.6" />
+    </g>
+    <g v-else-if="name === 'infra'">
+      <rect x="4" y="4" width="7" height="7" rx="1.4" />
+      <rect x="13" y="4" width="7" height="7" rx="1.4" />
+      <rect x="4" y="13" width="7" height="7" rx="1.4" />
+      <path d="M16.5 13.5V16a1.5 1.5 0 0 0 1.5 1.5h2" />
+      <path d="M13.5 16.5H16" />
     </g>
     <g v-else-if="name === 'report'">
       <path d="M7 4.5h7.5L19 9v10.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" />
