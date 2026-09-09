@@ -12,6 +12,7 @@ import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide
 import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
 import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
+import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 import { getNavigationPath } from '~/utils/navigation'
 
@@ -29,6 +30,7 @@ const markdownFiles: Record<string, string> = {
   'wise-account-guide': wiseAccountGuide,
   'starryblu-account-guide': starrybluAccountGuide,
   'google-workspace-domain-guide': googleWorkspaceDomainGuide,
+  'dnshe-free-domain-guide': dnsheFreeDomainGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

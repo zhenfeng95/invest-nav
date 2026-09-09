@@ -540,9 +540,25 @@
             "slug": "digital-infra",
             "name": "数字基建",
             "fullName": "跨境数字基建",
-            "description": "域名、Google Workspace、Cloudflare、海外邮箱等跨境数字基础设施入口，后续会持续补充站内教程。",
+            "description": "域名、Google Workspace、Cloudflare、DNSHE、海外邮箱等跨境数字基础设施入口，后续会持续补充站内教程。",
             "icon": "infra",
             "items": [
+                {
+                    "id": "dnshe",
+                    "name": "DNSHE",
+                    "description": "免费二级域名注册与 DNS 解析服务，适合演示站、测试环境和开源项目。可查看介绍与使用教程。",
+                    "url": "https://www.dnshe.com",
+                    "tags": [
+                        "域名",
+                        "DNS",
+                        "免费域名"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/dnshe-free-domain-guide",
+                    "guideLabel": "使用介绍",
+                    "updatedAt": "2026-09-09"
+                },
                 {
                     "id": "google-workspace",
                     "name": "Google Workspace",

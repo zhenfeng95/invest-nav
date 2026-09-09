@@ -27,7 +27,7 @@ export const navigationGroups: NavigationGroup[] = [
   {
     id: 'digital-infra',
     title: '数字基建',
-    description: '域名、Workspace、Cloudflare、海外邮箱等跨境数字基础设施。',
+    description: '域名、Workspace、Cloudflare、DNSHE、海外邮箱等跨境数字基础设施。',
     slugs: ['digital-infra'],
   },
 ]
@@ -44,7 +44,7 @@ const shortDescriptions: Record<string, string> = {
   'overseas-brokers': '港美股券商开户与交易入口',
   'fund-transfer': '跨境汇款与多币种账户入口',
   'deposit-withdraw': '券商入金、出金与核对入口',
-  'digital-infra': '域名、Workspace、Cloudflare 与邮箱',
+  'digital-infra': '域名、Workspace、Cloudflare、DNSHE 与邮箱',
 }
 
 /** 导航分类 slug → 站内教程 category 字段 */

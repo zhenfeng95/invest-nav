@@ -29,7 +29,7 @@ const entries = [
   {
     index: '05',
     title: '数字基建',
-    description: '域名、Workspace、Cloudflare、海外邮箱',
+    description: '域名、Workspace、Cloudflare、DNSHE、海外邮箱',
     to: getNavigationPath('digital-infra'),
   },
 ]
