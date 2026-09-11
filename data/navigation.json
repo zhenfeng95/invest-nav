@@ -63,44 +63,86 @@
             "id": "funds",
             "slug": "funds",
             "name": "基金",
-            "description": "基金研究入口与 QDII 相关信息来源，帮助梳理跨境基金与权威数据站点，后续持续补充。",
+            "description": "基金与 QDII 研究入口：晨星、justETF、东方财富 QDII 频道与基金业协会等，便于对照产品资料、净值与行业公开信息；可与站内 ETF 分类及「ETF 与基金」教程一并阅读。",
             "icon": "funds",
             "items": [
                 {
                     "id": "morningstar",
                     "name": "Morningstar",
-                    "description": "基金与 ETF 研究平台。",
+                    "description": "国际常用的基金与 ETF 研究平台，可查评级、持仓、费率与业绩等公开信息（以站点当时展示为准）。",
                     "url": "https://www.morningstar.com",
                     "tags": [
                         "基金",
                         "研究"
                     ],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-01"
+                    "featured": true,
+                    "updatedAt": "2026-09-11"
+                },
+                {
+                    "id": "morningstar-cn",
+                    "name": "晨星中国",
+                    "description": "晨星中国站点，便于对照国内基金与部分跨境产品相关公开资料。",
+                    "url": "https://www.morningstar.cn",
+                    "tags": [
+                        "基金",
+                        "研究",
+                        "QDII"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "updatedAt": "2026-09-11"
                 },
                 {
                     "id": "justetf",
                     "name": "justETF",
-                    "description": "欧洲市场常用的 ETF / 基金筛选工具。",
+                    "description": "欧洲市场常用的 ETF / 基金筛选与对比工具，适合按指数、费率、复制方式筛选。",
                     "url": "https://www.justetf.com",
                     "tags": [
                         "基金",
                         "ETF"
                     ],
                     "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-12"
+                    "featured": true,
+                    "updatedAt": "2026-09-11"
                 },
                 {
-                    "id": "qdii-info",
-                    "name": "QDII 信息入口",
-                    "description": "后续将补充官方或权威数据源。当前仅作分类占位。",
-                    "url": "",
+                    "id": "eastmoney-qdii",
+                    "name": "东方财富 QDII",
+                    "description": "东方财富基金频道下的 QDII 相关列表与净值信息入口，便于检索国内代销的 QDII 产品公开数据。",
+                    "url": "https://fund.eastmoney.com/QDII_jzzzl.html",
                     "tags": [
                         "基金",
                         "QDII"
                     ],
-                    "officialUrlConfirmed": false,
-                    "updatedAt": "2026-05-30"
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/etf-vs-fund",
+                    "guideLabel": "ETF 与基金区别",
+                    "updatedAt": "2026-09-11"
+                },
+                {
+                    "id": "amac",
+                    "name": "中国证券投资基金业协会",
+                    "description": "基金业协会官网，可查阅行业公示、私募与公募相关公开信息（以协会当时栏目为准）。",
+                    "url": "https://www.amac.org.cn",
+                    "tags": [
+                        "基金",
+                        "监管"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "updatedAt": "2026-09-11"
+                },
+                {
+                    "id": "safe",
+                    "name": "国家外汇管理局",
+                    "description": "外管局官网。QDII 额度与外汇管理相关政策、数据以官方发布为准，本站仅作入口整理。",
+                    "url": "https://www.safe.gov.cn",
+                    "tags": [
+                        "QDII",
+                        "外汇"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "updatedAt": "2026-09-11"
                 }
             ]
         },
@@ -442,7 +484,7 @@
             "id": "fund-transfer",
             "slug": "fund-transfer",
             "name": "资金流转",
-            "description": "跨境汇款、多币种账户与资金路径相关资源，整理 Wise、Starryblu 等常见服务入口，并链向站内教程。",
+            "description": "跨境汇款、多币种账户与港卡在内地使用相关资源：整理 Wise、Starryblu 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
             "icon": "transfer",
             "items": [
                 {
@@ -474,6 +516,38 @@
                     "guideUrl": "/tutorials/starryblu-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-09-07"
+                },
+                {
+                    "id": "hk-atm-cash",
+                    "name": "港卡在内地 ATM 取现",
+                    "description": "建银亚洲→内地建行 ATM、汇丰红/蓝狮子费率、境外提款开关、日约 2 万与年约 10 万额度。",
+                    "url": "",
+                    "tags": [
+                        "资金流转",
+                        "港卡",
+                        "取现"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/hk-card-mainland-atm-cash",
+                    "guideLabel": "阅读教程",
+                    "updatedAt": "2026-09-11"
+                },
+                {
+                    "id": "hk-bind-pay",
+                    "name": "港卡绑微信支付宝",
+                    "description": "内地钱包绑港卡 vs 微信香港钱包：3% 手续费差异、众安搭配与约 2.5 万港币额度限制。",
+                    "url": "",
+                    "tags": [
+                        "资金流转",
+                        "港卡",
+                        "支付"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/hk-card-bind-wechat-alipay",
+                    "guideLabel": "阅读教程",
+                    "updatedAt": "2026-09-11"
                 }
             ]
         },
@@ -578,15 +652,17 @@
                 },
                 {
                     "id": "deposit-checklist",
-                    "name": "出入金核对清单",
-                    "description": "TODO: 后续补充独立说明页。当前先作为分类占位。",
+                    "name": "美股入金与资金流转",
+                    "description": "港卡、Wise、电汇与 FPS 等到券商的常见链路、入金核对清单与出金注意点。",
                     "url": "",
                     "tags": [
                         "出入金",
                         "清单"
                     ],
-                    "officialUrlConfirmed": false,
-                    "updatedAt": "2026-05-21"
+                    "officialUrlConfirmed": true,
+                    "guideUrl": "/tutorials/us-stock-deposit-and-transfer",
+                    "guideLabel": "阅读教程",
+                    "updatedAt": "2026-09-11"
                 }
             ]
         }

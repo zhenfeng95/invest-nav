@@ -13,6 +13,16 @@ import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
 import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { usStockDepositAndTransferGuide } from '~/data/tutorials/us-stock-deposit-and-transfer'
+import { howToChooseUsBrokerGuide } from '~/data/tutorials/how-to-choose-us-broker'
+import { usAccountSystemInfographic } from '~/data/tutorials/us-account-system-infographic'
+import { hkFundPathInfographic } from '~/data/tutorials/hk-fund-path-infographic'
+import { etfTypesInfographic } from '~/data/tutorials/etf-types-infographic'
+import { etfVsFundGuide } from '~/data/tutorials/etf-vs-fund'
+import { usBrokerAccountIn5Min } from '~/data/tutorials/us-broker-account-in-5-min'
+import { hkBankFundFlowDemo } from '~/data/tutorials/hk-bank-fund-flow-demo'
+import { hkCardMainlandAtmCashGuide } from '~/data/tutorials/hk-card-mainland-atm-cash'
+import { hkCardBindWechatAlipayGuide } from '~/data/tutorials/hk-card-bind-wechat-alipay'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 import { getNavigationPath } from '~/utils/navigation'
 
@@ -31,6 +41,16 @@ const markdownFiles: Record<string, string> = {
   'starryblu-account-guide': starrybluAccountGuide,
   'google-workspace-domain-guide': googleWorkspaceDomainGuide,
   'dnshe-free-domain-guide': dnsheFreeDomainGuide,
+  'us-stock-deposit-and-transfer': usStockDepositAndTransferGuide,
+  'how-to-choose-us-broker': howToChooseUsBrokerGuide,
+  'us-account-system-infographic': usAccountSystemInfographic,
+  'hk-fund-path-infographic': hkFundPathInfographic,
+  'etf-types-infographic': etfTypesInfographic,
+  'etf-vs-fund': etfVsFundGuide,
+  'us-broker-account-in-5-min': usBrokerAccountIn5Min,
+  'hk-bank-fund-flow-demo': hkBankFundFlowDemo,
+  'hk-card-mainland-atm-cash': hkCardMainlandAtmCashGuide,
+  'hk-card-bind-wechat-alipay': hkCardBindWechatAlipayGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {
@@ -128,8 +148,14 @@ export function getTutorialCategoryNavSlug(category: string): string | undefined
       return 'overseas-sim'
     case '资金流转':
       return 'fund-transfer'
+    case '出入金':
+      return 'deposit-withdraw'
     case '数字基建':
       return 'digital-infra'
+    case 'ETF':
+      return 'etf'
+    case '基金':
+      return 'funds'
     default:
       return undefined
   }

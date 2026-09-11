@@ -1,11 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
-  <rect width="960" height="640" rx="24" fill="#14171C"/>
-  <text x="64" y="84" fill="#8FADA0" font-family="Inter, sans-serif" font-size="14" letter-spacing="2">INFOGRAPHIC</text>
-  <text x="64" y="128" fill="#F4F1EA" font-family="Inter, sans-serif" font-size="32" font-weight="600">US Account System</text>
-  <rect x="64" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="88" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Bank</text>
-  <rect x="355" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="379" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Broker</text>
-  <rect x="646" y="176" width="250" height="140" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="670" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Assets</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" fill="none">
+  <rect width="960" height="720" rx="24" fill="#14171C"/>
+
+  <text x="48" y="52" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13" letter-spacing="2">一图看懂</text>
+  <text x="48" y="92" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="28" font-weight="600">美股账户体系</text>
+  <text x="48" y="124" fill="#8A939C" font-family="Inter, PingFang SC, sans-serif" font-size="14">资金从银行进入券商，再对应到托管与具体资产类型</text>
+
+  <!-- Layer labels -->
+  <text x="48" y="172" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">① 资金侧</text>
+  <text x="340" y="172" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">② 经纪账户</text>
+  <text x="632" y="172" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">③ 账户内资产</text>
+
+  <!-- Box 1: Bank -->
+  <rect x="48" y="188" width="260" height="168" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="68" y="224" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="600">银行 / 多币种账户</text>
+  <text x="68" y="254" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="13">港卡 · 美卡 · Wise 等</text>
+  <text x="68" y="286" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 同名出入金</text>
+  <text x="68" y="310" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· FPS / 本地转账 / 电汇</text>
+  <text x="68" y="334" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 换汇与中间行费用</text>
+
+  <!-- Arrow 1 -->
+  <path d="M318 272 H328" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M328 272 L320 266 M328 272 L320 278" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Box 2: Broker -->
+  <rect x="340" y="188" width="260" height="168" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="360" y="224" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="600">券商经纪账户</text>
+  <text x="360" y="254" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="13">Schwab · Firstrade · IB 等</text>
+  <text x="360" y="286" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 个人账户 Individual</text>
+  <text x="360" y="310" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 现金 / 保证金 Cash·Margin</text>
+  <text x="360" y="334" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· W-8BEN 税务身份</text>
+
+  <!-- Arrow 2 -->
+  <path d="M610 272 H620" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M620 272 L612 266 M620 272 L612 278" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Box 3: Assets -->
+  <rect x="632" y="188" width="280" height="168" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="652" y="224" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="18" font-weight="600">常见资产类型</text>
+  <text x="652" y="254" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="13">同一账户内可并存</text>
+  <text x="652" y="286" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 现金余额 Cash</text>
+  <text x="652" y="310" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 股票 Stocks · ETF</text>
+  <text x="652" y="334" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">· 期权 Options（需权限）</text>
+
+  <!-- Custody band -->
+  <rect x="48" y="388" width="864" height="100" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="68" y="422" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">④ 托管与保护（概念层）</text>
+  <text x="68" y="450" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">券商负责下单与记账；客户证券通常由托管安排持有。美国券商材料里常见 SIPC 等保护口径。</text>
+  <text x="68" y="474" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">有限额与范围，不等于赔付一切损失 · 股价波动亏损一般不在保护范围 · 以官方披露为准</text>
+
+  <!-- Bottom tips -->
+  <rect x="48" y="516" width="280" height="160" rx="16" stroke="#2A3038" fill="#12161B"/>
+  <text x="68" y="552" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13">Cash vs Margin</text>
+  <text x="68" y="582" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">现金账户：用自有资金买</text>
+  <text x="68" y="606" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">保证金：可融资 / 部分期权</text>
+  <text x="68" y="630" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">权限与风控因券商而异</text>
+  <text x="68" y="654" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">开通前先确认自身需求</text>
+
+  <rect x="340" y="516" width="280" height="160" rx="16" stroke="#2A3038" fill="#12161B"/>
+  <text x="360" y="552" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13">结算与可用</text>
+  <text x="360" y="582" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">入金到账 ≠ 立即可提</text>
+  <text x="360" y="606" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">卖出后需等交收完成</text>
+  <text x="360" y="630" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">未结算资金可能受限</text>
+  <text x="360" y="654" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">以账户「可提现」显示为准</text>
+
+  <rect x="632" y="516" width="280" height="160" rx="16" stroke="#2A3038" fill="#12161B"/>
+  <text x="652" y="552" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13">和港卡的关系</text>
+  <text x="652" y="582" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">港卡多在「资金侧」</text>
+  <text x="652" y="606" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">券商账户在「经纪侧」</text>
+  <text x="652" y="630" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">两边通常要求同名</text>
+  <text x="652" y="654" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">路径详见入金教程</text>
 </svg>

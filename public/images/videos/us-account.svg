@@ -1,8 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" fill="none">
   <rect width="960" height="540" rx="24" fill="#14171C"/>
-  <rect x="48" y="48" width="864" height="444" rx="18" stroke="#2A3038"/>
-  <circle cx="480" cy="250" r="42" fill="#1D242C" stroke="#8FADA0"/>
-  <path d="M470 250L492 262V238L470 250Z" fill="#8FADA0"/>
-  <text x="480" y="340" text-anchor="middle" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="28" font-weight="600">US Broker Account</text>
-  <text x="480" y="378" text-anchor="middle" fill="#8B949E" font-family="Inter, sans-serif" font-size="16">Video placeholder</text>
+
+  <text x="48" y="56" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13" letter-spacing="2">约 5 分钟速览</text>
+  <text x="48" y="100" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="28" font-weight="600">美股开户流程</text>
+  <text x="48" y="132" fill="#8A939C" font-family="Inter, PingFang SC, sans-serif" font-size="14">材料准备 → 在线申请 → W-8BEN → 审核 → 可入金</text>
+
+  <!-- Step 1 -->
+  <rect x="48" y="176" width="160" height="220" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="68" y="212" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">01</text>
+  <text x="68" y="248" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">准备材料</text>
+  <text x="68" y="284" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">护照 / 邮箱</text>
+  <text x="68" y="308" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">手机号</text>
+  <text x="68" y="332" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">地址证明*</text>
+  <text x="68" y="368" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">* 视券商要求</text>
+
+  <path d="M218 286 H230" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M230 286 L222 280 M230 286 L222 292" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Step 2 -->
+  <rect x="240" y="176" width="160" height="220" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="260" y="212" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">02</text>
+  <text x="260" y="248" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">在线申请</text>
+  <text x="260" y="284" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">选国际账户</text>
+  <text x="260" y="308" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">填身份财务</text>
+  <text x="260" y="332" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">申请交易权限</text>
+  <text x="260" y="368" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">按真实情况填写</text>
+
+  <path d="M410 286 H422" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M422 286 L414 280 M422 286 L414 292" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Step 3 -->
+  <rect x="432" y="176" width="160" height="220" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="452" y="212" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">03</text>
+  <text x="452" y="248" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">W-8BEN</text>
+  <text x="452" y="284" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">非美税务表</text>
+  <text x="452" y="308" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">影响股息预扣</text>
+  <text x="452" y="332" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">按指引完成</text>
+  <text x="452" y="368" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">以券商流程为准</text>
+
+  <path d="M602 286 H614" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M614 286 L606 280 M614 286 L606 292" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Step 4 -->
+  <rect x="624" y="176" width="140" height="220" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="644" y="212" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">04</text>
+  <text x="644" y="248" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">审核</text>
+  <text x="644" y="284" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">邮件通知</text>
+  <text x="644" y="308" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">可能补材料</text>
+  <text x="644" y="332" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">权限分批批</text>
+  <text x="644" y="368" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">耐心等待</text>
+
+  <path d="M774 286 H786" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M786 286 L778 280 M786 286 L778 292" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Step 5 -->
+  <rect x="796" y="176" width="116" height="220" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="812" y="212" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">05</text>
+  <text x="812" y="248" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">可入金</text>
+  <text x="812" y="284" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">ready</text>
+  <text x="812" y="308" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">to fund</text>
+  <text x="812" y="332" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">再转资金</text>
+  <text x="812" y="368" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">同名路径</text>
+
+  <text x="48" y="448" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="13">不同券商字段与顺序会变 · 本图仅作共性速览 · 详情见各开户教程</text>
+  <text x="48" y="480" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">嘉信 · Firstrade · 盈立 · 宝时等分步图文见站内教程</text>
 </svg>

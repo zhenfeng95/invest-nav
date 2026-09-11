@@ -41,7 +41,7 @@ const shortDescriptions: Record<string, string> = {
   'overseas-banks': '香港及境外银行开户相关入口',
   'overseas-sim': '境外 SIM / eSIM 与接码入口',
   'overseas-brokers': '港美股券商开户与交易入口',
-  'fund-transfer': '跨境汇款与多币种账户入口',
+  'fund-transfer': '跨境汇款、多币种账户与港卡内地使用',
   'deposit-withdraw': '券商入金、出金与核对入口',
   'digital-infra': '域名、Workspace、Cloudflare、DNSHE 与邮箱',
 }
@@ -49,7 +49,7 @@ const shortDescriptions: Record<string, string> = {
 /** 导航分类 slug → 站内教程 category 字段 */
 const tutorialCategoriesByNavSlug: Record<string, string[]> = {
   stocks: ['美股'],
-  funds: [],
+  funds: ['基金'],
   etf: ['ETF'],
   'stocks-cn': [],
   options: ['期权'],

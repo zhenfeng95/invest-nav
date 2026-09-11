@@ -1,13 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
-  <rect width="960" height="640" rx="24" fill="#14171C"/>
-  <text x="64" y="84" fill="#8FADA0" font-family="Inter, sans-serif" font-size="14" letter-spacing="2">INFOGRAPHIC</text>
-  <text x="64" y="128" fill="#F4F1EA" font-family="Inter, sans-serif" font-size="32" font-weight="600">ETF Types</text>
-  <rect x="64" y="184" width="190" height="150" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="84" y="260" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Broad</text>
-  <rect x="278" y="184" width="190" height="150" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="298" y="260" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Sector</text>
-  <rect x="492" y="184" width="190" height="150" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="512" y="260" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Bond</text>
-  <rect x="706" y="184" width="190" height="150" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="726" y="260" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Theme</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" fill="none">
+  <rect width="960" height="720" rx="24" fill="#14171C"/>
+
+  <text x="48" y="52" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13" letter-spacing="2">一图看懂</text>
+  <text x="48" y="92" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="28" font-weight="600">ETF 分类</text>
+  <text x="48" y="124" fill="#8A939C" font-family="Inter, PingFang SC, sans-serif" font-size="14">按底层资产与投资目标粗分：宽基 · 行业 · 债券 · 主题（及常见延伸）</text>
+
+  <!-- Four main types -->
+  <rect x="48" y="156" width="208" height="200" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="64" y="192" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">① 宽基 Broad</text>
+  <text x="64" y="222" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">市场整体暴露</text>
+  <text x="64" y="252" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">跟踪大盘 / 全市场指数</text>
+  <text x="64" y="280" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">例：标普 500、全市场</text>
+  <text x="64" y="308" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">常见：VOO · VTI · SPY</text>
+  <text x="64" y="336" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="11">偏长期底仓、分散持股</text>
+
+  <rect x="268" y="156" width="208" height="200" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="284" y="192" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">② 行业 Sector</text>
+  <text x="284" y="222" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">单一行业暴露</text>
+  <text x="284" y="252" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">科技、医疗、金融等</text>
+  <text x="284" y="280" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">波动通常高于宽基</text>
+  <text x="284" y="308" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">常见：XLK · XLF · XLE</text>
+  <text x="284" y="336" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="11">偏观点交易 / 配置微调</text>
+
+  <rect x="488" y="156" width="208" height="200" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="504" y="192" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">③ 债券 Bond</text>
+  <text x="504" y="222" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">固定收益暴露</text>
+  <text x="504" y="252" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">国债、公司债、市政债</text>
+  <text x="504" y="280" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">关注久期与信用风险</text>
+  <text x="504" y="308" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">常见：BND · TLT · SGOV</text>
+  <text x="504" y="336" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="11">偏稳健配置 / 现金替代*</text>
+
+  <rect x="708" y="156" width="204" height="200" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="724" y="192" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">④ 主题 Theme</text>
+  <text x="724" y="222" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">叙事与赛道</text>
+  <text x="724" y="252" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">AI、清洁能源、半导体</text>
+  <text x="724" y="280" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">持仓更集中、风格漂移</text>
+  <text x="724" y="308" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">例：半导体、创新主题</text>
+  <text x="724" y="336" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="11">偏卫星仓，需更高容错</text>
+
+  <!-- Extensions -->
+  <text x="48" y="400" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">常见延伸分类（与上面可交叉）</text>
+
+  <rect x="48" y="416" width="288" height="112" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="64" y="448" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">商品 / 另类</text>
+  <text x="64" y="476" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">黄金、原油、宽基商品等</text>
+  <text x="64" y="500" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">结构可能是期货展期，非现货</text>
+
+  <rect x="348" y="416" width="288" height="112" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="364" y="448" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">国际 / 地区</text>
+  <text x="364" y="476" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">发达、新兴、单国市场</text>
+  <text x="364" y="500" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">含汇率与地缘风险</text>
+
+  <rect x="648" y="416" width="264" height="112" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="664" y="448" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">加密货币现货 ETF</text>
+  <text x="664" y="476" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">如比特币现货 ETF（IBIT 等）</text>
+  <text x="664" y="500" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">波动大；开户权限因券商而异</text>
+
+  <!-- Checklist -->
+  <rect x="48" y="552" width="864" height="128" rx="16" stroke="#2A3038" fill="#12161B"/>
+  <text x="68" y="588" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="15" font-weight="600">挑选前先看这几项</text>
+  <text x="68" y="618" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">跟踪指数 · 费率 ER · 规模与流动性 · 持仓集中度 · 是否杠杆 / 反向</text>
+  <text x="68" y="646" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">同名「科技」可能一个是行业、一个是主题；以说明书与持仓为准，勿只看昵称</text>
+  <text x="68" y="670" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">* 超短债 ETF 常被当作现金管理工具讨论，仍有利率与净值波动，不是银行存款</text>
 </svg>

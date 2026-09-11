@@ -1,13 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
-  <rect width="960" height="640" rx="24" fill="#14171C"/>
-  <text x="64" y="84" fill="#8FADA0" font-family="Inter, sans-serif" font-size="14" letter-spacing="2">INFOGRAPHIC</text>
-  <text x="64" y="128" fill="#F4F1EA" font-family="Inter, sans-serif" font-size="32" font-weight="600">HK Fund Path</text>
-  <rect x="64" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="84" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Source</text>
-  <rect x="312" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="332" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">HK Bank</text>
-  <rect x="560" y="184" width="200" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="580" y="250" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Transfer</text>
-  <rect x="748" y="352" width="148" height="120" rx="16" stroke="#2A3038" fill="#1A1F26"/>
-  <text x="768" y="418" fill="#D4DDD8" font-family="Inter, sans-serif" font-size="18">Broker</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" fill="none">
+  <rect width="960" height="720" rx="24" fill="#14171C"/>
+
+  <text x="48" y="52" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="13" letter-spacing="2">一图看懂</text>
+  <text x="48" y="92" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="28" font-weight="600">港卡资金路径</text>
+  <text x="48" y="124" fill="#8A939C" font-family="Inter, PingFang SC, sans-serif" font-size="14">从资金源到港卡，再按币种分流到券商或中转账户</text>
+
+  <!-- Row 1 labels -->
+  <text x="48" y="168" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">① 资金源</text>
+  <text x="280" y="168" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">② 港卡账户</text>
+  <text x="512" y="168" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">③ 转出方式</text>
+  <text x="744" y="168" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">④ 去向</text>
+
+  <!-- Box 1 -->
+  <rect x="48" y="184" width="208" height="152" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="64" y="220" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">人民币 / 外币</text>
+  <text x="64" y="248" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">内地卡 · 现金 · 其他</text>
+  <text x="64" y="278" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 合规换汇 / 跨境</text>
+  <text x="64" y="300" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 额度与申报自查</text>
+  <text x="64" y="322" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">本站不展开具体渠道</text>
+
+  <path d="M266 260 H276" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M276 260 L268 254 M276 260 L268 266" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Box 2 -->
+  <rect x="280" y="184" width="208" height="152" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="296" y="220" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">香港银行账户</text>
+  <text x="296" y="248" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">汇丰 · 建银 · ZA 等</text>
+  <text x="296" y="278" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 港币 HKD 余额</text>
+  <text x="296" y="300" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 美元 USD 余额</text>
+  <text x="296" y="322" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">同名是出入金前提</text>
+
+  <path d="M498 260 H508" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M508 260 L500 254 M508 260 L500 266" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Box 3 -->
+  <rect x="512" y="184" width="208" height="152" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="528" y="220" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">按场景选通道</text>
+  <text x="528" y="248" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">不要混用收款信息</text>
+  <text x="528" y="278" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· FPS 转数快（港币）</text>
+  <text x="528" y="300" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 香港本地转账</text>
+  <text x="528" y="322" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 国际电汇 Wire</text>
+
+  <path d="M730 260 H740" stroke="#4A5A52" stroke-width="2"/>
+  <path d="M740 260 L732 254 M740 260 L732 266" stroke="#4A5A52" stroke-width="2" fill="none"/>
+
+  <!-- Box 4 -->
+  <rect x="744" y="184" width="168" height="152" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="760" y="220" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="16" font-weight="600">目标账户</text>
+  <text x="760" y="252" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 港美股券商</text>
+  <text x="760" y="274" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· Wise 等中转</text>
+  <text x="760" y="296" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">· 嘉信花旗港行</text>
+  <text x="760" y="322" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">以官方入金页为准</text>
+
+  <!-- Three path cards -->
+  <text x="48" y="380" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">三条常见分流（示意）</text>
+
+  <rect x="48" y="396" width="288" height="130" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="64" y="428" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">A · 港币 → 港资券商</text>
+  <text x="64" y="456" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">港卡 HKD —FPS→ 券商港币</text>
+  <text x="64" y="480" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">盈立 / 宝时等常见路径</text>
+  <text x="64" y="504" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">通常较快，费用相对低</text>
+
+  <rect x="348" y="396" width="288" height="130" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="364" y="428" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">B · 港币 → 嘉信换汇</text>
+  <text x="364" y="456" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">港卡 —本地转账→ 花旗香港</text>
+  <text x="364" y="480" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">到账后按汇率入嘉信美元</text>
+  <text x="364" y="504" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">备注须含姓名 + 8 位账号</text>
+
+  <rect x="648" y="396" width="264" height="130" rx="16" stroke="#2A3038" fill="#1A1F26"/>
+  <text x="664" y="428" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="600">C · 美元 → 美券商</text>
+  <text x="664" y="456" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="12">港卡 USD —Wire→ 收款行</text>
+  <text x="664" y="480" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">Firstrade 等常见默认</text>
+  <text x="664" y="504" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="11">中间行可能另扣费</text>
+
+  <!-- Bottom checklist -->
+  <rect x="48" y="550" width="864" height="130" rx="16" stroke="#2A3038" fill="#12161B"/>
+  <text x="68" y="586" fill="#F4F1EA" font-family="Inter, PingFang SC, sans-serif" font-size="15" font-weight="600">转账前核对（每次）</text>
+  <text x="68" y="616" fill="#D4DDD8" font-family="Inter, PingFang SC, sans-serif" font-size="13">同名 · 币种 · 收款人 / 识别码 · 备注或账户号 · 回单留存</text>
+  <text x="68" y="644" fill="#A8B3BC" font-family="Inter, PingFang SC, sans-serif" font-size="12">FPS ≠ 电汇 ≠ ACH · 收款信息只从券商当前入金页复制 · 建议小额试单后再放大额</text>
+  <text x="68" y="668" fill="#8FADA0" font-family="Inter, PingFang SC, sans-serif" font-size="12">出金通常仍须回到本人同名港卡 · 未结算资金未必可提</text>
 </svg>

@@ -86,11 +86,25 @@ usePageSeo({
       >
 
       <div
-        v-if="tutorial.type === 'video'"
+        v-if="tutorial.type === 'video' && tutorial.videoUrl"
+        class="card mt-8 overflow-hidden p-0"
+      >
+        <div class="aspect-video w-full bg-zinc-100 dark:bg-white/[0.04]">
+          <iframe
+            class="h-full w-full"
+            :src="tutorial.videoUrl"
+            title="tutorial video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          />
+        </div>
+      </div>
+      <div
+        v-else-if="tutorial.type === 'video'"
         class="card mt-8 p-6"
       >
         <p class="text-sm text-zinc-500 dark:text-zinc-400">
-          视频播放源尚未接入。当前 `videoUrl` 仅作为数据结构预留。
+          本条暂未接入播放源。可先阅读下方图文说明，或前往相关文字教程。
         </p>
       </div>
 

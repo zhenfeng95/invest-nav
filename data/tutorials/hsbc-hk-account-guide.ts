@@ -127,6 +127,8 @@ export const hsbcHkAccountGuide = `本页整理通过 **汇丰银行香港（HSB
 
 转入后「账面余额」可能已有数值，但「可用余额」仍为 0，需过几天等汇丰检视通过后才能转出。请以 App 当时状态为准。
 
+开户可用后，若人在内地需要现金或扫码消费，可对照：[港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash)、[港卡绑微信支付宝在内地消费](/tutorials/hk-card-bind-wechat-alipay)。
+
 ## 五、开立汇丰投资账户（可选）
 
 一般来说，在银行进行投资的费率较高，更常见的做法是另开券商账户投资。若仍想体验银行投资账户，可按下列流程申请。
@@ -162,5 +164,5 @@ export const hsbcHkAccountGuide = `本页整理通过 **汇丰银行香港（HSB
 
 ---
 
-相关入口：[汇丰香港官网](https://www.hsbc.com.hk) · [境外银行卡导航](/nav/overseas-banks)
+相关入口：[汇丰香港官网](https://www.hsbc.com.hk) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
 `;

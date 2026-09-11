@@ -9,8 +9,9 @@ export const ccbAsiaAccountGuide = `本页整理通过 **建银亚洲（中国�
 下面几点是内地用户常用来对照工银亚洲、汇丰等账户的说法，限额和费用请以银行当时公告为准：
 
 - 线上开户常见描述是门槛较低，账户通常没有管理费
-- 在内地建设银行 ATM 取现常见可免手续费，每日额度有申请者提到约 **2 万人民币**（类似工银亚洲的取现路径）
+- 在内地建设银行 ATM 取现常见可免手续费，每日额度有申请者提到约 **2 万人民币**（类似工银亚洲的取现路径）；完整核对见：[港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash)
 - 支持在内地直接取现离岸人民币，无需再单独换汇（类似汇丰蓝狮子一类安排）
+- 实体卡也可尝试绑定内地微信 / 支付宝做日常消费，见：[港卡绑微信支付宝在内地消费](/tutorials/hk-card-bind-wechat-alipay)
 
 ## 二、开户条件
 
@@ -140,5 +141,5 @@ export const ccbAsiaAccountGuide = `本页整理通过 **建银亚洲（中国�
 
 ---
 
-相关入口：[建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) · [境外银行卡导航](/nav/overseas-banks)
+相关入口：[建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
 `

@@ -120,7 +120,9 @@ export const zaBankAccountGuide = `本页整理通过 **ZA Bank（众安银行�
 
 ![ZA Bank：上传出入境记录后进入等待审核](/images/tutorials/za-bank-upload-review.png)
 
+开户通过后，若要把 ZA 卡用于内地微信 / 支付宝扫码，见：[港卡绑微信支付宝在内地消费](/tutorials/hk-card-bind-wechat-alipay)（与上文「绑定内地银行卡」不是同一步）。需要现金时可对照：[港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash)。
+
 ---
 
-相关入口：[众安银行官网](https://bank.za.group) · [境外银行卡导航](/nav/overseas-banks)
+相关入口：[众安银行官网](https://bank.za.group) · [境外银行卡导航](/nav/overseas-banks) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
 `;
