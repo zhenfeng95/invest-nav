@@ -15,8 +15,8 @@ export const navigationGroups: NavigationGroup[] = [
   {
     id: 'markets',
     title: '投资品种',
-    description: '美股、加密货币、基金、ETF、个股与期权相关公开入口。',
-    slugs: ['stocks', 'crypto', 'funds', 'etf', 'stocks-cn', 'options'],
+    description: '美股、基金、ETF、个股与期权相关公开入口。',
+    slugs: ['stocks', 'funds', 'etf', 'stocks-cn', 'options'],
   },
   {
     id: 'cross-border',
@@ -34,7 +34,6 @@ export const navigationGroups: NavigationGroup[] = [
 
 const shortDescriptions: Record<string, string> = {
   stocks: '美股交易所与行情、披露入口',
-  crypto: '交易所、钱包与安全相关入口',
   funds: '基金研究与 QDII 相关入口',
   etf: '主流 ETF 发行方与工具入口',
   'stocks-cn': '个股研究与中概相关入口',
@@ -50,7 +49,6 @@ const shortDescriptions: Record<string, string> = {
 /** 导航分类 slug → 站内教程 category 字段 */
 const tutorialCategoriesByNavSlug: Record<string, string[]> = {
   stocks: ['美股'],
-  crypto: ['加密货币'],
   funds: [],
   etf: ['ETF'],
   'stocks-cn': [],

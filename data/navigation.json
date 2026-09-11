@@ -60,64 +60,6 @@
             ]
         },
         {
-            "id": "crypto",
-            "slug": "crypto",
-            "name": "加密货币",
-            "description": "加密货币交易平台、钱包与学习资源入口，覆盖常见交易所与自托管工具，便于对照官方信息。",
-            "icon": "crypto",
-            "items": [
-                {
-                    "id": "coinbase",
-                    "name": "Coinbase",
-                    "description": "面向主流市场的加密资产交易平台。",
-                    "url": "https://www.coinbase.com",
-                    "tags": [
-                        "加密货币",
-                        "交易所"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "featured": true,
-                    "updatedAt": "2026-07-11"
-                },
-                {
-                    "id": "kraken",
-                    "name": "Kraken",
-                    "description": "老牌加密货币交易平台。",
-                    "url": "https://www.kraken.com",
-                    "tags": [
-                        "加密货币",
-                        "交易所"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-02"
-                },
-                {
-                    "id": "metamask",
-                    "name": "MetaMask",
-                    "description": "常用的自托管钱包与浏览器扩展。",
-                    "url": "https://metamask.io",
-                    "tags": [
-                        "钱包",
-                        "以太坊"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-25"
-                },
-                {
-                    "id": "ledger",
-                    "name": "Ledger",
-                    "description": "硬件钱包厂商，用于离线存储私钥。",
-                    "url": "https://www.ledger.com",
-                    "tags": [
-                        "钱包",
-                        "安全"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-06-18"
-                }
-            ]
-        },
-        {
             "id": "funds",
             "slug": "funds",
             "name": "基金",

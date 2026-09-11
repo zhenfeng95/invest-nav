@@ -5,7 +5,7 @@ const tools = getTools()
 
 usePageSeo({
   title: '投资工具',
-  description: 'Zhen Invest 投资工具入口，提供财经日历与空间计算器等实用功能，帮助跟踪经济数据发布、利率就业等节点，并推演价格空间，后续将持续接入更多分析工具。',
+  description: 'Zhen Invest 投资工具入口，提供财经日历、空间计算器、复利计算器、汇率购汇估算与仓位风控等实用功能，帮助跟踪经济节点、推演价格空间、规划出入金与仓位，后续将持续接入更多分析工具。',
   path: '/tools',
 })
 </script>
@@ -15,7 +15,7 @@ usePageSeo({
     <PageHero
       eyebrow="Tools"
       title="投资工具"
-      description="第一阶段先提供工具入口和 Coming Soon 状态。真实计算与行情接口会在后续接入。"
+      description="跟踪财经节点、推演价格空间、估算复利与购汇成本、规划仓位风控。更多分析工具会持续接入。"
     />
     <ToolGrid :items="tools" />
   </AppContainer>

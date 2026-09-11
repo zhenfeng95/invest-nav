@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getToolBySlug, getToolStatusLabel } from '~/utils/tools';
+import { getToolBySlug } from '~/utils/tools';
 
 const route = useRoute();
 const slug = String(route.params.slug);
@@ -59,7 +59,19 @@ onBeforeUnmount(() => {
 
 <template>
     <AppContainer v-if="tool" class="space-y-8 py-12 sm:py-16">
-        <PageHero :eyebrow="getToolStatusLabel(tool.status)" :title="tool.name" :description="tool.description" />
+        <div>
+            <NuxtLink
+                to="/tools"
+                class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+            >
+                返回投资工具
+            </NuxtLink>
+            <PageHero
+                class="mt-6"
+                :title="tool.name"
+                :description="tool.description"
+            />
+        </div>
 
         <div v-if="tool.iframeSrc" class="overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10">
             <iframe
@@ -74,6 +86,12 @@ onBeforeUnmount(() => {
         </div>
 
         <EconomicCalendar v-else-if="tool.id === 'calendar'" />
+
+        <CompoundInterestCalculator v-else-if="tool.id === 'compound-interest'" />
+
+        <FxPurchaseEstimator v-else-if="tool.id === 'fx-estimate'" />
+
+        <PositionRiskCalculator v-else-if="tool.id === 'position-risk'" />
 
         <EmptyState v-else title="功能开发中" description="第一阶段不实现真实金融计算。页面路由、工具状态和 Mock API 已经预留。">
             <p v-if="tool.apiPath" class="mt-4 text-xs text-zinc-400">预留接口：{{ tool.apiPath }}</p>

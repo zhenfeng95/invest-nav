@@ -41,7 +41,7 @@ export function normalizeMetaDescription(description: string, pageTitle: string)
   }
 
   const label = pageTitle.replace(/｜.*$/, '').trim() || pageTitle.trim()
-  const suffix = `Zhen Invest（臻投资）为内地用户整理「${label}」相关要点、操作路径与注意事项，覆盖港美股开户、出入金、加密货币与跨境资源导航，内容仅供学习交流，不构成投资建议。`
+  const suffix = `Zhen Invest（臻投资）为内地用户整理「${label}」相关要点、操作路径与注意事项，覆盖港美股开户、出入金与跨境资源导航，内容仅供学习交流，不构成投资建议。`
   const joiner = /[。.!？?]$/.test(base) ? '' : '。'
   return clipMetaDescription(`${base}${joiner}${suffix}`)
 }

@@ -72,7 +72,7 @@ DNSHE 面向开发者、学生、开源项目和早期创作者，提供**无需
 
 ![DNSHE：注册额度与「+ 注册新域名」](/images/tutorials/dnshe-register-quota.png)
 
-2. 在弹窗里 **选择根域名**（如 \`de5.net\`），填写 **域名前缀**（2–36 位，仅字母、数字和连字符 \`-\`）
+2. 在弹窗里 **选择根域名**（如 \`de5.net\`），填写 **域名前缀**（2–36 位，仅字母、数字和连字符 \`-\`）。部分根域名不支持托管到 Cloudflare（例如 \`bbroot.com\`），若你打算走下文 Cloudflare 流程，请谨慎选择；若不需要托管到 Cloudflare，则无需多虑。
 
 ![DNSHE：注册新域名弹窗，选择根域名并输入前缀](/images/tutorials/dnshe-register-modal.png)
 

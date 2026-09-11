@@ -1,6 +1,5 @@
 export type NavigationIcon =
   | 'stocks'
-  | 'crypto'
   | 'funds'
   | 'etf'
   | 'company'

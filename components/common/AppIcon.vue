@@ -16,7 +16,6 @@ type IconName =
   | 'calendar'
   | 'calculator'
   | 'stocks'
-  | 'crypto'
   | 'funds'
   | 'etf'
   | 'company'
@@ -104,10 +103,6 @@ defineProps<{
     <g v-else-if="name === 'stocks'">
       <path d="M4 16.5 9 11l3.5 3.5L20 7" />
       <path d="M14.5 7H20v5.5" />
-    </g>
-    <g v-else-if="name === 'crypto'">
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M9.5 8h5M9.5 16h5M12.5 6v2M12.5 16v2M10 8c-1 0-1.7.8-1.7 1.8S9 11.6 10 11.6h4c1 0 1.7.8 1.7 1.8S15 15.2 14 15.2" />
     </g>
     <g v-else-if="name === 'funds'">
       <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" />
