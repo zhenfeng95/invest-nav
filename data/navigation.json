@@ -484,7 +484,7 @@
             "id": "fund-transfer",
             "slug": "fund-transfer",
             "name": "资金流转",
-            "description": "跨境汇款、多币种账户与港卡在内地使用相关资源：整理 Wise、Starryblu 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
+            "description": "跨境汇款、多币种账户与港卡在内地使用相关资源：整理 Wise、Starryblu、iFAST 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
             "icon": "transfer",
             "items": [
                 {
@@ -516,6 +516,21 @@
                     "guideUrl": "/tutorials/starryblu-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-09-07"
+                },
+                {
+                    "id": "ifast",
+                    "name": "iFAST Global Bank",
+                    "description": "英国持牌多币种银行账户，可用于跨境收付款与电汇中转。可查看 iFAST 开户教程。",
+                    "url": "https://www.ifastgb.com",
+                    "tags": [
+                        "资金流转",
+                        "汇款"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/ifast-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-09-14"
                 },
                 {
                     "id": "hk-atm-cash",

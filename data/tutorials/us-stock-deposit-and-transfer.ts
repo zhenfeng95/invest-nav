@@ -18,7 +18,7 @@ export const usStockDepositAndTransferGuide = `本页整理内地用户向**美�
 | 环节 | 常见工具 | 本站可对照 |
 | --- | --- | --- |
 | 港币 / 美元外币账户 | 汇丰、建银亚洲、ZA 等港卡 | [港卡开户入门](/tutorials/hong-kong-bank-account-guide)、[汇丰](/tutorials/hsbc-hk-account-guide)、[建银亚洲](/tutorials/ccb-asia-account-guide)、[ZA](/tutorials/za-bank-account-guide) |
-| 多币种中转 | Wise、Starryblu 等 | [Wise 开户](/tutorials/wise-account-guide)、[Starryblu 开户](/tutorials/starryblu-account-guide) |
+| 多币种中转 | Wise、Starryblu、iFAST 等 | [Wise 开户](/tutorials/wise-account-guide)、[Starryblu 开户](/tutorials/starryblu-account-guide)、[iFAST 开户](/tutorials/ifast-account-guide) |
 | 券商账户 | 嘉信、Firstrade、盈立、宝时等 | [美股券商导航](/nav/overseas-brokers) |
 | 费用粗算 | 购汇加点与固定费用 | [汇率购汇估算](/tools/fx-estimate) |
 
@@ -129,7 +129,7 @@ Firstrade 等美国券商，港卡侧常见仍是**美元电汇**，费用与时
 | 你想做的事 | 去哪 |
 | --- | --- |
 | 准备港卡 | [港卡开户入门](/tutorials/hong-kong-bank-account-guide) 及汇丰 / 建银 / ZA 分教程 |
-| 多币种中转 | [Wise](/tutorials/wise-account-guide)、[Starryblu](/tutorials/starryblu-account-guide)、[资金流转导航](/nav/fund-transfer) |
+| 多币种中转 | [Wise](/tutorials/wise-account-guide)、[Starryblu](/tutorials/starryblu-account-guide)、[iFAST](/tutorials/ifast-account-guide)、[资金流转导航](/nav/fund-transfer) |
 | 开具体券商 | [美股券商导航](/nav/overseas-brokers) 与各开户教程 |
 | 查官方资金说明入口 | [出入金导航](/nav/deposit-withdraw) |
 | 粗算购汇成本 | [汇率购汇估算](/tools/fx-estimate) |

@@ -24,7 +24,7 @@ Wise 支持多种外币充值方式，其中港币和美元较常见。
 
 ### 美元账户
 
-若开通的是美元账户，系统会生成一组美元收款信息（如 Routing Number、Account Number 等）。你可通过 iFAST、盈透、Kraken、熊猫速汇等平台将美元汇入（以各方当时支持的路径为准）。常见说法是无需美国地址证明，但仍可能经历合规核验，请以实际到账与审核反馈为准。
+若开通的是美元账户，系统会生成一组美元收款信息（如 Routing Number、Account Number 等）。你可通过 [iFAST](/tutorials/ifast-account-guide)、盈透、Kraken、熊猫速汇等平台将美元汇入（以各方当时支持的路径为准）。常见说法是无需美国地址证明，但仍可能经历合规核验，请以实际到账与审核反馈为准。
 
 ### 港币账户
 
@@ -133,5 +133,5 @@ Wise 是受英国金融行为监管局（FCA）监管的电子货币服务平台
 
 ---
 
-相关入口：[Wise 官网](https://wise.com) · [通过支付宝汇出人民币（帮助中心）](https://wise.com/zh-cn/help/articles/2kTApouGnjRj6JM1yduMIL/%E9%80%9A%E8%BF%87%E6%94%AF%E4%BB%98%E5%AE%9D%E6%B1%87%E5%87%BA%E4%BA%BA%E6%B0%91%E5%B8%81) · [资金流转导航](/nav/fund-transfer) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
+相关入口：[Wise 官网](https://wise.com) · [通过支付宝汇出人民币（帮助中心）](https://wise.com/zh-cn/help/articles/2kTApouGnjRj6JM1yduMIL/%E9%80%9A%E8%BF%87%E6%94%AF%E4%BB%98%E5%AE%9D%E6%B1%87%E5%87%BA%E4%BA%BA%E6%B0%91%E5%B8%81) · [资金流转导航](/nav/fund-transfer) · [iFAST 开户](/tutorials/ifast-account-guide) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
 `;

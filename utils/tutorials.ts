@@ -11,6 +11,7 @@ import { lebaraAccountGuide } from '~/data/tutorials/lebara-account-guide'
 import { xesimEsimAdapterGuide } from '~/data/tutorials/xesim-esim-adapter-guide'
 import { wiseAccountGuide } from '~/data/tutorials/wise-account-guide'
 import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
+import { ifastAccountGuide } from '~/data/tutorials/ifast-account-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
 import { usStockDepositAndTransferGuide } from '~/data/tutorials/us-stock-deposit-and-transfer'
@@ -39,6 +40,7 @@ const markdownFiles: Record<string, string> = {
   'xesim-esim-adapter-guide': xesimEsimAdapterGuide,
   'wise-account-guide': wiseAccountGuide,
   'starryblu-account-guide': starrybluAccountGuide,
+  'ifast-account-guide': ifastAccountGuide,
   'google-workspace-domain-guide': googleWorkspaceDomainGuide,
   'dnshe-free-domain-guide': dnsheFreeDomainGuide,
   'us-stock-deposit-and-transfer': usStockDepositAndTransferGuide,

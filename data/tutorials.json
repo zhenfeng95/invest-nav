@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "id": "ifast-account",
+      "slug": "ifast-account-guide",
+      "title": "iFAST Global Bank 开户教程",
+      "description": "整理 iFAST Global Bank（奕丰环球银行）与新加坡投资平台的区别、收款/券商/Wise/扫码等常见用途、远程开户材料与官方五步流程，以及 FSCS 保障与借记卡限制。",
+      "type": "article",
+      "category": "资金流转",
+      "tags": ["iFAST", "资金流转", "多币种", "开户", "英国银行"],
+      "readingMinutes": 22,
+      "updatedAt": "2026-09-14",
+      "publishedAt": "2026-09-14",
+      "popular": true,
+      "markdownFile": "ifast-account-guide"
+    },
+    {
       "id": "dnshe-free-domain",
       "slug": "dnshe-free-domain-guide",
       "title": "DNSHE 免费域名介绍与使用教程",
