@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "id": "website-ads-monetization",
+      "slug": "website-ads-monetization-guide",
+      "title": "个人网站接入展示广告变现指南",
+      "description": "整理内容站 / 导航站通过展示广告回收成本的常见路径、门槛、版位与合规注意点，并说明与本站「副业变现」教程分类的关系。",
+      "type": "article",
+      "category": "副业变现",
+      "tags": ["副业变现", "广告", "AdSense", "内容站", "站点运营"],
+      "readingMinutes": 12,
+      "updatedAt": "2026-09-14",
+      "publishedAt": "2026-09-14",
+      "popular": true,
+      "markdownFile": "website-ads-monetization-guide"
+    },
+    {
       "id": "ifast-account",
       "slug": "ifast-account-guide",
       "title": "iFAST Global Bank 开户教程",

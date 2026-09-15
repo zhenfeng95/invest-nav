@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type IconName =
+export type IconName =
   | 'logo'
   | 'menu'
   | 'close'
@@ -28,6 +28,14 @@ type IconName =
   | 'infra'
   | 'report'
   | 'chevron-down'
+  | 'x'
+  | 'youtube'
+  | 'telegram'
+  | 'target'
+  | 'chat'
+  | 'megaphone'
+  | 'bug'
+  | 'lightbulb'
 
 defineProps<{
   name: IconName
@@ -153,6 +161,38 @@ defineProps<{
     </g>
     <g v-else-if="name === 'chevron-down'">
       <path d="m6 9 6 6 6-6" />
+    </g>
+    <g v-else-if="name === 'x'">
+      <path d="M5 5l14 14M19 5 5 19" />
+    </g>
+    <g v-else-if="name === 'youtube'">
+      <rect x="3.5" y="7" width="17" height="10" rx="2.5" />
+      <path d="m11 10.2 4 1.8-4 1.8V10.2Z" fill="currentColor" stroke="none" />
+    </g>
+    <g v-else-if="name === 'telegram'">
+      <path d="M20.5 5.5 3.8 12.2l4.6 1.6 1.7 4.7 2.9-3.2 4.2 2.7 3.3-12.5Z" />
+      <path d="m8.4 13.8 8.7-6.2" />
+    </g>
+    <g v-else-if="name === 'target'">
+      <circle cx="12" cy="12" r="7.5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+    </g>
+    <g v-else-if="name === 'chat'">
+      <path d="M6 17.5 4.5 20l3.2-1.2A7.5 7.5 0 1 0 6 17.5Z" />
+    </g>
+    <g v-else-if="name === 'megaphone'">
+      <path d="M4.5 11.5v2A1.5 1.5 0 0 0 6 15h1l6 3.5V6.5L7 10H6a1.5 1.5 0 0 0-1.5 1.5Z" />
+      <path d="M17.5 9.5a3.2 3.2 0 0 1 0 5" />
+      <path d="M7 15.2V17a1.5 1.5 0 0 0 2.3 1.3" />
+    </g>
+    <g v-else-if="name === 'bug'">
+      <path d="M8.5 9.5A3.5 3.5 0 0 1 15.5 9.5V14a3.5 3.5 0 0 1-7 0V9.5Z" />
+      <path d="M9 7.5 7.5 6M15 7.5 16.5 6M5.5 12H8M16 12h2.5M5.5 16 8 15M18.5 16 16 15" />
+    </g>
+    <g v-else-if="name === 'lightbulb'">
+      <path d="M9.5 16h5M10 18.5h4" />
+      <path d="M9 14.5c-1.7-1-2.8-2.8-2.8-4.8A5.8 5.8 0 0 1 12 4a5.8 5.8 0 0 1 5.8 5.7c0 2-1.1 3.8-2.8 4.8L14.5 16h-5l-.5-1.5Z" />
     </g>
   </svg>
 </template>

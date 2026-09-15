@@ -14,6 +14,7 @@ import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
 import { ifastAccountGuide } from '~/data/tutorials/ifast-account-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { websiteAdsMonetizationGuide } from '~/data/tutorials/website-ads-monetization-guide'
 import { usStockDepositAndTransferGuide } from '~/data/tutorials/us-stock-deposit-and-transfer'
 import { howToChooseUsBrokerGuide } from '~/data/tutorials/how-to-choose-us-broker'
 import { usAccountSystemInfographic } from '~/data/tutorials/us-account-system-infographic'
@@ -43,6 +44,7 @@ const markdownFiles: Record<string, string> = {
   'ifast-account-guide': ifastAccountGuide,
   'google-workspace-domain-guide': googleWorkspaceDomainGuide,
   'dnshe-free-domain-guide': dnsheFreeDomainGuide,
+  'website-ads-monetization-guide': websiteAdsMonetizationGuide,
   'us-stock-deposit-and-transfer': usStockDepositAndTransferGuide,
   'how-to-choose-us-broker': howToChooseUsBrokerGuide,
   'us-account-system-infographic': usAccountSystemInfographic,
@@ -128,6 +130,7 @@ export function getTutorialTypeLabel(type: TutorialType): string {
 /** 卡片 / 导航用短名；详情页可用全称 */
 const tutorialCategoryFullNames: Record<string, string> = {
   数字基建: '跨境数字基建',
+  副业变现: '副业变现分享',
 }
 
 export function getTutorialCategoryLabel(
