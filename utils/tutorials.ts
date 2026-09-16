@@ -25,6 +25,7 @@ import { usBrokerAccountIn5Min } from '~/data/tutorials/us-broker-account-in-5-m
 import { hkBankFundFlowDemo } from '~/data/tutorials/hk-bank-fund-flow-demo'
 import { hkCardMainlandAtmCashGuide } from '~/data/tutorials/hk-card-mainland-atm-cash'
 import { hkCardBindWechatAlipayGuide } from '~/data/tutorials/hk-card-bind-wechat-alipay'
+import { hongKongBankAccountGuide } from '~/data/tutorials/hong-kong-bank-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 import { getNavigationPath } from '~/utils/navigation'
 
@@ -55,6 +56,7 @@ const markdownFiles: Record<string, string> = {
   'hk-bank-fund-flow-demo': hkBankFundFlowDemo,
   'hk-card-mainland-atm-cash': hkCardMainlandAtmCashGuide,
   'hk-card-bind-wechat-alipay': hkCardBindWechatAlipayGuide,
+  'hong-kong-bank-account-guide': hongKongBankAccountGuide,
 }
 
 const tutorials = (tutorialsData.items as Tutorial[]).map((item) => {

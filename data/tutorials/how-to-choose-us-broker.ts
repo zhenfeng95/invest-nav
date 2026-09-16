@@ -106,7 +106,25 @@ export const howToChooseUsBrokerGuide = `本页整理内地用户在选择**美�
 | 港卡 | [港卡开户入门](/tutorials/hong-kong-bank-account-guide) |
 | 多币种中转 | [Wise](/tutorials/wise-account-guide)、[资金流转导航](/nav/fund-transfer) |
 
+## 常见问题
+
+### 内地用户一定要开美国券商吗？
+
+不一定。只做美股，可以对照嘉信、Firstrade 等；同时要港股、打新或港卡 FPS 入金，很多人会对照盈立新加坡或港资持牌券商。也可以按路径分工：一家美股底仓 + 一家港 / 新账户。见上文对照表。
+
+### 应该先开户还是先办港卡？
+
+更稳妥的是先想清楚**钱怎么进去**。没有港卡时，不少美股账户只能走电汇，成本和等待都会高。港卡准备见：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)；资金闭环见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### 只做美股 ETF，选嘉信还是 Firstrade？
+
+两者都能买美股 / ETF。更看重综合券商品牌、长期持有体验，对照 [嘉信开户](/tutorials/schwab-account-guide)；更看重免佣口径、加密货币 ETF、能接受电汇，对照 [Firstrade 开户](/tutorials/firstrade-account-guide)。没有「最好的一家」，以你的入金条件和要交易的品种为准。
+
+### 开户礼和免佣能不能当选型依据？
+
+不宜只看开户礼或「免佣」广告。活动常有持仓 / 留存条件；免佣股票仍可能有平台费、期权费、电汇和汇兑成本。先验证可开户地区和资金闭环，再比佣金。
+
 ---
 
-相关入口：[港美股券商导航](/nav/overseas-brokers) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [出入金导航](/nav/deposit-withdraw)
+相关阅读：[嘉信开户](/tutorials/schwab-account-guide) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [盈立新加坡开户](/tutorials/usmart-sg-account-guide) · [宝时开户](/tutorials/bosco-account-guide) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港美股券商导航](/nav/overseas-brokers)
 `;

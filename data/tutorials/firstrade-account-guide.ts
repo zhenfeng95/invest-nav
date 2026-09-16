@@ -104,7 +104,29 @@ Firstrade 的开户流程也比较简单：在网站上提交申请后，有时�
 
 ![期权权限审核通知：部分策略获批，经验未达标准的策略可能未核准](/images/tutorials/firstrade-options-review.png)
 
+## 常见问题
+
+### 内地用户开 Firstrade 需要什么材料？
+
+常见只需**有效护照**，通常不必提供存量证明或海外工作 / 生活证明。政策会变，请以 [Firstrade 中文开户页](https://www.firstrade.com/zh-CN) 当时要求为准。步骤见上文「开户流程」。
+
+### 审核大概多久？能马上交易吗？
+
+顺利的话，提交后约一个工作日可能收到审核邮件，有人第二天就通过。通过前不要按已可交易来规划；入金须等账户真正开通并按官方入金页操作。
+
+### 没有美国银行卡怎么入金？
+
+港卡侧常见是**美元电汇**，费用和到账时间通常高于本地转账。大额电汇或可申请汇款补贴，以官方页面为准。资金路径总览：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### 和嘉信、盈立怎么选？
+
+Firstrade 更偏美股免佣交易、可买加密货币 ETF，出入金对港卡往往是电汇。若更看重美国综合券商品牌、或要港股 + 港卡 FPS，请先看：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)，并对照 [嘉信开户](/tutorials/schwab-account-guide)、[盈立新加坡开户](/tutorials/usmart-sg-account-guide)。
+
+### 期权权限为什么只开了一部分？
+
+填写的期权交易经验偏短时，常见只会核准部分策略。是否补开以审核结果和官方要求为准，不要为了过审填写不实信息。
+
 ---
 
-相关入口：[Firstrade 中文官网](https://www.firstrade.com/zh-CN) · [汇款费用补贴](https://www.firstrade.com/zh-CN/accounts/wire-fee-rebate) · [美股券商导航](/nav/overseas-brokers)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [嘉信开户](/tutorials/schwab-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [美股券商导航](/nav/overseas-brokers) · [Firstrade 中文官网](https://www.firstrade.com/zh-CN)
 `;

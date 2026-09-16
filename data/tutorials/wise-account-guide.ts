@@ -32,7 +32,7 @@ Wise 支持多种外币充值方式，其中港币和美元较常见。
 
 ![Wise：港币充值金额与银行转账费用](/images/tutorials/wise-deposit.png)
 
-若你已有港卡，可先把港币充入 Wise，再按同名路径转到支持入金的券商（如盈透、长桥、盈立、富途、iFAST 等，以券商当时收款要求为准）。港卡准备可对照：[港卡开户入门指南](/tutorials/hong-kong-bank-account-guide)、[汇丰银行香港开户教程](/tutorials/hsbc-hk-account-guide)。
+若你已有港卡，可先把港币充入 Wise，再按同名路径转到支持入金的券商（如盈透、长桥、盈立、富途、iFAST 等，以券商当时收款要求为准）。港卡准备可对照：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)、[汇丰香港开户教程](/tutorials/hsbc-hk-account-guide)。
 
 ![Wise：美元账户可选付款方式](/images/tutorials/wise-how-to-pay.png)
 
@@ -131,7 +131,25 @@ Wise 是受英国金融行为监管局（FCA）监管的电子货币服务平台
 
 产品能力与政策可能调整，是否仍对中国大陆身份证开放、是否仍支持汇出到支付宝，请以注册页、转账页与官方说明为准。
 
+## 常见问题
+
+### 中国大陆身份证能开 Wise 吗？
+
+目前常见说法是**个人账户**可用身份证验证；企业账户仍可能要护照等材料。是否仍对中国大陆居民开放，以 [Wise 官网](https://wise.com) 注册页为准。
+
+### 能从中国直接充人民币进去吗？
+
+Wise **暂不支持人民币直接入金**（以官方当时能力为准）。通常要先转入港币、美元、新币等。有人会先用其他换汇 / 汇款服务换成港币再充值。
+
+### 出金到支付宝要注意什么？
+
+发出后收款人须在约 **72 小时内**在支付宝完成待办，超时常会自动退回。官方说明通常不能由付款人主动取消。限额按用途和「所有国际渠道收款」合计，不只 Wise。步骤见上文支付宝一节。
+
+### 和港卡、券商入金怎么分工？
+
+Wise 适合多币种中转、出金到支付宝。港卡扫码或 ATM 取现见：[绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)、[ATM 取现](/tutorials/hk-card-mainland-atm-cash)。打进美股账户见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
 ---
 
-相关入口：[Wise 官网](https://wise.com) · [通过支付宝汇出人民币（帮助中心）](https://wise.com/zh-cn/help/articles/2kTApouGnjRj6JM1yduMIL/%E9%80%9A%E8%BF%87%E6%94%AF%E4%BB%98%E5%AE%9D%E6%B1%87%E5%87%BA%E4%BA%BA%E6%B0%91%E5%B8%81) · [资金流转导航](/nav/fund-transfer) · [iFAST 开户](/tutorials/ifast-account-guide) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
+相关阅读：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [iFAST 开户](/tutorials/ifast-account-guide) · [资金流转导航](/nav/fund-transfer) · [Wise 官网](https://wise.com)
 `;

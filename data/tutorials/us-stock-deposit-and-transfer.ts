@@ -141,7 +141,25 @@ Firstrade 等美国券商，港卡侧常见仍是**美元电汇**，费用与时
 - 收款信息只从券商登录后的官方入金页获取；警惕钓鱼站点与假客服。
 - 产品能力、监管要求与外汇管理规则会调整；跨境资金安排请自行确认合法性与税务义务。
 
+## 常见问题
+
+### 没有港卡能不能入金美股？
+
+可以，但路径往往变成**美元电汇**或多币种账户中转（如 Wise），费用和等待通常更高。先对照你目标券商官方入金页接受什么方式。港卡准备：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。
+
+### 非同名账户代转入金可以吗？
+
+多数券商要求**本人同名**银行 / 支付账户。非同名极易被拒或触发审查，不要用别人的卡「帮忙打钱」。
+
+### FPS、电汇、Wise 怎么选？
+
+有港卡且券商支持港币 FPS / 香港本地转账时，通常比电汇更快更便宜。电汇适合收款行只接受国际汇款的账户（如部分美国券商）。Wise 更偏多币种中转，不是每家券商都直接收 Wise。对照上文链路，并看各开户教程里的入金说明：[嘉信](/tutorials/schwab-account-guide)、[Firstrade](/tutorials/firstrade-account-guide)、[盈立新加坡](/tutorials/usmart-sg-account-guide)。
+
+### 钱迟迟不到账先查什么？
+
+确认银行已扣款并已汇出 → 核对账号 / Reference 有没有填错 → 电汇场景向银行要 MT103 → 把回单发给券商资金客服。不要重复再打一笔「试试」。
+
 ---
 
-相关入口：[出入金导航](/nav/deposit-withdraw) · [资金流转导航](/nav/fund-transfer) · [美股券商导航](/nav/overseas-brokers) · [汇率购汇估算](/tools/fx-estimate)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [Wise 开户](/tutorials/wise-account-guide) · [出入金导航](/nav/deposit-withdraw) · [汇率购汇估算](/tools/fx-estimate)
 `;

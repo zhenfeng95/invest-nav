@@ -97,7 +97,25 @@ export const hkCardMainlandAtmCashGuide = `本页整理用 **港卡在内地 ATM
 | 港卡 → 券商 | [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [一图看懂港卡资金路径](/tutorials/hk-fund-path-infographic) |
 | 余额进内地账户渠道 | [Wise](/tutorials/wise-account-guide) · [Starryblu](/tutorials/starryblu-account-guide) · [资金流转导航](/nav/fund-transfer) |
 
+## 常见问题
+
+### 港卡在内地 ATM 每天能取多少？
+
+内地 ATM 取现常见口径约为每天 **2 万人民币**，还受你在 App 里自设的限额约束。境外卡在内地 ATM 取现另有公开讨论中的年累计约 **10 万元人民币** 量级限制，以监管和银行当时执行为准。
+
+### 建银亚洲应该去哪台机具？
+
+对照路径是**内地建设银行 ATM**，常见免手续费、从离岸人民币账户扣款。走错网络机具，费用和扣款币种可能都不对。还没有账户见：[建银亚洲开户教程](/tutorials/ccb-asia-account-guide)。
+
+### 汇丰红狮子和蓝狮子有何不同？
+
+红狮子在内地汇丰 ATM 也常要按笔收费，且常见直接扣港币（等于强制换汇）；蓝狮子在内地汇丰 ATM 常见免费，账户若有人民币余额往往优先扣人民币。详见上文费率表。开户对照：[汇丰香港开户教程](/tutorials/hsbc-hk-account-guide)。
+
+### 取现会不会导致港卡被关？
+
+频繁、大额取现可能触发风控，严重时关户。应急、小额可以；不要把它当大额回国主通道。扫码或 Wise 等路径见：[港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)、[Wise 开户](/tutorials/wise-account-guide)。
+
 ---
 
-相关入口：[境外银行卡导航](/nav/overseas-banks) · [资金流转导航](/nav/fund-transfer) · [汇丰开户](/tutorials/hsbc-hk-account-guide) · [建银亚洲开户](/tutorials/ccb-asia-account-guide)
+相关阅读：[港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [建银亚洲开户](/tutorials/ccb-asia-account-guide) · [汇丰香港开户](/tutorials/hsbc-hk-account-guide) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay) · [境外银行卡导航](/nav/overseas-banks)
 `

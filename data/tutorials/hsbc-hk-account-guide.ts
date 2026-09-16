@@ -2,7 +2,7 @@ export const hsbcHkAccountGuide = `本页整理通过 **汇丰银行香港（HSB
 
 汇丰是香港持牌银行。内地用户常见做法是赴港后、在香港网络环境下提交线上申请。
 
-港卡申请的一般准备，也可对照：[港卡开户入门指南](/tutorials/hong-kong-bank-account-guide)。
+港卡申请的一般准备，也可对照：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。
 
 ## 一、开户要求
 
@@ -162,7 +162,25 @@ export const hsbcHkAccountGuide = `本页整理通过 **汇丰银行香港（HSB
 
 ![汇丰：投资账户申请提交成功](/images/tutorials/hsbchk-online-11.png)
 
+## 常见问题
+
+### 内地用户开汇丰香港必须赴港吗？
+
+本页对照的是赴港后、在**香港网络**下用 HSBC HK App 申请汇丰 One。申请时需身处香港境内，不要用内地漫游。一般准备也可先看：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。
+
+### 开的是什么账户？要地址证明吗？
+
+常见开的是 **汇丰 One**。内地通讯地址可用身份证地址作为住址，通常无需再单独交地址证明；仍需提供能收实体卡邮件的通讯地址。材料以 App 当时要求为准。
+
+### 开完卡在内地怎么用？
+
+取人民币现金见：[港卡在内地 ATM 取现教程](/tutorials/hk-card-mainland-atm-cash)（红 / 蓝狮子费率不同）。扫码消费见：[港卡绑微信支付宝在内地消费](/tutorials/hk-card-bind-wechat-alipay)。转到券商见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### 和建银亚洲怎么选？
+
+汇丰更偏国际银行品牌与 One 账户；建银亚洲常被用来对照内地建行 ATM 取现、离岸人民币。可以两家都了解，分步教程：[建银亚洲开户](/tutorials/ccb-asia-account-guide)。
+
 ---
 
-相关入口：[汇丰香港官网](https://www.hsbc.com.hk) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
+相关阅读：[港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [建银亚洲开户](/tutorials/ccb-asia-account-guide) · [港卡 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay) · [境外银行卡导航](/nav/overseas-banks) · [汇丰香港官网](https://www.hsbc.com.hk)
 `;

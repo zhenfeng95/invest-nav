@@ -23,7 +23,7 @@ export const boscoAccountGuide = `本页整理通过 **宝时证券（Bosco Secu
 4. **银行信息**：按页面提示填写；后续入金多通过本人同名银行账户完成，有港卡通常更方便
 5. **就业与财务背景**：职业、收入、资产、投资经验等，按真实情况填写
 
-没有香港银行账户也能先尝试提交申请，但入金路径可能受限制。港卡准备可对照：[港卡开户入门指南](/tutorials/hong-kong-bank-account-guide)。
+没有香港银行账户也能先尝试提交申请，但入金路径可能受限制。港卡准备可对照：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。资金怎么进券商，见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
 
 ## 三、开户主线
 
@@ -134,7 +134,7 @@ export const boscoAccountGuide = `本页整理通过 **宝时证券（Bosco Secu
 
 - 活动日期、资格、留存天数、权益内容和到账方式经常调整，提交前务必再看申请页和 App 活动中心
 - 「0 佣金 / 0 平台费」通常不等于整笔交易完全免费：交易所费用、印花税、监管费、结算费及其他第三方费用仍可能产生
-- 入金一般应使用**本人同名**银行账户，并按 App 要求上传凭证或联系客服确认到账
+- 入金一般应使用**本人同名**银行账户，并按 App 要求上传凭证或联系客服确认到账；总览见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)
 
 ## 六、适合谁看这页
 
@@ -144,5 +144,35 @@ export const boscoAccountGuide = `本页整理通过 **宝时证券（Bosco Secu
 2. 入金路径是否已准备好（尤其是同名港卡 / 电汇安排）
 3. 当前活动门槛和费用是否仍符合预期
 
-相关入口：[宝时证券官网](https://www.bsl.hk) · [美股券商导航](/nav/overseas-brokers)
-`;
+选型框架也可先看：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+
+## 常见问题
+
+### 开宝时需要什么材料？
+
+常见是中国内地居民身份证；部分流程可能还会要求护照，或近三个月内的银行月结单 / 公用事业账单作地址证明。线上通常要完成**电子见证 / 视频核验**。清单以 [宝时证券官网](https://www.bsl.hk) 与申请页当时要求为准，步骤见上文「开户主线」。
+
+### 没有港卡能不能开户？
+
+可以先提交申请。开户后入金一般应使用**本人同名**银行账户，没有港卡时路径可能受限制。港卡准备：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)；资金怎么进券商：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### 审核大概多久？能马上交易吗？
+
+公开资料里办理手续常见约 **1–3 个工作日**，只是经验区间，不代表每个账户都会同一时间通过。通过后邮箱通常会收到开户通知和密码邮件；还要先按活动 / App 要求入金，才能交易。不要按已可交易来规划。
+
+### 「0 佣金 0 平台费」是免费交易吗？
+
+通常不是。不绑定渠道邀请码，可能拿不到该口径；即便免佣，交易所费用、印花税、监管费、结算费等第三方费用仍可能产生。活动还常见首次入金（如 HKD 10,000 或 USD 1,300）和留存条件，以当时活动页为准。
+
+### 和嘉信、Firstrade、盈立怎么选？
+
+宝时是香港证监会持牌券商，更常对照**港股、打新**，同时兼顾美股。只要美股、能接受电汇，对照 [Firstrade 开户](/tutorials/firstrade-account-guide)；更偏美国综合型底仓，对照 [嘉信开户](/tutorials/schwab-account-guide)；港股 + 美股又希望港卡 FPS 更顺手，对照 [盈立新加坡开户](/tutorials/usmart-sg-account-guide)。框架见：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+
+### 大陆 Apple ID 搜不到 App 怎么办？
+
+港区 Apple ID 可在 App Store 搜索「宝时证券」。大陆 Apple ID 若搜不到，可按官网 / 活动页当时提供的 TestFlight 或其他安装指引处理。安卓走官网或 Google Play。以当时展示为准。
+
+---
+
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [嘉信开户](/tutorials/schwab-account-guide) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [盈立新加坡开户](/tutorials/usmart-sg-account-guide) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [美股券商导航](/nav/overseas-brokers) · [宝时证券官网](https://www.bsl.hk)
+`

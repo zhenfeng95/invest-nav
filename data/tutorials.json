@@ -101,13 +101,13 @@
     {
       "id": "wise-account",
       "slug": "wise-account-guide",
-      "title": "Wise 开户教程（中国大陆身份证）",
+      "title": "Wise 开户教程（大陆身份证）",
       "description": "整理中国大陆居民用身份证开通 Wise、美元/港币充值，以及出金到支付宝的步骤、拼音姓名、72 小时收款确认、限额与「从中国发起可能不可用」等注意点。",
       "type": "article",
       "category": "资金流转",
       "tags": ["Wise", "资金流转", "多币种", "开户", "支付宝"],
       "readingMinutes": 13,
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-09-07",
       "popular": true,
       "markdownFile": "wise-account-guide"
@@ -129,13 +129,13 @@
     {
       "id": "hk-card-mainland-atm",
       "slug": "hk-card-mainland-atm-cash",
-      "title": "港卡在内地 ATM 取现",
+      "title": "港卡在内地 ATM 取现教程",
       "description": "港卡在内地 ATM 取人民币：建银亚洲走内地建行机具与离岸人民币扣款、汇丰红/蓝狮子费率、开通境外提款、日约 2 万与境外卡年约 10 万额度及关户风险。",
       "type": "article",
       "category": "资金流转",
       "tags": ["港卡", "资金流转", "ATM", "取现", "内地使用"],
       "readingMinutes": 8,
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-09-11",
       "popular": true,
       "markdownFile": "hk-card-mainland-atm-cash"
@@ -157,13 +157,13 @@
     {
       "id": "hsbc-hk-account",
       "slug": "hsbc-hk-account-guide",
-      "title": "汇丰银行香港开户教程",
+      "title": "汇丰香港开户教程",
       "description": "整理赴港后通过 HSBC HK App 开立汇丰 One 的材料要求、出入境记录、开户步骤与可用余额注意点，供对照官方页面。",
       "type": "article",
       "category": "香港银行",
       "tags": ["港卡", "银行", "开户", "汇丰"],
       "readingMinutes": 15,
-      "updatedAt": "2026-09-07",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-09-07",
       "popular": true,
       "markdownFile": "hsbc-hk-account-guide"
@@ -177,7 +177,7 @@
       "category": "香港银行",
       "tags": ["港卡", "银行", "开户", "建银亚洲"],
       "readingMinutes": 8,
-      "updatedAt": "2026-08-21",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-08-21",
       "popular": true,
       "markdownFile": "ccb-asia-account-guide"
@@ -205,7 +205,7 @@
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "盈立"],
       "readingMinutes": 14,
-      "updatedAt": "2026-08-21",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-08-21",
       "popular": true,
       "markdownFile": "usmart-sg-account-guide"
@@ -218,8 +218,8 @@
       "type": "article",
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "港股", "宝时"],
-      "readingMinutes": 12,
-      "updatedAt": "2026-09-02",
+      "readingMinutes": 13,
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-09-02",
       "popular": true,
       "markdownFile": "bosco-account-guide"
@@ -227,13 +227,13 @@
     {
       "id": "firstrade-account",
       "slug": "firstrade-account-guide",
-      "title": "第一证券（Firstrade）开户教程",
+      "title": "Firstrade（第一证券）开户教程",
       "description": "整理 Firstrade 开户材料、线上申请步骤、汇款补贴与审核注意点，供对照官方页面。",
       "type": "article",
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "Firstrade"],
       "readingMinutes": 8,
-      "updatedAt": "2026-08-20",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-08-20",
       "popular": true,
       "markdownFile": "firstrade-account-guide"
@@ -247,7 +247,7 @@
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "嘉信"],
       "readingMinutes": 15,
-      "updatedAt": "2026-08-20",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-08-20",
       "popular": true,
       "markdownFile": "schwab-account-guide"
@@ -261,7 +261,7 @@
       "category": "美股券商",
       "tags": ["美股", "券商", "开户", "入金"],
       "readingMinutes": 11,
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-06-02",
       "popular": true,
       "markdownFile": "how-to-choose-us-broker"
@@ -269,21 +269,16 @@
     {
       "id": "hk-bank-account",
       "slug": "hong-kong-bank-account-guide",
-      "title": "港卡开户入门指南",
-      "description": "梳理香港银行开户常见路径、材料准备和后续资金流转注意点。",
+      "title": "港卡开户入门",
+      "description": "梳理内地用户办理港卡的常见路径、赴港材料与后续资金用途，并对照汇丰、建银亚洲等站内开户教程，以及入金、取现与绑卡消费。",
       "type": "article",
       "category": "香港银行",
-      "tags": ["港卡", "银行"],
+      "tags": ["港卡", "银行", "开户", "内地用户"],
       "readingMinutes": 10,
-      "updatedAt": "2026-07-12",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-05-20",
       "popular": true,
-      "content": [
-        "港卡常被用于跨境资金安排、美股入金和部分加密货币相关流转，但每家银行的开户政策并不相同。",
-        "开户前先确认身份证明、地址证明、赴港安排以及银行是否接受你的居住地申请。",
-        "开户成功后，建议先搞清楚转账限额、电汇费用和与券商绑定的流程，再进行大额资金操作。",
-        "本页仅作信息整理，不构成开户建议。"
-      ]
+      "markdownFile": "hong-kong-bank-account-guide"
     },
     {
       "id": "us-stock-deposit",
@@ -294,7 +289,7 @@
       "category": "出入金",
       "tags": ["出入金", "资金流转", "电汇", "FPS", "港卡"],
       "readingMinutes": 12,
-      "updatedAt": "2026-09-11",
+      "updatedAt": "2026-09-16",
       "publishedAt": "2026-05-11",
       "popular": true,
       "markdownFile": "us-stock-deposit-and-transfer"

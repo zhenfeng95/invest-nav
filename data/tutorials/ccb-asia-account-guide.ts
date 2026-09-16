@@ -2,7 +2,7 @@ export const ccbAsiaAccountGuide = `本页整理通过 **建银亚洲（中国�
 
 建银亚洲是香港持牌银行。内地用户常见做法是赴港后、在香港提交线上申请。有申请者反馈流程相对直接；审核快慢因人而异，不能当作一定「秒过」。
 
-港卡申请的一般准备，也可对照：[港卡开户入门指南](/tutorials/hong-kong-bank-account-guide)。
+港卡申请的一般准备，也可对照：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。
 
 ## 一、常见特点
 
@@ -139,7 +139,25 @@ export const ccbAsiaAccountGuide = `本页整理通过 **建银亚洲（中国�
 
 此前有过「开户送约 200 人民币」一类新人福利，有申请者反馈账户开通后长时间未见入账，这类活动现在多半已经结束。是否仍有优惠，请以 App 和官网当时展示为准。
 
+## 常见问题
+
+### 内地用户开建银亚洲要去香港吗？
+
+常见要求是**身处香港**申请，并上传出入境记录。建议在内地先下好 App，到港后再提交。总览：[港卡开户入门](/tutorials/hong-kong-bank-account-guide)。
+
+### 审核要多久？当天能开下来吗？
+
+因人而异。有申请者赴港当天提交后很快通过，也有人要等 App 或邮件通知，不能当成一定「秒过」。
+
+### 在内地哪台 ATM 取现更合适？
+
+建银亚洲对照路径是走**内地建设银行 ATM**，常见可免手续费，并从离岸人民币账户扣款（以银行当时规则为准）。额度和风控见：[港卡在内地 ATM 取现教程](/tutorials/hk-card-mainland-atm-cash)。
+
+### 和汇丰怎么选？
+
+更看重内地建行机具取现、少换汇，对照建银亚洲；更看重汇丰品牌与 One 账户，对照 [汇丰香港开户](/tutorials/hsbc-hk-account-guide)。开完若要打进券商，见：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
 ---
 
-相关入口：[建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay)
+相关阅读：[港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [汇丰香港开户](/tutorials/hsbc-hk-account-guide) · [港卡 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [港卡绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay) · [境外银行卡导航](/nav/overseas-banks) · [建银亚洲官网](https://www.asia.ccb.com/hongkong_sc/personal/index.html)
 `

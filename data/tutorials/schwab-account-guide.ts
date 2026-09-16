@@ -198,7 +198,25 @@ export const schwabAccountGuide = `本页整理通过 **Charles Schwab Internati
 
 ![ready to fund 邮件：账户已开好，可以入金交易](/images/tutorials/schwab-ready-to-fund.jpg)
 
+## 常见问题
+
+### 内地用户开嘉信国际需要哪些材料？
+
+常见是护照，以及与填写地址一致的地址证明（如银行或水电账单）。附件文件名建议用英文。具体清单以 [嘉信国际开户页](https://international.schwab.com/) 当时要求为准，逐步说明见上文开户流程。
+
+### 提交之后什么时候能入金？
+
+提交后通常可以先登录网页 / App 熟悉界面，但往往还不能入金交易。先会收到核查信一类邮件，此时一般无需操作；等到 **ready to fund** 邮件，再按官方入金页打钱。路径对照：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### W-8BEN 是什么？必须填吗？
+
+这是非美国税务居民常见的税务身份声明表格。嘉信流程里提交申请后需要完成认证；请对照页面如实填写，本页不展开税务建议。
+
+### 和 Firstrade、盈立怎么选？
+
+嘉信更偏美国综合型账户、长期持有。若更看重美股免佣与电汇补贴，对照 [Firstrade 开户](/tutorials/firstrade-account-guide)；若要港股 + 港卡出入金更顺手，对照 [盈立新加坡开户](/tutorials/usmart-sg-account-guide)。选型框架：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+
 ---
 
-相关入口：[嘉信国际开户页](https://international.schwab.com/) · [Charles Schwab 官网](https://www.schwab.com) · [美股券商导航](/nav/overseas-brokers)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [美股券商导航](/nav/overseas-brokers) · [嘉信国际开户页](https://international.schwab.com/)
 `

@@ -180,7 +180,25 @@ uSMART 新加坡于 2021 年 12 月从新加坡金融管理局（MAS）获得资
 
 盈立的美国证券次级托管人是 SIPC 会员时，通过该托管安排持有的美国证券也可能受 SIPC 保护。SIPC 成员列表可在 [SIPC List of Members](https://www.sipc.org/list-of-members/) 查询。
 
+## 常见问题
+
+### 内地用户能开盈立新加坡吗？要护照吗？
+
+教程对照的是线上 App 开户，身份证明常见填**中国身份证**（不是护照）。开户通常无需翻墙、无需存量证明，但政策会变，请以 [盈立新加坡官网](https://www.usmart.sg/cn) 与 App 当时页面为准。
+
+### 港卡怎么打进盈立新加坡？
+
+相对美股互联网券商的纯电汇，盈立新加坡对港卡更常见 **港币 FPS、港卡美元本地转账** 等路径（仍以入金页为准）。出金也有若干到香港汇丰 / 香港本地银行的对照项，见上文出入金说明。总览：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+
+### 盈立香港和新加坡要不要都开？
+
+集团下有香港与新加坡两家证券公司。开香港账户后，可在港、新账户之间划转资金。开户奖励同一证件号通常只能领一次，且新加坡部分奖励要求新加坡 IP，内地用户未必符合。是否先开香港再开新加坡，对照当时活动规则自行判断。
+
+### 和嘉信、Firstrade 怎么选？
+
+更需要港股 + 美股、期权，又希望港卡出入金省事，很多人会对照盈立新加坡。只要美股、能接受电汇，可对照 [Firstrade](/tutorials/firstrade-account-guide)；更偏美国综合型底仓，对照 [嘉信](/tutorials/schwab-account-guide)。框架见：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+
 ---
 
-相关入口：[盈立新加坡官网](https://www.usmart.sg/cn) · [优惠活动](https://www.usmart.sg/cn/promotions) · [帮助中心](https://www.usmart.sg/cn/help-center) · [美股券商导航](/nav/overseas-brokers)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [嘉信开户](/tutorials/schwab-account-guide) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [美股券商导航](/nav/overseas-brokers) · [盈立新加坡官网](https://www.usmart.sg/cn)
 `;
