@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Zhen Invest OG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #2e3440;
+      }
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      .card {
+        width: 1200px;
+        height: 630px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 72px 88px 64px;
+        color: #f4f4f5;
+        background:
+          radial-gradient(ellipse 70% 55% at 78% 82%, rgba(210, 165, 80, 0.2), transparent 58%),
+          radial-gradient(ellipse 50% 40% at 22% 18%, rgba(255, 255, 255, 0.09), transparent 55%),
+          linear-gradient(180deg, #2a303a 0%, #343b47 48%, #2e3440 100%);
+        font-family: Inter, "PingFang SC", "Noto Sans SC", sans-serif;
+      }
+      .logo {
+        position: absolute;
+        top: 48px;
+        left: 88px;
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+      }
+      .brand {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 700;
+        font-size: 92px;
+        line-height: 0.96;
+        letter-spacing: -0.03em;
+      }
+      .brand .zhen,
+      .brand .invest {
+        display: block;
+      }
+      .brand .zhen {
+        color: #ffffff;
+      }
+      .brand .invest {
+        color: #fbbf24;
+        margin-top: 4px;
+      }
+      .tagline {
+        margin-top: 28px;
+        max-width: 920px;
+        font-size: 24px;
+        line-height: 1.5;
+        font-weight: 400;
+        color: #e4e4e7;
+      }
+      .url {
+        position: absolute;
+        left: 88px;
+        bottom: 48px;
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: rgba(244, 244, 245, 0.62);
+      }
+      .waves {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 140px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card" id="og">
+      <img class="logo" src="/public/logo.png" alt="" />
+      <div class="brand">
+        <span class="zhen">Zhen</span>
+        <span class="invest">Invest</span>
+      </div>
+      <p class="tagline">内地用户的港美股与跨境投资入口，涵盖开户教程、资金路径与资源导航。</p>
+      <p class="url">zheninvest.com</p>
+      <svg class="waves" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path
+          d="M0 140 C180 100 320 170 500 130 C680 90 820 160 1000 120 C1180 80 1320 150 1440 110 L1440 200 L0 200 Z"
+          stroke="rgba(255,255,255,0.08)"
+          stroke-width="1"
+          fill="rgba(255,255,255,0.02)"
+        />
+        <path
+          d="M0 160 C220 120 360 180 560 145 C760 110 900 175 1100 140 C1260 115 1360 155 1440 135 L1440 200 L0 200 Z"
+          stroke="rgba(234,179,8,0.12)"
+          stroke-width="1"
+          fill="rgba(234,179,8,0.03)"
+        />
+      </svg>
+    </div>
+  </body>
+</html>

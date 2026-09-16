@@ -104,10 +104,6 @@ export default defineNuxtConfig({
                         pattern: 'zheninvest.com',
                         custom_domain: true,
                     },
-                    {
-                        pattern: 'zeninvest.de5.net',
-                        custom_domain: true,
-                    },
                 ],
             },
         },

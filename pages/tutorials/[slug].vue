@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { formatDate, formatReadingTime } from '~/utils/format'
+import { buildTutorialJsonLd } from '~/utils/jsonld'
 import { renderMarkdown } from '~/utils/markdown'
 import {
   getTutorialBySlug,
@@ -29,11 +30,16 @@ const categoryNavPath = getTutorialCategoryNavPath(tutorial.category)
 const categoryFullLabel = getTutorialCategoryLabel(tutorial.category, 'full')
 const categoryShortLabel = getTutorialCategoryLabel(tutorial.category)
 
+const config = useRuntimeConfig()
+const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
+
 usePageSeo({
   title: tutorial.title,
   description: tutorial.description,
   path: `/tutorials/${tutorial.slug}`,
 })
+
+useJsonLd('ld-json-tutorial', buildTutorialJsonLd(siteUrl, tutorial))
 </script>
 
 <template>

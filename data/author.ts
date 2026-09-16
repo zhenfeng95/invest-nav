@@ -36,7 +36,7 @@ export const siteAuthor: AuthorProfile = {
         '站点会持续分享开户与资金流转教程、官方资源导航、轻量工具，以及跨境数字基建相关实践。',
     ],
     socials: [
-        { id: 'x', label: 'X', url: 'https://x.com/ZhenInvest' },
+        { id: 'x', label: 'X', url: '' },
         { id: 'youtube', label: 'YouTube', url: '' },
         { id: 'telegram', label: 'Telegram', url: 'https://t.me/ZhenInvest' },
     ],

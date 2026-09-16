@@ -50,16 +50,14 @@ const communityHref = computed(() => socialHref(author.communityUrl))
                 {{ bio }}
               </p>
               <p>
-                长期关注
-                <span class="font-medium text-accent">X</span>、
-                <span class="font-medium text-accent">YouTube</span>、
+                可通过
                 <span class="font-medium text-accent">Telegram</span>
-                ，或发邮件至
+                或发邮件至
                 <a
                   :href="`mailto:${SITE_CONTACT_EMAIL}`"
                   class="font-medium text-accent underline-offset-2 hover:underline"
                 >{{ SITE_CONTACT_EMAIL }}</a>
-                。社交与交流群链接仍在完善中。
+                联系。社交与交流群链接仍在完善中。
               </p>
             </div>
             <div class="mt-6 flex flex-wrap gap-3">

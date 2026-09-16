@@ -1,4 +1,17 @@
+import { buildHomeJsonLd } from '~/utils/jsonld';
 import { homeSeo, SITE_NAME } from '~/utils/site';
+
+export function useJsonLd(key: string, data: unknown) {
+    useHead({
+        script: [
+            {
+                key,
+                type: 'application/ld+json',
+                innerHTML: JSON.stringify(data),
+            },
+        ],
+    });
+}
 
 interface PageSeoInput {
     title: string;
@@ -55,6 +68,8 @@ export function usePageSeo(input: PageSeoInput) {
         ogTitle: title,
         ogDescription: description,
         ogImage: image,
+        ogImageWidth: 1200,
+        ogImageHeight: 630,
         ogType: 'website',
         twitterCard: 'summary_large_image',
         twitterTitle: title,
@@ -68,9 +83,14 @@ export function usePageSeo(input: PageSeoInput) {
 }
 
 export function useHomeSeo() {
+    const config = useRuntimeConfig();
+    const siteUrl = String(config.public.siteUrl).replace(/\/$/, '');
+
     usePageSeo({
         title: homeSeo.title,
         description: homeSeo.description,
         path: '/',
     });
+
+    useJsonLd('ld-json-home', buildHomeJsonLd(siteUrl));
 }

@@ -102,6 +102,108 @@ const filterButtonClass = (active: boolean) =>
   active
     ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
     : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10'
+
+/** 北京时间日历日 YYYY-MM-DD（与事件 date 字段对齐） */
+function getTodayKey() {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date())
+}
+
+const didAutoScroll = ref(false)
+
+function daySectionId(date: string) {
+  return `calendar-day-${date}`
+}
+
+function resolveScrollDate(): string | undefined {
+  const dates = groupedEvents.value.map(group => group.date)
+  if (!dates.length) {
+    return undefined
+  }
+  const today = getTodayKey()
+  if (dates.includes(today)) {
+    return today
+  }
+  // 今天没有事件（或被筛掉）时，滚到今天及之后最近的一天
+  return dates.find(date => date >= today) ?? dates[dates.length - 1]
+}
+
+function scrollToTodaySection(): boolean {
+  if (!import.meta.client) {
+    return false
+  }
+  const date = resolveScrollDate()
+  if (!date) {
+    return false
+  }
+  const el = document.getElementById(daySectionId(date))
+  if (!el) {
+    return false
+  }
+  const headerOffset = 80
+  const top = el.getBoundingClientRect().top + window.scrollY - headerOffset
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+  return true
+}
+
+async function tryAutoScrollToToday(retries = 8) {
+  if (didAutoScroll.value || !import.meta.client) {
+    return
+  }
+  if (isLoading.value || groupedEvents.value.length === 0) {
+    return
+  }
+
+  const previousRestoration = window.history.scrollRestoration
+  try {
+    window.history.scrollRestoration = 'manual'
+  }
+  catch {
+    // ignore
+  }
+
+  for (let i = 0; i < retries; i += 1) {
+    await nextTick()
+    if (scrollToTodaySection()) {
+      didAutoScroll.value = true
+      window.setTimeout(() => {
+        try {
+          window.history.scrollRestoration = previousRestoration || 'auto'
+        }
+        catch {
+          // ignore
+        }
+      }, 500)
+      return
+    }
+    await new Promise<void>(resolve => {
+      window.setTimeout(resolve, 50 * (i + 1))
+    })
+  }
+
+  try {
+    window.history.scrollRestoration = previousRestoration || 'auto'
+  }
+  catch {
+    // ignore
+  }
+}
+
+watch(
+  () => [isLoading.value, groupedEvents.value.length, pending.value] as const,
+  () => {
+    void tryAutoScrollToToday()
+  },
+  { flush: 'post', immediate: true },
+)
+
+onMounted(() => {
+  void tryAutoScrollToToday()
+})
 </script>
 
 <template>
@@ -209,8 +311,9 @@ const filterButtonClass = (active: boolean) =>
     >
       <section
         v-for="group in groupedEvents"
+        :id="daySectionId(group.date)"
         :key="group.date"
-        class="card overflow-hidden"
+        class="card overflow-hidden scroll-mt-24"
       >
         <div class="border-b border-zinc-200/80 px-5 py-3 text-sm font-medium text-zinc-900 dark:border-white/[0.08] dark:text-zinc-50">
           {{ formatDateHeading(group.date) }}
