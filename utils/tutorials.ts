@@ -14,9 +14,11 @@ import { starrybluAccountGuide } from '~/data/tutorials/starryblu-account-guide'
 import { ifastAccountGuide } from '~/data/tutorials/ifast-account-guide'
 import { googleWorkspaceDomainGuide } from '~/data/tutorials/google-workspace-domain-guide'
 import { dnsheFreeDomainGuide } from '~/data/tutorials/dnshe-free-domain-guide'
+import { oqumailFreeDomainEmailGuide } from '~/data/tutorials/oqumail-free-domain-email-guide'
 import { websiteAdsMonetizationGuide } from '~/data/tutorials/website-ads-monetization-guide'
 import { usStockDepositAndTransferGuide } from '~/data/tutorials/us-stock-deposit-and-transfer'
 import { howToChooseUsBrokerGuide } from '~/data/tutorials/how-to-choose-us-broker'
+import { mainlandHkUsStockTaxGuide } from '~/data/tutorials/mainland-hk-us-stock-tax-guide'
 import { usAccountSystemInfographic } from '~/data/tutorials/us-account-system-infographic'
 import { hkFundPathInfographic } from '~/data/tutorials/hk-fund-path-infographic'
 import { etfTypesInfographic } from '~/data/tutorials/etf-types-infographic'
@@ -45,9 +47,11 @@ const markdownFiles: Record<string, string> = {
   'ifast-account-guide': ifastAccountGuide,
   'google-workspace-domain-guide': googleWorkspaceDomainGuide,
   'dnshe-free-domain-guide': dnsheFreeDomainGuide,
+  'oqumail-free-domain-email-guide': oqumailFreeDomainEmailGuide,
   'website-ads-monetization-guide': websiteAdsMonetizationGuide,
   'us-stock-deposit-and-transfer': usStockDepositAndTransferGuide,
   'how-to-choose-us-broker': howToChooseUsBrokerGuide,
+  'mainland-hk-us-stock-tax-guide': mainlandHkUsStockTaxGuide,
   'us-account-system-infographic': usAccountSystemInfographic,
   'hk-fund-path-infographic': hkFundPathInfographic,
   'etf-types-infographic': etfTypesInfographic,

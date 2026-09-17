@@ -477,6 +477,22 @@
                     "guideUrl": "/tutorials/firstrade-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-08-20"
+                },
+                {
+                    "id": "mainland-hk-us-stock-tax",
+                    "name": "大陆用户炒港美股要交税吗？",
+                    "description": "中国税收居民投港美股的股息、买卖差价与境外抵免等常见对照；仅供信息整理。",
+                    "url": "",
+                    "tags": [
+                        "美股",
+                        "港股",
+                        "税务"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/mainland-hk-us-stock-tax-guide",
+                    "guideLabel": "阅读教程",
+                    "updatedAt": "2026-09-17"
                 }
             ]
         },
@@ -631,6 +647,22 @@
                     ],
                     "officialUrlConfirmed": true,
                     "updatedAt": "2026-09-08"
+                },
+                {
+                    "id": "oqumail",
+                    "name": "OquMail",
+                    "description": "最简单的免费域名邮箱方案，实测支持第三方客户端；免费额度含多邮箱与自定义域名。",
+                    "url": "https://oqumail.com",
+                    "tags": [
+                        "邮箱",
+                        "域名",
+                        "免费"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/oqumail-free-domain-email-guide",
+                    "guideLabel": "使用教程",
+                    "updatedAt": "2026-09-17"
                 }
             ]
         },

@@ -6,15 +6,9 @@ const root = ref<HTMLElement | null>(null)
 const options = [
   { value: 'light', label: '浅色', icon: 'sun' as const },
   { value: 'dark', label: '深色', icon: 'moon' as const },
-  { value: 'system', label: '系统', icon: 'monitor' as const },
 ]
 
-const currentIcon = computed(() => {
-  if (colorMode.preference === 'system') {
-    return 'monitor'
-  }
-  return colorMode.value === 'dark' ? 'moon' : 'sun'
-})
+const currentIcon = computed(() => (colorMode.value === 'dark' ? 'moon' : 'sun'))
 
 function setMode(value: string) {
   colorMode.preference = value
