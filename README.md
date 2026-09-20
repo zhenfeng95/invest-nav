@@ -99,16 +99,33 @@ NUXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ### IndexNow
 
-站点已接入 [IndexNow](https://www.indexnow.org/)（免费）。部署后：
+站点已接入 [IndexNow](https://www.indexnow.org/)（免费）。
 
-1. 确认 key 文件可访问：`https://zheninvest.com/zheninvest-indexnow-8f3a2c1b.txt`
-2. 批量提交站内 URL（部署后执行一次即可）：
+Cloudflare Workers 共用出口 IP，经站点 API 代提交时经常被 IndexNow 返回 **429**。推荐**在本机直接提交**：
+
+1. 确认 key 可访问：`https://zheninvest.com/zheninvest-indexnow-8f3a2c1b.txt`
+2. 先从站点取 payload（不真正提交）：
 
 ```bash
-curl -X POST https://zheninvest.com/api/indexnow/sync
+curl -X POST 'https://zheninvest.com/api/indexnow/sync?dryRun=1' -o /tmp/indexnow-payload.json
 ```
 
-若设置了 `NUXT_INDEXNOW_SYNC_SECRET`，请求需带请求头 `x-indexnow-secret`。日报/周复盘/月复盘列表接口也会在冷却窗口内自动通知最新内容 URL。
+3. 用本机网络提交给必应：
+
+```bash
+jq '.payload' /tmp/indexnow-payload.json > /tmp/indexnow-body.json
+curl -i -X POST 'https://www.bing.com/indexnow' \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -d @/tmp/indexnow-body.json
+```
+
+成功时 HTTP 状态一般为 `200` 或 `202`。也可只测首页：
+
+```bash
+curl -i 'https://www.bing.com/indexnow?url=https%3A%2F%2Fzheninvest.com%2F&key=zheninvest-indexnow-8f3a2c1b'
+```
+
+若设置了 `NUXT_INDEXNOW_SYNC_SECRET`，请求站点 sync 接口时需带请求头 `x-indexnow-secret`。
 
 不要把 API Key、Token、Secret 或 Password 放进 Git。`.env`、`.dev.vars` 和 `.wrangler` 已被忽略。
 

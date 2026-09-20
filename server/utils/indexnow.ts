@@ -3,7 +3,8 @@ import { getTutorials } from '~/utils/tutorials'
 /** 与 public/{key}.txt 保持一致；可通过 NUXT_INDEXNOW_KEY 覆盖。 */
 export const DEFAULT_INDEXNOW_KEY = 'zheninvest-indexnow-8f3a2c1b'
 
-const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow'
+/** 本机提交优先走 Bing；api.indexnow.org 在部分网络下也可能限流。 */
+export const INDEXNOW_ENDPOINT = 'https://www.bing.com/indexnow'
 
 const staticPaths = [
   '/',
@@ -74,16 +75,47 @@ export function listIndexNowCandidatePaths(extraPaths: string[] = []): string[] 
   return [...staticPaths, ...tutorialPaths, ...extraPaths]
 }
 
+export interface IndexNowPayload {
+  host: string
+  key: string
+  keyLocation: string
+  urlList: string[]
+}
+
+export function buildIndexNowPayload(
+  event: Parameters<typeof useRuntimeConfig>[0],
+  pathsOrUrls: string[],
+): IndexNowPayload | null {
+  const siteUrl = getSiteOrigin(event)
+  const host = new URL(siteUrl).host
+  const key = getIndexNowKey(event)
+  const urlList = toAbsoluteUrls(siteUrl, pathsOrUrls).slice(0, 10000)
+
+  if (urlList.length === 0) {
+    return null
+  }
+
+  return {
+    host,
+    key,
+    keyLocation: `${siteUrl}/${key}.txt`,
+    urlList,
+  }
+}
+
 export interface IndexNowSubmitResult {
   ok: boolean
   submitted: number
   statusCode?: number
   skipped?: string
   error?: string
+  payload?: IndexNowPayload
+  hint?: string
 }
 
 /**
- * 向 IndexNow 提交 URL；失败只记日志，不阻断业务请求。
+ * 向 IndexNow 提交 URL。
+ * 注意：从 Cloudflare Workers 共用出口 IP 提交时经常 429，建议本机直接 POST payload。
  */
 export async function submitIndexNowUrls(
   event: Parameters<typeof useRuntimeConfig>[0],
@@ -97,10 +129,8 @@ export async function submitIndexNowUrls(
     return { ok: false, submitted: 0, skipped: 'local-site-url' }
   }
 
-  const key = getIndexNowKey(event)
-  const urlList = toAbsoluteUrls(siteUrl, pathsOrUrls).slice(0, 10000)
-
-  if (urlList.length === 0) {
+  const payload = buildIndexNowPayload(event, pathsOrUrls)
+  if (!payload) {
     return { ok: false, submitted: 0, skipped: 'empty-url-list' }
   }
 
@@ -108,17 +138,12 @@ export async function submitIndexNowUrls(
     const response = await fetch(INDEXNOW_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      body: JSON.stringify({
-        host,
-        key,
-        keyLocation: `${siteUrl}/${key}.txt`,
-        urlList,
-      }),
+      body: JSON.stringify(payload),
     })
 
     // IndexNow: 200/202 成功；可能对重复提交返回其他 2xx。
     if (response.status >= 200 && response.status < 300) {
-      return { ok: true, submitted: urlList.length, statusCode: response.status }
+      return { ok: true, submitted: payload.urlList.length, statusCode: response.status }
     }
 
     const body = await response.text().catch(() => '')
@@ -128,26 +153,15 @@ export async function submitIndexNowUrls(
       submitted: 0,
       statusCode: response.status,
       error: body.slice(0, 200) || response.statusText,
+      payload,
+      hint: response.status === 429
+        ? 'Cloudflare Workers 共用出口 IP 常被 IndexNow 限流。请在本机直接 POST payload 到 https://www.bing.com/indexnow'
+        : undefined,
     }
   }
   catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     console.warn(`[indexnow] submit error: ${message}`)
-    return { ok: false, submitted: 0, error: message }
+    return { ok: false, submitted: 0, error: message, payload }
   }
-}
-
-/** 不阻塞调用方；适合在内容列表接口里 fire-and-forget。同进程 30 分钟内去重。 */
-const notifyCooldownMs = 30 * 60 * 1000
-const lastNotifyAt = new Map<string, number>()
-
-export function notifyIndexNow(event: Parameters<typeof useRuntimeConfig>[0], pathsOrUrls: string[]) {
-  const fingerprint = pathsOrUrls.slice(0, 5).join('|')
-  const now = Date.now()
-  const last = lastNotifyAt.get(fingerprint) ?? 0
-  if (now - last < notifyCooldownMs) {
-    return
-  }
-  lastNotifyAt.set(fingerprint, now)
-  void submitIndexNowUrls(event, pathsOrUrls)
 }
