@@ -3,8 +3,8 @@ import { siteAuthor } from '~/data/author'
 import { SITE_CONTACT_EMAIL, SITE_NAME, SITE_URL } from '~/utils/site'
 
 usePageSeo({
-  title: '关于我们',
-  description: `${SITE_NAME} 由 ${siteAuthor.name} 维护：介绍站长、创站初衷，以及港美股与跨境投资教程、导航与工具的定位与内容边界。`,
+  title: '关于我们｜站长介绍与创站初衷',
+  description: `${SITE_NAME} 由 ${siteAuthor.name} 维护：介绍站长背景、创站初衷，以及港美股与跨境投资教程、资源导航与工具的定位、内容边界和使用方式。`,
   path: '/about',
 })
 
@@ -151,7 +151,7 @@ const communityHref = computed(() => socialHref(author.communityUrl))
             <li>港美股、香港银行、资金流转、数字基建等主题的图文教程</li>
             <li>按分类整理的官方资源导航（券商、银行、SIM、基建等）</li>
             <li>少量计算器与日历类轻量工具</li>
-            <li>站长个人投研复盘（持仓、日/周/月复盘），用于学习记录，不代表他人应跟随</li>
+            <li>站长个人投研复盘（持仓、市场评分、日/周/月复盘），用于学习记录，不代表他人应跟随</li>
           </ul>
         </section>
 

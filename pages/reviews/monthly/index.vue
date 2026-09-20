@@ -14,7 +14,7 @@ const { data, error, pending, status } = await useAsyncData(
 const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 usePageSeo({
-  title: '每月复盘',
+  title: '每月复盘｜阶段盈亏与经验沉淀',
   description: '阅读投研 Agent 每月生成的交易复盘：按月查看盈亏结构、纪律问题与下月改进清单，帮助沉淀阶段性交易经验；内容仅供学习整理，不构成投资建议。',
   path: '/reviews/monthly',
 })

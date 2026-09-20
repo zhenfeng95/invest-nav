@@ -17,7 +17,7 @@ if (tool.route !== `/tools/${slug}`) {
 }
 
 usePageSeo({
-    title: tool.name,
+    title: `${tool.name}｜投资计算与规划工具`,
     description: tool.description,
     path: tool.route,
 });

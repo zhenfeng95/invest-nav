@@ -30,6 +30,7 @@ const staticRoutes = [
   '/reviews/monthly',
   '/reviews/weekly',
   '/portfolio',
+  '/market',
   '/about',
   '/disclaimer',
   '/privacy',

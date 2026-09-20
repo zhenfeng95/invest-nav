@@ -43,7 +43,7 @@ const hasMarketSplit = computed(() =>
 )
 
 usePageSeo({
-  title: '收盘日报',
+  title: '收盘日报｜A股与美股市场复盘',
   description: '阅读投研 Agent 本月生成的收盘日报：按日期归档 A 股与美股市场复盘、要点与观察清单，帮助回顾当日行情脉络；内容仅供学习整理，不构成投资建议。',
   path: '/reports',
 })

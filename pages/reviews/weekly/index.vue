@@ -14,7 +14,7 @@ const { data, error, pending, status } = await useAsyncData(
 const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 usePageSeo({
-  title: '每周复盘',
+  title: '每周复盘｜交易纪律与改进清单',
   description: '阅读投研 Agent 每周生成的交易复盘：按周查看盈亏结构、纪律执行情况与下周改进清单，帮助复盘交易过程；内容仅供学习整理，不构成投资建议。',
   path: '/reviews/weekly',
 })

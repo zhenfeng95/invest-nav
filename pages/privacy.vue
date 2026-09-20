@@ -2,8 +2,8 @@
 import { SITE_CONTACT_EMAIL, SITE_NAME, SITE_URL } from '~/utils/site'
 
 usePageSeo({
-  title: '隐私政策',
-  description: `${SITE_NAME} 隐私政策：说明本站如何处理浏览数据、本地偏好、第三方服务与日后可能接入的分析或广告，以及如何联系我们。`,
+  title: '隐私政策｜浏览数据与第三方服务',
+  description: `${SITE_NAME} 隐私政策：说明本站如何处理浏览数据、本地偏好、第三方嵌入服务，以及日后可能接入的统计分析或广告相关信息，并告知如何联系我们查询或反馈。`,
   path: '/privacy',
 })
 </script>

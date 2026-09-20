@@ -97,6 +97,19 @@ NUXT_PUBLIC_SITE_URL=http://localhost:3000
 
 生产环境请改成你的 Workers 域名或自定义域名。该变量用于 canonical、Open Graph、sitemap 和 robots.txt。
 
+### IndexNow
+
+站点已接入 [IndexNow](https://www.indexnow.org/)（免费）。部署后：
+
+1. 确认 key 文件可访问：`https://zheninvest.com/zheninvest-indexnow-8f3a2c1b.txt`
+2. 批量提交站内 URL（部署后执行一次即可）：
+
+```bash
+curl -X POST https://zheninvest.com/api/indexnow/sync
+```
+
+若设置了 `NUXT_INDEXNOW_SYNC_SECRET`，请求需带请求头 `x-indexnow-secret`。日报/周复盘/月复盘列表接口也会在冷却窗口内自动通知最新内容 URL。
+
 不要把 API Key、Token、Secret 或 Password 放进 Git。`.env`、`.dev.vars` 和 `.wrangler` 已被忽略。
 
 ## Cloudflare 部署
@@ -199,6 +212,10 @@ NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
 
 `/tools/calendar` 读取投研 Agent 仓库中的 `data/public/economic-calendar.json`，使用与日报相同的 GitHub 配置，不再依赖第三方日历 API Key。本地开发时也会尝试读取同级目录 `../invest-agent/data/public/economic-calendar.json`。
 
+## 市场评分
+
+`/market` 读取投研 Agent 仓库中的 `data/public/ashare-daily-snapshot.csv`，用 ECharts 柱状图展示每日市场评分。柱高为 `score`（0–100），柱颜色对应策略（防守 / 轻仓试错 / 积极参与 / 进攻）；`attack_ok` 为 true 的交易日在柱顶加菱形标记。悬停可看建议仓位、进攻四条件、账户重心等字段。本地开发时也会尝试读取同级目录 `../invest-agent/data/public/ashare-daily-snapshot.csv`。
+
 ## 主要路由
 
 - `/`
@@ -207,6 +224,7 @@ NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
 - `/reviews/monthly`
 - `/reviews/weekly`
 - `/portfolio`
+- `/market`
 - `/tutorials`
 - `/tutorials/articles`
 - `/tutorials/videos`

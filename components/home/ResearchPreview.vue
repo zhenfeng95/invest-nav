@@ -60,7 +60,7 @@ function lastTotal(points: EquityPoint[] | undefined, fallback: number) {
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="投研速览"
-        description="持仓分账、收盘日报与月度复盘，由投研 Agent 生成。"
+        description="持仓分账、市场评分、收盘日报与月度复盘，由投研 Agent 生成。"
       />
       <NuxtLink
         to="/portfolio"

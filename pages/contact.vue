@@ -2,8 +2,8 @@
 import { SITE_CONTACT_EMAIL, SITE_NAME } from '~/utils/site'
 
 usePageSeo({
-  title: '联系我们',
-  description: `通过公开邮箱联系 ${SITE_NAME}：反馈链接失效、内容勘误、资源补充或站点相关问题。我们不提供投资建议或代办开户服务。`,
+  title: '联系我们｜反馈勘误与资源补充',
+  description: `通过公开邮箱联系 ${SITE_NAME}：反馈链接失效、内容勘误、资源补充或站点相关问题。我们不提供投资建议、代办开户或资金操作服务，请以各机构官方说明为准。`,
   path: '/contact',
 })
 </script>

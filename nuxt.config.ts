@@ -76,6 +76,8 @@ export default defineNuxtConfig({
         githubWeeklyReviewsPath: 'output/reviews/weekly',
         githubReportsRef: 'main',
         githubTradesPath: 'data/raw/trades',
+        indexnowKey: 'zheninvest-indexnow-8f3a2c1b',
+        indexnowSyncSecret: '',
         public: {
             siteUrl: 'http://localhost:3000',
             siteName: 'Zhen Invest',
@@ -111,5 +113,16 @@ export default defineNuxtConfig({
 
     typescript: {
         strict: true,
+    },
+
+    vite: {
+        optimizeDeps: {
+            include: [
+                'echarts/core',
+                'echarts/charts',
+                'echarts/components',
+                'echarts/renderers',
+            ],
+        },
     },
 });

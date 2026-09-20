@@ -4,6 +4,7 @@
             "id": "stocks",
             "slug": "stocks",
             "name": "美股",
+            "fullName": "美股行情披露与研究站点入口",
             "description": "美股市场入口、行情网站与上市公司信息披露，方便快速找到交易所、监管披露与常用研究站点。",
             "icon": "stocks",
             "items": [
@@ -63,6 +64,7 @@
             "id": "funds",
             "slug": "funds",
             "name": "基金",
+            "fullName": "基金与 QDII 研究入口",
             "description": "基金与 QDII 研究入口：晨星、justETF、东方财富 QDII 频道与基金业协会等，便于对照产品资料、净值与行业公开信息；可与站内 ETF 分类及「ETF 与基金」教程一并阅读。",
             "icon": "funds",
             "items": [
@@ -150,6 +152,7 @@
             "id": "etf",
             "slug": "etf",
             "name": "ETF",
+            "fullName": "ETF 发行商与产品研究入口",
             "description": "ETF 发行商与产品研究入口，汇总先锋、贝莱德、SPDR 等常见官方站点，便于对照产品说明。",
             "icon": "etf",
             "items": [
@@ -196,6 +199,7 @@
             "id": "stocks-cn",
             "slug": "stocks-cn",
             "name": "个股",
+            "fullName": "个股研究披露与标的信息入口",
             "description": "个股研究、公司披露与标的信息入口，整理常用研究平台与监管文件检索路径，便于深入阅读。",
             "icon": "company",
             "items": [
@@ -241,6 +245,7 @@
             "id": "options",
             "slug": "options",
             "name": "期权",
+            "fullName": "期权合约学习与交易所教育资源",
             "description": "期权学习、合约说明与交易所教育资源，汇总 CBOE、投资者教育与清算机构等官方入口。",
             "icon": "options",
             "items": [
@@ -286,6 +291,7 @@
             "id": "overseas-banks",
             "slug": "overseas-banks",
             "name": "境外银行卡",
+            "fullName": "境外银行卡与香港开户入口",
             "description": "境外银行、开户入口与账户服务导航，覆盖香港银行等常见路径，并链向站内开户教程。",
             "icon": "bank",
             "items": [
@@ -350,6 +356,7 @@
             "id": "overseas-sim",
             "slug": "overseas-sim",
             "name": "境外手机卡",
+            "fullName": "境外手机卡与 eSIM 入口",
             "description": "境外 SIM / eSIM 与接码开户常用入口，整理适配卡与预付费号码服务，便于海外注册与通讯。",
             "icon": "sim",
             "items": [
@@ -404,6 +411,7 @@
             "id": "overseas-brokers",
             "slug": "overseas-brokers",
             "name": "港美股券商",
+            "fullName": "港美股券商开户交易与教程入口",
             "description": "港美股券商、开户入口与账户服务导航，覆盖新加坡与美国等常见券商，并链向站内开户教程。",
             "icon": "broker",
             "items": [
@@ -500,6 +508,7 @@
             "id": "fund-transfer",
             "slug": "fund-transfer",
             "name": "资金流转",
+            "fullName": "跨境汇款与多币种账户入口",
             "description": "跨境汇款、多币种账户与港卡在内地使用相关资源：整理 Wise、Starryblu、iFAST 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
             "icon": "transfer",
             "items": [
@@ -586,7 +595,7 @@
             "id": "digital-infra",
             "slug": "digital-infra",
             "name": "数字基建",
-            "fullName": "跨境数字基建",
+            "fullName": "跨境数字基建与域名邮箱入口",
             "description": "域名、Google Workspace、Cloudflare、DNSHE、海外邮箱等跨境数字基础设施入口，后续会持续补充站内教程。",
             "icon": "infra",
             "items": [
@@ -670,6 +679,7 @@
             "id": "deposit-withdraw",
             "slug": "deposit-withdraw",
             "name": "出入金",
+            "fullName": "券商出入金路径与到账核对入口",
             "description": "券商入金、出金与到账核对相关资源，汇总官方资金说明入口，帮助理解跨境出入金常见步骤。",
             "icon": "deposit",
             "items": [

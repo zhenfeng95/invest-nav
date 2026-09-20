@@ -2,7 +2,7 @@
 import { SITE_DISCLAIMER } from '~/utils/site'
 
 usePageSeo({
-  title: '免责声明',
+  title: '免责声明｜信息整理与风险提示',
   description: SITE_DISCLAIMER,
   path: '/disclaimer',
 })

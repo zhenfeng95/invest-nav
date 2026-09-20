@@ -1,4 +1,5 @@
 import { getGitHubReportsConfig, GitHubReportsError, listWeeklyReviews } from '../../../utils/github-reports'
+import { notifyIndexNow } from '../../../utils/indexnow'
 
 export default defineEventHandler(async (event) => {
   const config = getGitHubReportsConfig(event)
@@ -20,6 +21,12 @@ export default defineEventHandler(async (event) => {
         ? 'public, s-maxage=600, stale-while-revalidate=3600'
         : 'no-store',
     )
+
+    const latestPaths = items.slice(0, 5).map(item => `/reviews/weekly/${item.slug}`)
+    if (latestPaths.length) {
+      notifyIndexNow(event, ['/reviews/weekly', ...latestPaths])
+    }
+
     return {
       configured: true,
       source: `${config.owner}/${config.repo}`,

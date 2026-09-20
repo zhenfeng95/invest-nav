@@ -53,7 +53,7 @@ const {
 )
 
 usePageSeo({
-  title: '持仓分账',
+  title: '持仓分账｜A股三户与美股复盘',
   description: '复盘投研 Agent 交易记录：按 A 股三户（国元/银河/华泰）与美股分账查看持仓、按日盯市收益曲线与交易纪律；人民币与美元不合并，内容仅供学习整理。',
   path: '/portfolio',
 })

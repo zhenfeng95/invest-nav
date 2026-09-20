@@ -1,4 +1,5 @@
 import { getGitHubReportsConfig, GitHubReportsError, listReports } from '../../utils/github-reports'
+import { notifyIndexNow } from '../../utils/indexnow'
 
 export default defineEventHandler(async (event) => {
   const config = getGitHubReportsConfig(event)
@@ -20,6 +21,12 @@ export default defineEventHandler(async (event) => {
         ? 'public, s-maxage=600, stale-while-revalidate=3600'
         : 'no-store',
     )
+
+    const latestPaths = items.slice(0, 8).map(item => `/reports/${item.slug}`)
+    if (latestPaths.length) {
+      notifyIndexNow(event, ['/reports', ...latestPaths])
+    }
+
     return {
       configured: true,
       source: `${config.owner}/${config.repo}`,

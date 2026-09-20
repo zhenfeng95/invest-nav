@@ -23,6 +23,7 @@ export interface NavItem {
 /** 投研子菜单 */
 export const researchNavLinks: NavLink[] = [
     { label: '现持仓', to: '/portfolio' },
+    { label: '市场评分', to: '/market' },
     { label: '日复盘', to: '/reports' },
     { label: '周复盘', to: '/reviews/weekly' },
     { label: '月复盘', to: '/reviews/monthly' },

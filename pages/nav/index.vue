@@ -37,7 +37,7 @@ function cardIndex(index: number) {
 }
 
 usePageSeo({
-  title: '全部导航',
+  title: '投资导航｜港美股券商银行与出入金',
   description: '按分类浏览 Zhen Invest 投资导航：美股、基金、ETF、个股、期权、香港银行、美股券商、资金流转、数字基建与出入金资源，不确定的官方链接会明确标注，避免误导。',
   path: '/nav',
 })
