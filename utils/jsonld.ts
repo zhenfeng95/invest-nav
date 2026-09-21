@@ -1,4 +1,6 @@
 import { siteAuthor } from '~/data/author'
+import type { Note } from '~/types/note'
+import type { ToolGuide } from '~/types/tool-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
 import { SITE_CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME } from '~/utils/site'
 
@@ -24,7 +26,7 @@ export function buildHomeJsonLd(siteUrl: string) {
                 '@type': 'Organization',
                 '@id': organizationId,
                 name: SITE_NAME,
-                alternateName: '简投有道',
+                alternateName: '真投有道',
                 url: siteUrl,
                 logo: {
                     '@type': 'ImageObject',
@@ -37,7 +39,7 @@ export function buildHomeJsonLd(siteUrl: string) {
                 '@type': 'WebSite',
                 '@id': websiteId,
                 name: SITE_NAME,
-                alternateName: '简投有道',
+                alternateName: '真投有道',
                 url: siteUrl,
                 description: SITE_DESCRIPTION,
                 inLanguage: 'zh-CN',
@@ -119,7 +121,7 @@ export function buildTutorialJsonLd(siteUrl: string, tutorial: Tutorial) {
                 '@type': 'Organization',
                 '@id': organizationId,
                 name: SITE_NAME,
-                alternateName: '简投有道',
+                alternateName: '真投有道',
                 url: siteUrl,
                 logo: {
                     '@type': 'ImageObject',
@@ -152,6 +154,146 @@ export function buildTutorialJsonLd(siteUrl: string, tutorial: Tutorial) {
                         '@type': 'ListItem',
                         position: 4,
                         name: tutorial.title,
+                        item: pageUrl,
+                    },
+                ],
+            },
+        ],
+    }
+}
+
+export function buildNoteJsonLd(siteUrl: string, note: Note) {
+    const organizationId = `${siteUrl}/#organization`
+    const pageUrl = absoluteUrl(siteUrl, `/notes/${note.slug}`)
+
+    const article: Record<string, unknown> = {
+        '@type': 'Article',
+        '@id': `${pageUrl}#article`,
+        headline: note.title,
+        description: note.description,
+        url: pageUrl,
+        mainEntityOfPage: pageUrl,
+        inLanguage: 'zh-CN',
+        datePublished: toIsoDate(note.publishedAt),
+        dateModified: toIsoDate(note.updatedAt),
+        articleSection: note.category,
+        keywords: note.tags,
+        image: absoluteUrl(siteUrl, '/og-image.png'),
+        author: {
+            '@id': organizationId,
+        },
+        publisher: {
+            '@id': organizationId,
+        },
+        isPartOf: {
+            '@id': `${siteUrl}/#website`,
+        },
+    }
+
+    if (note.readingMinutes) {
+        article.timeRequired = `PT${note.readingMinutes}M`
+    }
+
+    return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'Organization',
+                '@id': organizationId,
+                name: SITE_NAME,
+                alternateName: '真投有道',
+                url: siteUrl,
+                logo: {
+                    '@type': 'ImageObject',
+                    url: absoluteUrl(siteUrl, '/logo.png'),
+                },
+            },
+            article,
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: SITE_NAME,
+                        item: siteUrl,
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: '交易笔记',
+                        item: absoluteUrl(siteUrl, '/notes'),
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 3,
+                        name: note.title,
+                        item: pageUrl,
+                    },
+                ],
+            },
+        ],
+    }
+}
+
+export function buildToolGuideJsonLd(
+    siteUrl: string,
+    input: { name: string; description: string; path: string; guide: ToolGuide },
+) {
+    const pageUrl = absoluteUrl(siteUrl, input.path)
+
+    return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'WebApplication',
+                '@id': `${pageUrl}#app`,
+                name: input.name,
+                description: input.description,
+                url: pageUrl,
+                applicationCategory: 'FinanceApplication',
+                operatingSystem: 'Any',
+                inLanguage: 'zh-CN',
+                offers: {
+                    '@type': 'Offer',
+                    price: '0',
+                    priceCurrency: 'CNY',
+                },
+                isPartOf: {
+                    '@id': `${siteUrl}/#website`,
+                },
+            },
+            {
+                '@type': 'FAQPage',
+                '@id': `${pageUrl}#faq`,
+                mainEntity: input.guide.faq.map(item => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: item.answer,
+                    },
+                })),
+            },
+            {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    {
+                        '@type': 'ListItem',
+                        position: 1,
+                        name: SITE_NAME,
+                        item: siteUrl,
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 2,
+                        name: '投资工具',
+                        item: absoluteUrl(siteUrl, '/tools'),
+                    },
+                    {
+                        '@type': 'ListItem',
+                        position: 3,
+                        name: input.name,
                         item: pageUrl,
                     },
                 ],

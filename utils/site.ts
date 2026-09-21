@@ -34,6 +34,7 @@ export const mainNav: NavItem[] = [
     { label: '教程', to: '/tutorials' },
     { label: '导航', to: '/nav' },
     { label: '工具', to: '/tools' },
+    { label: '笔记', to: '/notes' },
     {
         label: '投研',
         children: researchNavLinks,
@@ -41,6 +42,7 @@ export const mainNav: NavItem[] = [
 ];
 
 export const footerAboutLinks: NavLink[] = [
+    { label: '交易笔记', to: '/notes' },
     { label: '关于我们', to: '/about' },
     { label: '免责声明', to: '/disclaimer' },
     { label: '隐私政策', to: '/privacy' },

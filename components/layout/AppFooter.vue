@@ -8,9 +8,7 @@ import { footerAboutLinks, footerCategoryLinks, SITE_DISCLAIMER, SITE_NAME, SITE
       <div class="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div class="sm:col-span-2 lg:col-span-2">
           <NuxtLink to="/" class="inline-flex items-center gap-2 text-zinc-900 dark:text-zinc-50">
-            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 bg-white text-accent dark:border-white/10 dark:bg-white/5">
-              <AppIcon name="logo" class="h-4 w-4" />
-            </span>
+            <img src="/logo.png" alt="" class="h-7 w-7 shrink-0 rounded-sm object-contain" />
             <span class="text-sm font-semibold tracking-tight">{{ SITE_NAME }}</span>
           </NuxtLink>
           <p class="mt-4 max-w-sm text-sm leading-6 text-zinc-500 dark:text-zinc-400">

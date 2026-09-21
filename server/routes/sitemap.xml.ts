@@ -1,3 +1,4 @@
+import { getNotes } from '~/utils/notes'
 import { getTutorials } from '~/utils/tutorials'
 import type { TutorialType } from '~/types/tutorial'
 
@@ -7,6 +8,7 @@ const staticRoutes = [
   '/tutorials/articles',
   '/tutorials/videos',
   '/tutorials/infographics',
+  '/notes',
   '/tools',
   '/tools/portfolio',
   '/tools/calendar',
@@ -14,6 +16,8 @@ const staticRoutes = [
   '/tools/compound-interest',
   '/tools/fx-estimate',
   '/tools/position-risk',
+  '/tools/trade-pnl',
+  '/tools/target-contribution',
   '/nav',
   '/nav/stocks',
   '/nav/funds',
@@ -58,9 +62,13 @@ function toLastmod(date: string): string {
 export default defineEventHandler((event) => {
   const siteUrl = String(useRuntimeConfig(event).public.siteUrl).replace(/\/$/, '')
   const tutorials = getTutorials()
+  const notes = getNotes()
   const tutorialBySlug = new Map(tutorials.map(item => [item.slug, item]))
-  const latestContentDate = maxDate(tutorials.map(item => item.updatedAt))
-    ?? new Date().toISOString().slice(0, 10)
+  const noteBySlug = new Map(notes.map(item => [item.slug, item]))
+  const latestContentDate = maxDate([
+    ...tutorials.map(item => item.updatedAt),
+    ...notes.map(item => item.updatedAt),
+  ]) ?? new Date().toISOString().slice(0, 10)
 
   const lastmodForPath = (path: string): string => {
     const listingType = listingTypeByPath[path]
@@ -75,7 +83,11 @@ export default defineEventHandler((event) => {
     }
 
     if (path === '/tutorials') {
-      return toLastmod(latestContentDate)
+      return toLastmod(maxDate(tutorials.map(item => item.updatedAt)) ?? latestContentDate)
+    }
+
+    if (path === '/notes') {
+      return toLastmod(maxDate(notes.map(item => item.updatedAt)) ?? latestContentDate)
     }
 
     const tutorialMatch = path.match(/^\/tutorials\/([^/]+)$/)
@@ -86,12 +98,21 @@ export default defineEventHandler((event) => {
       }
     }
 
+    const noteMatch = path.match(/^\/notes\/([^/]+)$/)
+    if (noteMatch) {
+      const note = noteBySlug.get(noteMatch[1])
+      if (note?.updatedAt) {
+        return toLastmod(note.updatedAt)
+      }
+    }
+
     return toLastmod(latestContentDate)
   }
 
   const routes = [
     ...staticRoutes,
     ...tutorials.map(item => `/tutorials/${item.slug}`),
+    ...notes.map(item => `/notes/${item.slug}`),
   ]
 
   const urls = routes

@@ -1,3 +1,4 @@
+import { getNotes } from '~/utils/notes'
 import { getTutorials } from '~/utils/tutorials'
 
 /** 与 public/{key}.txt 保持一致；可通过 NUXT_INDEXNOW_KEY 覆盖。 */
@@ -12,12 +13,15 @@ const staticPaths = [
   '/tutorials/articles',
   '/tutorials/videos',
   '/tutorials/infographics',
+  '/notes',
   '/tools',
   '/tools/calendar',
   '/tools/spatial',
   '/tools/compound-interest',
   '/tools/fx-estimate',
   '/tools/position-risk',
+  '/tools/trade-pnl',
+  '/tools/target-contribution',
   '/nav',
   '/nav/stocks',
   '/nav/funds',
@@ -72,7 +76,8 @@ export function toAbsoluteUrls(siteUrl: string, paths: string[]): string[] {
 
 export function listIndexNowCandidatePaths(extraPaths: string[] = []): string[] {
   const tutorialPaths = getTutorials().map(item => `/tutorials/${item.slug}`)
-  return [...staticPaths, ...tutorialPaths, ...extraPaths]
+  const notePaths = getNotes().map(item => `/notes/${item.slug}`)
+  return [...staticPaths, ...tutorialPaths, ...notePaths, ...extraPaths]
 }
 
 export interface IndexNowPayload {

@@ -28,11 +28,11 @@ export interface AuthorProfile {
  * 已按站点已知信息填写；其余字段请自行补全。
  */
 export const siteAuthor: AuthorProfile = {
-    name: `简投有道｜${SITE_NAME}`,
+    name: `真投有道｜${SITE_NAME}`,
     avatar: '/logo.png',
     tags: ['港美股', '跨境投资', '开户教程', '数字基建'],
     bios: [
-        `我是 ${SITE_NAME_EN}（简投有道）的维护者，持续整理港美股开户、出入金与跨境资源路径，并把个人投研复盘公开在站内，方便对照学习。`,
+        `我是 ${SITE_NAME_EN}（真投有道）的维护者，持续整理港美股开户、出入金与跨境资源路径，并把个人投研复盘公开在站内，方便对照学习。`,
         '站点会持续分享开户与资金流转教程、官方资源导航、轻量工具，以及跨境数字基建相关实践。',
     ],
     socials: [

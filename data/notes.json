@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "win-easy-trading-core",
+      "slug": "win-easy-trading-core",
+      "title": "炒股赚米的核心",
+      "description": "承认市场不确定之后，把大势企稳、多头共振、九条总纲与 5 日线买点写成可检查提纲；只做顺风局，心思放在避免亏损。内容仅供学习整理，不构成投资建议。",
+      "category": "交易框架",
+      "tags": ["胜于易胜", "大势", "纪律", "买点", "复盘"],
+      "readingMinutes": 10,
+      "updatedAt": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "markdownFile": "win-easy-trading-core"
+    },
+    {
+      "id": "eight-rules-trading-framework",
+      "slug": "eight-rules-trading-framework",
+      "title": "打造终极盈利交易系统",
+      "description": "定本金、定模式、定股票、定仓位、定买卖、定复盘、定交易、定复利。用「八定」把交易拆成可检查的规则，持续对照实盘复盘。内容仅供学习整理，不构成投资建议。",
+      "category": "交易框架",
+      "tags": ["交易纪律", "仓位", "复盘", "复利"],
+      "readingMinutes": 8,
+      "updatedAt": "2026-09-20",
+      "publishedAt": "2026-09-20",
+      "markdownFile": "eight-rules-trading-framework"
+    }
+  ]
+}

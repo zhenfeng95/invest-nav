@@ -3,7 +3,7 @@ import { SITE_CONTACT_EMAIL, SITE_NAME, SITE_URL } from '~/utils/site'
 
 usePageSeo({
   title: '隐私政策｜浏览数据与第三方服务',
-  description: `${SITE_NAME} 隐私政策：说明本站如何处理浏览数据、本地偏好、第三方嵌入服务，以及日后可能接入的统计分析或广告相关信息，并告知如何联系我们查询或反馈。`,
+  description: `${SITE_NAME} 隐私政策：说明本站如何处理浏览数据、本地偏好、第三方嵌入服务，以及 Google AdSense 展示广告可能使用的 Cookie，并告知如何联系我们查询或反馈。`,
   path: '/privacy',
 })
 </script>
@@ -17,7 +17,7 @@ usePageSeo({
         description="本政策说明 Zhen Invest 如何处理与网站访问相关的信息。我们当前不提供注册、登录或会员系统。"
       />
       <div class="mt-10 space-y-8 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base">
-        <p class="text-xs text-zinc-400">最近更新：2026-09-15</p>
+        <p class="text-xs text-zinc-400">最近更新：2026-09-21</p>
 
         <section class="space-y-4">
           <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">适用范围</h2>
@@ -50,6 +50,20 @@ usePageSeo({
             本站可能使用 Cookie 或本地存储来维持主题偏好、保障站点基本功能，或由托管/安全服务设置必要的技术 Cookie。
             你可以通过浏览器设置管理或清除 Cookie；禁用后部分显示偏好可能无法保留。
           </p>
+          <p>
+            本站接入 <strong>Google AdSense</strong> 展示广告。广告启用后，Google 及其广告合作伙伴可能在你的浏览器中设置或读取 Cookie（或类似标识），用于展示广告、限制同一广告的重复次数、衡量广告效果，并在符合适用法律与你的选择时提供个性化或非个性化广告。
+            这些 Cookie 由 Google 处理，不由本站用于建立自有用户数据库。
+          </p>
+          <p>
+            你可以在浏览器中阻止第三方 Cookie，或通过
+            <a
+              href="https://adssettings.google.com"
+              class="text-accent underline-offset-2 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >Google 广告设置</a>
+            管理个性化广告偏好。关闭个性化广告后，你仍可能看到非个性化广告。
+          </p>
         </section>
 
         <section class="space-y-4">
@@ -64,8 +78,24 @@ usePageSeo({
             </li>
           </ul>
           <p>
-            若后续接入网站分析（如访问量统计）或展示广告（如 Google AdSense），我们会在本页补充说明所用服务、大致用途，以及你可如何管理相关偏好。
-            接入前，相关脚本不会用于向你展示个性化广告。
+            <strong>展示广告：</strong>本站使用 Google AdSense 在部分页面展示广告，以支持站点运营。广告请求可能向 Google 发送与访问相关的技术信息（如大致位置、设备与浏览器类型、页面地址）。具体处理方式以
+            <a
+              href="https://policies.google.com/technologies/ads"
+              class="text-accent underline-offset-2 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >Google 如何使用广告 Cookie</a>
+            及
+            <a
+              href="https://policies.google.com/privacy"
+              class="text-accent underline-offset-2 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >Google 隐私权政策</a>
+            为准。
+          </p>
+          <p>
+            若后续接入网站分析（如访问量统计），我们会在本页补充说明所用服务与用途。
           </p>
         </section>
 
@@ -75,7 +105,7 @@ usePageSeo({
             <li>提供、维护与改进网站内容与访问体验</li>
             <li>保障安全、防滥用与排查故障</li>
             <li>回复你主动发起的联络</li>
-            <li>在接入分析或广告后，用于了解内容表现或支持站点运营（届时以更新后的本政策为准）</li>
+            <li>通过 Google AdSense 展示广告并衡量广告效果，以支持站点运营</li>
           </ul>
         </section>
 
@@ -83,7 +113,7 @@ usePageSeo({
           <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">信息共享</h2>
           <p>
             我们不会出售你的个人信息。仅在以下情形可能与第三方共享与访问相关的数据：
-            为运营网站所必需的服务商（如托管、CDN、日后的分析或广告平台）、法律法规要求，或为保护本站与用户的合法权益所必需。
+            为运营网站所必需的服务商（如托管、CDN，以及提供展示广告的 Google AdSense）、法律法规要求，或为保护本站与用户的合法权益所必需。
           </p>
         </section>
 

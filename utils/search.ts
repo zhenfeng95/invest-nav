@@ -1,9 +1,10 @@
 import { getNavigationCategories, getNavigationPath } from '~/utils/navigation'
+import { getNotes } from '~/utils/notes'
 import { getTutorials, getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
 import { getTools, getToolStatusLabel } from '~/utils/tools'
 import { researchNavLinks } from '~/utils/site'
 
-export type SearchResultGroup = 'page' | 'tutorial' | 'tool' | 'nav'
+export type SearchResultGroup = 'page' | 'tutorial' | 'note' | 'tool' | 'nav'
 
 export interface SearchResult {
   id: string
@@ -25,11 +26,12 @@ interface IndexedItem extends SearchResult {
 const GROUP_LABEL: Record<SearchResultGroup, string> = {
   page: '页面',
   tutorial: '教程',
+  note: '笔记',
   tool: '工具',
   nav: '导航',
 }
 
-const GROUP_ORDER: SearchResultGroup[] = ['page', 'tutorial', 'tool', 'nav']
+const GROUP_ORDER: SearchResultGroup[] = ['page', 'note', 'tutorial', 'tool', 'nav']
 
 function normalize(value: string) {
   return value.trim().toLowerCase()
@@ -68,6 +70,15 @@ function buildIndex(): IndexedItem[] {
       haystack: buildHaystack('教程', '开户', 'articles'),
     },
     {
+      id: 'page-notes',
+      group: 'page',
+      groupLabel: GROUP_LABEL.page,
+      title: '交易笔记',
+      description: '交易框架、仓位与复盘方法整理',
+      to: '/notes',
+      haystack: buildHaystack('笔记', '交易笔记', '八定', '纪律', '复盘', 'notes'),
+    },
+    {
       id: 'page-tools',
       group: 'page',
       groupLabel: GROUP_LABEL.page,
@@ -95,6 +106,23 @@ function buildIndex(): IndexedItem[] {
       haystack: buildHaystack(link.label, '投研', link.to),
     })),
   ]
+
+  const notes: IndexedItem[] = getNotes().map(item => ({
+    id: `note-${item.id}`,
+    group: 'note' as const,
+    groupLabel: GROUP_LABEL.note,
+    title: item.title,
+    description: item.description,
+    to: `/notes/${item.slug}`,
+    meta: item.category,
+    haystack: buildHaystack(
+      item.title,
+      item.description,
+      item.category,
+      item.tags,
+      item.slug,
+    ),
+  }))
 
   const tutorials: IndexedItem[] = getTutorials().map(item => ({
     id: `tutorial-${item.id}`,
@@ -145,7 +173,7 @@ function buildIndex(): IndexedItem[] {
     })),
   )
 
-  return [...pages, ...tutorials, ...tools, ...nav]
+  return [...pages, ...notes, ...tutorials, ...tools, ...nav]
 }
 
 let cachedIndex: IndexedItem[] | null = null
