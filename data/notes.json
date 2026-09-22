@@ -1,6 +1,30 @@
 {
   "items": [
     {
+      "id": "trend-stock-trading-tips",
+      "slug": "trend-stock-trading-tips",
+      "title": "趋势股交易技巧",
+      "description": "梳理趋势股为何沿均线爬升、常见回踩买点，以及用乖离率、均线斜率和高位钝化判断还有没有性价比。内容仅供学习整理，不构成投资建议。",
+      "category": "交易框架",
+      "tags": ["趋势", "均线", "买点", "乖离率", "纪律"],
+      "readingMinutes": 9,
+      "updatedAt": "2026-09-22",
+      "publishedAt": "2026-09-22",
+      "markdownFile": "trend-stock-trading-tips"
+    },
+    {
+      "id": "how-to-review-trading",
+      "slug": "how-to-review-trading",
+      "title": "如何复盘：从看热闹到看门道",
+      "description": "盘后复盘拆成大环境、板块、自我检视，再加水位与分支预案：共振入场、按强弱调仓、为明天写好 IF→THEN。内容仅供学习整理，不构成投资建议。",
+      "category": "交易框架",
+      "tags": ["复盘", "大势", "板块", "纪律", "仓位", "心态"],
+      "readingMinutes": 18,
+      "updatedAt": "2026-09-22",
+      "publishedAt": "2026-09-22",
+      "markdownFile": "how-to-review-trading"
+    },
+    {
       "id": "win-easy-trading-core",
       "slug": "win-easy-trading-core",
       "title": "炒股赚米的核心",

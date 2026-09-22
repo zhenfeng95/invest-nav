@@ -1,11 +1,15 @@
 import notesData from '~/data/notes.json'
 import { eightRulesTradingFramework } from '~/data/notes/eight-rules-trading-framework'
+import { howToReviewTrading } from '~/data/notes/how-to-review-trading'
+import { trendStockTradingTips } from '~/data/notes/trend-stock-trading-tips'
 import { winEasyTradingCore } from '~/data/notes/win-easy-trading-core'
 import type { Note } from '~/types/note'
 
 const markdownFiles: Record<string, string> = {
   'eight-rules-trading-framework': eightRulesTradingFramework,
   'win-easy-trading-core': winEasyTradingCore,
+  'how-to-review-trading': howToReviewTrading,
+  'trend-stock-trading-tips': trendStockTradingTips,
 }
 
 const notes = (notesData.items as Note[]).map((item) => {
