@@ -17,7 +17,7 @@ usePageSeo({
         description="本政策说明 Zhen Invest 如何处理与网站访问相关的信息。我们当前不提供注册、登录或会员系统。"
       />
       <div class="mt-10 space-y-8 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base">
-        <p class="text-xs text-zinc-400">最近更新：2026-09-21</p>
+        <p class="text-xs text-zinc-400">最近更新：2026-09-23</p>
 
         <section class="space-y-4">
           <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">适用范围</h2>
@@ -55,6 +55,9 @@ usePageSeo({
             这些 Cookie 由 Google 处理，不由本站用于建立自有用户数据库。
           </p>
           <p>
+            访问统计服务 51.la 也可能使用 Cookie 或类似技术以区分访问会话并汇总统计数据；你可通过浏览器设置限制第三方 Cookie。
+          </p>
+          <p>
             你可以在浏览器中阻止第三方 Cookie，或通过
             <a
               href="https://adssettings.google.com"
@@ -76,6 +79,16 @@ usePageSeo({
             <li>
               <strong>托管与 CDN：</strong>页面与静态资源可能经 Cloudflare 等基础设施分发。
             </li>
+            <li>
+              <strong>访问统计：</strong>本站使用
+              <a
+                href="https://www.51.la/"
+                class="text-accent underline-offset-2 hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >51.la</a>
+              统计页面访问量、来路、地域与设备等汇总数据，用于了解内容受欢迎程度与改进站点。浏览器会加载其统计脚本并向 51.la 发送与访问相关的技术信息（如页面地址、来源页、大致地区、设备与浏览器类型等）。我们未开启其屏幕录制功能。具体处理方式以 51.la 相关说明与政策为准。
+            </li>
           </ul>
           <p>
             <strong>展示广告：</strong>本站使用 Google AdSense 在部分页面展示广告，以支持站点运营。广告请求可能向 Google 发送与访问相关的技术信息（如大致位置、设备与浏览器类型、页面地址）。具体处理方式以
@@ -94,9 +107,6 @@ usePageSeo({
             >Google 隐私权政策</a>
             为准。
           </p>
-          <p>
-            若后续接入网站分析（如访问量统计），我们会在本页补充说明所用服务与用途。
-          </p>
         </section>
 
         <section class="space-y-4">
@@ -105,6 +115,7 @@ usePageSeo({
             <li>提供、维护与改进网站内容与访问体验</li>
             <li>保障安全、防滥用与排查故障</li>
             <li>回复你主动发起的联络</li>
+            <li>通过访问统计了解站点使用情况，优化内容与结构</li>
             <li>通过 Google AdSense 展示广告并衡量广告效果，以支持站点运营</li>
           </ul>
         </section>
@@ -113,7 +124,7 @@ usePageSeo({
           <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">信息共享</h2>
           <p>
             我们不会出售你的个人信息。仅在以下情形可能与第三方共享与访问相关的数据：
-            为运营网站所必需的服务商（如托管、CDN，以及提供展示广告的 Google AdSense）、法律法规要求，或为保护本站与用户的合法权益所必需。
+            为运营网站所必需的服务商（如托管、CDN、访问统计服务 51.la，以及提供展示广告的 Google AdSense）、法律法规要求，或为保护本站与用户的合法权益所必需。
           </p>
         </section>
 

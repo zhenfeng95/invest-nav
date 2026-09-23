@@ -4,8 +4,8 @@ import { getNotes } from '~/utils/notes'
 const notes = getNotes()
 
 usePageSeo({
-  title: '交易笔记｜八定框架与复盘方法',
-  description: 'Zhen Invest 交易笔记：持续整理定本金、定模式、定仓位、定买卖与复盘方法，把交易拆成可检查的规则。内容仅供学习交流，不构成投资建议。',
+  title: '交易笔记｜规则、复盘与买卖纪律',
+  description: 'Zhen Invest 交易笔记：持续整理交易规则、复盘方法、仓位节奏与买卖纪律，把交易拆成可检查的步骤。内容仅供学习交流，不构成投资建议。',
   path: '/notes',
 })
 </script>

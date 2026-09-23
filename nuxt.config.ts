@@ -63,7 +63,11 @@ export default defineNuxtConfig({
                     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap',
                 },
             ],
-            meta: [{ name: 'theme-color', content: '#F7F7F5' }],
+            meta: [
+                { name: 'theme-color', content: '#F7F7F5' },
+                { name: 'bytedance-verification-code', content: 'QAeqaVe2W59V7K40QM2u' },
+                { name: 'shenma-site-verification', content: 'db59e3a5cae32a424959d2c3ef67e778_1790064802' },
+            ],
         },
     },
 
