@@ -19,7 +19,10 @@ export default defineNuxtConfig({
         '/tutorials/schwab-china-account-guide': {
             redirect: { to: '/tutorials/schwab-account-guide', statusCode: 301 },
         },
-        // 笔记 / 投研 / 工具 / 持仓：站内可访问，全平台 noindex（与 sitemap 策略一致）
+        // 导航 / 笔记 / 投研 / 工具 / 持仓：站内可访问，全平台 noindex（与 sitemap 策略一致）
+        '/nav': { index: false },
+        '/nav/**': { index: false },
+        '/tutorials/mainland-hk-us-stock-tax-guide': { index: false },
         '/notes': { index: false },
         '/notes/**': { index: false },
         '/tools': { index: false },

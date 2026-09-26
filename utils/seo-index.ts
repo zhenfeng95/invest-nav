@@ -1,8 +1,8 @@
 import { getTutorials } from '~/utils/tutorials'
 
 /**
- * 全站统一 SEO：仅教程 + 导航 + 信任页进 sitemap / IndexNow；
- * 笔记、投研、工具、持仓复盘等对用户开放但 noindex（见 nuxt.config routeRules）。
+ * 全站统一 SEO：教程列表/分区 + 信任页进 sitemap / IndexNow；
+ * 导航、笔记、投研、工具等对用户开放但 noindex（见 nuxt.config routeRules）。
  */
 export const INDEXABLE_STATIC_PATHS: readonly string[] = [
   '/',
@@ -10,18 +10,6 @@ export const INDEXABLE_STATIC_PATHS: readonly string[] = [
   '/tutorials/articles',
   '/tutorials/videos',
   '/tutorials/infographics',
-  '/nav',
-  '/nav/stocks',
-  '/nav/funds',
-  '/nav/etf',
-  '/nav/stocks-cn',
-  '/nav/options',
-  '/nav/overseas-banks',
-  '/nav/overseas-sim',
-  '/nav/overseas-brokers',
-  '/nav/fund-transfer',
-  '/nav/digital-infra',
-  '/nav/deposit-withdraw',
   '/about',
   '/disclaimer',
   '/privacy',
@@ -30,12 +18,18 @@ export const INDEXABLE_STATIC_PATHS: readonly string[] = [
 
 /** 不对搜索引擎开放收录的路径前缀（页面仍可正常访问）。 */
 export const NOINDEX_PATH_PREFIXES: readonly string[] = [
+  '/nav',
   '/notes',
   '/tools',
   '/market',
   '/reports',
   '/reviews',
   '/portfolio',
+]
+
+/** 教程详情页 slug：站内可访问但不收录。 */
+export const NOINDEX_TUTORIAL_SLUGS: readonly string[] = [
+  'mainland-hk-us-stock-tax-guide',
 ]
 
 export function isPublicIndexablePath(path: string): boolean {
@@ -51,15 +45,19 @@ export function isPublicIndexablePath(path: string): boolean {
     return true
   }
 
-  if (normalized.startsWith('/tutorials')) {
+  if (INDEXABLE_STATIC_PATHS.includes(normalized)) {
     return true
   }
 
-  if (normalized.startsWith('/nav')) {
-    return true
+  if (normalized.startsWith('/tutorials/')) {
+    const slug = normalized.slice('/tutorials/'.length).split('/')[0]
+    if (NOINDEX_TUTORIAL_SLUGS.includes(slug)) {
+      return false
+    }
+    return slug.length > 0
   }
 
-  return INDEXABLE_STATIC_PATHS.includes(normalized)
+  return false
 }
 
 /** sitemap.xml 与 IndexNow 共用：可收录 URL 列表（去重）。 */
