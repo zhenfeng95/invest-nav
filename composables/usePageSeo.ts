@@ -104,7 +104,7 @@ export function usePageSeo(input: PageSeoInput) {
     const image = input.ogImage ?? `${siteUrl}/og-image.png`;
     const title = normalizeMetaTitle(input.title);
     const description = normalizeMetaDescription(input.description, input.title);
-    const indexable = !input.path || isPublicIndexablePath(input.path);
+    const indexable = Boolean(input.path && isPublicIndexablePath(input.path));
 
     useSeoMeta({
         title,
