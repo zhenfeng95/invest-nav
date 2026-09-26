@@ -1,45 +1,6 @@
-import { getNotes } from '~/utils/notes'
 import { getTutorials } from '~/utils/tutorials'
+import { listPublicIndexablePaths } from '~/utils/seo-index'
 import type { TutorialType } from '~/types/tutorial'
-
-const staticRoutes = [
-  '/',
-  '/tutorials',
-  '/tutorials/articles',
-  '/tutorials/videos',
-  '/tutorials/infographics',
-  '/notes',
-  '/tools',
-  '/tools/portfolio',
-  '/tools/calendar',
-  '/tools/spatial',
-  '/tools/compound-interest',
-  '/tools/fx-estimate',
-  '/tools/position-risk',
-  '/tools/trade-pnl',
-  '/tools/target-contribution',
-  '/nav',
-  '/nav/stocks',
-  '/nav/funds',
-  '/nav/etf',
-  '/nav/stocks-cn',
-  '/nav/options',
-  '/nav/overseas-banks',
-  '/nav/overseas-sim',
-  '/nav/overseas-brokers',
-  '/nav/fund-transfer',
-  '/nav/digital-infra',
-  '/nav/deposit-withdraw',
-  '/reports',
-  '/reviews/monthly',
-  '/reviews/weekly',
-  '/portfolio',
-  '/market',
-  '/about',
-  '/disclaimer',
-  '/privacy',
-  '/contact',
-]
 
 const listingTypeByPath: Record<string, TutorialType> = {
   '/tutorials/articles': 'article',
@@ -62,13 +23,9 @@ function toLastmod(date: string): string {
 export default defineEventHandler((event) => {
   const siteUrl = String(useRuntimeConfig(event).public.siteUrl).replace(/\/$/, '')
   const tutorials = getTutorials()
-  const notes = getNotes()
   const tutorialBySlug = new Map(tutorials.map(item => [item.slug, item]))
-  const noteBySlug = new Map(notes.map(item => [item.slug, item]))
-  const latestContentDate = maxDate([
-    ...tutorials.map(item => item.updatedAt),
-    ...notes.map(item => item.updatedAt),
-  ]) ?? new Date().toISOString().slice(0, 10)
+  const latestContentDate = maxDate(tutorials.map(item => item.updatedAt))
+    ?? new Date().toISOString().slice(0, 10)
 
   const lastmodForPath = (path: string): string => {
     const listingType = listingTypeByPath[path]
@@ -86,10 +43,6 @@ export default defineEventHandler((event) => {
       return toLastmod(maxDate(tutorials.map(item => item.updatedAt)) ?? latestContentDate)
     }
 
-    if (path === '/notes') {
-      return toLastmod(maxDate(notes.map(item => item.updatedAt)) ?? latestContentDate)
-    }
-
     const tutorialMatch = path.match(/^\/tutorials\/([^/]+)$/)
     if (tutorialMatch) {
       const tutorial = tutorialBySlug.get(tutorialMatch[1])
@@ -98,22 +51,10 @@ export default defineEventHandler((event) => {
       }
     }
 
-    const noteMatch = path.match(/^\/notes\/([^/]+)$/)
-    if (noteMatch) {
-      const note = noteBySlug.get(noteMatch[1])
-      if (note?.updatedAt) {
-        return toLastmod(note.updatedAt)
-      }
-    }
-
     return toLastmod(latestContentDate)
   }
 
-  const routes = [
-    ...staticRoutes,
-    ...tutorials.map(item => `/tutorials/${item.slug}`),
-    ...notes.map(item => `/notes/${item.slug}`),
-  ]
+  const routes = listPublicIndexablePaths()
 
   const urls = routes
     .map((path) => {

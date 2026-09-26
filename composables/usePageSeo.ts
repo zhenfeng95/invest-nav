@@ -1,4 +1,5 @@
 import { buildHomeJsonLd } from '~/utils/jsonld';
+import { isPublicIndexablePath } from '~/utils/seo-index';
 import { homeSeo, SITE_NAME } from '~/utils/site';
 
 export function useJsonLd(key: string, data: unknown) {
@@ -103,6 +104,7 @@ export function usePageSeo(input: PageSeoInput) {
     const image = input.ogImage ?? `${siteUrl}/og-image.png`;
     const title = normalizeMetaTitle(input.title);
     const description = normalizeMetaDescription(input.description, input.title);
+    const indexable = !input.path || isPublicIndexablePath(input.path);
 
     useSeoMeta({
         title,
@@ -117,6 +119,7 @@ export function usePageSeo(input: PageSeoInput) {
         twitterTitle: title,
         twitterDescription: description,
         twitterImage: image,
+        robots: indexable ? 'index, follow' : 'noindex, follow',
     });
 
     useHead({

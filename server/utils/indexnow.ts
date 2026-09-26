@@ -1,49 +1,10 @@
-import { getNotes } from '~/utils/notes'
-import { getTutorials } from '~/utils/tutorials'
+import { listPublicIndexablePaths } from '~/utils/seo-index'
 
 /** 与 public/{key}.txt 保持一致；可通过 NUXT_INDEXNOW_KEY 覆盖。 */
 export const DEFAULT_INDEXNOW_KEY = 'zheninvest-indexnow-8f3a2c1b'
 
 /** 本机提交优先走 Bing；api.indexnow.org 在部分网络下也可能限流。 */
 export const INDEXNOW_ENDPOINT = 'https://www.bing.com/indexnow'
-
-const staticPaths = [
-  '/',
-  '/tutorials',
-  '/tutorials/articles',
-  '/tutorials/videos',
-  '/tutorials/infographics',
-  '/notes',
-  '/tools',
-  '/tools/calendar',
-  '/tools/spatial',
-  '/tools/compound-interest',
-  '/tools/fx-estimate',
-  '/tools/position-risk',
-  '/tools/trade-pnl',
-  '/tools/target-contribution',
-  '/nav',
-  '/nav/stocks',
-  '/nav/funds',
-  '/nav/etf',
-  '/nav/stocks-cn',
-  '/nav/options',
-  '/nav/overseas-banks',
-  '/nav/overseas-sim',
-  '/nav/overseas-brokers',
-  '/nav/fund-transfer',
-  '/nav/digital-infra',
-  '/nav/deposit-withdraw',
-  '/reports',
-  '/reviews/monthly',
-  '/reviews/weekly',
-  '/portfolio',
-  '/market',
-  '/about',
-  '/disclaimer',
-  '/privacy',
-  '/contact',
-]
 
 export function getIndexNowKey(event?: Parameters<typeof useRuntimeConfig>[0]): string {
   const config = event ? useRuntimeConfig(event) : useRuntimeConfig()
@@ -75,9 +36,7 @@ export function toAbsoluteUrls(siteUrl: string, paths: string[]): string[] {
 }
 
 export function listIndexNowCandidatePaths(extraPaths: string[] = []): string[] {
-  const tutorialPaths = getTutorials().map(item => `/tutorials/${item.slug}`)
-  const notePaths = getNotes().map(item => `/notes/${item.slug}`)
-  return [...staticPaths, ...tutorialPaths, ...notePaths, ...extraPaths]
+  return listPublicIndexablePaths(extraPaths)
 }
 
 export interface IndexNowPayload {
