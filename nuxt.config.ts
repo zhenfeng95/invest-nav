@@ -19,11 +19,21 @@ export default defineNuxtConfig({
         '/tutorials/schwab-china-account-guide': {
             redirect: { to: '/tutorials/schwab-account-guide', statusCode: 301 },
         },
-        // 全站默认 noindex；仅首页与两篇指定教程可收录（与 utils/seo-index.ts 一致）
-        '/': { index: true },
-        '/tutorials/wise-account-guide': { index: true },
-        '/tutorials/bosco-account-guide': { index: true },
-        '/**': { index: false },
+        // 方案 C：功能区 noindex；教程 / 信任页 / 首页默认可收录（见 utils/seo-index.ts）
+        '/nav': { index: false },
+        '/nav/**': { index: false },
+        '/notes': { index: false },
+        '/notes/**': { index: false },
+        '/tools': { index: false },
+        '/tools/**': { index: false },
+        '/market': { index: false },
+        '/market/**': { index: false },
+        '/reports': { index: false },
+        '/reports/**': { index: false },
+        '/reviews': { index: false },
+        '/reviews/**': { index: false },
+        '/portfolio': { index: false },
+        '/portfolio/**': { index: false },
     },
 
     modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
