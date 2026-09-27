@@ -323,25 +323,6 @@
       "markdownFile": "us-stock-deposit-and-transfer"
     },
     {
-      "id": "choose-crypto-exchange",
-      "slug": "how-to-choose-crypto-exchange",
-      "title": "加密货币交易所怎么选",
-      "description": "从合规、安全、流动性和提现路径比较常见交易平台。",
-      "type": "article",
-      "category": "加密货币",
-      "tags": ["加密货币", "交易所"],
-      "readingMinutes": 7,
-      "updatedAt": "2026-06-30",
-      "publishedAt": "2026-05-03",
-      "popular": true,
-      "content": [
-        "选择交易所时，重点看牌照与服务地区、资产隔离、提现效率和安全记录，而不是短期活动奖励。",
-        "大额资金不建议长期留在交易平台。了解如何提现到自托管钱包，是基础安全步骤。",
-        "同时确认法币出入金是否与你的银行、港卡或现有资金路径匹配。",
-        "本页仅作信息整理，不构成交易建议。"
-      ]
-    },
-    {
       "id": "etf-vs-fund",
       "slug": "etf-vs-fund",
       "title": "ETF 与基金有什么区别",
@@ -354,25 +335,6 @@
       "publishedAt": "2026-04-18",
       "popular": true,
       "markdownFile": "etf-vs-fund"
-    },
-    {
-      "id": "options-basics",
-      "slug": "options-basics",
-      "title": "期权入门：权利金、行权与风险",
-      "description": "用尽量少的术语，解释期权合约的基本结构和主要风险。",
-      "type": "article",
-      "category": "期权",
-      "tags": ["期权", "美股"],
-      "readingMinutes": 8,
-      "updatedAt": "2026-06-14",
-      "publishedAt": "2026-04-09",
-      "popular": false,
-      "content": [
-        "期权是合约，不是股票本身。买方支付权利金，卖方承担对应义务。",
-        "到期、行权价、隐含波动率和时间价值，都会显著影响合约价格。",
-        "期权适合先理解风险，再考虑是否使用；卖出期权的风险结构尤其需要单独学习。",
-        "本页仅作信息整理，不构成交易建议。"
-      ]
     },
     {
       "id": "video-us-account",

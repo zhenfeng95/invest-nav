@@ -1,6 +1,6 @@
 # Investment Navigation / 投资导航
 
-美股、加密货币、跨境出海一站式投资导航网站。
+港美股与跨境出海一站式投资导航网站。
 
 这个项目不是交易软件，也不是实时行情软件。第一阶段的目标是把产品骨架、页面、组件、数据层和 Cloudflare Workers 部署配置先跑通。
 
@@ -193,7 +193,7 @@ npm run cf:dev
 ## 未来如何扩展
 
 - 把 JSON 换成 Markdown / CMS / Cloudflare D1 / MySQL / API 时，只改 `utils/` 数据层
-- `server/api/` 已预留 `portfolio`、`calendar`、`crypto`
+- `server/api/` 已预留 `portfolio`、`calendar` 等
 - 工具页目前是 Coming Soon，后续可在不改路由的前提下接入真实逻辑
 - 不要在第一阶段加入用户系统、支付、实时行情或真实交易接口
 
@@ -249,7 +249,6 @@ NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
 - `/tools`
 - `/nav`
 - `/nav/stocks`
-- `/nav/crypto`
 - `/nav/funds`
 - `/nav/etf`
 - `/nav/stocks-cn`
