@@ -1,8 +1,11 @@
 export const SITE_NAME = 'Zhen Invest';
 export const SITE_NAME_EN = 'Zhen Invest';
-export const SITE_TAGLINE = '跨境投资入口 · 港美股 / 开户教程';
+export const SITE_TAGLINE = '跨境投资入口 · 港美股 / 开户教程 / 数字基建';
+/** 首页 Hero 一句话介绍（与 SITE_DESCRIPTION 主题一致，更短） */
+export const SITE_HERO_INTRO =
+    '内地用户的港美股与跨境投资入口，涵盖开户教程、资金路径、数字基建与资源导航。';
 export const SITE_DESCRIPTION =
-    'Zhen Invest 面向内地用户整理港美股与跨境投资入口，涵盖开户教程、出入金路径与跨境资源导航，帮助你更快找到可靠信息与操作路径，让跨境投资更简单。';
+    'Zhen Invest 面向内地用户整理港美股与跨境投资入口，涵盖开户教程、出入金路径、域名邮箱等数字基建与跨境资源导航，帮助你更快找到可靠信息与操作路径，让跨境投资更简单。';
 export const SITE_DISCLAIMER =
     '本站内容仅用于信息整理与学习交流，不构成投资建议、邀约或任何交易推荐；开户、转账与资产配置请以各机构官方披露为准，并请独立判断风险与合规要求。';
 /** 公开联系邮箱；请确保该邮箱可正常收信 */

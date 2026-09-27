@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SITE_HERO_INTRO } from '~/utils/site';
+
 function scrollToContent() {
     if (!import.meta.client) {
         return;
@@ -41,7 +43,7 @@ function scrollToContent() {
             </h1>
 
             <p class="mt-8 max-w-md text-base leading-8 text-zinc-200 sm:mt-10 sm:text-lg sm:leading-9">
-                内地用户的港美股与跨境投资入口，涵盖开户教程、资金路径与资源导航。
+                {{ SITE_HERO_INTRO }}
             </p>
 
             <div class="mt-10 flex flex-wrap items-center justify-center gap-3 sm:mt-12 sm:gap-4">
