@@ -14,7 +14,7 @@ const activeGroupId = computed(() => {
   if (navigationGroups.some(group => group.id === query)) {
     return query
   }
-  return navigationGroups[0]?.id ?? 'markets'
+  return navigationGroups[0]?.id ?? 'cross-border'
 })
 
 const activeGroup = computed(
@@ -38,7 +38,7 @@ function cardIndex(index: number) {
 
 usePageSeo({
   title: '投资导航｜港美股券商银行与出入金',
-  description: '按分类浏览 Zhen Invest 投资导航：美股、基金、ETF、个股、期权、香港银行、美股券商、资金流转、数字基建与出入金资源，不确定的官方链接会明确标注，避免误导。',
+  description: '按分类浏览 Zhen Invest 投资导航：香港银行、境外手机卡、美股券商、资金流转、数字基建与出入金资源，不确定的官方链接会明确标注，避免误导。',
   path: '/nav',
 })
 </script>

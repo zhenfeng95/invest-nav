@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getNavigationCategories } from '~/utils/navigation'
+import { getListedNavigationCategories } from '~/utils/navigation'
 
-const categories = getNavigationCategories()
+const categories = getListedNavigationCategories()
 </script>
 
 <template>
@@ -9,7 +9,7 @@ const categories = getNavigationCategories()
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="资源导航"
-        description="按主题快速进入美股、基金、银行、券商和资金路径。"
+        description="按主题快速进入银行、手机卡、券商、资金路径与数字基建。"
       />
       <NuxtLink
         to="/nav"

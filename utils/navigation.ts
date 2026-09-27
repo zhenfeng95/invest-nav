@@ -3,7 +3,7 @@ import type { NavigationCategory, NavigationItem } from '~/types/navigation'
 
 const categories = navigationData.categories as NavigationCategory[]
 
-/** 导航索引页分组：投资品种 / 跨境账户与资金 / 数字基建 */
+/** 导航索引页分组：跨境账户与资金 / 数字基建（投资品种分组暂不展示，数据仍保留） */
 export interface NavigationGroup {
   id: string
   title: string
@@ -11,13 +11,20 @@ export interface NavigationGroup {
   slugs: string[]
 }
 
+/** 投资品种二级分类：不在导航 Tab / 首页与页脚站点地图中展示，/nav/:slug 仍可访问 */
+export const investmentVarietyNavSlugs: readonly string[] = [
+  'stocks',
+  'funds',
+  'etf',
+  'stocks-cn',
+  'options',
+]
+
+export function isInvestmentVarietyNavSlug(slug: string): boolean {
+  return investmentVarietyNavSlugs.includes(slug)
+}
+
 export const navigationGroups: NavigationGroup[] = [
-  {
-    id: 'markets',
-    title: '投资品种',
-    description: '美股、基金、ETF、个股与期权相关公开入口。',
-    slugs: ['stocks', 'funds', 'etf', 'stocks-cn', 'options'],
-  },
   {
     id: 'cross-border',
     title: '跨境账户与资金',
@@ -66,6 +73,13 @@ export function getNavigationCategories(): NavigationCategory[] {
     ...category,
     items: [...category.items],
   }))
+}
+
+/** 在导航索引、首页与页脚等站点地图中列出的分类 */
+export function getListedNavigationCategories(): NavigationCategory[] {
+  return getNavigationCategories().filter(
+    category => !isInvestmentVarietyNavSlug(category.slug),
+  )
 }
 
 export function getNavigationCategory(slug: string): NavigationCategory | undefined {

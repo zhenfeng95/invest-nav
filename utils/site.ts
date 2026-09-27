@@ -50,11 +50,11 @@ export const footerAboutLinks: NavLink[] = [
 ];
 
 export const footerCategoryLinks: NavLink[] = [
-    { label: '美股', to: '/nav/stocks' },
-    { label: '基金', to: '/nav/funds' },
-    { label: 'ETF', to: '/nav/etf' },
     { label: '境外银行卡', to: '/nav/overseas-banks' },
+    { label: '境外手机卡', to: '/nav/overseas-sim' },
     { label: '美股券商', to: '/nav/overseas-brokers' },
+    { label: '资金流转', to: '/nav/fund-transfer' },
+    { label: '出入金', to: '/nav/deposit-withdraw' },
     { label: '数字基建', to: '/nav/digital-infra' },
 ];
 
