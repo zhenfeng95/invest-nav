@@ -12,7 +12,7 @@ import { footerAboutLinks, footerCategoryLinks, SITE_DISCLAIMER, SITE_NAME, SITE
             <span class="text-sm font-semibold tracking-tight">{{ SITE_NAME }}</span>
           </NuxtLink>
           <p class="mt-4 max-w-sm text-sm leading-6 text-zinc-500 dark:text-zinc-400">
-            {{ SITE_TAGLINE }}。帮助你更快找到教程、工具、券商、银行、资金流转与数字基建资源。
+            {{ SITE_TAGLINE }}。帮助你更快找到教程、工具、银行、券商、资金路径与数字基建。
           </p>
         </div>
 
