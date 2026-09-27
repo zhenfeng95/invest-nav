@@ -632,32 +632,6 @@
                     "updatedAt": "2026-09-08"
                 },
                 {
-                    "id": "cloudflare",
-                    "name": "Cloudflare",
-                    "description": "CDN、DNS、安全与站点加速相关服务入口。",
-                    "url": "https://www.cloudflare.com",
-                    "tags": [
-                        "Cloudflare",
-                        "DNS",
-                        "CDN"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "featured": true,
-                    "updatedAt": "2026-09-08"
-                },
-                {
-                    "id": "cloudflare-registrar",
-                    "name": "Cloudflare Registrar",
-                    "description": "Cloudflare 域名注册服务，按成本价续费，适合长期持有域名。",
-                    "url": "https://www.cloudflare.com/products/registrar/",
-                    "tags": [
-                        "域名",
-                        "Cloudflare"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-09-08"
-                },
-                {
                     "id": "oqumail",
                     "name": "OquMail",
                     "description": "最简单的免费域名邮箱方案，实测支持第三方客户端；免费额度含多邮箱与自定义域名。",
