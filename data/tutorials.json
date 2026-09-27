@@ -367,21 +367,6 @@
       "markdownFile": "hk-bank-fund-flow-demo"
     },
     {
-      "id": "video-wallet-safety",
-      "slug": "wallet-and-exchange-safety",
-      "title": "钱包与交易所：入金安全要点",
-      "description": "讲解链上地址核对、测试转账和提现白名单。",
-      "type": "video",
-      "category": "加密货币",
-      "tags": ["钱包", "安全"],
-      "duration": "06:40",
-      "updatedAt": "2026-06-10",
-      "publishedAt": "2026-05-22",
-      "popular": false,
-      "thumbnail": "/images/videos/wallet-safety.svg",
-      "videoUrl": ""
-    },
-    {
       "id": "info-us-account-system",
       "slug": "us-account-system-infographic",
       "title": "一图看懂美股账户体系",
@@ -415,7 +400,7 @@
       "id": "info-etf-types",
       "slug": "etf-types-infographic",
       "title": "一图看懂 ETF 分类",
-      "description": "用一张图区分宽基、行业、债券与主题 ETF，并补充商品、国际地区、加密货币现货 ETF 及挑选前核对要点。",
+      "description": "用一张图区分宽基、行业、债券与主题 ETF，并补充商品、国际地区及挑选前核对要点。",
       "type": "infographic",
       "category": "ETF",
       "tags": ["ETF", "分类", "宽基", "债券", "一图看懂"],

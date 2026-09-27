@@ -92,7 +92,7 @@ function buildIndex(): IndexedItem[] {
       group: 'page',
       groupLabel: GROUP_LABEL.page,
       title: '导航',
-      description: '港美股、加密、银行与券商资源导航',
+      description: '港美股、银行与券商等资源导航',
       to: '/nav',
       haystack: buildHaystack('导航', 'nav', '资源'),
     },
