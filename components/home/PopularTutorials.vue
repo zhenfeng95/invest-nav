@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getPopularTutorials } from '~/utils/tutorials'
+import { getFeaturedTutorials } from '~/utils/tutorials'
 
-const tutorials = getPopularTutorials(6)
+const tutorials = getFeaturedTutorials()
 </script>
 
 <template>

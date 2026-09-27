@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { getLatestTutorials, getPopularTutorials, getTutorials } from '~/utils/tutorials'
+import { getFeaturedTutorials, getLatestTutorials, getTutorials } from '~/utils/tutorials'
 
-const popular = getPopularTutorials(6)
-const latest = getLatestTutorials(6)
+const popular = getFeaturedTutorials()
+const latest = getLatestTutorials(3)
 const total = getTutorials().length
 
 usePageSeo({

@@ -2,7 +2,7 @@ import { getNavigationCategories, getNavigationPath } from '~/utils/navigation'
 import { getNotes } from '~/utils/notes'
 import { getTutorials, getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
 import { getTools, getToolStatusLabel } from '~/utils/tools'
-import { researchNavLinks } from '~/utils/site'
+import { researchNavLinks, researchNavLinksHidden } from '~/utils/site'
 
 export type SearchResultGroup = 'page' | 'tutorial' | 'note' | 'tool' | 'nav'
 
@@ -96,7 +96,7 @@ function buildIndex(): IndexedItem[] {
       to: '/nav',
       haystack: buildHaystack('导航', 'nav', '资源'),
     },
-    ...researchNavLinks.map(link => ({
+    ...[...researchNavLinks, ...researchNavLinksHidden].map(link => ({
       id: `page-${link.to}`,
       group: 'page' as const,
       groupLabel: GROUP_LABEL.page,

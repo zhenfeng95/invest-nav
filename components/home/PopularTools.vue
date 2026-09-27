@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getTools } from '~/utils/tools'
+import { getFeaturedTools } from '~/utils/tools'
 
-const tools = getTools()
+const tools = getFeaturedTools()
 </script>
 
 <template>
@@ -9,7 +9,7 @@ const tools = getTools()
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="常用工具"
-        description="财经日历、空间与复利估算，以及购汇粗算与仓位风控，覆盖节奏跟踪到下单前规划。"
+        description="空间推演与复利定投估算，辅助复盘与长期规划。"
       />
       <NuxtLink
         to="/tools"

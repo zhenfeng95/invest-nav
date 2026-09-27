@@ -107,6 +107,20 @@ export function getTutorialPlainText(tutorial: Tutorial): string {
   return tutorial.description || ''
 }
 
+/** 首页 / 教程索引「热门教程」固定展示（顺序即展示顺序） */
+export const FEATURED_TUTORIAL_SLUGS = [
+  'bosco-account-guide',
+  'za-bank-account-guide',
+  'wise-account-guide',
+] as const
+
+export function getFeaturedTutorials(): Tutorial[] {
+  const bySlug = new Map(tutorials.map(item => [item.slug, item]))
+  return FEATURED_TUTORIAL_SLUGS
+    .map(slug => bySlug.get(slug))
+    .filter((item): item is Tutorial => Boolean(item))
+}
+
 export function getPopularTutorials(limit = 6): Tutorial[] {
   return tutorials
     .filter(item => item.popular)
