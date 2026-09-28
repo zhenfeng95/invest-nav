@@ -110,7 +110,7 @@ export const winEasyTradingCore = `
 | 退潮少做、只做顺风局 | [市场评分](/market)、空仓也是规则 |
 | 定模式、少品种、一招鲜 | [八定框架](/notes/eight-rules-trading-framework) |
 | 单笔风险、止损距离 | [仓位风控](/tools/position-risk) |
-| 执行与复盘 | [日复盘](/reports)、[周复盘](/reviews/weekly)、[持仓分账](/portfolio) |
+| 执行与复盘 | [日复盘](/reports)、[周复盘](/reviews/weekly)、[市场评分](/market) |
 
 若要把「底分型后再加法」「亏损离场速度约为盈利仓两倍」写成硬规则数字，建议先在复盘里跑一段时间，再写进你自己的交易计划，而不是直接当成市场真理。
 `

@@ -9,7 +9,7 @@ export const eightRulesTradingFramework = `
 
 对照路径：
 
-- 实盘分账与纪律：[持仓分账](/portfolio)
+- 实盘纪律对照：[市场评分](/market)、[日复盘](/reports)
 - 仓位与进攻条件：[市场评分](/market)
 - 过程检查：[日复盘](/reports)、[周复盘](/reviews/weekly)、[月复盘](/reviews/monthly)
 

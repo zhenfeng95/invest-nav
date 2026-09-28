@@ -19,6 +19,8 @@ interface PageSeoInput {
     description: string;
     path?: string;
     ogImage?: string;
+    /** 不向搜索引擎公开收录（仍可直接访问） */
+    noindex?: boolean;
 }
 
 /** Bing：标题过短常见阈值约 25；描述过短约 70，目标取更稳的区间。 */
@@ -119,11 +121,17 @@ export function usePageSeo(input: PageSeoInput) {
         twitterTitle: title,
         twitterDescription: description,
         twitterImage: image,
-        robots: indexable ? 'index, follow' : 'noindex, follow',
+        robots: input.noindex
+            ? 'noindex, nofollow'
+            : indexable
+                ? 'index, follow'
+                : 'noindex, follow',
     });
 
     useHead({
-        link: input.path ? [{ rel: 'canonical', href: `${siteUrl}${input.path}` }] : [],
+        link: input.noindex || !input.path
+            ? []
+            : [{ rel: 'canonical', href: `${siteUrl}${input.path}` }],
     });
 }
 

@@ -23,7 +23,7 @@ export interface NavItem {
     children?: NavLink[];
 }
 
-/** 投研子菜单（导航展示） */
+/** 投研子菜单（导航展示；现持仓 / 市场评分见 researchNavLinksHidden） */
 export const researchNavLinks: NavLink[] = [
     { label: '日复盘', to: '/reports' },
     { label: '周复盘', to: '/reviews/weekly' },
