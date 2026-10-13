@@ -31,13 +31,7 @@ useJsonLd('ld-json-note', buildNoteJsonLd(siteUrl, note))
 
 <template>
   <AppContainer v-if="note" class="py-12 sm:py-16">
-    <NuxtLink
-      to="/notes"
-      class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-    >
-      返回笔记
-    </NuxtLink>
-    <article class="mt-8 max-w-3xl">
+    <article class="max-w-3xl">
       <p class="text-xs text-zinc-400">
         {{ note.category }}
       </p>

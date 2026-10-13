@@ -435,6 +435,7 @@
                     "description": "香港证监会持牌券商，覆盖港股、美股、期货与期权等。",
                     "url": "https://www.chiefgroup.com.hk/cn",
                     "tags": [
+                        "港股",
                         "美股",
                         "券商"
                     ],
@@ -448,15 +449,16 @@
                     "description": "香港证监会持牌券商（原凯敏证券），覆盖港股、美股、ETF 与港股打新等。可查看开户教程。",
                     "url": "https://www.bsl.hk",
                     "tags": [
+                        "港股",
                         "美股",
-                        "券商",
-                        "港股"
+                        "券商"
                     ],
                     "officialUrlConfirmed": true,
                     "featured": true,
+                    "statusBadge": "活动进行中",
                     "guideUrl": "/tutorials/bosco-account-guide",
                     "guideLabel": "开户教程",
-                    "updatedAt": "2026-09-02"
+                    "updatedAt": "2026-10-13"
                 },
                 {
                     "id": "schwab",
@@ -507,11 +509,26 @@
         {
             "id": "fund-transfer",
             "slug": "fund-transfer",
-            "name": "资金流转",
-            "fullName": "跨境汇款与多币种账户入口",
-            "description": "跨境汇款、多币种账户与港卡在内地使用相关资源：整理 Wise、Starryblu、iFAST 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
+            "name": "出入金/资金流转",
+            "fullName": "出入金与跨境资金流转入口",
+            "description": "券商出入金、跨境汇款、多币种账户与港卡在内地使用相关资源：整理入金核对、Wise、Starryblu、iFAST 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
             "icon": "transfer",
             "items": [
+                {
+                    "id": "deposit-checklist",
+                    "name": "美股入金与资金流转",
+                    "description": "港卡、Wise、电汇与 FPS 等到券商的常见链路、入金核对清单与出金注意点。",
+                    "url": "",
+                    "tags": [
+                        "出入金",
+                        "清单"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "guideUrl": "/tutorials/us-stock-deposit-and-transfer",
+                    "guideLabel": "阅读教程",
+                    "updatedAt": "2026-09-11"
+                },
                 {
                     "id": "wise",
                     "name": "Wise",
@@ -646,54 +663,6 @@
                     "guideUrl": "/tutorials/oqumail-free-domain-email-guide",
                     "guideLabel": "使用教程",
                     "updatedAt": "2026-09-17"
-                }
-            ]
-        },
-        {
-            "id": "deposit-withdraw",
-            "slug": "deposit-withdraw",
-            "name": "出入金",
-            "fullName": "券商出入金路径与到账核对入口",
-            "description": "券商入金、出金与到账核对相关资源，汇总官方资金说明入口，帮助理解跨境出入金常见步骤。",
-            "icon": "deposit",
-            "items": [
-                {
-                    "id": "ibkr-funding",
-                    "name": "Interactive Brokers Funding",
-                    "description": "盈透证券官方资金入金说明。",
-                    "url": "https://www.interactivebrokers.com/en/trading/funding.php",
-                    "tags": [
-                        "出入金",
-                        "券商"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "updatedAt": "2026-07-07"
-                },
-                {
-                    "id": "schwab-transfer",
-                    "name": "Schwab Transfers",
-                    "description": "Charles Schwab 官方转账与资金说明入口。",
-                    "url": "https://international.schwab.com",
-                    "tags": [
-                        "出入金",
-                        "券商"
-                    ],
-                    "officialUrlConfirmed": false,
-                    "updatedAt": "2026-07-07"
-                },
-                {
-                    "id": "deposit-checklist",
-                    "name": "美股入金与资金流转",
-                    "description": "港卡、Wise、电汇与 FPS 等到券商的常见链路、入金核对清单与出金注意点。",
-                    "url": "",
-                    "tags": [
-                        "出入金",
-                        "清单"
-                    ],
-                    "officialUrlConfirmed": true,
-                    "guideUrl": "/tutorials/us-stock-deposit-and-transfer",
-                    "guideLabel": "阅读教程",
-                    "updatedAt": "2026-09-11"
                 }
             ]
         }

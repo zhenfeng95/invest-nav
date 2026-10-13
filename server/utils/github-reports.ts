@@ -1,6 +1,13 @@
 import type { H3Event } from 'h3'
-import type { ReportDetail, ReportListItem, ReportMarket } from '~/types/report'
+import type {
+  HomeMarketBriefItem,
+  HomeMarketBriefsResponse,
+  ReportDetail,
+  ReportListItem,
+  ReportMarket,
+} from '~/types/report'
 import { extractHeading, renderMarkdown, splitFrontmatter } from './markdown'
+import { extractReportBriefFields } from './report-brief'
 
 const LIST_TTL_MS = 10 * 60 * 1000
 const FILE_TTL_MS = 30 * 60 * 1000
@@ -116,6 +123,57 @@ function readEnv(...values: unknown[]): string {
 
 export async function listReports(config: GitHubReportsConfig): Promise<ReportListItem[]> {
   return listMarkdownDocs(config, config.path, 'daily')
+}
+
+/** 首页：美股 / A 股各取最新一篇，解析一句话与指数表 */
+export async function getHomeMarketBriefs(config: GitHubReportsConfig): Promise<HomeMarketBriefsResponse> {
+  const cacheKey = `home-briefs:${config.owner}/${config.repo}/${config.ref}/${config.path}`
+  const cached = getCached<HomeMarketBriefsResponse>(cacheKey)
+  if (cached) {
+    return cached
+  }
+
+  const items = await listReports(config)
+  const markets: ReportMarket[] = ['US', 'A']
+  const briefs = await Promise.all(markets.map(market => buildMarketBrief(config, items, market)))
+
+  const payload: HomeMarketBriefsResponse = {
+    configured: true,
+    source: `${config.owner}/${config.repo}`,
+    items: briefs,
+  }
+  setCached(cacheKey, payload, FILE_TTL_MS)
+  return payload
+}
+
+async function buildMarketBrief(
+  config: GitHubReportsConfig,
+  items: ReportListItem[],
+  market: ReportMarket,
+): Promise<HomeMarketBriefItem> {
+  const item = items.find(entry => entry.market === market)
+  if (!item) {
+    return { market, brief: null }
+  }
+
+  const markdown = await getRepoFileText(config, item.path)
+  if (!markdown) {
+    return { market, brief: null }
+  }
+
+  const fields = extractReportBriefFields(markdown, market)
+  return {
+    market,
+    brief: {
+      slug: item.slug,
+      title: item.title,
+      date: item.date,
+      market,
+      headline: fields.headline || item.title,
+      summary: fields.summary,
+      indices: fields.indices,
+    },
+  }
 }
 
 export async function listReviews(config: GitHubReportsConfig): Promise<ReportListItem[]> {

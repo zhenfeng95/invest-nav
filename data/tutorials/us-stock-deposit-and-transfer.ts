@@ -131,7 +131,7 @@ Firstrade 等美国券商，港卡侧常见仍是**美元电汇**，费用与时
 | 准备港卡 | [港卡开户入门](/tutorials/hong-kong-bank-account-guide) 及汇丰 / 建银 / ZA 分教程 |
 | 多币种中转 | [Wise](/tutorials/wise-account-guide)、[Starryblu](/tutorials/starryblu-account-guide)、[iFAST](/tutorials/ifast-account-guide)、[资金流转导航](/nav/fund-transfer) |
 | 开具体券商 | [美股券商导航](/nav/overseas-brokers) 与各开户教程 |
-| 查官方资金说明入口 | [出入金导航](/nav/deposit-withdraw) |
+| 查官方资金说明入口 | [出入金/资金流转导航](/nav/fund-transfer) |
 | 粗算购汇成本 | [汇率购汇估算](/tools/fx-estimate) |
 
 ## 八、合规与安全提醒
@@ -161,5 +161,5 @@ Firstrade 等美国券商，港卡侧常见仍是**美元电汇**，费用与时
 
 ---
 
-相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [Wise 开户](/tutorials/wise-account-guide) · [出入金导航](/nav/deposit-withdraw) · [汇率购汇估算](/tools/fx-estimate)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [Wise 开户](/tutorials/wise-account-guide) · [出入金/资金流转导航](/nav/fund-transfer) · [汇率购汇估算](/tools/fx-estimate)
 `;

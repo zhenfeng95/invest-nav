@@ -256,5 +256,4 @@ NUXT_GITHUB_WEEKLY_REVIEWS_PATH=output/reviews/weekly
 - `/nav/overseas-banks`
 - `/nav/overseas-brokers`
 - `/nav/fund-transfer`
-- `/nav/deposit-withdraw`
 - `/about`

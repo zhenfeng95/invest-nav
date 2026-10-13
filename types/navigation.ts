@@ -19,6 +19,8 @@ export interface NavigationItem {
   tags: string[]
   officialUrlConfirmed: boolean
   featured?: boolean
+  /** 卡片标题旁状态徽标，如「开户活动」；活动结束删掉该字段即可 */
+  statusBadge?: string
   updatedAt?: string
   guideUrl?: string
   guideLabel?: string

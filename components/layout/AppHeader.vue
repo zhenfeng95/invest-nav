@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { NavItem } from '~/utils/site';
 import { mainNav, SITE_NAME } from '~/utils/site';
+import { getHeaderNavContextPath } from '~/utils/navigation';
+import { getTutorialBySlug } from '~/utils/tutorials';
 
 const route = useRoute();
 const mobileOpen = ref(false);
@@ -9,6 +11,14 @@ const mobileExpanded = ref<string | null>(null);
 const desktopOpenLabel = ref<string | null>(null);
 /** 点击子项后强制收起，直到鼠标离开该菜单组，避免 hover 立刻又打开 */
 const desktopHoverLocked = ref(false);
+
+/** 教程详情映射到的菜单路径；有值时按映射高亮，不改教程路由 */
+const navContextPath = computed(() => {
+    const match = route.path.match(/^\/tutorials\/([^/]+)$/);
+    const slug = match?.[1];
+    const category = slug ? getTutorialBySlug(slug)?.category : undefined;
+    return getHeaderNavContextPath(route.path, category);
+});
 
 function closeMobile() {
     mobileOpen.value = false;
@@ -39,18 +49,70 @@ function onDesktopChildNavigate() {
     }
 }
 
-function isActive(path: string) {
-    if (path === '/') {
-        return route.path === '/';
+function parseNavTarget(to: string) {
+    const qIndex = to.indexOf('?');
+    const pathname = qIndex === -1 ? to : to.slice(0, qIndex);
+    const params = new URLSearchParams(qIndex === -1 ? '' : to.slice(qIndex + 1));
+    return { pathname, params };
+}
+
+function pathMatches(activePath: string, path: string) {
+    if (path === '/' || path === '/nav') {
+        return activePath === path;
     }
-    return route.path === path || route.path.startsWith(`${path}/`);
+    return activePath === path || activePath.startsWith(`${path}/`);
+}
+
+function queryMatches(params: URLSearchParams) {
+    for (const [key, value] of params) {
+        if (String(route.query[key] ?? '') !== value) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/** matchQuery：子项需对齐 ?market= 等参数；父级高亮只比路径 */
+function isActive(to: string, matchQuery = true) {
+    const { pathname, params } = parseNavTarget(to);
+    const contextPath = navContextPath.value;
+    if (contextPath) {
+        // 已映射到业务菜单时，不再高亮「教程」
+        if (pathname === '/tutorials') {
+            return false;
+        }
+        return pathMatches(contextPath, pathname);
+    }
+    if (!pathMatches(route.path, pathname)) {
+        return false;
+    }
+    if (matchQuery && params.size > 0) {
+        return queryMatches(params);
+    }
+    return true;
 }
 
 function isNavItemActive(item: NavItem) {
     if (item.to) {
         return isActive(item.to);
     }
-    return item.children?.some(child => isActive(child.to)) ?? false;
+    if (item.children?.some(child => isActive(child.to, false))) {
+        return true;
+    }
+    // 如盈立等未进港资/美资子菜单的券商教程：高亮「港美股券商」父级
+    const contextPath = navContextPath.value;
+    if (!contextPath || !item.children?.length) {
+        return false;
+    }
+    return item.children.some(child => {
+        const { pathname } = parseNavTarget(child.to);
+        const segments = pathname.split('/').filter(Boolean);
+        if (segments.length < 3) {
+            return false;
+        }
+        const sectionRoot = `/${segments.slice(0, -1).join('/')}`;
+        return contextPath === sectionRoot || contextPath.startsWith(`${sectionRoot}/`);
+    });
 }
 
 function toggleMobileSection(label: string) {
@@ -94,7 +156,7 @@ onBeforeUnmount(() => {
                     <span class="truncate text-sm font-semibold tracking-tight">{{ SITE_NAME }}</span>
                 </NuxtLink>
 
-                <nav class="hidden items-center gap-1 md:flex" aria-label="主导航">
+                <nav class="hidden shrink-0 items-center gap-1 lg:flex" aria-label="主导航">
                     <template v-for="item in mainNav" :key="item.label">
                         <div
                             v-if="item.children"
@@ -173,7 +235,7 @@ onBeforeUnmount(() => {
                     </ClientOnly>
                     <button
                         type="button"
-                        class="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200/80 text-zinc-600 md:hidden dark:border-white/10 dark:text-zinc-300"
+                        class="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-200/80 text-zinc-600 lg:hidden dark:border-white/10 dark:text-zinc-300"
                         :aria-expanded="mobileOpen"
                         aria-label="打开菜单"
                         @click="mobileOpen = true"
@@ -185,7 +247,7 @@ onBeforeUnmount(() => {
         </AppContainer>
 
         <Teleport to="body">
-            <div v-if="mobileOpen" class="fixed inset-0 z-[60] md:hidden">
+            <div v-if="mobileOpen" class="fixed inset-0 z-[60] lg:hidden">
                 <button
                     type="button"
                     class="absolute inset-0 bg-zinc-950/40 backdrop-blur-sm dark:bg-black/50"

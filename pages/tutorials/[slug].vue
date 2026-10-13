@@ -5,7 +5,6 @@ import { renderMarkdown } from '~/utils/markdown'
 import {
   getTutorialBySlug,
   getTutorialCategoryLabel,
-  getTutorialCategoryNavPath,
   getTutorialTypeLabel,
 } from '~/utils/tutorials'
 
@@ -26,9 +25,7 @@ const markdownHtml = tutorial.markdown
     ? renderMarkdown(tutorial.content.join('\n\n'))
     : ''
 
-const categoryNavPath = getTutorialCategoryNavPath(tutorial.category)
 const categoryFullLabel = getTutorialCategoryLabel(tutorial.category, 'full')
-const categoryShortLabel = getTutorialCategoryLabel(tutorial.category)
 
 const config = useRuntimeConfig()
 const siteUrl = String(config.public.siteUrl).replace(/\/$/, '')
@@ -44,22 +41,7 @@ useJsonLd('ld-json-tutorial', buildTutorialJsonLd(siteUrl, tutorial))
 
 <template>
   <AppContainer v-if="tutorial" class="py-12 sm:py-16">
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <NuxtLink
-        to="/tutorials"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回教程
-      </NuxtLink>
-      <NuxtLink
-        v-if="categoryNavPath"
-        :to="categoryNavPath"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回{{ categoryShortLabel }}
-      </NuxtLink>
-    </div>
-    <article class="mt-8 max-w-3xl">
+    <article class="max-w-3xl">
       <p class="text-xs text-zinc-400">
         {{ getTutorialTypeLabel(tutorial.type) }} · {{ categoryFullLabel }}
       </p>

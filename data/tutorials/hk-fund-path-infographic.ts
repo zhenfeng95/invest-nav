@@ -79,11 +79,11 @@ Firstrade 等常见默认路径；大额或有汇款补贴，见：[Firstrade �
 | --- | --- |
 | 入金总览与嘉信回单示例 | [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) |
 | 账户体系一图 | [一图看懂美股账户体系](/tutorials/us-account-system-infographic) |
-| 港卡 / 资金流转导航 | [香港银行](/nav/overseas-banks) · [资金流转](/nav/fund-transfer) · [出入金](/nav/deposit-withdraw) |
+| 港卡 / 资金流转导航 | [香港银行](/nav/overseas-banks) · [出入金/资金流转](/nav/fund-transfer) |
 | 港卡在内地取现 / 扫码 | [ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [绑微信支付宝](/tutorials/hk-card-bind-wechat-alipay) |
 | 选券商 | [如何选择美股券商？](/tutorials/how-to-choose-us-broker) |
 
 ---
 
-相关入口：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [出入金导航](/nav/deposit-withdraw)
+相关入口：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [出入金/资金流转导航](/nav/fund-transfer)
 `;

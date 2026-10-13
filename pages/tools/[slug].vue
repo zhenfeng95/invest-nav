@@ -79,14 +79,7 @@ onBeforeUnmount(() => {
 <template>
   <AppContainer v-if="tool" class="space-y-8 py-12 sm:py-16">
     <div>
-      <NuxtLink
-        to="/tools"
-        class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-      >
-        返回投资工具
-      </NuxtLink>
       <PageHero
-        class="mt-6"
         :title="tool.name"
         :description="tool.description"
       />

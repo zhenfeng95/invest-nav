@@ -29,7 +29,6 @@ import { hkCardMainlandAtmCashGuide } from '~/data/tutorials/hk-card-mainland-at
 import { hkCardBindWechatAlipayGuide } from '~/data/tutorials/hk-card-bind-wechat-alipay'
 import { hongKongBankAccountGuide } from '~/data/tutorials/hong-kong-bank-account-guide'
 import type { Tutorial, TutorialType } from '~/types/tutorial'
-import { getNavigationPath } from '~/utils/navigation'
 
 const markdownFiles: Record<string, string> = {
   'firstrade-account-guide': firstradeAccountGuide,
@@ -161,32 +160,4 @@ export function getTutorialCategoryLabel(
     return tutorialCategoryFullNames[category] ?? category
   }
   return category
-}
-
-export function getTutorialCategoryNavSlug(category: string): string | undefined {
-  switch (category) {
-    case '美股券商':
-      return 'overseas-brokers'
-    case '香港银行':
-      return 'overseas-banks'
-    case '境外手机卡':
-      return 'overseas-sim'
-    case '资金流转':
-      return 'fund-transfer'
-    case '出入金':
-      return 'deposit-withdraw'
-    case '数字基建':
-      return 'digital-infra'
-    case 'ETF':
-      return 'etf'
-    case '基金':
-      return 'funds'
-    default:
-      return undefined
-  }
-}
-
-export function getTutorialCategoryNavPath(category: string): string | undefined {
-  const slug = getTutorialCategoryNavSlug(category)
-  return slug ? getNavigationPath(slug) : undefined
 }

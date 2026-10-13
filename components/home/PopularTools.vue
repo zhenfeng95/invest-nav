@@ -9,7 +9,7 @@ const tools = getFeaturedTools()
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="常用工具"
-        description="空间推演与复利定投估算，辅助复盘与长期规划。"
+        description="购汇估算、财经日历、空间推演与复利规划，覆盖出入金与复盘常用场景。"
       />
       <NuxtLink
         to="/tools"

@@ -28,8 +28,8 @@ export const navigationGroups: NavigationGroup[] = [
   {
     id: 'cross-border',
     title: '跨境账户与资金',
-    description: '境外银行卡、手机卡、券商、资金流转与出入金路径。',
-    slugs: ['overseas-banks', 'overseas-sim', 'overseas-brokers', 'fund-transfer', 'deposit-withdraw'],
+    description: '境外银行卡、手机卡、券商与出入金/资金流转路径。',
+    slugs: ['overseas-banks', 'overseas-sim', 'overseas-brokers', 'fund-transfer'],
   },
   {
     id: 'digital-infra',
@@ -48,8 +48,7 @@ const shortDescriptions: Record<string, string> = {
   'overseas-banks': '香港及境外银行开户相关入口',
   'overseas-sim': '境外 SIM / eSIM 与接码入口',
   'overseas-brokers': '港美股券商开户与交易入口',
-  'fund-transfer': '跨境汇款、多币种账户与港卡内地使用',
-  'deposit-withdraw': '券商入金、出金与核对入口',
+  'fund-transfer': '出入金、跨境汇款、多币种账户与港卡内地使用',
   'digital-infra': '域名、Workspace、Cloudflare、DNSHE 与邮箱',
 }
 
@@ -63,8 +62,7 @@ const tutorialCategoriesByNavSlug: Record<string, string[]> = {
   'overseas-banks': ['香港银行'],
   'overseas-sim': ['境外手机卡'],
   'overseas-brokers': ['美股券商'],
-  'fund-transfer': ['资金流转'],
-  'deposit-withdraw': ['出入金'],
+  'fund-transfer': ['资金流转', '出入金'],
   'digital-infra': ['数字基建'],
 }
 
@@ -143,6 +141,98 @@ export function getNavigationPath(slug?: string): string {
     return '/nav'
   }
   return `/nav/${slug}`
+}
+
+/** 港美股券商按资金背景拆分：港资 / 美资。新加坡等其他主体仍只出现在总列表。 */
+export type BrokerCapital = 'hk' | 'us'
+
+export interface BrokerCapitalGroup {
+  id: BrokerCapital
+  label: string
+  description: string
+  /** overseas-brokers 分类下的资源 id，顺序即展示顺序 */
+  itemIds: readonly string[]
+  /** 与该组直接相关的站内教程 slug */
+  tutorialSlugs: readonly string[]
+}
+
+export const brokerCapitalGroups: readonly BrokerCapitalGroup[] = [
+  {
+    id: 'hk',
+    label: '港资券商',
+    description: '香港证监会持牌的港资券商，覆盖港股、美股、期货期权与港股打新等常见入口。',
+    itemIds: ['chief', 'bosco'],
+    tutorialSlugs: ['bosco-account-guide'],
+  },
+  {
+    id: 'us',
+    label: '美资券商',
+    description: '美国经纪商，适合长期持有美股与 ETF，开户与入金以各家国际账户说明为准。',
+    itemIds: ['schwab', 'firstrade'],
+    tutorialSlugs: ['schwab-account-guide', 'firstrade-account-guide'],
+  },
+]
+
+export function getBrokerCapitalGroup(id: string): BrokerCapitalGroup | undefined {
+  return brokerCapitalGroups.find(group => group.id === id)
+}
+
+export function getBrokerCapitalPath(id: BrokerCapital): string {
+  return `/nav/overseas-brokers/${id}`
+}
+
+/** 教程详情页的 category → 头部菜单对应路径（教程 URL 不变，仅用于高亮） */
+const headerNavPathByTutorialCategory: Record<string, string> = {
+  美股券商: getNavigationPath('overseas-brokers'),
+  香港银行: getNavigationPath('overseas-banks'),
+  境外手机卡: getNavigationPath('overseas-sim'),
+  资金流转: getNavigationPath('fund-transfer'),
+  出入金: getNavigationPath('fund-transfer'),
+  数字基建: getNavigationPath('digital-infra'),
+}
+
+const tutorialIndexSlugs = new Set(['articles', 'videos', 'infographics'])
+
+/**
+ * 将当前路由映射为头部菜单应高亮的路径。
+ * 教程详情仍走 /tutorials/:slug，不改路由，只把高亮归到港美股券商 / 资金流转等。
+ */
+export function getHeaderNavContextPath(
+  routePath: string,
+  tutorialCategory?: string,
+): string | undefined {
+  const match = routePath.match(/^\/tutorials\/([^/]+)$/)
+  if (!match) {
+    return undefined
+  }
+
+  const slug = match[1]
+  if (tutorialIndexSlugs.has(slug)) {
+    return undefined
+  }
+
+  const capital = brokerCapitalGroups.find(group => group.tutorialSlugs.includes(slug))
+  if (capital) {
+    return getBrokerCapitalPath(capital.id)
+  }
+
+  if (tutorialCategory) {
+    return headerNavPathByTutorialCategory[tutorialCategory]
+  }
+
+  return undefined
+}
+
+export function getBrokerCapitalItems(group: BrokerCapitalGroup): NavigationItem[] {
+  const category = getNavigationCategory('overseas-brokers')
+  if (!category) {
+    return []
+  }
+
+  const byId = new Map(category.items.map(item => [item.id, item]))
+  return group.itemIds
+    .map(id => byId.get(id))
+    .filter((item): item is NavigationItem => Boolean(item))
 }
 
 export function getNavigationGroupPath(groupId: string): string {

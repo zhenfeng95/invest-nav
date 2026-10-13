@@ -52,13 +52,9 @@ usePageSeo({
 
 <template>
   <AppContainer class="py-12 sm:py-16">
-    <NuxtLink to="/reports" class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white">
-      返回日报列表
-    </NuxtLink>
+    <PageLoading v-if="isLoading" :rows="4" />
 
-    <PageLoading v-if="isLoading" class="mt-8" :rows="4" />
-
-    <article v-else-if="report" class="mt-8 max-w-5xl">
+    <article v-else-if="report" class="max-w-5xl">
       <p class="text-xs text-zinc-400">
         <template v-if="reportMarketLabel(report.market)">
           {{ reportMarketLabel(report.market) }}收盘日报

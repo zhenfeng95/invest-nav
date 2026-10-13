@@ -61,7 +61,7 @@ export const usAccountSystemInfographic = `上图把美股相关账户拆成四�
 | 怎么选券商 | [如何选择美股券商？](/tutorials/how-to-choose-us-broker) |
 | 钱怎么进去 | [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) |
 | 券商列表 | [港美股券商导航](/nav/overseas-brokers) |
-| 出入金资源 | [出入金导航](/nav/deposit-withdraw) |
+| 出入金资源 | [出入金/资金流转导航](/nav/fund-transfer) |
 
 ---
 

@@ -10,9 +10,17 @@ const displayTags = computed(() => props.item.tags.slice(0, 2))
 
 <template>
   <article
-    class="flex h-full flex-col border-b border-zinc-200/80 py-6 last:border-b-0 dark:border-white/[0.08] sm:border sm:border-zinc-200/80 sm:rounded-2xl sm:bg-white sm:p-5 sm:shadow-card dark:sm:border-white/[0.08] dark:sm:bg-white/[0.03] dark:sm:shadow-none"
+    class="relative flex h-full flex-col border-b border-zinc-200/80 py-6 last:border-b-0 dark:border-white/[0.08] sm:border sm:border-zinc-200/80 sm:rounded-2xl sm:bg-white sm:p-5 sm:shadow-card dark:sm:border-white/[0.08] dark:sm:bg-white/[0.03] dark:sm:shadow-none"
+    :class="{ 'sm:overflow-hidden': item.statusBadge }"
   >
-    <div class="flex items-start justify-between gap-3">
+    <span
+      v-if="item.statusBadge"
+      class="absolute right-px top-px z-10 inline-flex items-center gap-1 rounded-bl-lg rounded-tr-[0.9rem] border border-rose-500/25 bg-rose-500/10 px-2.5 py-1 text-[11px] font-medium text-rose-700 dark:border-rose-400/30 dark:bg-rose-400/10 dark:text-rose-200"
+    >
+      <span class="text-[12px] leading-none" aria-hidden="true">🔥</span>
+      {{ item.statusBadge }}
+    </span>
+    <div class="flex items-start justify-between gap-3" :class="{ 'pr-[7.5rem]': item.statusBadge }">
       <div class="min-w-0">
         <div class="flex flex-wrap items-center gap-2">
           <h3 class="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">

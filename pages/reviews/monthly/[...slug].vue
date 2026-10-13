@@ -51,13 +51,9 @@ usePageSeo({
 
 <template>
   <AppContainer class="py-12 sm:py-16">
-    <NuxtLink to="/reviews/monthly" class="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white">
-      返回每月复盘
-    </NuxtLink>
+    <PageLoading v-if="isLoading" :rows="4" />
 
-    <PageLoading v-if="isLoading" class="mt-8" :rows="4" />
-
-    <article v-else-if="review" class="mt-8 max-w-5xl">
+    <article v-else-if="review" class="max-w-5xl">
       <p class="text-xs text-zinc-400">
         每月复盘
         <template v-if="review.date">

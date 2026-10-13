@@ -19,6 +19,9 @@ export default defineNuxtConfig({
         '/tutorials/schwab-china-account-guide': {
             redirect: { to: '/tutorials/schwab-account-guide', statusCode: 301 },
         },
+        '/nav/deposit-withdraw': {
+            redirect: { to: '/nav/fund-transfer', statusCode: 301 },
+        },
         // 方案 C：功能区 noindex；教程 / 信任页 / 首页默认可收录（见 utils/seo-index.ts）
         '/nav': { index: false },
         '/nav/**': { index: false },

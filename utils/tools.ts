@@ -4,7 +4,7 @@ import type { Tool } from '~/types/tool'
 const tools = toolsData.items as Tool[]
 
 /** 首页「常用工具」固定展示（顺序即展示顺序） */
-export const FEATURED_TOOL_IDS = ['spatial', 'compound-interest'] as const
+export const FEATURED_TOOL_IDS = ['fx-estimate', 'calendar', 'spatial', 'compound-interest'] as const
 
 export function getTools(): Tool[] {
   return [...tools]

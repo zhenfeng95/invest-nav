@@ -82,5 +82,5 @@ export const hkBankFundFlowDemo = `本页用**图文演示**代替短视频：�
 
 ---
 
-相关入口：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [一图看懂港卡资金路径](/tutorials/hk-fund-path-infographic) · [出入金导航](/nav/deposit-withdraw)
+相关入口：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [一图看懂港卡资金路径](/tutorials/hk-fund-path-infographic) · [出入金/资金流转导航](/nav/fund-transfer)
 `;

@@ -9,25 +9,22 @@ const categories = getListedNavigationCategories()
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="资源导航"
-        description="按主题快速进入银行、手机卡、券商、资金路径与数字基建。"
+        description="按主题进入境外银行、手机卡、券商、资金路径与数字基建。"
       />
       <NuxtLink
         to="/nav"
         class="inline-flex items-center gap-1 text-sm text-zinc-500 transition hover:text-zinc-900 dark:hover:text-white"
       >
-        全部分类
+        查看全部
         <AppIcon name="arrow-right" class="h-4 w-4" />
       </NuxtLink>
     </div>
-    <div class="-mx-4 mt-8 overflow-x-auto px-4 pb-2 sm:mx-0 sm:overflow-visible sm:px-0">
-      <div class="flex min-w-max gap-4 sm:min-w-0 sm:grid sm:grid-cols-2 lg:grid-cols-5">
-        <NavigationCategory
-          v-for="category in categories"
-          :key="category.id"
-          :category="category"
-          class="w-64 sm:w-auto"
-        />
-      </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <NavigationCategory
+        v-for="category in categories"
+        :key="category.id"
+        :category="category"
+      />
     </div>
   </section>
 </template>

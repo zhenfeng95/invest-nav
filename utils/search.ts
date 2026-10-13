@@ -2,7 +2,7 @@ import { getNavigationCategories, getNavigationPath } from '~/utils/navigation'
 import { getNotes } from '~/utils/notes'
 import { getTutorials, getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
 import { getTools, getToolStatusLabel } from '~/utils/tools'
-import { researchNavLinks, researchNavLinksHidden } from '~/utils/site'
+import { brokerNavLinks, fundNavLinks, researchNavLinks, researchNavLinksHidden } from '~/utils/site'
 
 export type SearchResultGroup = 'page' | 'tutorial' | 'note' | 'tool' | 'nav'
 
@@ -73,38 +73,58 @@ function buildIndex(): IndexedItem[] {
       id: 'page-notes',
       group: 'page',
       groupLabel: GROUP_LABEL.page,
-      title: '交易笔记',
+      title: '投资笔记',
       description: '交易框架、仓位与复盘方法整理',
       to: '/notes',
-      haystack: buildHaystack('笔记', '交易笔记', '八定', '纪律', '复盘', 'notes'),
+      haystack: buildHaystack('投资笔记', '笔记', '交易笔记', '八定', '纪律', '复盘', 'notes'),
     },
     {
       id: 'page-tools',
       group: 'page',
       groupLabel: GROUP_LABEL.page,
-      title: '工具',
+      title: '投资工具',
       description: '持仓、计算器等站内工具',
       to: '/tools',
-      haystack: buildHaystack('工具', 'tools'),
+      haystack: buildHaystack('投资工具', '工具', 'tools'),
     },
     {
-      id: 'page-nav',
+      id: 'page-digital-infra',
       group: 'page',
       groupLabel: GROUP_LABEL.page,
-      title: '导航',
-      description: '港美股、银行与券商等资源导航',
-      to: '/nav',
-      haystack: buildHaystack('导航', 'nav', '资源'),
+      title: '数字基建',
+      description: '域名、Workspace、Cloudflare、DNSHE 与海外邮箱',
+      to: '/nav/digital-infra',
+      haystack: buildHaystack('数字基建', '域名', '邮箱', 'Workspace', 'Cloudflare', 'DNSHE'),
     },
-    ...[...researchNavLinks, ...researchNavLinksHidden].map(link => ({
+    ...fundNavLinks.map(link => ({
       id: `page-${link.to}`,
       group: 'page' as const,
       groupLabel: GROUP_LABEL.page,
       title: link.label,
-      description: '投研相关页面',
+      description: '资金流转、出入金、境外银行与手机卡',
       to: link.to,
-      haystack: buildHaystack(link.label, '投研', link.to),
+      haystack: buildHaystack(link.label, '资金流转', '导航', link.to),
     })),
+    ...brokerNavLinks.map(link => ({
+      id: `page-${link.to}`,
+      group: 'page' as const,
+      groupLabel: GROUP_LABEL.page,
+      title: link.label,
+      description: '港美股券商开户与交易入口',
+      to: link.to,
+      haystack: buildHaystack(link.label, '港美股券商', '券商', link.to),
+    })),
+    ...[...researchNavLinks, ...researchNavLinksHidden]
+      .filter(link => link.to !== '/notes')
+      .map(link => ({
+        id: `page-${link.to}`,
+        group: 'page' as const,
+        groupLabel: GROUP_LABEL.page,
+        title: link.label,
+        description: '投资研究相关页面',
+        to: link.to,
+        haystack: buildHaystack(link.label, '投资研究', '投研', link.to),
+      })),
   ]
 
   const notes: IndexedItem[] = getNotes().map(item => ({
