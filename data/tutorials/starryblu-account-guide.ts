@@ -116,5 +116,5 @@ Starryblu 提供全球跨境汇款服务，可按收款国家和地区选择对�
 
 ---
 
-相关入口：[Starryblu 官网](https://www.starryblu.com) · [App 下载](https://www.starryblu.com/app) · [资金流转导航](/nav/fund-transfer)
+相关入口：[Starryblu 官网](https://www.starryblu.com) · [App 下载](https://www.starryblu.com/app) · [汇款与出入金导航](/nav/fund-transfer)
 `;

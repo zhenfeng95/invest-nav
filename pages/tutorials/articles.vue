@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getTutorialsByType } from '~/utils/tutorials'
+import { getTutorialsByType } from '~/utils/tutorial-meta'
 
 const items = getTutorialsByType('article')
 

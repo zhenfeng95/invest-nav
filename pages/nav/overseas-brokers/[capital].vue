@@ -4,7 +4,7 @@ import {
   getBrokerCapitalItems,
   getBrokerCapitalPath,
 } from '~/utils/navigation'
-import { getTutorialBySlug } from '~/utils/tutorials'
+import { getTutorialMetaBySlug } from '~/utils/tutorial-meta'
 import type { Tutorial } from '~/types/tutorial'
 
 const route = useRoute()
@@ -20,7 +20,7 @@ if (!group) {
 
 const items = getBrokerCapitalItems(group)
 const tutorials = group.tutorialSlugs
-  .map(slug => getTutorialBySlug(slug))
+  .map(slug => getTutorialMetaBySlug(slug))
   .filter((item): item is Tutorial => Boolean(item))
 
 usePageSeo({

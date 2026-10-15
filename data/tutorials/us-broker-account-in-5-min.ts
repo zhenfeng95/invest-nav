@@ -2,7 +2,7 @@ export const usBrokerAccountIn5Min = `没有单独短视频时，用本页做**�
 
 分步截图教程请直接看：
 
-- [嘉信证券开户教程](/tutorials/schwab-account-guide)（含 W-8BEN、ready to fund）
+- [嘉信国际开户教程（内地）](/tutorials/schwab-account-guide)（含 W-8BEN、ready to fund）
 - [Firstrade 开户教程](/tutorials/firstrade-account-guide)
 - [盈立证券（新加坡）开户教程](/tutorials/usmart-sg-account-guide)
 - [宝时证券开户教程](/tutorials/bosco-account-guide)

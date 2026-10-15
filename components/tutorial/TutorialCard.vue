@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import type { Tutorial } from '~/types/tutorial'
 import { formatDate, formatReadingTime } from '~/utils/format'
-import { getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
+import { prefetchTutorialBySlug } from '~/utils/tutorials'
+import { getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorial-meta'
 
-defineProps<{
+const props = defineProps<{
   tutorial: Tutorial
 }>()
+
+function prefetch() {
+  prefetchTutorialBySlug(props.tutorial.slug)
+}
 </script>
 
 <template>
   <NuxtLink
     :to="`/tutorials/${tutorial.slug}`"
     class="card card-hover relative flex h-full flex-col overflow-hidden"
+    @pointerenter="prefetch"
+    @focusin="prefetch"
   >
     <span
       v-if="tutorial.statusBadge"

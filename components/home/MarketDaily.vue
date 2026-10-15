@@ -11,6 +11,7 @@ interface MarketSlot {
   dotClass: string
 }
 
+/** 首页暂时只展示美股日报；A 股仍可从历史日报进入 */
 const slots: MarketSlot[] = [
   {
     market: 'US',
@@ -19,22 +20,15 @@ const slots: MarketSlot[] = [
     readLabel: '阅读美股日报',
     dotClass: 'bg-sky-500',
   },
-  {
-    market: 'A',
-    label: 'A股日报',
-    listTo: '/reports?market=A',
-    readLabel: '阅读A股日报',
-    dotClass: 'bg-rose-500',
-  },
 ]
 
-const nuxtApp = useNuxtApp()
-const { data, pending, status } = await useAsyncData(
+/** 客户端再拉日报，避免 SSR 等待 GitHub 拖慢首屏 HTML */
+const { data, pending, status } = useAsyncData(
   'home-market-daily',
   () => $fetch<HomeMarketBriefsResponse>('/api/reports/home'),
   {
-    lazy: import.meta.client,
-    getCachedData: key => nuxtApp.payload.data[key],
+    lazy: true,
+    server: false,
   },
 )
 
@@ -74,10 +68,10 @@ function changeClass(changePct: number | null) {
     <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionTitle
         title="市场日报"
-        description="美股与 A 股收盘复盘，由投研 Agent 生成，仅供学习整理。"
+        description="美股收盘复盘，由投研 Agent 生成，仅供学习整理。"
       />
       <NuxtLink
-        to="/reports"
+        to="/reports?market=US"
         class="inline-flex items-center gap-1 text-sm text-zinc-500 transition hover:text-zinc-900 dark:hover:text-white"
       >
         历史日报
@@ -85,7 +79,7 @@ function changeClass(changePct: number | null) {
       </NuxtLink>
     </div>
 
-    <div class="mt-8 grid gap-4 md:grid-cols-2">
+    <div class="mt-8 grid max-w-2xl gap-4">
       <template v-if="isLoading">
         <div
           v-for="slot in slots"

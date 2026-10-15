@@ -1,16 +1,23 @@
 <script setup lang="ts">
 import type { Note } from '~/types/note'
 import { formatDate, formatReadingTime } from '~/utils/format'
+import { prefetchNoteBySlug } from '~/utils/notes'
 
-defineProps<{
+const props = defineProps<{
   note: Note
 }>()
+
+function prefetch() {
+  prefetchNoteBySlug(props.note.slug)
+}
 </script>
 
 <template>
   <NuxtLink
     :to="`/notes/${note.slug}`"
     class="card card-hover flex h-full flex-col p-5"
+    @pointerenter="prefetch"
+    @focusin="prefetch"
   >
     <p class="text-xs text-zinc-400">
       {{ note.category }}

@@ -95,7 +95,7 @@ export const hkCardMainlandAtmCashGuide = `本页整理用 **港卡在内地 ATM
 | 还没有建银亚洲账户 | [建银亚洲开户教程](/tutorials/ccb-asia-account-guide) |
 | 内地扫码、少取现 | [港卡绑微信支付宝在内地消费](/tutorials/hk-card-bind-wechat-alipay)（含微信香港钱包） |
 | 港卡 → 券商 | [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [一图看懂港卡资金路径](/tutorials/hk-fund-path-infographic) |
-| 余额进内地账户渠道 | [Wise](/tutorials/wise-account-guide) · [Starryblu](/tutorials/starryblu-account-guide) · [资金流转导航](/nav/fund-transfer) |
+| 余额进内地账户渠道 | [Wise](/tutorials/wise-account-guide) · [Starryblu](/tutorials/starryblu-account-guide) · [汇款与出入金导航](/nav/fund-transfer) |
 
 ## 常见问题
 

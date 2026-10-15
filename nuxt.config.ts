@@ -10,6 +10,14 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
+        // 首页已无 SSR 拉 GitHub：构建期预渲染成静态 HTML，由 CF ASSETS 直出。
+        // 勿再用 swr：Workers 默认内存缓存不跨 isolate，冷启动仍会完整 SSR（TTFB 数秒～十余秒）。
+        '/': {
+            prerender: true,
+            headers: {
+                'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=3600',
+            },
+        },
         '/tutorials/bosco-china-account-guide': {
             redirect: { to: '/tutorials/bosco-account-guide', statusCode: 301 },
         },

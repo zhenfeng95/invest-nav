@@ -5,7 +5,8 @@ useHomeSeo()
 <template>
   <div>
     <HeroSection />
-    <AppContainer id="home-content" class="space-y-20 pb-20 pt-8 sm:space-y-24 sm:pb-24 sm:pt-10">
+    <AppContainer id="home-content" class="space-y-12 pb-20 pt-6 sm:space-y-14 sm:pb-24 sm:pt-8">
+      <HomeWeeklySpotlight />
       <MarketDaily />
       <NavigationCategories />
       <PopularTutorials />
@@ -13,3 +14,4 @@ useHomeSeo()
     </AppContainer>
   </div>
 </template>
+

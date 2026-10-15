@@ -1,5 +1,7 @@
-import { getTutorials } from '~/utils/tutorials'
-import { listPublicIndexablePaths } from '~/utils/seo-index'
+import {
+  getTutorialIndexMeta,
+  listPublicIndexablePaths,
+} from '~/utils/seo-index'
 import type { TutorialType } from '~/types/tutorial'
 
 const listingTypeByPath: Record<string, TutorialType> = {
@@ -22,7 +24,7 @@ function toLastmod(date: string): string {
 
 export default defineEventHandler((event) => {
   const siteUrl = String(useRuntimeConfig(event).public.siteUrl).replace(/\/$/, '')
-  const tutorials = getTutorials()
+  const tutorials = getTutorialIndexMeta()
   const tutorialBySlug = new Map(tutorials.map(item => [item.slug, item]))
   const latestContentDate = maxDate(tutorials.map(item => item.updatedAt))
     ?? new Date().toISOString().slice(0, 10)

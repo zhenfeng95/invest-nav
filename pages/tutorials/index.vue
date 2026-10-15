@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { getFeaturedTutorials, getLatestTutorials, getTutorials } from '~/utils/tutorials'
+import {
+  getFeaturedTutorials,
+  getLatestTutorials,
+  getTutorials,
+} from '~/utils/tutorial-meta'
 
 const popular = getFeaturedTutorials()
 const latest = getLatestTutorials(3)

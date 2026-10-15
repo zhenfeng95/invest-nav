@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getNotes } from '~/utils/notes'
+import { getNotes } from '~/utils/note-meta'
 
 const notes = getNotes()
 

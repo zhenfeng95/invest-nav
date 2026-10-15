@@ -97,5 +97,5 @@ export const hkCardBindWechatAlipayGuide = `本页整理用 **港卡** 在内地
 
 ---
 
-相关入口：[资金流转导航](/nav/fund-transfer) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [众安](/tutorials/za-bank-account-guide) · [汇丰](/tutorials/hsbc-hk-account-guide) · [建银亚洲](/tutorials/ccb-asia-account-guide)
+相关入口：[汇款与出入金导航](/nav/fund-transfer) · [境外银行卡导航](/nav/overseas-banks) · [港卡在内地 ATM 取现](/tutorials/hk-card-mainland-atm-cash) · [众安](/tutorials/za-bank-account-guide) · [汇丰](/tutorials/hsbc-hk-account-guide) · [建银亚洲](/tutorials/ccb-asia-account-guide)
 `

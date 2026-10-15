@@ -211,5 +211,5 @@ FATCA 页：与美国是否有任何关系，选「**没有**」；是否为任�
 
 ---
 
-相关入口：[iFAST Global Bank 官网](https://www.ifastgb.com/zh/home) · [资金流转导航](/nav/fund-transfer) · [Wise 开户](/tutorials/wise-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)
+相关入口：[iFAST Global Bank 官网](https://www.ifastgb.com/zh/home) · [汇款与出入金导航](/nav/fund-transfer) · [Wise 开户](/tutorials/wise-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)
 `;

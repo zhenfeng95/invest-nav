@@ -1,6 +1,10 @@
 import { getNavigationCategories, getNavigationPath } from '~/utils/navigation'
-import { getNotes } from '~/utils/notes'
-import { getTutorials, getTutorialCategoryLabel, getTutorialTypeLabel } from '~/utils/tutorials'
+import { getNotes } from '~/utils/note-meta'
+import {
+  getTutorialCategoryLabel,
+  getTutorialMetaList,
+  getTutorialTypeLabel,
+} from '~/utils/tutorial-meta'
 import { getTools, getToolStatusLabel } from '~/utils/tools'
 import { brokerNavLinks, fundNavLinks, researchNavLinks, researchNavLinksHidden } from '~/utils/site'
 
@@ -144,7 +148,7 @@ function buildIndex(): IndexedItem[] {
     ),
   }))
 
-  const tutorials: IndexedItem[] = getTutorials().map(item => ({
+  const tutorials: IndexedItem[] = getTutorialMetaList().map(item => ({
     id: `tutorial-${item.id}`,
     group: 'tutorial',
     groupLabel: GROUP_LABEL.tutorial,

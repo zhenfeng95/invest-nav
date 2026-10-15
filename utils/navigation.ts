@@ -28,7 +28,7 @@ export const navigationGroups: NavigationGroup[] = [
   {
     id: 'cross-border',
     title: '跨境账户与资金',
-    description: '境外银行卡、手机卡、券商与出入金/资金流转路径。',
+    description: '境外银行卡、手机卡、券商、汇款与出入金路径。',
     slugs: ['overseas-banks', 'overseas-sim', 'overseas-brokers', 'fund-transfer'],
   },
   {

@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "id": "cib-huanyu-account",
+      "slug": "cib-huanyu-account-guide",
+      "title": "兴业银行寰宇人生借记卡开户教程",
+      "description": "整理大陆用户在兴业手机银行申请寰宇人生普通卡或一类户换卡、收卡激活、非柜面提额，以及购汇后汇往香港汇丰的步骤；并对照众安、中银香港汇入成本与跨境支付通差异。",
+      "type": "article",
+      "category": "资金流转",
+      "tags": ["兴业银行", "寰宇人生", "资金流转", "跨境汇款", "汇丰", "跨境支付通", "一类户", "转账限额", "开户"],
+      "readingMinutes": 18,
+      "updatedAt": "2026-10-15",
+      "publishedAt": "2026-10-15",
+      "popular": true,
+      "statusBadge": "活动进行中",
+      "markdownFile": "cib-huanyu-account-guide"
+    },
+    {
       "id": "website-ads-monetization",
       "slug": "website-ads-monetization-guide",
       "title": "个人网站接入展示广告变现指南",
@@ -256,13 +271,13 @@
     {
       "id": "schwab-account",
       "slug": "schwab-account-guide",
-      "title": "嘉信证券（Schwab）开户教程",
-      "description": "整理嘉信国际开户材料、线上申请步骤、W-8BEN 与审核邮件节点，供对照官方页面。",
+      "title": "嘉信国际开户教程（内地）：护照材料到港币入金",
+      "description": "面向中国内地用户整理 Charles Schwab International（嘉信国际）开户：护照与地址证明、线上申请、W-8BEN、审核到可入金，以及有港卡时经花旗香港的港币入金路径；并对照 Firstrade、盈立怎么选。",
       "type": "article",
       "category": "美股券商",
-      "tags": ["美股", "券商", "开户", "嘉信"],
-      "readingMinutes": 15,
-      "updatedAt": "2026-09-16",
+      "tags": ["嘉信", "嘉信国际", "Schwab", "美股", "开户", "W-8BEN", "港币入金"],
+      "readingMinutes": 16,
+      "updatedAt": "2026-10-15",
       "publishedAt": "2026-08-20",
       "popular": true,
       "markdownFile": "schwab-account-guide"
@@ -318,7 +333,7 @@
       "category": "出入金",
       "tags": ["出入金", "资金流转", "电汇", "FPS", "港卡"],
       "readingMinutes": 12,
-      "updatedAt": "2026-09-16",
+      "updatedAt": "2026-10-15",
       "publishedAt": "2026-05-11",
       "popular": true,
       "markdownFile": "us-stock-deposit-and-transfer"

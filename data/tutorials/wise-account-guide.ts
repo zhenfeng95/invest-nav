@@ -151,5 +151,5 @@ Wise 适合多币种中转、出金到支付宝。港卡扫码或 ATM 取现见�
 
 ---
 
-相关阅读：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [iFAST 开户](/tutorials/ifast-account-guide) · [资金流转导航](/nav/fund-transfer) · [Wise 官网](https://wise.com)
+相关阅读：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [iFAST 开户](/tutorials/ifast-account-guide) · [汇款与出入金导航](/nav/fund-transfer) · [Wise 官网](https://wise.com)
 `;

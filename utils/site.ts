@@ -48,9 +48,9 @@ export const brokerNavLinks: NavLink[] = [
     { label: '美资券商', to: '/nav/overseas-brokers/us' },
 ];
 
-/** 头部「出入金/资金流转」下拉 */
+/** 头部「资金流转」下拉 */
 export const fundNavLinks: NavLink[] = [
-    { label: '出入金/资金流转', to: '/nav/fund-transfer' },
+    { label: '汇款与出入金', to: '/nav/fund-transfer' },
     { label: '境外银行卡', to: '/nav/overseas-banks' },
     { label: '境外手机卡', to: '/nav/overseas-sim' },
 ];
@@ -85,7 +85,7 @@ export const footerCategoryLinks: NavLink[] = [
     { label: '境外银行卡', to: '/nav/overseas-banks' },
     { label: '境外手机卡', to: '/nav/overseas-sim' },
     { label: '美股券商', to: '/nav/overseas-brokers' },
-    { label: '出入金/资金流转', to: '/nav/fund-transfer' },
+    { label: '汇款与出入金', to: '/nav/fund-transfer' },
     { label: '数字基建', to: '/nav/digital-infra' },
 ];
 

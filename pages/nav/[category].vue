@@ -3,7 +3,7 @@ import {
   getNavigationCategory,
   getTutorialCategoriesForNavSlug,
 } from '~/utils/navigation'
-import { getTutorialsByCategories } from '~/utils/tutorials'
+import { getTutorialsByCategories } from '~/utils/tutorial-meta'
 
 const route = useRoute()
 const slug = String(route.params.category)

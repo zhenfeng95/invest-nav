@@ -2,7 +2,7 @@
 import type { NavItem } from '~/utils/site';
 import { mainNav, SITE_NAME } from '~/utils/site';
 import { getHeaderNavContextPath } from '~/utils/navigation';
-import { getTutorialBySlug } from '~/utils/tutorials';
+import { getTutorialMetaBySlug } from '~/utils/tutorial-meta';
 
 const route = useRoute();
 const mobileOpen = ref(false);
@@ -16,7 +16,7 @@ const desktopHoverLocked = ref(false);
 const navContextPath = computed(() => {
     const match = route.path.match(/^\/tutorials\/([^/]+)$/);
     const slug = match?.[1];
-    const category = slug ? getTutorialBySlug(slug)?.category : undefined;
+    const category = slug ? getTutorialMetaBySlug(slug)?.category : undefined;
     return getHeaderNavContextPath(route.path, category);
 });
 

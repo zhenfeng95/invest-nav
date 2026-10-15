@@ -64,15 +64,15 @@
   }
 
   .markdown-body :where(ul, ol) {
-    @apply space-y-2 pl-5;
+    @apply space-y-2;
   }
 
   .markdown-body ul {
-    @apply list-disc;
+    @apply list-disc pl-5;
   }
 
   .markdown-body ol {
-    @apply list-decimal;
+    @apply list-decimal pl-8;
   }
 
   .markdown-body a {

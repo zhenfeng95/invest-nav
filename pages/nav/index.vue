@@ -38,7 +38,7 @@ function cardIndex(index: number) {
 
 usePageSeo({
   title: '投资导航｜港美股券商银行与出入金',
-  description: '按分类浏览 Zhen Invest 投资导航：香港银行、境外手机卡、美股券商、出入金/资金流转与数字基建资源，不确定的官方链接会明确标注，避免误导。',
+  description: '按分类浏览 Zhen Invest 投资导航：香港银行、境外手机卡、美股券商、汇款与出入金、数字基建资源，不确定的官方链接会明确标注，避免误导。',
   path: '/nav',
 })
 </script>

@@ -1,13 +1,38 @@
-export const schwabAccountGuide = `本页整理通过 **Charles Schwab International（嘉信国际）** 线上开户的常见流程，仅供信息对照。开户政策、材料要求和页面文案会变化，请以 [嘉信国际开户页](https://international.schwab.com/) 当时显示为准。本页不构成开户、税务或投资建议。
+export const schwabAccountGuide = `本页面向**中国内地居民**，整理在 **Charles Schwab International（嘉信国际）** 线上开户、完成 **W-8BEN**、等到账户可入金，以及有港卡时走**港币本地转账（花旗香港收款）**的常见路径，仅供信息对照。开户政策、材料、收款信息与费率会变化，请以 [嘉信国际开户页](https://international.schwab.com/) 与资金页当时显示为准。本页不构成开户、税务或投资建议。
+
+很多嘉信教程只写到「提交申请」。内地用户真正卡住的，往往是后面三步：**W-8BEN 怎么填、审核邮件看到哪一步才能入金、没有美国银行卡时钱怎么进去**。下文按「材料 → 线上申请 → W-8BEN → 审核与登录 → 入金/出金」整条链路对照；开户逐步截图见第二节，港币入金细节见第六节。
+
+## 这篇适合谁、不适合谁
+
+| 更适合继续往下看 | 可能要先换路径 |
+| --- | --- |
+| 主要想做**美股 / ETF 长期底仓**，认美国综合券商品牌 | 主要做港股打新 / 港币 FPS 高频进出 → 先看 [盈立新加坡](/tutorials/usmart-sg-account-guide) 或 [如何选择美股券商？](/tutorials/how-to-choose-us-broker) |
+| 能接受**护照 + 内地地址证明**线上开，暂无海外住址要求（以当时页面为准） | 已有美卡、只想 ACH 出入、不太需要中文客服对照 |
+| 已有或准备办**港卡**，希望用港币本地转账入金，而不是只靠跨境美元电汇 | 只想「免佣美股 + 电汇补贴」、能接受纯电汇 → 对照 [Firstrade 开户](/tutorials/firstrade-account-guide) |
+
+和 Firstrade、盈立的选型对照见文末 FAQ，以及：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+
+## 整条链路先看一眼
+
+\`护照/地址证明 → 国际站开 Individual Account → 提交后填 W-8BEN → 登录熟悉但未必能入金 → 收到可交易/ready to fund 一类通知 → 入金（有港卡优先港币）\`
+
+| 阶段 | 你在做什么 | 常见卡点 |
+| --- | --- | --- |
+| 开户申请 | 选国际站、China、个人账户，上传材料 | 进错美国主站；地址与证明不一致；附件中文文件名 |
+| W-8BEN | 声明非美税务居民、条约相关选项 | 漏填；外国 TIN（常见填身份证号）与国籍选错 |
+| 审核 | 可先登录，但常不能交易/入金 | 把「能登录」当成「已可入金」 |
+| 入金 | 港币→花旗香港，或 Wise / 美元电汇 / iFAST 英镑 | 备注漏写英文名+8 位账号；照抄过期收款信息 |
+
+出入金总览还可对照：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
 
 ## 一、准备材料
 
-准备材料清单：
+准备材料清单（以开户页当时要求为准）：
 
-- 电子邮箱
-- 内地手机号
-- 中国护照
-- 中国居住地址（英文）及地址证明（银行账单、水电账单等）
+- 电子邮箱（建议能稳定收国际邮件）
+- 内地手机号（+86；登录验证有时会用到，后文可设双重验证减轻依赖）
+- **中国护照**（优先；身份证路径以当时页面是否接受为准）
+- **中国居住地址（英文）**及地址证明（银行账单、水电账单等，须与填写地址一致）
 - 就业信息、公司地址等
 
 嘉信免费客服电话：
@@ -22,7 +47,7 @@ export const schwabAccountGuide = `本页整理通过 **Charles Schwab Internati
 - 夏令时：晚上 9:00 至第二天下午 1:00
 - 冬令时：晚上 10:00 至第二天下午 2:00
 
-## 二、开户流程
+## 二、开户流程（逐步对照）
 
 ### 1. 打开嘉信开户页面
 
@@ -444,23 +469,31 @@ export const schwabAccountGuide = `本页整理通过 **Charles Schwab Internati
 
 ## 常见问题
 
-### 内地用户开嘉信国际需要哪些材料？
+### 内地用户可以开嘉信国际吗？要不要海外地址？
 
-常见是护照，以及与填写地址一致的地址证明（如银行或水电账单）。附件文件名建议用英文。具体清单以 [嘉信国际开户页](https://international.schwab.com/) 当时要求为准，逐步说明见上文开户流程。
+可以按国际站流程申请；常见材料是**护照 + 与填写一致的内地地址证明**。是否接受身份证、是否仍要求海外住址，以 [嘉信国际开户页](https://international.schwab.com/) 当时说明为准，不要只看过期攻略。
 
-### 提交之后什么时候能入金？
+### 嘉信开户需要准备哪些材料？
 
-提交后通常可以先登录网页 / App 熟悉界面，但往往还不能入金交易。先会收到核查信一类邮件，此时一般无需操作；账户就绪后再入金。有港卡时更推荐走上文 **港币入金**；其他路径（Wise、美元电汇、iFAST 英镑等）见第六节。总览对照：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
+常见清单见上文「准备材料」：邮箱、+86 手机、护照、英文居住地址与地址证明、就业信息。附件文件名建议用英文。逐步上传节点见第二节第 21 步。
 
-### W-8BEN 是什么？必须填吗？
+### 提交嘉信申请之后什么时候能入金？
 
-这是非美国税务居民常见的税务身份声明表格。嘉信流程里提交申请后需要完成认证；请对照页面如实填写，本页不展开税务建议。
+提交后通常可以先登录网页 / App 熟悉界面，但往往**还不能**入金交易。先会收到核查信一类邮件；等到账户就绪 / ready to fund 一类通知后再入金。有港卡时更推荐第六节 **港币入金**；其他路径见 Wise、美元电汇、iFAST 英镑。总览：[美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer)。
 
-### 和 Firstrade、盈立怎么选？
+### W-8BEN 是什么？嘉信开户必须填吗？
 
-嘉信更偏美国综合型账户、长期持有。若更看重美股免佣与电汇补贴，对照 [Firstrade 开户](/tutorials/firstrade-account-guide)；若要港股 + 港卡出入金更顺手，对照 [盈立新加坡开户](/tutorials/usmart-sg-account-guide)。选型框架：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
+这是非美国税务居民常见的税务身份声明表格。嘉信流程里提交申请后需要完成认证；不填时美国侧股息等常见按更高预扣处理。请对照页面如实填写，本页不构成税务建议。填写节点见第三节。
+
+### 没有美国银行卡，怎么给嘉信入金？
+
+有港卡时，优先对照第六节「港币入金」：港币本地转到嘉信在花旗香港的收款账户，备注写清英文名、姓氏与 8 位账号。没有港卡时，再看 Wise 绑定、国际美元电汇或 iFAST 英镑等路径。
+
+### 嘉信和 Firstrade、盈立怎么选？
+
+嘉信更偏美国综合型账户、长期持有，入金可结合港卡港币路径。若更看重美股免佣与电汇补贴，对照 [Firstrade 开户](/tutorials/firstrade-account-guide)；若要港股 + 港卡出入金更顺手，对照 [盈立新加坡开户](/tutorials/usmart-sg-account-guide)。选型框架：[如何选择美股券商？](/tutorials/how-to-choose-us-broker)。
 
 ---
 
-相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [美股券商导航](/nav/overseas-brokers) · [嘉信国际开户页](https://international.schwab.com/)
+相关阅读：[如何选择美股券商](/tutorials/how-to-choose-us-broker) · [Firstrade 开户](/tutorials/firstrade-account-guide) · [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) · [港卡开户入门](/tutorials/hong-kong-bank-account-guide) · [美股券商导航](/nav/overseas-brokers) · [嘉信国际开户页](https://international.schwab.com/)
 `;

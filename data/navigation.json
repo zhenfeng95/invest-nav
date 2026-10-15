@@ -509,9 +509,9 @@
         {
             "id": "fund-transfer",
             "slug": "fund-transfer",
-            "name": "出入金/资金流转",
-            "fullName": "出入金与跨境资金流转入口",
-            "description": "券商出入金、跨境汇款、多币种账户与港卡在内地使用相关资源：整理入金核对、Wise、Starryblu、iFAST 等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
+            "name": "汇款与出入金",
+            "fullName": "汇款与出入金入口",
+            "description": "券商出入金、跨境汇款、多币种账户与港卡在内地使用相关资源：整理入金核对、Wise、Starryblu、iFAST、兴业寰宇人生等入口，以及 ATM 取现、绑微信支付宝等路径，并链向站内教程。",
             "icon": "transfer",
             "items": [
                 {
@@ -573,6 +573,23 @@
                     "guideUrl": "/tutorials/ifast-account-guide",
                     "guideLabel": "开户教程",
                     "updatedAt": "2026-09-14"
+                },
+                {
+                    "id": "cib-huanyu",
+                    "name": "兴业银行寰宇人生",
+                    "description": "大陆银行卡线上新办或一类户换卡。购汇结汇点差常见 5 折，活动期前 30 笔跨境汇款本行手续费与电讯费减免；社区讨论多用于购汇后汇往香港汇丰。",
+                    "url": "https://www.cib.com.cn/cn/personal/debit/index.html",
+                    "tags": [
+                        "资金流转",
+                        "汇款",
+                        "兴业银行"
+                    ],
+                    "officialUrlConfirmed": true,
+                    "featured": true,
+                    "statusBadge": "活动进行中",
+                    "guideUrl": "/tutorials/cib-huanyu-account-guide",
+                    "guideLabel": "开户教程",
+                    "updatedAt": "2026-10-15"
                 },
                 {
                     "id": "hk-atm-cash",

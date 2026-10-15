@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getFeaturedTutorials } from '~/utils/tutorials'
+import { getFeaturedTutorials } from '~/utils/tutorial-meta'
 
 const tutorials = getFeaturedTutorials()
 </script>

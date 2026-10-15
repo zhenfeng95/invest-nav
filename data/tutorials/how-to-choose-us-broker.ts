@@ -104,7 +104,7 @@ export const howToChooseUsBrokerGuide = `本页整理内地用户在选择**美�
 | 嘉信 / Firstrade / 盈立 / 宝时开户 | 见上文各教程链接 |
 | 出入金怎么走 | [美股入金与资金流转](/tutorials/us-stock-deposit-and-transfer) |
 | 港卡 | [港卡开户入门](/tutorials/hong-kong-bank-account-guide) |
-| 多币种中转 | [Wise](/tutorials/wise-account-guide)、[资金流转导航](/nav/fund-transfer) |
+| 多币种中转 | [Wise](/tutorials/wise-account-guide)、[汇款与出入金导航](/nav/fund-transfer) |
 
 ## 常见问题
 

@@ -1,40 +1,69 @@
-import notesData from '~/data/notes.json'
-import { eightRulesTradingFramework } from '~/data/notes/eight-rules-trading-framework'
-import { howToReviewTrading } from '~/data/notes/how-to-review-trading'
-import { trendStockTradingTips } from '~/data/notes/trend-stock-trading-tips'
-import { winEasyTradingCore } from '~/data/notes/win-easy-trading-core'
 import type { Note } from '~/types/note'
+import { getNoteMetaBySlug } from '~/utils/note-meta'
 
-const markdownFiles: Record<string, string> = {
-  'eight-rules-trading-framework': eightRulesTradingFramework,
-  'win-easy-trading-core': winEasyTradingCore,
-  'how-to-review-trading': howToReviewTrading,
-  'trend-stock-trading-tips': trendStockTradingTips,
+/**
+ * 笔记正文按文件懒加载（Vite 会拆成独立 async chunk）。
+ * 列表 / 搜索只应使用 ~/utils/note-meta。
+ */
+const markdownModules = import.meta.glob<{ [exportName: string]: unknown }>(
+  '~/data/notes/*.ts',
+)
+
+const markdownCache = new Map<string, Promise<string | undefined>>()
+
+function markdownModuleKey(markdownFile: string): string | undefined {
+  const suffix = `/data/notes/${markdownFile}.ts`
+  return Object.keys(markdownModules).find(key => key.endsWith(suffix))
 }
 
-const notes = (notesData.items as Note[]).map((item) => {
-  if (!item.markdownFile) {
-    return item
+function pickMarkdownString(mod: Record<string, unknown>): string | undefined {
+  for (const value of Object.values(mod)) {
+    if (typeof value === 'string' && value.trim()) {
+      return value
+    }
+  }
+  return undefined
+}
+
+export function loadNoteMarkdown(markdownFile: string): Promise<string | undefined> {
+  const cached = markdownCache.get(markdownFile)
+  if (cached) {
+    return cached
   }
 
+  const key = markdownModuleKey(markdownFile)
+  const pending = key
+    ? markdownModules[key]!().then(pickMarkdownString)
+    : Promise.resolve(undefined)
+
+  markdownCache.set(markdownFile, pending)
+  return pending
+}
+
+export function prefetchNoteBySlug(slug: string) {
+  if (!import.meta.client) {
+    return
+  }
+  const meta = getNoteMetaBySlug(slug)
+  if (meta?.markdownFile) {
+    void loadNoteMarkdown(meta.markdownFile)
+  }
+}
+
+/** 元数据 + 正文；仅详情页使用 */
+export async function getNoteBySlug(slug: string): Promise<Note | undefined> {
+  const meta = getNoteMetaBySlug(slug)
+  if (!meta) {
+    return undefined
+  }
+
+  if (!meta.markdownFile) {
+    return meta
+  }
+
+  const markdown = await loadNoteMarkdown(meta.markdownFile)
   return {
-    ...item,
-    markdown: markdownFiles[item.markdownFile] ?? item.markdown,
+    ...meta,
+    markdown: markdown ?? meta.markdown,
   }
-})
-
-function byPublishedDesc(a: Note, b: Note) {
-  return b.publishedAt.localeCompare(a.publishedAt) || b.updatedAt.localeCompare(a.updatedAt)
-}
-
-export function getNotes(): Note[] {
-  return [...notes].sort(byPublishedDesc)
-}
-
-export function getNoteBySlug(slug: string): Note | undefined {
-  return notes.find(item => item.slug === slug)
-}
-
-export function getLatestNotes(limit = 6): Note[] {
-  return getNotes().slice(0, limit)
 }
