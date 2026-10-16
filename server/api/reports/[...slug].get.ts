@@ -1,16 +1,9 @@
 import type { H3Event } from 'h3'
 import { isError } from 'h3'
-import { getGitHubReportsConfig, getReport, GitHubReportsError } from '../../utils/github-reports'
+import type { ReportDetail } from '~/types/report'
+import { getReportsApiBase } from '../../utils/zhen-api'
 
 export default defineEventHandler(async (event) => {
-  const config = getGitHubReportsConfig(event)
-  if (!config) {
-    throw createError({
-      statusCode: 503,
-      statusMessage: '收盘日报尚未配置。',
-    })
-  }
-
   const slug = readSlug(event)
   if (!slug) {
     throw createError({
@@ -19,28 +12,48 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const base = getReportsApiBase(event)
+  const url = `${base}/${slug.split('/').map(encodeURIComponent).join('/')}`
+
   try {
-    const report = await getReport(config, slug)
-    if (!report) {
+    const report = await $fetch<ReportDetail>(url, {
+      timeout: 20_000,
+    })
+
+    if (!report?.slug || !report.html) {
       throw createError({
         statusCode: 404,
         statusMessage: '日报不存在',
       })
     }
 
-    setHeader(event, 'Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=86400')
-    return report
+    setHeader(event, 'Cache-Control', 'public, s-maxage=600, stale-while-revalidate=3600')
+    return {
+      slug: report.slug,
+      title: report.title || report.slug,
+      date: report.date ?? null,
+      path: report.path || report.slug,
+      market: report.market ?? null,
+      htmlUrl: report.htmlUrl || '',
+      html: report.html,
+    } satisfies ReportDetail
   }
   catch (error) {
     if (isError(error)) {
       throw error
     }
-    if (error instanceof GitHubReportsError) {
+
+    const statusCode = Number((error as { statusCode?: number; status?: number })?.statusCode
+      || (error as { status?: number })?.status
+      || 0)
+
+    if (statusCode === 404) {
       throw createError({
-        statusCode: error.statusCode,
-        statusMessage: error.message,
+        statusCode: 404,
+        statusMessage: '日报不存在',
       })
     }
+
     throw createError({
       statusCode: 502,
       statusMessage: '读取收盘日报失败。',

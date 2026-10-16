@@ -8,6 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes market-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @layer base {
   html {
     @apply antialiased;

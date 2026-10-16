@@ -73,17 +73,7 @@ usePageSeo({
 
       <div class="markdown-body mt-10" v-html="report.html" />
 
-      <div class="mt-12 flex flex-wrap items-center gap-4 border-t border-zinc-200/80 pt-6 dark:border-white/[0.06]">
-        <a
-          v-if="report.htmlUrl"
-          :href="report.htmlUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-        >
-          在 GitHub 查看原文
-          <AppIcon name="external" class="h-3.5 w-3.5" />
-        </a>
+      <div class="mt-12 border-t border-zinc-200/80 pt-6 dark:border-white/[0.06]">
         <p class="text-xs leading-5 text-zinc-400">
           {{ SITE_DISCLAIMER }}
         </p>

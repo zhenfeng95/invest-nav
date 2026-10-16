@@ -80,13 +80,43 @@ function changeClass(changePct: number | null) {
     </div>
 
     <div class="mt-8 grid max-w-2xl gap-4">
-      <template v-if="isLoading">
+      <div
+        v-if="isLoading"
+        class="card relative overflow-hidden p-5 sm:p-6"
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+      >
+        <span class="sr-only">正在加载市场日报</span>
         <div
-          v-for="slot in slots"
-          :key="slot.market"
-          class="card h-64 animate-pulse bg-zinc-100/80 dark:bg-white/[0.04]"
+          class="pointer-events-none absolute inset-0 -translate-x-full animate-[market-shimmer_1.6s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/55 to-transparent dark:via-white/10"
+          aria-hidden="true"
         />
-      </template>
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-400/80" aria-hidden="true" />
+            <span class="h-3 w-14 rounded bg-zinc-200/90 dark:bg-white/10" />
+            <span class="h-3 w-24 rounded bg-zinc-100 dark:bg-white/5" />
+          </div>
+          <span class="h-3 w-20 rounded bg-zinc-100 dark:bg-white/5" />
+        </div>
+        <div class="mt-5 space-y-2.5">
+          <div class="h-5 w-11/12 rounded-md bg-zinc-200/90 dark:bg-white/10" />
+          <div class="h-5 w-2/3 rounded-md bg-zinc-200/70 dark:bg-white/[0.07]" />
+        </div>
+        <div class="mt-4 space-y-2">
+          <div class="h-3.5 w-full rounded bg-zinc-100 dark:bg-white/5" />
+          <div class="h-3.5 w-full rounded bg-zinc-100 dark:bg-white/5" />
+          <div class="h-3.5 w-4/5 rounded bg-zinc-100 dark:bg-white/5" />
+        </div>
+        <div class="mt-6 flex items-center gap-2 text-xs text-zinc-400">
+          <span
+            class="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-zinc-200 border-t-accent dark:border-white/15 dark:border-t-accent"
+            aria-hidden="true"
+          />
+          正在拉取最新美股日报…
+        </div>
+      </div>
 
       <NuxtLink
         v-for="card in cards"

@@ -4,9 +4,11 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
 
     // Vite 冷启动会在 Nitro 写出 manifest 之前扫描 #app-manifest，导致 pre-transform 报错。
-    // 本站未使用客户端 payload，关闭即可。
+    // 首页 prerender 时，客户端切到 / 会在 beforeResolve 里先等 /_payload.json。
+    // 首页没有需要水合的服务端数据，关掉 payload 提取后菜单可以立刻跳转。
     experimental: {
         appManifest: false,
+        payloadExtraction: false,
     },
 
     routeRules: {
@@ -100,6 +102,12 @@ export default defineNuxtConfig({
         githubWeeklyReviewsPath: 'output/reviews/weekly',
         githubReportsRef: 'main',
         githubTradesPath: 'data/raw/trades',
+        /** 站内服务 API 根域名，可由 NUXT_API_BASE_URL 覆盖 */
+        apiBaseUrl: 'https://api.zheninvest.com',
+        /** 可选：整段覆盖日报前缀，默认 `${apiBaseUrl}/v1/reports` */
+        reportsApiBase: '',
+        /** 可选：覆盖首页摘要 URL，默认 `${reportsApiBase}/home` */
+        reportsHomeUrl: '',
         indexnowKey: 'zheninvest-indexnow-8f3a2c1b',
         indexnowSyncSecret: '',
         public: {
@@ -124,6 +132,7 @@ export default defineNuxtConfig({
                     NUXT_GITHUB_WEEKLY_REVIEWS_PATH: 'output/reviews/weekly',
                     NUXT_GITHUB_REPORTS_REF: 'main',
                     NUXT_GITHUB_TRADES_PATH: 'data/raw/trades',
+                    NUXT_API_BASE_URL: 'https://api.zheninvest.com',
                 },
                 routes: [
                     {

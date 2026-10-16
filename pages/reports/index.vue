@@ -6,16 +6,6 @@ type MarketFilter = 'all' | ReportMarket
 
 const route = useRoute()
 const nuxtApp = useNuxtApp()
-const { data, error, pending, status } = await useAsyncData(
-  'reports',
-  () => $fetch<ReportListResponse>('/api/reports'),
-  {
-    lazy: import.meta.client,
-    getCachedData: key => nuxtApp.payload.data[key],
-  },
-)
-
-const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
 
 function parseMarketQuery(raw: unknown): MarketFilter {
   const value = Array.isArray(raw) ? raw[0] : raw
@@ -27,6 +17,22 @@ function parseMarketQuery(raw: unknown): MarketFilter {
 
 const marketFilter = computed(() => parseMarketQuery(route.query.market))
 
+const { data, error, pending, status } = await useAsyncData(
+  () => `reports-${marketFilter.value}`,
+  () => $fetch<ReportListResponse>(
+    marketFilter.value === 'all'
+      ? '/api/reports'
+      : `/api/reports?market=${marketFilter.value}`,
+  ),
+  {
+    watch: [marketFilter],
+    lazy: import.meta.client,
+    getCachedData: key => nuxtApp.payload.data[key],
+  },
+)
+
+const isLoading = computed(() => !data.value && !error.value && (pending.value || status.value === 'idle'))
+
 const monthKey = currentYearMonth()
 const monthLabel = monthKey ? formatYearMonth(monthKey) : '本月'
 
@@ -34,13 +40,8 @@ const monthItems = computed(() =>
   (data.value?.items ?? []).filter(item => isCurrentYearMonth(item.date)),
 )
 
-const filteredItems = computed(() => {
-  const items = monthItems.value
-  if (marketFilter.value === 'all') {
-    return items
-  }
-  return items.filter(item => item.market === marketFilter.value)
-})
+/** 市场筛选已在请求参数里完成；此处只保留本月条目 */
+const filteredItems = computed(() => monthItems.value)
 
 const seoByMarket: Record<MarketFilter, { title: string, description: string, heroTitle: string, heroDescription: string }> = {
   all: {
@@ -87,35 +88,35 @@ usePageSeo({
       v-else-if="error"
       eyebrow="Unavailable"
       title="日报暂时无法加载"
-      description="GitHub 仓库读取失败。请稍后重试，或检查仓库地址、目录和访问权限。"
+      description="日报接口暂时不可用，请稍后重试。"
     />
 
     <EmptyState
       v-else-if="!data?.configured"
       eyebrow="Coming Soon"
       title="收盘日报即将接入"
-      description="配置投研 Agent 所在的 GitHub 仓库后，工作日收盘日报会自动出现在这里。"
+      description="工作日收盘日报接入后会自动出现在这里。"
     />
 
     <EmptyState
       v-else-if="!data.items.length"
       eyebrow="Empty"
-      title="还没有日报文件"
-      description="仓库已连接，但指定目录里还没有可展示的 Markdown 文件。"
+      title="还没有日报"
+      description="当前还没有可展示的收盘日报。"
     />
 
     <EmptyState
       v-else-if="!monthItems.length"
       eyebrow="Empty"
       :title="`${monthLabel}暂无收盘日报`"
-      description="本月尚无 A 股或美股收盘日报文件，新文件写入投研 Agent 仓库后会自动出现。"
+      description="本月尚无收盘日报，新日报生成后会自动出现。"
     />
 
     <EmptyState
       v-else-if="!filteredItems.length"
       eyebrow="Empty"
       title="该市场本月暂无日报"
-      description="本月尚无对应市场的收盘日报文件，新文件写入投研 Agent 仓库后会自动出现。"
+      description="本月尚无对应市场的收盘日报，新日报生成后会自动出现。"
     />
 
     <div v-else class="grid gap-3">
